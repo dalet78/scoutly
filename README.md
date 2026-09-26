@@ -36,3 +36,6 @@ Prototipo dimostrativo, senza backend: nessun lead viene trasmesso e nessun rico
 
 La homepage ricevuta era una versione precedente del questionario: è stata allineata alla struttura homepage + strumenti. Corretti navigazione, invio con Invio nei passaggi iniziali, limiti della superficie e messaggi sul ricontatto.
 
+## Quanto costa mantenere una casa vuota?
+
+`tools/casa-vuota.html` somma sei voci ricorrenti, ciascuna mensile o annuale, e spese una tantum. Totale periodo = totale annuo × mesi / 12 + una tantum. Importi vuoti pari a zero, mesi interi da 1 a 120, spese non negative. Nessun invio o salvataggio di dati, nessun calcolo automatico di tributi o mancati affitti.

@@ -1,0 +1,81 @@
+<!doctype html><html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Quanto costa mantenere una casa vuota? | Scoutly</title><meta name="description" content="Somma le spese di una casa vuota e scopri il costo mensile, annuale e per il periodo che hai scelto."><style>
+    :root { --ink:#17232d; --muted:#60707a; --cream:#f7f5ef; --paper:#fff; --blue:#153e50; --teal:#1d7a78; --gold:#d7a94b; --line:#dde5e4; --shadow:0 20px 60px rgba(20,46,58,.12); }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:var(--cream); font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height:1.5; }
+    a { color:inherit; }
+    .shell { width:min(1120px, calc(100% - 40px)); margin:auto; }
+    header { padding:22px 0; background:rgba(247,245,239,.92); }
+    nav { display:flex; justify-content:space-between; align-items:center; gap:20px; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:-.02em; color:var(--blue); }
+    .brand-mark { width:34px; height:34px; display:grid; place-items:center; border-radius:11px; color:white; background:var(--teal); font-size:17px; }
+    .nav-link { text-decoration:none; color:var(--muted); font-size:.92rem; }
+    .hero { padding:58px 0 68px; background:linear-gradient(135deg,#f7f5ef 0%,#eef4f1 100%); }
+    .hero-grid { display:grid; grid-template-columns:1.05fr .95fr; gap:64px; align-items:center; }
+    .eyebrow { color:var(--teal); font-weight:800; text-transform:uppercase; letter-spacing:.14em; font-size:.74rem; }
+    h1 { font-size:clamp(2.6rem, 6vw, 5rem); line-height:1.02; letter-spacing:-.065em; margin:14px 0 22px; max-width:650px; }
+    .hero-copy { font-size:1.16rem; color:var(--muted); max-width:580px; }
+    .trust { display:flex; gap:18px; flex-wrap:wrap; margin-top:27px; color:var(--muted); font-size:.9rem; }
+    .trust span::before { content:'✓'; color:var(--teal); font-weight:900; margin-right:7px; }
+    .card { background:var(--paper); border:1px solid rgba(21,62,80,.08); border-radius:24px; box-shadow:var(--shadow); }
+    .calculator { padding:28px; }
+    .calculator h2 { margin:0 0 5px; font-size:1.45rem; letter-spacing:-.03em; }
+    .calculator > p { margin:0 0 22px; color:var(--muted); font-size:.92rem; }
+    label { display:block; font-size:.8rem; font-weight:750; margin:14px 0 7px; }
+    input, select { width:100%; border:1px solid var(--line); border-radius:11px; padding:12px 13px; color:var(--ink); background:#fbfcfb; font:inherit; }
+    input:focus, select:focus { outline:3px solid rgba(29,122,120,.16); border-color:var(--teal); }
+    .two { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .choices { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .choice { border:1px solid var(--line); border-radius:11px; padding:12px; cursor:pointer; text-align:center; font-weight:700; color:var(--muted); background:#fbfcfb; }
+    .choice:has(input:checked) { border-color:var(--teal); color:var(--teal); background:#eef8f6; }
+    .choice input { position:absolute; opacity:0; pointer-events:none; }
+    button { width:100%; border:0; border-radius:12px; padding:14px 18px; margin-top:21px; background:var(--teal); color:white; font:inherit; font-weight:800; cursor:pointer; transition:transform .15s ease, background .15s ease; }
+    button:hover { transform:translateY(-1px); background:#176461; }
+    .fine-print { margin:12px 0 0; color:#7a888c; font-size:.72rem; line-height:1.45; }
+    .result { display:none; margin-top:18px; border-radius:14px; padding:16px; background:#f0f8f5; border:1px solid #c7e4dc; }
+    .result.show { display:block; }
+    .result strong { display:block; color:var(--blue); margin-bottom:4px; }
+    .section { padding:76px 0; }
+    .section-head { max-width:650px; margin-bottom:34px; }
+    h2 { font-size:clamp(2rem,4vw,3rem); line-height:1.08; letter-spacing:-.055em; margin:10px 0 14px; }
+    .section-head p, .feature p { color:var(--muted); }
+    .features { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .feature { padding:25px; }
+    .icon { width:42px; height:42px; border-radius:13px; display:grid; place-items:center; background:#edf4f2; color:var(--teal); font-weight:900; font-size:1.2rem; }
+    .feature h3 { margin:17px 0 8px; font-size:1.12rem; }
+    .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; counter-reset:step; }
+    .step { position:relative; padding:24px 24px 24px 62px; }
+    .step::before { counter-increment:step; content:counter(step); position:absolute; left:22px; top:24px; width:27px; height:27px; border-radius:50%; display:grid; place-items:center; background:var(--gold); color:white; font-weight:900; font-size:.82rem; }
+    .step h3 { margin:0 0 7px; }
+    .step p { margin:0; color:var(--muted); font-size:.94rem; }
+    .cta { padding:45px; display:flex; justify-content:space-between; align-items:center; gap:28px; background:var(--blue); color:white; border-radius:25px; }
+    .cta h2 { margin:0 0 8px; font-size:2rem; }
+    .cta p { margin:0; color:#cbd9dc; max-width:600px; }
+    .cta a { display:inline-block; white-space:nowrap; text-decoration:none; border-radius:11px; padding:13px 18px; background:var(--gold); color:#24333a; font-weight:800; }
+    footer { padding:28px 0 45px; color:#758389; font-size:.82rem; }
+    footer div { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    @media (max-width:800px) { .hero-grid { grid-template-columns:1fr; gap:38px; } .features, .steps { grid-template-columns:1fr; } .cta { flex-direction:column; align-items:flex-start; padding:30px; } }
+    @media (max-width:520px) { .shell { width:min(100% - 28px,1120px); } .hero { padding-top:35px; } .calculator { padding:21px; } .two { grid-template-columns:1fr; } h1 { font-size:3.1rem; } }
+  
+.button {display:inline-block;padding:14px 20px;border-radius:12px;background:var(--teal);color:white;text-decoration:none;font-weight:800} .brand{text-decoration:none}
+
+.layout{display:grid;grid-template-columns:1.15fr 1fr;gap:28px;align-items:start}.hint{font-size:.85rem;color:var(--muted);margin:4px 0 8px}.expense{padding-bottom:15px;border-bottom:1px solid var(--line)}.summary{padding:28px;background:var(--blue);color:white;position:sticky;top:20px}.summary h2{font-size:1.5rem;color:white}.amount{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-.04em}.summary p{color:#d6e5e5}.summary dl{margin:24px 0}.summary dl div{padding:12px 0;border-bottom:1px solid #42606b;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}.summary dd{margin:0;font-weight:700}.summary a{color:white}.breakdown{padding-left:20px;font-size:.9rem}.error{color:#a53f3f}button.secondary{background:#e9efed;color:var(--blue)}[hidden]{display:none!important}@media(max-width:800px){.layout{grid-template-columns:1fr}.summary{position:static}}@media print{header,form,.hero,.section-head,footer,.follow{display:none}.layout{display:block}.summary{color:#17232d;background:white}.summary h2,.summary p{color:#17232d}}
+</style></head><body><header><nav class="shell" aria-label="Navigazione principale"><a class="brand" href="../index.html"><span class="brand-mark">S</span>Scoutly</a><a class="nav-link" href="#calcolo">Calcola le spese</a></nav></header>
+<main><section class="hero"><div class="shell"><div class="eyebrow">Il costo dell’attesa</div><h1>Quanto costa mantenere una casa vuota?</h1><p class="hero-copy">Anche senza abitarla, alcune spese continuano. Metti insieme i tuoi importi e scopri quanto pesa tenere la casa ferma.</p><div class="trust"><span>I tuoi importi</span><span>Nessun contatto richiesto</span><span>Calcolo nel browser</span></div></div></section>
+<section class="section" id="calcolo"><div class="shell layout"><form class="card calculator" id="cost-form"><h2>Partiamo dalle spese</h2><p>Scegli per ogni voce l’importo mensile o annuale. I campi vuoti valgono zero: il totale comprende solo ciò che inserisci.</p><div class="expense"><label for="condominio">Condominio</label><p class="hint" id="condominio-hint">Escludi le utenze già conteggiate sotto.</p><div class="two"><input id="condominio" name="condominio" type="number" min="0" max="10000000" step="0.01" inputmode="decimal" placeholder="0,00" aria-label="Condominio: importo in euro" aria-describedby="condominio-hint"><select id="condominio-period" aria-label="Condominio: periodicità"><option value="12">€ / mese</option><option value="1">€ / anno</option></select></div></div><div class="expense"><label for="utenze">Utenze e abbonamenti</label><p class="hint" id="utenze-hint">Luce, gas, acqua, internet: considera gli importi che continui a pagare.</p><div class="two"><input id="utenze" name="utenze" type="number" min="0" max="10000000" step="0.01" inputmode="decimal" placeholder="0,00" aria-label="Utenze e abbonamenti: importo in euro" aria-describedby="utenze-hint"><select id="utenze-period" aria-label="Utenze e abbonamenti: periodicità"><option value="12">€ / mese</option><option value="1">€ / anno</option></select></div></div><div class="expense"><label for="imposte">Imposte e tributi</label><p class="hint" id="imposte-hint">Inserisci gli importi dovuti secondo la tua situazione, ad esempio IMU e TARI.</p><div class="two"><input id="imposte" name="imposte" type="number" min="0" max="10000000" step="0.01" inputmode="decimal" placeholder="0,00" aria-label="Imposte e tributi: importo in euro" aria-describedby="imposte-hint"><select id="imposte-period" aria-label="Imposte e tributi: periodicità"><option value="12">€ / mese</option><option value="1" selected>€ / anno</option></select></div></div><div class="expense"><label for="assicurazione">Assicurazione</label><p class="hint" id="assicurazione-hint">Il premio della polizza sull’immobile.</p><div class="two"><input id="assicurazione" name="assicurazione" type="number" min="0" max="10000000" step="0.01" inputmode="decimal" placeholder="0,00" aria-label="Assicurazione: importo in euro" aria-describedby="assicurazione-hint"><select id="assicurazione-period" aria-label="Assicurazione: periodicità"><option value="12">€ / mese</option><option value="1" selected>€ / anno</option></select></div></div><div class="expense"><label for="manutenzione">Manutenzione e controlli</label><p class="hint" id="manutenzione-hint">Pulizia, giardino, piccoli interventi o un budget di riserva.</p><div class="two"><input id="manutenzione" name="manutenzione" type="number" min="0" max="10000000" step="0.01" inputmode="decimal" placeholder="0,00" aria-label="Manutenzione e controlli: importo in euro" aria-describedby="manutenzione-hint"><select id="manutenzione-period" aria-label="Manutenzione e controlli: periodicità"><option value="12">€ / mese</option><option value="1" selected>€ / anno</option></select></div></div><div class="expense"><label for="altro">Altre spese ricorrenti</label><p class="hint" id="altro-hint">Custodia, allarme e altre voci non già incluse.</p><div class="two"><input id="altro" name="altro" type="number" min="0" max="10000000" step="0.01" inputmode="decimal" placeholder="0,00" aria-label="Altre spese ricorrenti: importo in euro" aria-describedby="altro-hint"><select id="altro-period" aria-label="Altre spese ricorrenti: periodicità"><option value="12">€ / mese</option><option value="1">€ / anno</option></select></div></div><label for="months">Per quanti mesi resterà vuota?</label><input id="months" type="number" min="1" max="120" step="1" value="12" required><label for="once">Spese una tantum nel periodo (€)</label><input id="once" type="number" min="0" max="10000000" step="0.01" placeholder="0,00"><p class="hint">Ad esempio un intervento già previsto. Non ripetere spese incluse sopra.</p><p class="error" id="error" role="alert"></p><button type="submit">Calcola il costo della casa vuota</button><button class="secondary" type="reset">Azzera gli importi</button><p class="fine-print">Gli importi non vengono salvati né inviati. Nessuna aliquota o esenzione viene calcolata automaticamente.</p></form>
+<aside class="card summary" aria-live="polite" aria-atomic="true"><div class="eyebrow" style="color:#e3bc6d">Il tuo riepilogo</div><h2>Quanto pesa tenerla ferma?</h2><p id="empty">Inserisci le spese e avvia il calcolo per vedere il riepilogo.</p><div id="results" hidden><p>Spese ricorrenti, media mensile</p><div class="amount" id="monthly"></div><dl><div><dt>Spese ricorrenti annue</dt><dd id="annual"></dd></div><div><dt id="period-label"></dt><dd id="period"></dd></div><div><dt>Una tantum nel periodo</dt><dd id="one-off"></dd></div><div><dt>Totale del periodo</dt><dd id="total"></dd></div></dl><h2>Da dove arriva il totale annuo</h2><ul class="breakdown" id="breakdown"></ul><p id="coverage"></p><p>Il totale del periodo somma le spese ricorrenti proporzionate ai mesi e le spese una tantum.</p></div><p class="follow"><a href="vendere-o-affittare.html">Stai pensando di vendere o affittare? →</a></p></aside></div></section>
+<section class="section" style="padding-top:0"><div class="shell"><div class="section-head"><h2>Un totale chiaro, con i suoi confini.</h2><p>Questo strumento somma le spese che conosci. Non stima il valore della casa, il canone potenziale o le imposte da pagare.</p></div><div class="features"><article class="card feature"><h3>Usa gli importi effettivi</h3><p>Parti da bollette, rendiconti e avvisi di pagamento. Se una voce non si applica, lasciala a zero.</p></article><article class="card feature"><h3>Evita i doppioni</h3><p>Se acqua o riscaldamento sono già nel condominio, non inserirli di nuovo nelle utenze.</p></article><article class="card feature"><h3>Un budget, non una previsione</h3><p>Il calcolo assume spese costanti e le ripartisce uniformemente. Non include mancati affitti, variazioni di valore, mutuo o spese che non hai inserito.</p></article></div></div></section></main><footer><div class="shell"><a href="../index.html">← Tutti gli strumenti Scoutly</a><span>© 2026 Scoutly · Calcolo indicativo sulle spese inserite</span></div></footer>
+<script>
+const fields=[{"id":"condominio","label":"Condominio"},{"id":"utenze","label":"Utenze e abbonamenti"},{"id":"imposte","label":"Imposte e tributi"},{"id":"assicurazione","label":"Assicurazione"},{"id":"manutenzione","label":"Manutenzione e controlli"},{"id":"altro","label":"Altre spese ricorrenti"}];
+const form=document.querySelector('#cost-form');
+const euro=value=>new Intl.NumberFormat('it-IT',{style:'currency',currency:'EUR'}).format(value);
+function clearResult(){document.querySelector('#results').hidden=true;document.querySelector('#empty').hidden=false;document.querySelector('#error').textContent='';}
+form.addEventListener('input',clearResult);form.addEventListener('change',clearResult);form.addEventListener('reset',clearResult);
+form.addEventListener('submit',event=>{event.preventDefault();if(!form.reportValidity())return;
+ const rows=fields.map(({id,label})=>({label,year:Math.round(Number(document.getElementById(id).value||0)*100)*Number(document.getElementById(id+'-period').value)}));
+ const annual=rows.reduce((sum,row)=>sum+row.year,0), months=Number(document.querySelector('#months').value), once=Math.round(Number(document.querySelector('#once').value||0)*100);
+ document.querySelector('#monthly').textContent=euro(annual/1200);document.querySelector('#annual').textContent=euro(annual/100);document.querySelector('#period-label').textContent='Spese ricorrenti per '+months+' mesi';document.querySelector('#period').textContent=euro(annual*months/1200);document.querySelector('#one-off').textContent=euro(once/100);document.querySelector('#total').textContent=euro((Math.round(annual*months/12)+once)/100);
+ const list=document.querySelector('#breakdown');list.replaceChildren();rows.filter(row=>row.year>0).forEach(row=>{const li=document.createElement('li');li.textContent=row.label+': '+euro(row.year/100)+' / anno';list.append(li)});
+ document.querySelector('#coverage').textContent=rows.filter(row=>row.year>0).length+' voci ricorrenti valorizzate su '+fields.length+'. Le voci vuote o a zero non aggiungono costi.';
+ document.querySelector('#empty').hidden=true;document.querySelector('#results').hidden=false;
+});
+</script></body></html>
