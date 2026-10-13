@@ -2,7 +2,7 @@
 
 Radar immobiliare per il **comune di Milano** con selezione dei privati, scarti spiegabili e verifiche di disponibilità/incarico ad agenzia. La demo estende il progetto iniziale Boris e usa il nome Scoutly.
 
-**Campione del 13 ottobre 2026: 11 annunci/post acquisiti, 8 candidati da approfondire, 3 scarti.** Nessuna disponibilità attuale è stata confermata direttamente dal proprietario e nessuna assenza di incarico ad agenzia è stata verificata. I tre scarti sono una ripubblicazione dello stesso annuncio Facebook, un subentro offerto da coinquilini e un servizio professionale su Subito. Due loft su Subito restano possibili duplicati: i riscontri non bastano per eliminarne uno automaticamente.
+**Campione del 13 ottobre 2026: 17 annunci/post acquisiti, 11 candidati da approfondire, 6 scarti.** Il campione comprende 11 post/annunci di affitto e 6 annunci di vendita: 3 vendite da privati dichiarati restano in revisione. Nessuna disponibilità attuale è stata confermata direttamente dal proprietario e nessuna assenza di incarico ad agenzia è stata verificata. Gli scarti sono una ripubblicazione, un subentro da coinquilini, tre venditori/servizi professionali e una scheda rimossa. HTTP 410 non significa che l’immobile sia stato venduto. Due loft su Subito restano possibili duplicati: i riscontri non bastano per eliminarne uno automaticamente.
 
 ## Avvio
 
@@ -35,9 +35,10 @@ I primi cinque sono moduli a regole spiegabili in `dist/agents.js`, eseguiti nel
 - [Bacheca annunci Vendita/affitto case Milano](https://www.facebook.com/share/g/19TtCYiKiC/): gruppo pubblico; tre post pubblici acquisiti nel campione, incluso un duplicato.
 - [CASE MILANO IN VENDITA E IN AFFITTO - Trattative tra Privati](https://www.facebook.com/share/g/18q1gmSDTn/): gruppo privato; post non accessibili nella sessione verificata.
 - [Subito, appartamenti in affitto nel comune di Milano](https://www.subito.it/annunci-lombardia/affitto/appartamenti/milano/milano/): otto annunci nel campione. Il percorso comunale è distinto da quello della provincia. L’import di Subito richiede la conferma del comune nella scheda.
+- [Subito, appartamenti in vendita nel comune di Milano](https://www.subito.it/annunci-lombardia/vendita/appartamenti/milano/milano/): sei annunci di vendita, con prezzo totale distinto dal canone mensile. La vista può essere filtrata per affitti e vendite.
 - [|| MILANO || APPARTAMENTI & STANZE IN AFFITTO](https://www.facebook.com/share/g/1CDLw3kfDY/): gruppo privato, accessibile nella sessione autenticata verificata. Registrato tra le fonti; nessun testo di questo gruppo è incluso nei file pubblicati su GitHub.
 
-I file `dist/data.json` e `dist/research.json` conservano fonti, collegamenti, testi o estratti pubblici realmente letti, stato di accesso e limiti. Le date di raccolta e indicizzazione non vengono usate come date delle dichiarazioni. Alcuni dettagli Subito erano disponibili solo tramite contenuti indicizzati; sono segnalati nell’interfaccia.
+I file `dist/data.json`, `dist/research.json` e `dist/sales.json` conservano fonti, collegamenti, testi o estratti pubblici realmente letti, stato di accesso e limiti. Le date di raccolta e indicizzazione non vengono usate come date delle dichiarazioni. Alcuni dettagli Subito erano disponibili solo tramite contenuti indicizzati; sono segnalati nell’interfaccia.
 
 ## Uso e verifiche
 
@@ -54,7 +55,13 @@ La deduplicazione usa URL normalizzati oppure stesso autore e testo completo ide
 
 ## Controlli
 
-27 test verificano il campione reale, esclusione degli operatori e delle richieste, negazioni, duplicati, aggiornamenti decisivi, date mancanti/future, scadenza, conflitti, comune di Milano, import sicuro, conservazione della cronologia e CSV. Sono state verificate nel browser anche le viste candidati/scarti, la registrazione di una nota reale e il ripristino dopo ricaricamento.
+30 test verificano affitti e vendite reali, esclusione degli operatori e delle richieste, negazioni, duplicati, aggiornamenti decisivi, schede rimosse, date mancanti/future, scadenza, conflitti, comune di Milano, import sicuro, conservazione della cronologia e CSV. Sono state verificate nel browser anche le viste candidati/scarti, la registrazione di una nota reale e il ripristino dopo ricaricamento.
+
+## Aggiornamenti programmati
+
+L'utente ha richiesto aggiornamenti alle **08:00 e 16:00, Europe/Rome (ora di Milano)**. La programmazione nativa collegata al Site esegue ricerca e pubblicazione con le istruzioni in `agents/refresh.md`. Lo stato effettivo di attivazione e l'ultima esecuzione sono riportati in `dist/update-status.json` e nell'interfaccia. Finché `scheduleEnabled` è false, la programmazione è in preparazione: non è sufficiente questo README per dichiararla attiva. Il passaggio all'ora legale segue il fuso Europe/Rome.
+
+Il task usa gli strumenti GitHub come writer già verificato e aggiorna dati pubblici senza accesso obbligatorio a un browser locale. Per le fonti non accessibili conserva gli ultimi dati e registra il limite. Gli aggiornamenti del Site privato seguono il flusso Sites con il contesto e le autorizzazioni del task collegato. Non invia contatti agli inserzionisti e resta silenzioso in assenza di cambiamenti utili.
 
 ## Pubblicazione
 

@@ -1,0 +1,9 @@
+{
+  "scheduleEnabled":false,
+  "timezone":"Europe/Rome",
+  "hours":[8,16],
+  "lastAttemptAt":null,
+  "lastSuccessAt":null,
+  "status":"configurazione",
+  "note":"Programmazione in preparazione. Il campione è stato acquisito durante la sessione del 13 ottobre 2026."
+}

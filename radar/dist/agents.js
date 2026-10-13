@@ -12,7 +12,7 @@ function question(text,start,end){const after=text.slice(end).split(/[.!\n]/)[0]
 function signals(text,rules){const t=String(text||'').normalize('NFKC'),out=[];for(const [kind,rule,re] of rules)for(const m of t.matchAll(re))if(!question(t,m.index,m.index+m[0].length))out.push({kind,rule,quote:m[0],start:m.index,end:m.index+m[0].length});return out;}
 export function classifyAdvertiser(text,post={}){
   const t=String(text||'').normalize('NFKC');let evidence=signals(t,[
-    ['private','dichiarazione privato',/\bprivato\s*[-–:]\s*no\s+agenzi[ae]\b|\bda\s+privato(?:\s+a\s+privato)?\b|\b(?:sono|siamo)\s+(?:il\s+|la\s+|i\s+)?proprietari[oa]?\b/giu],
+    ['private','dichiarazione privato',/\bprivato\s*[-–:]\s*no\s+agenzi[ae]\b|\bprivat[oa]\s+(?:vende|affitta)\b|\bda\s+privato(?:\s+a\s+privato)?\b|\b(?:sono|siamo)\s+(?:il\s+|la\s+|i\s+)?proprietari[oa]?\b/giu],
     ['weak','rifiuto intermediari',/\b(?:no|senza|non\s+(?:sono|siamo|è)\s+(?:un['’]?\s*|una\s+)?|nessuna?)\s*(?:agenzi[ae](?:\s+immobiliari?)?|agent[ei]\s+immobiliar[ei]|intermediari[oa]?|mediator[ei])\b/giu],
     ['agency','operatore immobiliare',/\bagenzia\s+immobiliare\b|\b(?:sono|siamo)\s+(?:un['’]?\s*|una\s+)?(?:agent[ei]\s+immobiliar[ei]|intermediari[oa]?|mediator[ei])\b|\bprovvigione\s+(?:del|pari\s+a|richiesta)\b|\b(?:tecnocasa|tecnorete|tempocasa|gabetti|re\/max|professionecasa)\b/giu],
     ['professional','servizio professionale',/\b(?:banca\s+dati|database)\b.{0,160}\b(?:quota|pagamento|abbonamento)\b|\b(?:quota|pagamento|abbonamento)\b.{0,160}\b(?:banca\s+dati|database)\b/giu],
@@ -26,8 +26,9 @@ export function classifyAdvertiser(text,post={}){
 }
 export function inspectOffer(post){const t=String(post.title||'')+' '+String(post.text||''),reasons=[];
   if(!canonicalUrl(post.url))reasons.push('Collegamento assente o non valido');
+  if(post.sourceRemoved)reasons.push('Annuncio rimosso dalla fonte; disponibilità dell’immobile sconosciuta');
   if(t.trim().length<20||!String(post.text||'').trim())reasons.push('Testo insufficiente');
-  const property=/\b(?:appartamento|casa|bilocale|biloc|trilocale|monolocale|immobile|stanza|camera|villa|attico|ufficio|negozio|box|terreno|loft)\b/i.test(t),offer=/\b(?:affittasi|vendesi|vendo|affitto|affittiamo|vendiamo|si affitta|si vende|in vendita|in affitto|si libera|disponibile|disponibilità|locazione|cedesi)\b/i.test(t)||['affitto','vendita'].includes(post.operation);
+  const property=/\b(?:appartamento|casa|bilocale|biloc|trilocale|quadrilocale|monolocale|immobile|stanza|camera|villa|attico|ufficio|negozio|box|terreno|loft)\b/i.test(t),offer=/\b(?:affittasi|vendesi|vendo|affitto|affittiamo|vendiamo|si affitta|si vende|in vendita|in affitto|si libera|disponibile|disponibilità|locazione|cedesi)\b/i.test(t)||['affitto','vendita'].includes(post.operation);
   const wanted=/\b(?:cerco|cerchiamo|sto cercando|cercasi|in cerca di)\s+(?:un['’]?\s*|una\s+)?(?:casa|appartamento|bilocale|trilocale|monolocale|stanza|camera|immobile)\b/i.test(t);
   if(wanted)reasons.push('Richiesta di casa, non offerta');if(!property||!offer)reasons.push('Offerta immobiliare non riconoscibile');
   if(post.sourceType==='subito'&&post.city!=='Milano')reasons.push('Fuori dal comune di Milano o comune non verificato');
@@ -39,7 +40,7 @@ function resolve(evidence,now,maxAge){const dated=evidence.filter(e=>validDate(e
   // Una prova non datata non può cancellare una dichiarazione esplicita datata.
   const current=latest?dated.filter(e=>e.date===latest):evidence,kinds=new Set(current.map(e=>e.kind)),days=age(latest,now),undatedConflict=latest&&evidence.some(e=>!validDate(e.date,now)&&!kinds.has(e.kind));return {current,latest,conflict:kinds.size>1||Boolean(undatedConflict),fresh:days!==null&&days>=0&&days<=maxAge};}
 const months={gennaio:1,febbraio:2,marzo:3,aprile:4,maggio:5,giugno:6,luglio:7,agosto:8,settembre:9,ottobre:10,novembre:11,dicembre:12};
-function dateFrom(text){const m=text.match(/\b(?:disponibile|liber[oa]|si libera)\s+(?:dal|da)\s*:?\s*(\d{1,2})[°º]?\s*(gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre)(?:\s+(\d{4}))?/i);if(!m){const vague=text.match(/\b(?:disponibile|liber[oa]|si libera)\s+(?:(?:dal|da)\s+)?(?:fine|inizio|metà)\s+(?:gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre)(?:\s+\d{4})?/i);return vague?{quote:vague[0],date:null}:null;}const date=m[3]?`${m[3]}-${String(months[m[2].toLowerCase()]).padStart(2,'0')}-${m[1].padStart(2,'0')}`:null;return {quote:m[0],date:dateMs(date)!==null?date:null};}
+function dateFrom(text){const m=text.match(/\b(?:disponibile|liber[oa]|si libera)\s+(?:dal|da)\s*:?\s*(\d{1,2})[°º]?\s*(gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre)(?:\s+(\d{4}))?/i);if(!m){const vague=text.match(/\b(?:disponibile|liber[oa]|si libera)\s+(?:(?:dal|da)\s+)?(?:fine|inizio|metà)\s+(?:gennaio|febbraio|marzo|aprile|maggio|giugno|luglio|agosto|settembre|ottobre|novembre|dicembre)(?:\s+\d{4})?/i)||text.match(/\bliber[oa]\s+al\s+rogito\b/i);return vague?{quote:vague[0],date:null}:null;}const date=m[3]?`${m[3]}-${String(months[m[2].toLowerCase()]).padStart(2,'0')}-${m[1].padStart(2,'0')}`:null;return {quote:m[0],date:dateMs(date)!==null?date:null};}
 export function assessAvailability(post,now=today()){
   let evidence=[],scheduled=[];
   for(const s of sources(post)){if(!['annuncio','aggiornamento','risposta_proprietario'].includes(s.kind)||s.authorRole==='altro')continue;const t=String(s.text||'');
@@ -53,7 +54,7 @@ export function assessAvailability(post,now=today()){
   }
   const r=resolve(evidence,now,POLICY.availabilityDays);let status='unknown',label='Disponibilità da verificare',reason='Il post visibile o recente non conferma che l’immobile sia ancora disponibile.';
   if(r.current.length){if(r.conflict){status='conflict';label='Disponibilità: fonti in conflitto';reason='Le dichiarazioni della stessa data danno esiti diversi.';}else if(!r.fresh){status='stale';label='Disponibilità da riconfermare';reason=r.latest?`Ultima dichiarazione ${r.latest}; riconfermare dopo ${POLICY.availabilityDays} giorni.`:'Dichiarazione presente ma data di pubblicazione non verificata.';}else{status=r.current[0].kind;label=status==='available'?'Disponibile · dichiarato':'Non disponibile · dichiarato';reason=`Dichiarazione del ${r.latest}. Non è una garanzia della disponibilità effettiva.`;}}
-  if(status==='unknown'&&scheduled.length){status='scheduled';const d=scheduled.at(-1);label=d.date?`Dal ${d.date} · dichiarato`:`${d.quote} · anno da verificare`;reason='Data di ingresso dichiarata; disponibilità attuale non confermata.';}
+  if(status==='unknown'&&scheduled.length){status='scheduled';const d=scheduled.at(-1);label=d.date?`Dal ${d.date} · dichiarato`:`${d.quote} · data da verificare`;reason='Ingresso o liberazione dichiarati; disponibilità attuale non confermata.';}
   return {status,label,reason,evidence,scheduled,checkedAt:post.lastReadAt||null,lastStatementAt:r.latest};
 }
 export function assessAgency(post,now=today()){
