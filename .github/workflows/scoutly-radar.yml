@@ -1,0 +1,20 @@
+name: Scoutly Radar checks
+on:
+  push:
+    paths: ['radar/**', '.github/workflows/scoutly-radar.yml']
+  pull_request:
+    paths: ['radar/**', '.github/workflows/scoutly-radar.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: radar
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: npm test

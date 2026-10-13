@@ -1,0 +1,1 @@
+{"name":"scoutly-radar","private":true,"type":"module","scripts":{"test":"node --test --test-isolation=none agents.test.js","start":"node server.mjs"}}
