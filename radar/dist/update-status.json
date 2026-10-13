@@ -1,9 +1,10 @@
 {
-  "scheduleEnabled":false,
+  "scheduleEnabled":true,
   "timezone":"Europe/Rome",
   "hours":[8,16],
   "lastAttemptAt":null,
   "lastSuccessAt":null,
-  "status":"configurazione",
-  "note":"Programmazione in preparazione. Il campione è stato acquisito durante la sessione del 13 ottobre 2026."
+  "firstRunAt":"2026-10-14T08:00:00+02:00",
+  "status":"scheduled",
+  "note":"Programmazione attiva alle 08:00 e alle 16:00, ora di Milano, dal 14 ottobre 2026. La prima esecuzione programmata non è ancora avvenuta."
 }

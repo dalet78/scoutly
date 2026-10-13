@@ -42,3 +42,16 @@ export function mergePost(old,incoming){
   const checks=[...(old.checks||[]),...(incoming.checks||[])].filter((c,i,a)=>a.findIndex(o=>o.kind===c.kind&&o.text===c.text&&o.date===c.date&&canonicalUrl(o.url)===canonicalUrl(c.url)&&o.matchReason===c.matchReason&&o.sameProperty===c.sameProperty&&o.authorRole===c.authorRole)===i);
   return {...old,...incoming,checks,history};
 }
+export function seedFingerprint(post){return JSON.stringify(['text','title','textComplete','price','operation','sourceRemoved','sourceRemovalEvidence','advertiserType','advertiserEvidence','publishedAt','sourceAccess','notes'].map(field=>field==='price'&&post[field]!=null?String(post[field]):post[field]??null));}
+export function restoreCachedPosts(seed,cached,fingerprints={}){
+  const restored=seed.map(p=>({...p}));
+  for(const saved of cached){const key=canonicalUrl(saved.url),index=restored.findIndex(p=>canonicalUrl(p.url)===key);if(index<0){restored.push(saved);continue;}
+    const current=restored[index];
+    if(seedFingerprint(saved)===seedFingerprint(current)){restored[index]=mergePost(current,{...current,checks:saved.checks||[],history:saved.history||[]});continue;}
+    if(fingerprints[key]===seedFingerprint(current)){restored[index]=mergePost(current,saved);continue;}
+    // Una raccolta online cambiata prevale sul vecchio snapshot locale. Le prove restano.
+    const history=[...(saved.history||[])];if(saved.text!==current.text)history.push({text:saved.text,url:saved.url,publishedAt:saved.publishedAt||null,lastReadAt:saved.lastReadAt});
+    restored[index]=mergePost(current,{...current,checks:saved.checks||[],history});
+  }
+  return restored;
+}

@@ -1,11 +1,11 @@
 import {analyzePosts,AGENTS,canonicalUrl,safeUrl,today} from './agents.js';
-import {validatePost,validateCheck,parseBackup,csvCell,mergePost} from './state.js';
+import {validatePost,validateCheck,parseBackup,csvCell,mergePost,seedFingerprint,restoreCachedPosts} from './state.js';
 const $=id=>document.getElementById(id),KEY='scoutly.demo.v2';
-let data,posts=[],report,editingUrl=null,updateStatus=null;
+let data,posts=[],report,editingUrl=null,updateStatus=null,baseFingerprints={},onlineRevision='';
 const el=(tag,text,cls)=>{const e=document.createElement(tag);if(text!=null)e.textContent=String(text);if(cls)e.className=cls;return e;};
 function link(text,url){const a=el('a',text,'link'),valid=safeUrl(url);if(valid){a.href=valid;a.target='_blank';a.rel='noopener noreferrer';}return a;}
 function button(text,fn){const b=el('button',text);b.type='button';b.onclick=fn;return b;}
-function save(){try{localStorage.setItem(KEY,JSON.stringify({schemaVersion:2,posts}));$('storageMessage').textContent='Aggiunte e verifiche salvate in questo browser.';}catch{$('storageMessage').textContent='Salvataggio locale non disponibile: esporta il JSON per conservare il lavoro.';}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({schemaVersion:2,posts,baseFingerprints}));$('storageMessage').textContent='Aggiunte e verifiche salvate in questo browser.';}catch{$('storageMessage').textContent='Salvataggio locale non disponibile: esporta il JSON per conservare il lavoro.';}}
 function reevaluate(persist=false){report=analyzePosts(posts);render();if(persist)save();}
 function evidence(parent,list){for(const e of list){const q=el('div',null,'quote');q.append(el('div',`«${e.quote}»`),el('div',e.date?`Dichiarazione: ${e.date}`:'Data della dichiarazione non verificata','sub'));if(e.url)q.append(link('Fonte della prova ↗',e.url));parent.append(q);}}
 function render(){
@@ -44,19 +44,23 @@ function openQuestions(r){$('questionsText').textContent=`Buongiorno, in merito 
 function upsert(post){const index=posts.findIndex(p=>canonicalUrl(p.url)===canonicalUrl(post.url));if(index<0){posts.push(post);return false;}posts[index]=mergePost(posts[index],post);return true;}
 try{
   const [base,extra,sales,updates]=await Promise.all(['data.json','research.json','sales.json','update-status.json'].map(async file=>{const r=await fetch(file,{cache:'no-store'});if(!r.ok)throw Error('Dati non disponibili');return r.json();}));
+  onlineRevision=JSON.stringify([base,extra,sales,updates]);
   data={...base,collectedAt:[base.collectedAt,extra.collectedAt,sales.collectedAt].sort().at(-1),sources:[...base.sources,...extra.sources,...sales.sources]};updateStatus=updates;
   const original=base.posts.map(p=>({...p,sourceType:'facebook',operation:p.operation||'affitto',textComplete:true,expenses:p.expenses||'circa €150 di spese condominiali',...extra.originalCheck}));
   posts=[...original,...extra.posts.map(p=>({...p,text:p.textRef?original.find(o=>o.id===p.textRef)?.text:p.text,collectedAt:p.collectedAt||extra.collectedAt,lastReadAt:p.lastReadAt||extra.collectedAt,publishedAt:p.publishedAt||null})),...sales.posts.map(p=>({...p,collectedAt:p.collectedAt||sales.collectedAt,lastReadAt:p.lastReadAt||sales.collectedAt,publishedAt:p.publishedAt||null}))];
   $('collectionDate').textContent='Ultima raccolta: '+new Intl.DateTimeFormat('it-IT',{day:'numeric',month:'long',year:'numeric',timeZone:'Europe/Rome'}).format(new Date(data.collectedAt+'T12:00:00Z'));
   $('cadence').textContent=updates.scheduleEnabled?'08:00 e 16:00 · ora di Milano':'Programmazione in preparazione';
+  $('collectionMode').textContent=updates.scheduleEnabled?'La ricerca è programmata alle 08:00 e 16:00, ora di Milano, sulle fonti accessibili. Puoi aggiungere testi e prove; Scoutly non invia messaggi agli inserzionisti.':'Ricerca assistita sulle fonti accessibili; programmazione in preparazione. Puoi acquisire testi e registrare prove senza inviare messaggi agli inserzionisti.';
   $('updateNote').textContent=updates.note||'';
   $('lastRun').textContent=updates.lastAttemptAt?'Ultimo tentativo: '+new Intl.DateTimeFormat('it-IT',{dateStyle:'short',timeStyle:'short',timeZone:'Europe/Rome'}).format(new Date(updates.lastAttemptAt)):'Nessuna esecuzione programmata ancora registrata.';
-  let cached=null;try{cached=localStorage.getItem(KEY);}catch{$('storageMessage').textContent='Salvataggio locale non disponibile; usa il backup JSON.';}if(cached){try{for(const p of parseBackup(JSON.parse(cached)))upsert(p);$('storageMessage').textContent='Lavoro locale ripristinato.';}catch{$('storageMessage').textContent='Il salvataggio locale non è leggibile. Il campione originale resta disponibile.';}}
+  baseFingerprints=Object.fromEntries(posts.map(p=>[canonicalUrl(p.url),seedFingerprint(p)]));
+  let cached=null;try{cached=localStorage.getItem(KEY);}catch{$('storageMessage').textContent='Salvataggio locale non disponibile; usa il backup JSON.';}if(cached){try{const saved=JSON.parse(cached);posts=restoreCachedPosts(posts,parseBackup(saved),saved.baseFingerprints||{});$('storageMessage').textContent='Prove locali ripristinate; gli aggiornamenti online restano visibili.';}catch{$('storageMessage').textContent='Il salvataggio locale non è leggibile. Il campione originale resta disponibile.';}}
   for(const [index,[name,task]] of AGENTS.entries()){const a=el('div',null,'agent');a.append(el('div',String(index+1).padStart(2,'0'),'number'));const content=el('div');content.append(el('strong',name),el('p',task));if(name==='Publisher')content.append(link('Repository GitHub ↗','https://github.com/dalet78/scoutly/tree/main/radar'));a.append(content);$('agents').append(a);}
   for(const source of data.sources){const c=el('div',null,'source');c.append(el('h3',source.name),el('div',source.status,'badge'),el('p',source.note),link('Apri la fonte ↗',source.url));$('sources').append(c);}
+  try{const prefs=JSON.parse(sessionStorage.getItem('scoutly.filters')||'{}');for(const id of ['view','filter','sourceFilter','operationFilter'])if([...$(id).options].some(o=>o.value===prefs[id]))$(id).value=prefs[id];}catch{}
   reevaluate();
 }catch{$('message').textContent='Impossibile caricare il campione. Ricarica la pagina o avvia la demo via web.';}
-for(const id of ['view','filter','sourceFilter','operationFilter'])$(id).addEventListener('change',render);
+for(const id of ['view','filter','sourceFilter','operationFilter'])$(id).addEventListener('change',()=>{render();try{sessionStorage.setItem('scoutly.filters',JSON.stringify(Object.fromEntries(['view','filter','sourceFilter','operationFilter'].map(key=>[key,$(key).value]))));}catch{}});
 $('add').onclick=()=>{$('form').reset();$('formMessage').textContent='';$('cityRow').classList.add('hidden');$('dialog').showModal();};$('close').onclick=()=>$('dialog').close();$('verificationClose').onclick=()=>$('verificationDialog').close();$('questionsClose').onclick=()=>$('questionsDialog').close();
 for(const id of ['published','checkDate'])$(id).max=today();
 $('group').onchange=()=>{const source=Number($('group').value);$('cityRow').classList.toggle('hidden',![2,4].includes(source));if(source===4)$('operation').value='vendita';else if(source===2)$('operation').value='affitto';};
@@ -66,3 +70,5 @@ function download(name,body,type){const blob=new Blob([body],{type}),url=URL.cre
 $('export').onclick=()=>{if(data)download('scoutly-backup.json',JSON.stringify({schemaVersion:2,sources:data.sources,posts,report,updateStatus,exportedAt:new Date().toISOString()},null,2),'application/json');};
 $('csv').onclick=()=>{if(!report)return;const rows=[['Titolo','Operazione','Fonte','Comune/zona','Prezzo','Spese','Esito','Inserzionista','Disponibilità','Incarico agenzia','Motivazioni','URL'],...report.records.map(r=>[r.title,r.operation,data.sources[r.source]?.name,r.location||r.city,r.price,r.expenses,r.decision,r.category,r.availability.label,r.agency.label,r.reasons.join(' | '),r.url])];download('scoutly-risultati.csv','\ufeff'+rows.map(row=>row.map(csvCell).join(';')).join('\r\n'),'text/csv;charset=utf-8');};
 $('import').onclick=()=>$('backup').click();$('backup').onchange=async()=>{const file=$('backup').files[0];if(!file)return;try{if(file.size>10_000_000)throw Error('Il file supera 10 MB.');const incoming=parseBackup(JSON.parse(await file.text()));const old=[...posts];try{for(const p of incoming)upsert(p);if(posts.length>500)throw Error('Limite di 500 annunci superato.');}catch(error){posts=old;throw error;}reevaluate(true);$('message').textContent=`Backup importato: ${incoming.length} annunci rivalutati.`;}catch(error){$('message').textContent='Importazione non eseguita: '+error.message;}finally{$('backup').value='';}};
+// La raccolta è svolta dal task cloud; la pagina aperta controlla solo i propri dati pubblicati.
+setInterval(async()=>{if(!data||document.querySelector('dialog[open]'))return;try{const payload=await Promise.all(['data.json','research.json','sales.json','update-status.json'].map(async file=>{const r=await fetch(file,{cache:'no-store'});if(!r.ok)throw Error();return r.json();}));if(JSON.stringify(payload)!==onlineRevision)location.reload();}catch{$('storageMessage').textContent='Rilettura dei dati non riuscita; resta visibile l’ultima versione caricata.';}},5*60*1000);

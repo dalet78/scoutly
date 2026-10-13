@@ -55,13 +55,15 @@ La deduplicazione usa URL normalizzati oppure stesso autore e testo completo ide
 
 ## Controlli
 
-30 test verificano affitti e vendite reali, esclusione degli operatori e delle richieste, negazioni, duplicati, aggiornamenti decisivi, schede rimosse, date mancanti/future, scadenza, conflitti, comune di Milano, import sicuro, conservazione della cronologia e CSV. Sono state verificate nel browser anche le viste candidati/scarti, la registrazione di una nota reale e il ripristino dopo ricaricamento.
+31 test verificano affitti e vendite reali, esclusione degli operatori e delle richieste, negazioni, duplicati, aggiornamenti decisivi, schede rimosse, date mancanti/future, scadenza, conflitti, comune di Milano, import sicuro, conservazione della cronologia, CSV e aggiornamenti online che non vengono sovrascritti dai vecchi snapshot del browser. Sono state verificate nel browser anche le viste candidati/scarti, la registrazione di una nota reale e il ripristino dopo ricaricamento.
 
 ## Aggiornamenti programmati
 
-L'utente ha richiesto aggiornamenti alle **08:00 e 16:00, Europe/Rome (ora di Milano)**. La programmazione nativa collegata al Site esegue ricerca e pubblicazione con le istruzioni in `agents/refresh.md`. Lo stato effettivo di attivazione e l'ultima esecuzione sono riportati in `dist/update-status.json` e nell'interfaccia. Finché `scheduleEnabled` è false, la programmazione è in preparazione: non è sufficiente questo README per dichiararla attiva. Il passaggio all'ora legale segue il fuso Europe/Rome.
+Gli aggiornamenti sono programmati alle **08:00 e 16:00, Europe/Rome (ora di Milano)**, a partire dal **14 ottobre 2026**. La programmazione nativa collegata al Site esegue ricerca e pubblicazione con le istruzioni in `agents/refresh.md`; l'attivazione è stata salvata e riletta tramite il servizio. Lo stato e l'ultima esecuzione sono riportati in `dist/update-status.json` e nell'interfaccia. La prima esecuzione programmata non è ancora avvenuta. Il passaggio all'ora legale segue il fuso Europe/Rome.
 
 Il task usa gli strumenti GitHub come writer già verificato e aggiorna dati pubblici senza accesso obbligatorio a un browser locale. Per le fonti non accessibili conserva gli ultimi dati e registra il limite. Gli aggiornamenti del Site privato seguono il flusso Sites con il contesto e le autorizzazioni del task collegato. Non invia contatti agli inserzionisti e resta silenzioso in assenza di cambiamenti utili.
+
+La pagina aperta controlla i propri dataset pubblicati ogni 5 minuti e ricarica soltanto quando cambiano, mantenendo i filtri. Non ricarica durante la compilazione di un modulo aperto. Questo controllo non ricerca annunci su Facebook o Subito: la ricerca è svolta dal task cloud agli orari programmati. Un aggiornamento del campione online prevale sul vecchio snapshot salvato nel browser, preservando le prove e la cronologia locali.
 
 ## Pubblicazione
 
