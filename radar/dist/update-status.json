@@ -2,9 +2,10 @@
   "scheduleEnabled":true,
   "timezone":"Europe/Rome",
   "hours":[8,16],
-  "lastAttemptAt":null,
+  "lastAttemptAt":"2026-10-14T07:45:12Z",
   "lastSuccessAt":null,
   "firstRunAt":"2026-10-14T08:00:00+02:00",
-  "status":"scheduled",
-  "note":"Programmazione attiva alle 08:00 e alle 16:00, ora di Milano, dal 14 ottobre 2026. La prima esecuzione programmata non è ancora avvenuta."
+  "status":"partial",
+  "note":"Subito.it riletto nel comune di Milano: 3 nuovi affitti e 2 nuove vendite utili acquisiti; rilevate due discrepanze di prezzo da verificare. Facebook non accessibile con l’accesso autorizzato disponibile in questa esecuzione; dati precedenti preservati e nessun contenuto privato pubblicato."
 }
+
