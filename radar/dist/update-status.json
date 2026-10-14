@@ -1,11 +1,27 @@
 {
-  "scheduleEnabled":true,
-  "timezone":"Europe/Rome",
-  "hours":[8,16],
-  "lastAttemptAt":"2026-10-14T07:45:12Z",
-  "lastSuccessAt":null,
-  "firstRunAt":"2026-10-14T08:00:00+02:00",
-  "status":"partial",
-  "note":"Subito.it riletto nel comune di Milano: 3 nuovi affitti e 2 nuove vendite utili acquisiti; rilevate due discrepanze di prezzo da verificare. Facebook non accessibile con l’accesso autorizzato disponibile in questa esecuzione; dati precedenti preservati e nessun contenuto privato pubblicato."
+  "scheduleEnabled": true,
+  "timezone": "Europe/Rome",
+  "hours": [
+    8,
+    16
+  ],
+  "lastAttemptAt": "2026-10-14T14:06:40Z",
+  "lastSuccessAt": null,
+  "firstRunAt": "2026-10-14T08:00:00+02:00",
+  "status": "partial",
+  "note": "Controllate ricerche e schede pubbliche Subito per affitti e vendite nel comune di Milano: 1 nuova acquisizione in affitto (Dateo); nessuna nuova vendita utile verificata. Alcuni dettagli non recuperabili e Facebook senza post leggibili: ultime prove preservate, disponibilità e incarichi non confermati.",
+  "runHistory": [
+    {
+      "lastAttemptAt": "2026-10-14T07:45:12Z",
+      "status": "partial",
+      "newRentals": 3,
+      "newSales": 2
+    },
+    {
+      "lastAttemptAt": "2026-10-14T14:06:40Z",
+      "status": "partial",
+      "newRentals": 1,
+      "newSales": 0
+    }
+  ]
 }
-

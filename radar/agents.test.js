@@ -6,10 +6,10 @@ import {validatePost,validateCheck,parseBackup,csvCell,mergePost,seedFingerprint
 const NOW='2026-10-14';
 const p=(text,extra={})=>({url:'https://www.facebook.com/groups/affittimilanoprivati/posts/1/',source:0,title:'Appartamento in affitto',text,textComplete:true,collectedAt:NOW,...extra});
 const proof=(text,date=NOW,extra={})=>({kind:'risposta_proprietario',text,date,sameProperty:true,...extra});
-test('Campione pubblico: 12 acquisiti, 1 scarto, nessuna disponibilità o assenza agenzia inventata',async()=>{
+test('Campione pubblico: 13 acquisiti, 1 scarto, nessuna disponibilità o assenza agenzia inventata',async()=>{
  const base=JSON.parse(await readFile(new URL('./dist/data.json',import.meta.url))),extra=JSON.parse(await readFile(new URL('./dist/research.json',import.meta.url)));
  const original=base.posts.map(o=>({...o,textComplete:true,...extra.originalCheck}));const posts=[...original,...extra.posts.map(o=>({...o,text:o.textRef?original[0].text:o.text}))];const r=analyzePosts(posts,NOW);
- assert.equal(r.summary.acquired,12);assert.equal(r.summary.excluded,1);assert.equal(r.summary.duplicates,0);
+ assert.equal(r.summary.acquired,13);assert.equal(r.summary.excluded,1);assert.equal(r.summary.duplicates,0);
  assert.equal(r.records.filter(o=>o.availability.status==='available').length,0);assert.equal(r.records.filter(o=>o.agency.status==='no').length,0);
  assert.equal(r.records.find(o=>o.id==='subito-662027739').decision,'excluded');
  assert.equal(r.records.filter(o=>o.possibleDuplicateGroup).length,2);assert.ok(r.records.filter(o=>o.possibleDuplicateGroup).every(o=>o.decision==='review'));
