@@ -72,3 +72,13 @@ Il repository di destinazione è [dalet78/scoutly](https://github.com/dalet78/sc
 
 Durante ogni raccolta, conservare `publishedAt` quando la fonte mostra una data verificabile oppure `publishedLabel` per la dicitura relativa originale, senza convertirla in una data inventata. Registrare email e telefono pubblicamente visibili nei campi `email` e `phone`. Non dedurli dagli ID o dagli URL e non dichiarare assente un contatto solo perché non compare nell'estratto raccolto. Le schede mostrano queste informazioni e gli eventuali contatti espliciti nel testo dell'annuncio; i dati mancanti sono indicati come non disponibili nei dati raccolti.
 
+
+## Valutazione dello stile fotografico
+
+La raccolta può registrare `photoAssessment` dopo avere effettivamente esaminato le foto: `style` (`professional`, `amateur`, `undetermined`, `unavailable`), `confidence` (`low`, `medium`), `reason`, `imageUrls` (URL HTTPS delle immagini esaminate), `assessedAt` (YYYY-MM-DD). Valutare illuminazione, composizione, uniformità, grandangolo, ritocco e preparazione degli ambienti. Se le foto non sono accessibili usare `unavailable`; se gli indizi sono insufficienti usare `undetermined`. Non inventare analisi sulla base del testo dell'annuncio. Questo indizio non modifica la classificazione dell'inserzionista né esclude annunci. In assenza di valutazione la scheda mostra “Non valutato”.
+
+## Descrizioni e nuove fonti Facebook
+Lo stile della descrizione è valutato con regole testuali esplicite, confidenza bassa e motivazione. Testi parziali o brevi restano non determinabili. Non inferisce l'esperienza della persona, non modifica la classificazione e non esclude annunci. Nelle prossime raccolte includere anche https://www.facebook.com/groups/milanocasavendo e https://www.facebook.com/groups/37587766628, soltanto quando accessibili. Gli indici fonte sono rispettivamente 5 e 6; conservare gli indici precedenti.
+
+## Attività dell'inserzionista
+Conservare `authorProfileUrl` e contatti visibili; il solo nome non identifica la stessa persona. `propertyId`, se verificato, identifica lo stesso immobile nelle ripubblicazioni. La scheda collega offerte tramite profilo o contatti identici ed evita i gruppi di duplicati noti. Più offerte sono un segnale da verificare, non prova di attività professionale; distinguere gli immobili e il periodo osservato prima di concludere.

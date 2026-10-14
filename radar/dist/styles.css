@@ -21,3 +21,5 @@ h1{font-size:clamp(30px,3.5vw,44px);margin:24px 0 12px}.intro{line-height:1.65}.
 @media(max-width:1150px){.shell{grid-template-columns:160px minmax(0,1fr)}main{padding:28px 22px}.listing-columns{gap:18px}.listing-columns>.panel{padding:18px}.card{padding:16px}.stats{gap:10px}}
 @media(max-width:900px){.shell{display:block}aside{padding:14px 22px;display:flex;align-items:center;gap:20px}aside .nav,aside p,aside .small{display:none}.brand{font-size:28px}.listing-columns{gap:20px}}
 @media(max-width:750px){main{padding:24px 16px}.listing-columns,.info-grid{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stats .stat{min-height:106px;padding:16px}.listing-column .toolbar{grid-template-columns:repeat(2,minmax(0,1fr))}.info-panel{height:420px}.pill{white-space:normal}.row{align-items:flex-start}.info-grid{gap:18px}}
+
+.photo-assessment{background:#f5f7f3;border:1px solid var(--line);border-radius:9px;padding:12px 14px;margin:16px 0}.photo-assessment strong{font-size:13px}.photo-assessment p{margin:6px 0 0}.photo-note{font-size:11px;color:var(--muted);line-height:1.5}

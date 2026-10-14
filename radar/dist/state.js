@@ -1,23 +1,30 @@
 import {canonicalUrl,safeUrl,validDate,today} from './agents.js';
-export const GROUPS=['affittimilanoprivati','1551721571652397',null,'1162454953883711',null];
+export const GROUPS=['affittimilanoprivati','1551721571652397',null,'1162454953883711',null,'milanocasavendo','37587766628'];
 const kinds=['risposta_proprietario','aggiornamento','annuncio_agenzia','nota','duplicato_confermato'];
 const s=(v,max=20000)=>String(v??'').slice(0,max);
 export function validatePost(raw,now=today()){
   if(!raw||typeof raw!=='object')throw Error('Annuncio non valido.');
-  const source=Number(raw.source);if(!Number.isInteger(source)||source<0||source>4)throw Error('Fonte non riconosciuta.');
+  const source=Number(raw.source);if(!Number.isInteger(source)||source<0||source>=GROUPS.length)throw Error('Fonte non riconosciuta.');
   const url=canonicalUrl(raw.url);if(!url)throw Error('Serve un collegamento HTTPS valido.');const u=new URL(url);
   if(source===2||source===4){if(u.hostname!=='www.subito.it'||!/^\/[a-z-]+\/[^/]+-\d+\.htm$/.test(u.pathname))throw Error('Inserisci il collegamento diretto a una scheda Subito.it.');if(raw.city!=='Milano'||!raw.cityEvidence)throw Error('Verifica nella scheda il comune di Milano (MI).');}
   else if(u.hostname!=='www.facebook.com'||!new RegExp(`^/groups/${GROUPS[source]}/posts/[0-9]+$`).test(u.pathname))throw Error('Inserisci il collegamento diretto a un post del gruppo selezionato.');
   if(String(raw.text||'').trim().length<10||String(raw.text||'').length>20000)throw Error('Inserisci un testo tra 10 e 20.000 caratteri.');
   if(raw.publishedAt&&!validDate(raw.publishedAt,now))throw Error('La data di pubblicazione non è valida o è futura.');
   const post={url,source,sourceType:source===2||source===4?'subito':'facebook',title:s(raw.title,160),author:s(raw.author,100),text:s(raw.text),textComplete:raw.textComplete!==false,publishedAt:raw.publishedAt||null,collectedAt:validDate(raw.collectedAt,now)?raw.collectedAt:now,lastReadAt:validDate(raw.lastReadAt,now)?raw.lastReadAt:now,operation:['affitto','vendita'].includes(raw.operation)?raw.operation:source===4?'vendita':'affitto',checks:[]};
-  for(const field of ['id','location','expenses','notes','sourceAccess','city','cityEvidence','possibleDuplicateGroup','possibleDuplicateEvidence','advertiserEvidence','sourceRemovalEvidence','publishedLabel','email','contactEmail','phone','telephone','contactPhone'])if(raw[field])post[field]=s(raw[field],1000);
+  for(const field of ['id','location','expenses','notes','sourceAccess','city','cityEvidence','possibleDuplicateGroup','possibleDuplicateEvidence','advertiserEvidence','sourceRemovalEvidence','propertyId','authorProfileUrl','publishedLabel','email','contactEmail','phone','telephone','contactPhone'])if(raw[field])post[field]=s(raw[field],1000);
   if(raw.price!=null)post.price=s(raw.price,25);if(raw.area!=null)post.area=s(raw.area,25);
   if(raw.advertiserType==='professional'&&raw.advertiserEvidence)post.advertiserType='professional';
   post.locationConflict=raw.locationConflict===true;
   post.sourceRemoved=raw.sourceRemoved===true&&Boolean(raw.sourceRemovalEvidence);
   if(raw.checks){if(!Array.isArray(raw.checks)||raw.checks.length>100)throw Error('Troppi elementi nella cronologia.');post.checks=raw.checks.map(c=>validateCheck(c,now));}
   if(raw.history){if(!Array.isArray(raw.history)||raw.history.length>30)throw Error('Troppi aggiornamenti del testo.');post.history=raw.history.map(h=>({text:s(h.text),url:safeUrl(h.url)||null,publishedAt:validDate(h.publishedAt,now)?h.publishedAt:null,lastReadAt:validDate(h.lastReadAt,now)?h.lastReadAt:null}));}
+  if(raw.photoAssessment){
+    const a=raw.photoAssessment;
+    if(!['professional','amateur','undetermined','unavailable'].includes(a.style))throw Error('Stile fotografico non valido.');
+    const imageUrls=Array.isArray(a.imageUrls)?a.imageUrls.map(safeUrl).filter(Boolean).slice(0,30):[];
+    if(['professional','amateur'].includes(a.style)&&(!imageUrls.length||!String(a.reason||'').trim()||!validDate(a.assessedAt,now)))throw Error('La valutazione delle foto richiede immagini, motivazione e data.');
+    post.photoAssessment={style:a.style,confidence:['low','medium'].includes(a.confidence)?a.confidence:'low',reason:s(a.reason,1500),imageUrls,assessedAt:validDate(a.assessedAt,now)?a.assessedAt:null};
+  }
   return post;
 }
 export function validateCheck(raw,now=today()){
@@ -42,7 +49,7 @@ export function mergePost(old,incoming){
   const checks=[...(old.checks||[]),...(incoming.checks||[])].filter((c,i,a)=>a.findIndex(o=>o.kind===c.kind&&o.text===c.text&&o.date===c.date&&canonicalUrl(o.url)===canonicalUrl(c.url)&&o.matchReason===c.matchReason&&o.sameProperty===c.sameProperty&&o.authorRole===c.authorRole)===i);
   return {...old,...incoming,checks,history};
 }
-export function seedFingerprint(post){return JSON.stringify(['text','title','textComplete','price','operation','sourceRemoved','sourceRemovalEvidence','advertiserType','advertiserEvidence','publishedAt','sourceAccess','notes'].map(field=>field==='price'&&post[field]!=null?String(post[field]):post[field]??null));}
+export function seedFingerprint(post){return JSON.stringify(['photoAssessment','text','title','textComplete','price','operation','sourceRemoved','sourceRemovalEvidence','advertiserType','advertiserEvidence','publishedAt','sourceAccess','notes'].map(field=>field==='price'&&post[field]!=null?String(post[field]):post[field]??null));}
 export function restoreCachedPosts(seed,cached,fingerprints={}){
   const restored=seed.map(p=>({...p}));
   for(const saved of cached){const key=canonicalUrl(saved.url),index=restored.findIndex(p=>canonicalUrl(p.url)===key);if(index<0){restored.push(saved);continue;}

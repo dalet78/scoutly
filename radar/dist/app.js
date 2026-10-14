@@ -1,3 +1,5 @@
+import {assessActivity} from './activity.js';
+import {assessDescription} from './description-style.js';
 import {analyzePosts,AGENTS,canonicalUrl,safeUrl,today} from './agents.js';
 import {validatePost,validateCheck,parseBackup,csvCell,mergePost,seedFingerprint,restoreCachedPosts} from './state.js';
 const $=id=>document.getElementById(id),KEY='scoutly.demo.v2';
@@ -38,6 +40,13 @@ function render(){
     const preview=el('p',short,'description-preview');preview.id='description-'+r.recordId;
     const toggle=button('Estendi descrizione',()=>{d.open=!d.open;});toggle.className='description-toggle';toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-controls','details-'+r.recordId);
     c.append(preview,toggle);
+    const activity=assessActivity(r,report.records),activityBox=el('div',null,'photo-assessment');activityBox.append(el('div','Attività dell’inserzionista','label'),el('strong',activity.label),el('p',activity.reason,'sub'));for(const other of activity.related)activityBox.append(link('Confronta: '+other.title,other.url));c.append(activityBox);
+    const writing=assessDescription(r),writingBox=el('div',null,'photo-assessment');writingBox.append(el('div','Stile della descrizione','label'),el('strong',writing.label),el('span',' · confidenza '+writing.confidence,'sub'),el('p',writing.reason,'sub'),el('p','Indizio linguistico: non dimostra il ruolo o l’esperienza dell’inserzionista.','photo-note'));c.append(writingBox);
+    const photo=r.photoAssessment,labels={professional:'Probabilmente professionale',amateur:'Probabilmente amatoriale',undetermined:'Non determinabile',unavailable:'Non valutabile'};
+    const photoBox=el('div',null,'photo-assessment');photoBox.append(el('div','Stile delle foto','label'),el('strong',labels[photo?.style]||'Non valutato'));
+    if(photo&&labels[photo.style]){if(photo.confidence)photoBox.append(el('span',` · confidenza ${photo.confidence==='medium'?'media':'bassa'}`,'sub'));if(photo.reason)photoBox.append(el('p',photo.reason,'sub'));if(photo.imageUrls?.length)photoBox.append(el('p',`${photo.imageUrls.length} foto esaminate${photo.assessedAt?' · '+photo.assessedAt:''}`,'sub'));}
+    else photoBox.append(el('p','Le foto di questo annuncio non sono ancora state analizzate.','sub'));
+    photoBox.append(el('p','Indizio sullo stile fotografico: non identifica il proprietario o un’agenzia.','photo-note'));c.append(photoBox);
     const signal=r.evidence.filter(e=>!['weak','tenant'].includes(e.kind));if(signal.length)c.append(el('div',signal.map(e=>`«${e.quote}»`).join(' · '),'evidence'));
     if(r.decision!=='excluded'){
       const checks=el('div',null,'checks');for(const [heading,assessment] of [['Disponibilità',r.availability],['Incarico ad agenzia',r.agency]]){const box=el('div',null,'check');box.append(el('div',heading,'label'),el('strong',assessment.label),el('p',assessment.reason));checks.append(box);}c.append(checks);
