@@ -11,7 +11,7 @@ export function validatePost(raw,now=today()){
   if(String(raw.text||'').trim().length<10||String(raw.text||'').length>20000)throw Error('Inserisci un testo tra 10 e 20.000 caratteri.');
   if(raw.publishedAt&&!validDate(raw.publishedAt,now))throw Error('La data di pubblicazione non è valida o è futura.');
   const post={url,source,sourceType:source===2||source===4?'subito':'facebook',title:s(raw.title,160),author:s(raw.author,100),text:s(raw.text),textComplete:raw.textComplete!==false,publishedAt:raw.publishedAt||null,collectedAt:validDate(raw.collectedAt,now)?raw.collectedAt:now,lastReadAt:validDate(raw.lastReadAt,now)?raw.lastReadAt:now,operation:['affitto','vendita'].includes(raw.operation)?raw.operation:source===4?'vendita':'affitto',checks:[]};
-  for(const field of ['id','location','expenses','notes','sourceAccess','city','cityEvidence','possibleDuplicateGroup','possibleDuplicateEvidence','advertiserEvidence','sourceRemovalEvidence'])if(raw[field])post[field]=s(raw[field],1000);
+  for(const field of ['id','location','expenses','notes','sourceAccess','city','cityEvidence','possibleDuplicateGroup','possibleDuplicateEvidence','advertiserEvidence','sourceRemovalEvidence','publishedLabel','email','contactEmail','phone','telephone','contactPhone'])if(raw[field])post[field]=s(raw[field],1000);
   if(raw.price!=null)post.price=s(raw.price,25);if(raw.area!=null)post.area=s(raw.area,25);
   if(raw.advertiserType==='professional'&&raw.advertiserEvidence)post.advertiserType='professional';
   post.locationConflict=raw.locationConflict===true;

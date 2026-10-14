@@ -68,3 +68,7 @@ La pagina aperta controlla i propri dataset pubblicati ogni 5 minuti e ricarica 
 ## Pubblicazione
 
 Il repository di destinazione è [dalet78/scoutly](https://github.com/dalet78/scoutly). Questa demo vive in `radar/`; homepage e strumenti del sito precedente sono preservati. Publisher usa un commit controllato, verifica i file remoti e non effettua force push. Credenziali, metadati di hosting personali, screenshot di QA e testi dei gruppi privati non sono inclusi nella pubblicazione GitHub.
+# Date e contatti nelle schede
+
+Durante ogni raccolta, conservare `publishedAt` quando la fonte mostra una data verificabile oppure `publishedLabel` per la dicitura relativa originale, senza convertirla in una data inventata. Registrare email e telefono pubblicamente visibili nei campi `email` e `phone`. Non dedurli dagli ID o dagli URL e non dichiarare assente un contatto solo perché non compare nell'estratto raccolto. Le schede mostrano queste informazioni e gli eventuali contatti espliciti nel testo dell'annuncio; i dati mancanti sono indicati come non disponibili nei dati raccolti.
+
