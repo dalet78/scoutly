@@ -1,17 +1,17 @@
 {
-  "collectedAt": "2026-10-14",
+  "collectedAt": "2026-10-15",
   "sources": [
     {
       "name": "Subito.it · comune di Milano",
       "url": "https://www.subito.it/annunci-lombardia/affitto/appartamenti/milano/milano/",
-      "status": "12 annunci acquisiti · campione parziale",
-      "note": "Ricerca comunale e schede pubbliche controllate il 14 ottobre 2026. Nuova acquisizione Dateo; alcuni dettagli non recuperabili, ultime prove preservate. Contenuti indicizzati non equivalgono a conferma attuale."
+      "status": "13 annunci Subito acquisiti · campione parziale",
+      "note": "Rilettura del 15 ottobre 2026. Nuove acquisizioni distinte dalle date di pubblicazione; schede non accessibili preservate. Disponibilità e incarichi non confermati."
     },
     {
       "name": "Facebook · fonte privata configurata",
       "url": "https://www.facebook.com/share/g/1CDLw3kfDY/",
-      "status": "Non riletta · accesso autorizzato non disponibile",
-      "note": "Nessun testo, autore o prova del gruppo privato incluso nel dataset pubblico. Le prove precedenti restano nel Site privato."
+      "status": "Non riletta · accesso pubblico fallito",
+      "note": "15 ottobre 2026: nessun post acquisito; accesso non disponibile o errore temporaneo. Prove precedenti preservate; nessun aggiramento di login o membership."
     }
   ],
   "posts": [
@@ -30,12 +30,12 @@
       "location": "Milano · Paolo Sarpi / Moscova",
       "text": "NO AGENZIE!!! Disponibile dal 1 novembre",
       "textComplete": false,
-      "collectedAt": "2026-10-14",
-      "sourceAccess": "Dettaglio aperto e riletto il 14 ottobre 2026",
+      "collectedAt": "2026-10-15",
+      "sourceAccess": "Dettaglio pubblico riletto il 15 ottobre 2026; data di pubblicazione non verificata.",
       "notes": "Anno della disponibilità non indicato; proprietà e ruolo privato non dichiarati esplicitamente.",
-      "lastReadAt": "2026-10-14",
-      "lastAttemptAt": "2026-10-14T14:06:40Z",
-      "accessCheckedAt": "2026-10-14T14:06:40Z"
+      "lastReadAt": "2026-10-15",
+      "lastAttemptAt": "2026-10-15T06:03:20Z",
+      "accessCheckedAt": "2026-10-15T06:03:20Z"
     },
     {
       "id": "subito-650858666",
@@ -53,12 +53,15 @@
       "text": "Da privato, disponibile intero appartamento-loft per due persone.\nDisponibilità immediata",
       "textComplete": false,
       "collectedAt": "2026-10-14",
-      "sourceAccess": "Dettaglio aperto e riletto il 14 ottobre 2026; pagina mostra 15 giugno senza anno",
+      "sourceAccess": "HTTP 410 Gone il 15 ottobre 2026; ultime prove preservate.",
       "possibleDuplicateGroup": "loft-palmanova",
       "possibleDuplicateEvidence": "60 mq, due livelli, Viale Palmanova, €1100 più €300 e dotazioni molto simili al secondo loft. Numero locali riportato differente: da confrontare.",
       "notes": "Frammenti da descrizione e caratteristiche. La data della dichiarazione di disponibilità non è verificata.",
       "lastReadAt": "2026-10-14",
-      "lastAttemptAt": "2026-10-14T14:06:40Z"
+      "lastAttemptAt": "2026-10-15T06:03:20Z",
+      "accessCheckedAt": "2026-10-15T06:03:20Z",
+      "sourceRemoved": true,
+      "sourceRemovalEvidence": "15 ottobre 2026: apertura diretta restituisce HTTP 410 Gone; nessuna prova di conclusione della locazione."
     },
     {
       "id": "subito-661490401",
@@ -75,11 +78,14 @@
       "location": "Milano · Bruzzano / Comasina",
       "text": "Disponibile. Libero da subito.",
       "textComplete": false,
-      "sourceAccess": "Dettaglio aperto; contenuto indicizzato 3 settimane fa",
+      "sourceAccess": "HTTP 410 Gone il 15 ottobre 2026; ultime prove preservate.",
       "notes": "Dichiarazione da privato nel titolo; disponibilità esplicita ma data della dichiarazione non verificata.",
       "collectedAt": "2026-10-13",
       "lastReadAt": "2026-10-13",
-      "lastAttemptAt": "2026-10-14T14:06:40Z"
+      "lastAttemptAt": "2026-10-15T06:03:20Z",
+      "accessCheckedAt": "2026-10-15T06:03:20Z",
+      "sourceRemoved": true,
+      "sourceRemovalEvidence": "15 ottobre 2026: apertura diretta restituisce HTTP 410 Gone; nessuna prova di conclusione della locazione."
     },
     {
       "id": "subito-654489651",
@@ -96,11 +102,14 @@
       "location": "Milano · via Plinio / Buenos Aires",
       "text": "Da privato a privato\nDisponibile dal 1°settembre",
       "textComplete": false,
-      "sourceAccess": "Dettaglio aperto; contenuto indicizzato 4 settimane fa",
+      "sourceAccess": "HTTP 410 Gone il 15 ottobre 2026; ultime prove preservate.",
       "notes": "Frammenti da descrizione. Anno della disponibilità non indicato.",
       "collectedAt": "2026-10-13",
       "lastReadAt": "2026-10-13",
-      "lastAttemptAt": "2026-10-14T14:06:40Z"
+      "lastAttemptAt": "2026-10-15T06:03:20Z",
+      "accessCheckedAt": "2026-10-15T06:03:20Z",
+      "sourceRemoved": true,
+      "sourceRemovalEvidence": "15 ottobre 2026: apertura diretta restituisce HTTP 410 Gone; nessuna prova di conclusione della locazione."
     },
     {
       "id": "subito-642354383",
@@ -117,12 +126,12 @@
       "location": "Milano · MM2 Udine",
       "text": "DA PRIVATO A PRIVATO. Disponibilità immediata",
       "textComplete": false,
-      "sourceAccess": "Dettaglio indicizzato il mese scorso; presente nella lista odierna",
+      "sourceAccess": "Dettaglio pubblico riletto il 15 ottobre 2026; data di pubblicazione non verificata.",
       "notes": "Frammenti acquisiti da descrizione/caratteristiche indicizzate. Nessuna conferma diretta di disponibilità.",
-      "collectedAt": "2026-10-13",
-      "lastReadAt": "2026-10-14",
-      "lastAttemptAt": "2026-10-14T14:06:40Z",
-      "accessCheckedAt": "2026-10-14T14:06:40Z"
+      "collectedAt": "2026-10-15",
+      "lastReadAt": "2026-10-15",
+      "lastAttemptAt": "2026-10-15T06:03:20Z",
+      "accessCheckedAt": "2026-10-15T06:03:20Z"
     },
     {
       "id": "subito-659298735",
@@ -137,14 +146,24 @@
       "expenses": "Condominio incluso; gas ed elettricità esclusi",
       "area": 45,
       "location": "Milano · località da approfondire",
-      "text": "Libero da fine ottobre",
+      "text": "Libero da subito",
       "textComplete": false,
-      "collectedAt": "2026-10-14",
-      "sourceAccess": "Dettaglio riletto il 14 ottobre 2026",
-      "notes": "Anno non indicato. Il filtro privati del portale non basta a verificare il ruolo dell’inserzionista.",
-      "lastReadAt": "2026-10-14",
-      "lastAttemptAt": "2026-10-14T14:06:40Z",
-      "accessCheckedAt": "2026-10-14T14:06:40Z"
+      "collectedAt": "2026-10-15",
+      "sourceAccess": "Dettaglio pubblico riletto il 15 ottobre 2026; data di pubblicazione non verificata.",
+      "notes": "Il testo riletto ora dichiara libero da subito; prima indicava fine ottobre. Nessuna data della dichiarazione o conferma diretta; proprietà e incarico da verificare.",
+      "lastReadAt": "2026-10-15",
+      "lastAttemptAt": "2026-10-15T06:03:20Z",
+      "accessCheckedAt": "2026-10-15T06:03:20Z",
+      "history": [
+        {
+          "text": "Libero da fine ottobre",
+          "url": "https://www.subito.it/appartamenti/bilocale-arredato-e-attrezzato-milano-659298735.htm",
+          "collectedAt": "2026-10-14",
+          "lastReadAt": "2026-10-14",
+          "notes": "Anno non indicato. Il filtro privati del portale non basta a verificare il ruolo dell’inserzionista.",
+          "price": 1100
+        }
+      ]
     },
     {
       "id": "subito-662027739",
@@ -161,14 +180,14 @@
       "location": "Milano · Baggio",
       "text": "un'unica quota per usufruire del servizio\nDisponibilità immediata",
       "textComplete": false,
-      "collectedAt": "2026-10-14",
+      "collectedAt": "2026-10-15",
       "advertiserType": "professional",
       "advertiserEvidence": "Agenzia verificata · badge Subito nella lista",
-      "sourceAccess": "Dettaglio e lista riletti il 14 ottobre 2026",
+      "sourceAccess": "Dettaglio pubblico riletto il 15 ottobre 2026; data di pubblicazione non verificata.",
       "notes": "RENTAL HOUSE descrive un servizio banca dati a pagamento, pur negando attività di mediazione. È escluso dai proprietari privati.",
-      "lastReadAt": "2026-10-14",
-      "lastAttemptAt": "2026-10-14T14:06:40Z",
-      "accessCheckedAt": "2026-10-14T14:06:40Z"
+      "lastReadAt": "2026-10-15",
+      "lastAttemptAt": "2026-10-15T06:03:20Z",
+      "accessCheckedAt": "2026-10-15T06:03:20Z"
     },
     {
       "id": "subito-662198033",
@@ -185,12 +204,22 @@
       "location": "Milano · NoLo / Rovereto",
       "text": "Contratto di locazione 4+4. Disponibile dal 15/10/2026. Non siamo interessati a agenzie immobiliari, property manager per affitti brevi e NO sub-affitti.",
       "textComplete": false,
-      "collectedAt": "2026-10-14",
-      "sourceAccess": "Dettaglio pubblico acquisito il 14 ottobre 2026",
-      "notes": "Data futura esplicita. Inserzionista non verificato come proprietario e nessuna prova di assenza di incarico.",
-      "lastReadAt": "2026-10-14",
-      "lastAttemptAt": "2026-10-14T14:06:40Z",
-      "accessCheckedAt": "2026-10-14T14:06:40Z"
+      "collectedAt": "2026-10-15",
+      "sourceAccess": "Dettaglio pubblico riletto il 15 ottobre 2026; data di pubblicazione non verificata.",
+      "notes": "Rilevato conflitto interno: prezzo della scheda €950, canone nel testo €1.100 più €50. Disponibile dal 15/10/2026 secondo il testo, senza conferma attuale. Ruolo e incarico da verificare.",
+      "lastReadAt": "2026-10-15",
+      "lastAttemptAt": "2026-10-15T06:03:20Z",
+      "accessCheckedAt": "2026-10-15T06:03:20Z",
+      "history": [
+        {
+          "text": "Contratto di locazione 4+4. Disponibile dal 15/10/2026. Non siamo interessati a agenzie immobiliari, property manager per affitti brevi e NO sub-affitti.",
+          "url": "https://www.subito.it/appartamenti/nolo-monolocale-appena-ristrutturato-milano-662198033.htm",
+          "collectedAt": "2026-10-14",
+          "lastReadAt": "2026-10-14",
+          "notes": "Data futura esplicita. Inserzionista non verificato come proprietario e nessuna prova di assenza di incarico.",
+          "price": 950
+        }
+      ]
     },
     {
       "id": "subito-664092479",
@@ -207,12 +236,12 @@
       "location": "Milano · Portello / Accursio",
       "text": "Disponibile da subito un grazioso e funzionale monolocale di circa 35 mq situato in Via Privata Giorgini.",
       "textComplete": false,
-      "collectedAt": "2026-10-14",
-      "sourceAccess": "Dettaglio pubblico acquisito il 14 ottobre 2026",
+      "collectedAt": "2026-10-15",
+      "sourceAccess": "Dettaglio pubblico riletto il 15 ottobre 2026; data di pubblicazione non verificata.",
       "notes": "Dichiarazione di disponibilità senza data di pubblicazione verificata; proprietà e incarico non verificati.",
-      "lastReadAt": "2026-10-14",
-      "lastAttemptAt": "2026-10-14T14:06:40Z",
-      "accessCheckedAt": "2026-10-14T14:06:40Z"
+      "lastReadAt": "2026-10-15",
+      "lastAttemptAt": "2026-10-15T06:03:20Z",
+      "accessCheckedAt": "2026-10-15T06:03:20Z"
     },
     {
       "id": "subito-651037411",
@@ -229,12 +258,22 @@
       "location": "Milano · via Vodice / Fiera Milano City",
       "text": "Bilocale arredato via Vodice zona FieraMilanoCity. Disponibilità immediata. Non voglio essere contattato da agenzie o telemarketing.",
       "textComplete": false,
-      "collectedAt": "2026-10-14",
-      "sourceAccess": "Dettaglio pubblico acquisito il 14 ottobre 2026",
-      "notes": "La descrizione mostra anche €1.200 mensili mentre la scheda e la lista indicano €1.100: prezzo da verificare. Ruolo dell’inserzionista e incarico non verificati.",
-      "lastReadAt": "2026-10-14",
-      "lastAttemptAt": "2026-10-14T14:06:40Z",
-      "accessCheckedAt": "2026-10-14T14:06:40Z"
+      "collectedAt": "2026-10-15",
+      "sourceAccess": "Dettaglio pubblico riletto il 15 ottobre 2026; data di pubblicazione non verificata.",
+      "notes": "Scheda e descrizione rilette riportano entrambe €1.100; precedente discrepanza €1.200 conservata nella cronologia. Proprietà, disponibilità effettiva e incarico non confermati.",
+      "lastReadAt": "2026-10-15",
+      "lastAttemptAt": "2026-10-15T06:03:20Z",
+      "accessCheckedAt": "2026-10-15T06:03:20Z",
+      "history": [
+        {
+          "text": "Bilocale arredato via Vodice zona FieraMilanoCity. Disponibilità immediata. Non voglio essere contattato da agenzie o telemarketing.",
+          "url": "https://www.subito.it/appartamenti/bilocale-arredato-via-vodice-zona-fieramilanocity-milano-651037411.htm",
+          "collectedAt": "2026-10-14",
+          "lastReadAt": "2026-10-14",
+          "notes": "La descrizione mostra anche €1.200 mensili mentre la scheda e la lista indicano €1.100: prezzo da verificare. Ruolo dell’inserzionista e incarico non verificati.",
+          "price": 1100
+        }
+      ]
     },
     {
       "id": "subito-647591075",
@@ -251,13 +290,14 @@
       "location": "Milano · Viale Palmanova",
       "text": "Da privato, disponibile loft su due piani per due persone.\nDisponibilità immediata",
       "textComplete": false,
-      "sourceAccess": "Contenuto indicizzato 4 mesi fa; dettaglio non recuperabile",
+      "sourceAccess": "Tentativo del 15 ottobre 2026 fallito; nessun nuovo contenuto acquisito. Contenuto indicizzato 4 mesi fa; dettaglio non recuperabile",
       "possibleDuplicateGroup": "loft-palmanova",
       "possibleDuplicateEvidence": "60 mq, due livelli, Viale Palmanova, stesso canone e spese del loft climatizzato; dotazioni simili. Locali riportati diversamente, perciò non è un duplicato certo.",
       "notes": "Frammenti da descrizione e caratteristiche indicizzate. Conservati entrambi i collegamenti per il confronto.",
       "collectedAt": "2026-10-13",
       "lastReadAt": "2026-10-13",
-      "lastAttemptAt": "2026-10-14T14:06:40Z"
+      "lastAttemptAt": "2026-10-15T06:03:20Z",
+      "accessCheckedAt": "2026-10-15T06:03:20Z"
     },
     {
       "id": "subito-659881169",
@@ -276,9 +316,31 @@
       "textComplete": false,
       "collectedAt": "2026-10-14",
       "lastReadAt": "2026-10-14",
-      "accessCheckedAt": "2026-10-14T14:06:40Z",
-      "sourceAccess": "Contenuto pubblico recuperato; indicizzato il mese scorso. Data di pubblicazione non verificata.",
-      "notes": "Solo studenti/studentesse/specializzandi. L’estratto di ricerca riporta €70 di spese, il dettaglio €60: importo da verificare. Uso abitazione/laboratorio da approfondire. Disponibilità attuale, proprietà e incarico non confermati."
+      "accessCheckedAt": "2026-10-15T06:03:20Z",
+      "sourceAccess": "Tentativo del 15 ottobre 2026 fallito; nessun nuovo contenuto acquisito. Contenuto pubblico recuperato; indicizzato il mese scorso. Data di pubblicazione non verificata.",
+      "notes": "Solo studenti/studentesse/specializzandi. L’estratto di ricerca riporta €70 di spese, il dettaglio €60: importo da verificare. Uso abitazione/laboratorio da approfondire. Disponibilità attuale, proprietà e incarico non confermati.",
+      "lastAttemptAt": "2026-10-15T06:03:20Z"
+    },
+    {
+      "id": "subito-664546432",
+      "source": 2,
+      "sourceType": "subito",
+      "operation": "affitto",
+      "title": "Monolocale · De Angeli / Gambara",
+      "url": "https://www.subito.it/appartamenti/monolocale-milano-zona-de-angeli-milano-664546432.htm",
+      "city": "Milano",
+      "cityEvidence": "Milano (MI) nella lista comunale; zona De Angeli/Gambara nella descrizione indicizzata.",
+      "price": 850,
+      "area": 27,
+      "expenses": "€60 mensili; TARI e utenze escluse",
+      "location": "Milano · De Angeli / Gambara",
+      "text": "Contratto transitorio da 12 mesi con CANONE CONCORDATO. LIBERO SUBITO.",
+      "textComplete": false,
+      "collectedAt": "2026-10-15",
+      "lastReadAt": "2026-10-15",
+      "lastAttemptAt": "2026-10-15T06:03:20Z",
+      "sourceAccess": "Lista comunale riletta oggi; testo pubblico indicizzato recuperato dalla ricerca. Successivo tentativo di apertura diretta fallito.",
+      "notes": "Nuovo nel radar, non necessariamente appena pubblicato. Ruolo inserzionista non dichiarato: il rifiuto di agenzie non dimostra proprietà. Dichiarazione di disponibilità non datata; incarico da verificare."
     }
   ]
 }

@@ -5,11 +5,11 @@
     8,
     16
   ],
-  "lastAttemptAt": "2026-10-14T14:06:40Z",
+  "lastAttemptAt": "2026-10-15T06:03:20Z",
   "lastSuccessAt": null,
   "firstRunAt": "2026-10-14T08:00:00+02:00",
   "status": "partial",
-  "note": "Controllate ricerche e schede pubbliche Subito per affitti e vendite nel comune di Milano: 1 nuova acquisizione in affitto (Dateo); nessuna nuova vendita utile verificata. Alcuni dettagli non recuperabili e Facebook senza post leggibili: ultime prove preservate, disponibilità e incarichi non confermati.",
+  "note": "15 ottobre: 1 nuovo affitto (De Angeli), 1 nuova vendita (Segesta). Tre schede affitto restituiscono HTTP 410; stato degli immobili sconosciuto. Conflitto canone NoLo. Facebook non acquisito; alcune schede Subito non recuperabili. Prove e controlli preservati.",
   "runHistory": [
     {
       "lastAttemptAt": "2026-10-14T07:45:12Z",
@@ -22,6 +22,13 @@
       "status": "partial",
       "newRentals": 1,
       "newSales": 0
+    },
+    {
+      "lastAttemptAt": "2026-10-15T06:03:20Z",
+      "status": "partial",
+      "newRentals": 1,
+      "newSales": 1,
+      "removedSourceListings": 3
     }
   ]
 }
