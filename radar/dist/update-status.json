@@ -5,11 +5,11 @@
     8,
     16
   ],
-  "lastAttemptAt": "2026-10-15T06:03:20Z",
+  "lastAttemptAt": "2026-10-15T14:03:39Z",
   "lastSuccessAt": null,
   "firstRunAt": "2026-10-14T08:00:00+02:00",
   "status": "partial",
-  "note": "15 ottobre: 1 nuovo affitto (De Angeli), 1 nuova vendita (Segesta). Tre schede affitto restituiscono HTTP 410; stato degli immobili sconosciuto. Conflitto canone NoLo. Facebook non acquisito; alcune schede Subito non recuperabili. Prove e controlli preservati.",
+  "note": "15 ottobre, pomeriggio: 1 nuovo affitto (Rogoredo/Santa Giulia), 1 nuova vendita (Tortona/MUDEC). Scheda Turro HTTP 410: stato immobile sconosciuto. Facebook non acquisito, alcune schede Subito non recuperabili. Dati e prove precedenti preservati.",
   "runHistory": [
     {
       "lastAttemptAt": "2026-10-14T07:45:12Z",
@@ -29,6 +29,13 @@
       "newRentals": 1,
       "newSales": 1,
       "removedSourceListings": 3
+    },
+    {
+      "lastAttemptAt": "2026-10-15T14:03:39Z",
+      "status": "partial",
+      "newRentals": 1,
+      "newSales": 1,
+      "removedSourceListings": 1
     }
   ]
 }

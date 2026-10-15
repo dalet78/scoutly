@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-15T06:03:20Z",
+  "observedAt": "2026-10-15T14:03:39Z",
   "scope": "Comune Milano",
   "searches": [
     "https://www.subito.it/annunci-lombardia/affitto/appartamenti/milano/milano/",
@@ -8,123 +8,80 @@
   "outcomes": [
     {
       "id": "subito-663825385",
-      "url": "https://www.subito.it/appartamenti/bilocale-con-posto-auto-via-paolo-sarpi-moscova-milano-663825385.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
+      "observedAt": "2026-10-15T14:03:39Z",
       "outcome": "public_content_retrieved"
     },
     {
-      "id": "subito-650858666",
-      "url": "https://www.subito.it/appartamenti/appartamento-nuovo-climatizzato-milano-milano-650858666.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
-      "outcome": "http_410_removed_property_status_unknown"
-    },
-    {
-      "id": "subito-661490401",
-      "url": "https://www.subito.it/appartamenti/mm-comasina-monolocale-da-privato-milano-661490401.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
-      "outcome": "http_410_removed_property_status_unknown"
-    },
-    {
-      "id": "subito-654489651",
-      "url": "https://www.subito.it/appartamenti/da-privato-biloc-arredato-zona-c-so-buenos-aires-milano-654489651.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
-      "outcome": "http_410_removed_property_status_unknown"
-    },
-    {
       "id": "subito-642354383",
-      "url": "https://www.subito.it/appartamenti/mm2-udine-bilocale-da-privato-no-agenzie-milano-642354383.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
+      "observedAt": "2026-10-15T14:03:39Z",
       "outcome": "public_content_retrieved"
     },
     {
       "id": "subito-659298735",
-      "url": "https://www.subito.it/appartamenti/bilocale-arredato-e-attrezzato-milano-659298735.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
+      "observedAt": "2026-10-15T14:03:39Z",
       "outcome": "public_content_retrieved"
     },
     {
       "id": "subito-662027739",
-      "url": "https://www.subito.it/appartamenti/baggio-trilocale-con-box-800euro-tutto-incluso-milano-662027739.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
+      "observedAt": "2026-10-15T14:03:39Z",
       "outcome": "public_content_retrieved"
     },
     {
       "id": "subito-662198033",
-      "url": "https://www.subito.it/appartamenti/nolo-monolocale-appena-ristrutturato-milano-662198033.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
+      "observedAt": "2026-10-15T14:03:39Z",
       "outcome": "public_content_retrieved"
     },
     {
       "id": "subito-664092479",
-      "url": "https://www.subito.it/appartamenti/monolocale-rinnovato-a-nuovo-portello-accursio-mi-milano-664092479.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
+      "observedAt": "2026-10-15T14:03:39Z",
       "outcome": "public_content_retrieved"
     },
     {
       "id": "subito-651037411",
-      "url": "https://www.subito.it/appartamenti/bilocale-arredato-via-vodice-zona-fieramilanocity-milano-651037411.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
+      "observedAt": "2026-10-15T14:03:39Z",
       "outcome": "public_content_retrieved"
     },
     {
-      "id": "subito-647591075",
-      "url": "https://www.subito.it/appartamenti/appartamento-per-2-persone-m2verde-milano-milano-647591075.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
-      "outcome": "access_error_previous_evidence_preserved"
-    },
-    {
-      "id": "subito-659881169",
-      "url": "https://www.subito.it/appartamenti/privato-affitta-milano-659881169.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
-      "outcome": "access_error_previous_evidence_preserved"
-    },
-    {
-      "id": "subito-660542629",
-      "url": "https://www.subito.it/appartamenti/privato-vende-115mq-mm-turro-box-parco-e-tennis-milano-660542629.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
-      "outcome": "access_error_previous_evidence_preserved"
-    },
-    {
-      "id": "subito-660486423",
-      "url": "https://www.subito.it/appartamenti/appartamento-via-ingegnoli-milano-milano-660486423.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
-      "outcome": "access_error_previous_evidence_preserved"
-    },
-    {
       "id": "subito-660754373",
-      "url": "https://www.subito.it/appartamenti/privato-l-appartamento-v-mauro-macchi-10-milano-660754373.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
+      "observedAt": "2026-10-15T14:03:39Z",
       "outcome": "public_content_retrieved"
     },
     {
       "id": "subito-652862012",
-      "url": "https://www.subito.it/appartamenti/trilocale-a-milano-milano-652862012.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
+      "observedAt": "2026-10-15T14:03:39Z",
       "outcome": "public_content_retrieved"
     },
     {
-      "id": "subito-654258588",
-      "url": "https://www.subito.it/appartamenti/quadrilocale-ristrutturato-con-3-bagni-e-cantina-milano-654258588.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
-      "outcome": "access_error_previous_evidence_preserved"
-    },
-    {
-      "id": "subito-660185020",
-      "url": "https://www.subito.it/appartamenti/trilocale-milano-romolo-navigli-no-spese-agenzia-milano-660185020.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
-      "outcome": "access_error_previous_evidence_preserved"
-    },
-    {
       "id": "subito-485841300",
-      "url": "https://www.subito.it/appartamenti/milano-investimento-a-reddito-immediato-milano-485841300.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
+      "observedAt": "2026-10-15T14:03:39Z",
       "outcome": "public_content_retrieved"
     },
     {
       "id": "subito-650927383",
-      "url": "https://www.subito.it/appartamenti/monolocale-circa-30-m-milano-650927383.htm",
-      "observedAt": "2026-10-15T06:03:20Z",
+      "observedAt": "2026-10-15T14:03:39Z",
       "outcome": "public_content_retrieved"
+    },
+    {
+      "id": "subito-662344216",
+      "observedAt": "2026-10-15T14:03:39Z",
+      "outcome": "public_content_retrieved"
+    },
+    {
+      "id": "subito-630637660",
+      "url": "https://www.subito.it/appartamenti/privato-vende-milano-630637660.htm",
+      "observedAt": "2026-10-15T14:03:39Z",
+      "outcome": "new_public_listing_retrieved"
+    },
+    {
+      "id": "subito-636153733",
+      "url": "https://www.subito.it/appartamenti/privato-bilocale-arredato-no-agenzia-milano-636153733.htm",
+      "observedAt": "2026-10-15T14:03:39Z",
+      "outcome": "new_public_listing_retrieved"
+    },
+    {
+      "id": "subito-660542629",
+      "observedAt": "2026-10-15T14:03:39Z",
+      "outcome": "http_410_removed_property_status_unknown"
     }
   ],
   "screened": [
@@ -289,6 +246,166 @@
       "id": "subito-650927383",
       "cardPrice": 145000,
       "descriptionPrice": 155000
+    }
+  ],
+  "runHistory": [
+    {
+      "observedAt": "2026-10-15T06:03:20Z",
+      "outcomes": [
+        {
+          "id": "subito-663825385",
+          "url": "https://www.subito.it/appartamenti/bilocale-con-posto-auto-via-paolo-sarpi-moscova-milano-663825385.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "public_content_retrieved"
+        },
+        {
+          "id": "subito-650858666",
+          "url": "https://www.subito.it/appartamenti/appartamento-nuovo-climatizzato-milano-milano-650858666.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "http_410_removed_property_status_unknown"
+        },
+        {
+          "id": "subito-661490401",
+          "url": "https://www.subito.it/appartamenti/mm-comasina-monolocale-da-privato-milano-661490401.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "http_410_removed_property_status_unknown"
+        },
+        {
+          "id": "subito-654489651",
+          "url": "https://www.subito.it/appartamenti/da-privato-biloc-arredato-zona-c-so-buenos-aires-milano-654489651.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "http_410_removed_property_status_unknown"
+        },
+        {
+          "id": "subito-642354383",
+          "url": "https://www.subito.it/appartamenti/mm2-udine-bilocale-da-privato-no-agenzie-milano-642354383.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "public_content_retrieved"
+        },
+        {
+          "id": "subito-659298735",
+          "url": "https://www.subito.it/appartamenti/bilocale-arredato-e-attrezzato-milano-659298735.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "public_content_retrieved"
+        },
+        {
+          "id": "subito-662027739",
+          "url": "https://www.subito.it/appartamenti/baggio-trilocale-con-box-800euro-tutto-incluso-milano-662027739.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "public_content_retrieved"
+        },
+        {
+          "id": "subito-662198033",
+          "url": "https://www.subito.it/appartamenti/nolo-monolocale-appena-ristrutturato-milano-662198033.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "public_content_retrieved"
+        },
+        {
+          "id": "subito-664092479",
+          "url": "https://www.subito.it/appartamenti/monolocale-rinnovato-a-nuovo-portello-accursio-mi-milano-664092479.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "public_content_retrieved"
+        },
+        {
+          "id": "subito-651037411",
+          "url": "https://www.subito.it/appartamenti/bilocale-arredato-via-vodice-zona-fieramilanocity-milano-651037411.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "public_content_retrieved"
+        },
+        {
+          "id": "subito-647591075",
+          "url": "https://www.subito.it/appartamenti/appartamento-per-2-persone-m2verde-milano-milano-647591075.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "access_error_previous_evidence_preserved"
+        },
+        {
+          "id": "subito-659881169",
+          "url": "https://www.subito.it/appartamenti/privato-affitta-milano-659881169.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "access_error_previous_evidence_preserved"
+        },
+        {
+          "id": "subito-660542629",
+          "url": "https://www.subito.it/appartamenti/privato-vende-115mq-mm-turro-box-parco-e-tennis-milano-660542629.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "access_error_previous_evidence_preserved"
+        },
+        {
+          "id": "subito-660486423",
+          "url": "https://www.subito.it/appartamenti/appartamento-via-ingegnoli-milano-milano-660486423.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "access_error_previous_evidence_preserved"
+        },
+        {
+          "id": "subito-660754373",
+          "url": "https://www.subito.it/appartamenti/privato-l-appartamento-v-mauro-macchi-10-milano-660754373.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "public_content_retrieved"
+        },
+        {
+          "id": "subito-652862012",
+          "url": "https://www.subito.it/appartamenti/trilocale-a-milano-milano-652862012.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "public_content_retrieved"
+        },
+        {
+          "id": "subito-654258588",
+          "url": "https://www.subito.it/appartamenti/quadrilocale-ristrutturato-con-3-bagni-e-cantina-milano-654258588.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "access_error_previous_evidence_preserved"
+        },
+        {
+          "id": "subito-660185020",
+          "url": "https://www.subito.it/appartamenti/trilocale-milano-romolo-navigli-no-spese-agenzia-milano-660185020.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "access_error_previous_evidence_preserved"
+        },
+        {
+          "id": "subito-485841300",
+          "url": "https://www.subito.it/appartamenti/milano-investimento-a-reddito-immediato-milano-485841300.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "public_content_retrieved"
+        },
+        {
+          "id": "subito-650927383",
+          "url": "https://www.subito.it/appartamenti/monolocale-circa-30-m-milano-650927383.htm",
+          "observedAt": "2026-10-15T06:03:20Z",
+          "outcome": "public_content_retrieved"
+        }
+      ]
+    }
+  ],
+  "sourceChecks": [
+    {
+      "url": "https://www.facebook.com/groups/milanocasavendo",
+      "observedAt": "2026-10-15T14:03:39Z",
+      "outcome": "public_access_error_no_posts_acquired"
+    },
+    {
+      "url": "https://www.facebook.com/groups/37587766628",
+      "observedAt": "2026-10-15T14:03:39Z",
+      "outcome": "public_access_error_no_posts_acquired"
+    },
+    {
+      "url": "https://www.facebook.com/share/g/1CDLw3kfDY/",
+      "observedAt": "2026-10-15T14:03:39Z",
+      "outcome": "public_access_error_no_posts_acquired"
+    },
+    {
+      "url": "https://www.facebook.com/share/g/19TtCYiKiC/",
+      "observedAt": "2026-10-15T14:03:39Z",
+      "outcome": "public_access_error_no_posts_acquired"
+    },
+    {
+      "url": "https://www.facebook.com/share/g/18q1gmSDTn/",
+      "observedAt": "2026-10-15T14:03:39Z",
+      "outcome": "public_access_error_no_posts_acquired"
+    }
+  ],
+  "searchExclusions": [
+    {
+      "url": "https://www.subito.it/appartamenti/privato-vende-splendido-trilocale-milano-649985288.htm",
+      "reason": "Comune San Donato Milanese nel dettaglio, fuori perimetro Milano."
     }
   ]
 }
