@@ -36,7 +36,10 @@ Archivio operativo: questa cartella Obsidian. Importazione e riconciliazione dei
 ## Priorità 80/20
 [Roadmap iniziale](15_Roadmap_80_20.md): rendere utile Radar a un solo agente, partendo da una fonte praticabile e feedback manuale. M01–M08 precedono le estensioni. Un solo inbound nel secondo ciclo, oppure anticipato se esiste traffico e Radar è bloccato sulle fonti.
 
-## Prossimo passo
+## Roadmap corrente
+[Inbound pre-pubblicazione](16_Inbound_pre_pubblicazione.md), task N01–N08: prossimo N01. [Team e plugin](17_Team_e_plugin_operativi.md). La precedente priorità Radar-prima è rinviata.
+
+## Prossimo passo storico
 Baseline repository e progetto in [13_Progetto_e_repository](13_Progetto_e_repository.md); task piccoli ordinati in [14_Backlog_task](14_Backlog_task.md). Primo blocco tecnico proposto B02–B05. Il repository contiene prototipi già sviluppati: nessuna necessità di ripartire da zero. Restano aperte policy incarichi e percorso recapito.
 
 Piano dei due esperimenti pronto in [11_Piano_esperimenti](11_Piano_esperimenti.md), scheda annunci e dati minimi in [12_Scheda_feedback_e_dati](12_Scheda_feedback_e_dati.md). A03 raccomanda come primo ingresso “Vendere o affittare?”; proposta ancora da scegliere. A05 ha riverificato i percorsi API idealista/Insights e preparato i quesiti senza inviarli; accessi e licenze restano da ottenere.

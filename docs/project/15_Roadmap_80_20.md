@@ -1,3 +1,5 @@
+> Priorità superata nell’ordine di esecuzione — 16 ottobre 2026: seguire [Inbound pre-pubblicazione e N01–N08](16_Inbound_pre_pubblicazione.md). Il principio 80/20 resta, Radar viene rinviato. Questo documento resta storico/inventario e non blocca la prova inbound.
+
 # Roadmap iniziale 80/20 — Scoutly
 16 ottobre 2026. A00/A03/A04/A07 in sequenza. Indirizzo richiesto: concentrare il lavoro sul minimo che produce utilità misurabile. “80/20” è una regola di priorità, non una previsione misurata di risultati o impegno.
 

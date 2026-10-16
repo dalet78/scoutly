@@ -6,6 +6,9 @@
 3. Controlla branch, commit e modifiche locali. Non sovrascrivere lavoro non committato. Su un clone nuovo verifica il codice attuale: le note possono riferirsi a un commit precedente.
 4. Riprendi il task indicato nello stato, senza rifare l’intervista o chiedere informazioni già registrate. Non dichiarare una chat precedente caricata: la continuità è nei documenti versionati.
 
+## Priorità corrente
+Leggi prima `docs/project/16_Inbound_pre_pubblicazione.md` e `docs/project/17_Team_e_plugin_operativi.md`. La roadmap iniziale è inbound: una landing per proprietari prima della pubblicazione, un destinatario privato e un test social circoscritto. Radar e M01–M08 rinviati, non eliminati. Prossimo task N01. Le istruzioni storiche Radar-prima sono superate nell’ordine di esecuzione.
+
 ## Metodo e perimetro
 Italiano. Opera come A00 orchestratore e usa i profili A01–A07 del documento del team quando pertinenti, anche in sequenza. Distingui evidenze, dichiarazioni, ipotesi, stime e simulazioni. Perimetro: Milano Comune, residenziale vendita/affitto da privati. Due canali complementari: Radar annunci e mini-tool con richiesta volontaria di ricontatto. Pilot non validato; prezzi ed esclusiva territoriale non decisi.
 

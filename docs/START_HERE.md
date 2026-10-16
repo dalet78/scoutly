@@ -30,6 +30,9 @@ Se ci sono modifiche locali, riconciliale prima di cambiare branch o aggiornare;
 
 > Leggi AGENTS.md, docs/START_HERE.md e docs/PROJECT_STATE.md. Riprendi Scoutly dal primo task pronto del backlog, preservando modifiche locali e decisioni aperte. Prima verifica lo stato effettivo del codice. Non avviare campagne, contatti o pubblicazioni senza istruzioni.
 
+## Priorità corrente
+Inbound prima della pubblicazione: [strategia e task N01–N08](project/16_Inbound_pre_pubblicazione.md) e [team/plugin](project/17_Team_e_plugin_operativi.md). Le indicazioni Radar-prima precedenti sono rinviate. Prossimo task N01; l’avvio Radar sotto resta una procedura tecnica disponibile, non il lavoro prioritario.
+
 ## Ordine di lettura
 - [Stato attuale e prossimo task](PROJECT_STATE.md)
 - [Progetto e baseline repository](project/13_Progetto_e_repository.md)

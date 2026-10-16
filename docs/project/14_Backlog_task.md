@@ -1,3 +1,5 @@
+> Priorità superata nell’ordine di esecuzione — 16 ottobre 2026: seguire [Inbound pre-pubblicazione e N01–N08](16_Inbound_pre_pubblicazione.md). Il principio 80/20 resta, Radar viene rinviato. Questo documento resta storico/inventario e non blocca la prova inbound.
+
 # Backlog Scoutly — task piccoli
 Versione 0.1 — 16 ottobre 2026. Baseline e motivazioni: [13_Progetto_e_repository](13_Progetto_e_repository.md).
 Task di lavoro, non issue GitHub già create. Responsabili indicano ruoli del workflow, non persone esterne incaricate. Le righe “decisione aperta” non bloccano task indipendenti.
