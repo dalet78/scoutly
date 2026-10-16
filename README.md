@@ -27,7 +27,7 @@ I moduli hanno titoli specifici per il beneficio della pagina. Evitare formule c
 - `assets/editorial.css`: sfondi e presentazione responsive.
 - `assets/scenes/`: immagini dedicate.
 
-Sito statico senza librerie esterne. Per la prova locale aprire il file HTML; per la pubblicazione utilizzare un hosting statico. Non pubblicare le note private di Obsidian.
+Sito statico senza librerie esterne. Per la prova locale aprire il file HTML; per la pubblicazione utilizzare un hosting statico. Non pubblicare note personali o dati operativi privati. Il dossier di progetto selezionato e autorizzato per la continuità tra PC è in `docs/project/`.
 
 ## Limiti dichiarati
 
@@ -44,3 +44,13 @@ Quando configurato, il destinatario riceve il contatto già al primo Continua. I
 Test dei 22 percorsi, campi contatto, due passaggi del caso, Indietro e reset, esportazione, importi facoltativi e testi. Controllo delle scene locali e dell’assenza di collegamenti fra landing. Invio progressivo e ritentativo testati con un ricevitore simulato, senza trasmettere contatti reali.
 
 Repository: https://github.com/dalet78/scoutly. Il caricamento nel repository non implica l’attivazione di GitHub Pages.
+
+## Lavorare da più PC con Codex
+
+Scarica o clona il branch `main`, apri la cartella e chiedi all’assistente di leggere [AGENTS.md](AGENTS.md), [START_HERE](docs/START_HERE.md) e [stato del progetto](docs/PROJECT_STATE.md). Troverà profili del team, decisioni, piano e task piccoli senza dipendere dalle chat o dal vault del primo PC.
+
+- [Definizione progetto](docs/project/13_Progetto_e_repository.md)
+- [Backlog e criteri di completamento](docs/project/14_Backlog_task.md)
+- [Dossier completo](docs/project/Scoutly.md)
+
+Prima di cambiare PC sincronizza il lavoro con Git: un download di main contiene solo file caricati nel repository. Credenziali e dati salvati nel browser non si trasferiscono. La guida descrive setup e limiti noti dell’avvio locale.

@@ -3,3 +3,8 @@ Thumbs.db
 .env
 .env.*
 .obsidian/
+
+# Stato personale e dati operativi locali: non sincronizzare nel repository
+private-data/
+local-backups/
+node_modules/
