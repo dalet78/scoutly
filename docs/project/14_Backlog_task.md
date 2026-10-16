@@ -5,6 +5,9 @@ Task di lavoro, non issue GitHub già create. Responsabili indicano ruoli del wo
 ## Regola di esecuzione
 Un task = un risultato verificabile, normalmente una modifica o una decisione. Se durante l’esecuzione supera una sessione di lavoro o coinvolge più componenti indipendenti, dividerlo prima di procedere. Nessuna durata promessa; le stime storiche non incorporano questo riuso. Stato fatto solo con evidenza allegata. Stato pronto significa lavorabile, non completato.
 
+## Priorità iniziale aggiornata
+Seguire la [Roadmap 80/20](15_Roadmap_80_20.md), M01–M08: un agente, una fonte utilizzabile, filtro e feedback manuale. Il resto è backlog successivo. Per la prova del solo filtro, i gate V02/V05/V06 non dipendono dall’implementazione R08–R10 o I13: usare il percorso manuale documentato. Restano necessarie condizioni di accesso/uso, protocollo e baseline prima del test reale. Le dipendenze complete sottostanti valgono per l’integrazione dei due canali, non obbligano a costruirli entrambi prima di apprendere.
+
 ## Ordine dei blocchi
 1. Baseline e avvio locale (B): rendere verificabile ciò che esiste.
 2. Policy (P): poche scelte prima dei cambiamenti di comportamento.

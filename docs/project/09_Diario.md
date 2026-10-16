@@ -11,3 +11,6 @@ Nessun test eseguito o modifica al comportamento in questa fase documentale.
 ## 16 ottobre 2026 — Continuità tra PC
 Su richiesta del proprietario, preparata la documentazione portabile da conservare su main: AGENTS.md, guida di avvio, stato di ripresa e dossier selezionato. La revisione automatica ha respinto l’esportazione del brief originale per dettagli personali/commerciali; predisposta questa versione pubblicabile senza tali contenuti. Il vault originale resta privato.
 Repository fonte del contesto condiviso, Obsidian copia opzionale. Credenziali e dati operativi browser non trasferiti. La documentazione non prova un pilot avviato né autorizza campagne o contatti.
+
+## 16 ottobre 2026 — Priorità 80/20
+Su indicazione del fondatore ridotta la roadmap iniziale al primo ciclo M01–M08: riuso Radar, una fonte utilizzabile, revisione umana, feedback privato manuale e misura del tempo. Inbound complementare in un secondo ciclo condizionato al traffico; nessuna attivazione automatica dei 22 tool. Eliminata come prerequisito del test filtro la costruzione della UI feedback e dell’inbound completo; backlog conservato per sviluppi successivi. “80/20” è criterio, non risultato quantitativo dimostrato. Nessun test di prodotto o campagna eseguiti.

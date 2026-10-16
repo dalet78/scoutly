@@ -33,6 +33,9 @@ Archivio operativo: questa cartella Obsidian. Importazione e riconciliazione dei
 - [14_Backlog_task](14_Backlog_task.md)
 - [Team_Business_Profili_e_Workflow](Team_Business_Profili_e_Workflow.md)
 
+## Priorità 80/20
+[Roadmap iniziale](15_Roadmap_80_20.md): rendere utile Radar a un solo agente, partendo da una fonte praticabile e feedback manuale. M01–M08 precedono le estensioni. Un solo inbound nel secondo ciclo, oppure anticipato se esiste traffico e Radar è bloccato sulle fonti.
+
 ## Prossimo passo
 Baseline repository e progetto in [13_Progetto_e_repository](13_Progetto_e_repository.md); task piccoli ordinati in [14_Backlog_task](14_Backlog_task.md). Primo blocco tecnico proposto B02–B05. Il repository contiene prototipi già sviluppati: nessuna necessità di ripartire da zero. Restano aperte policy incarichi e percorso recapito.
 
