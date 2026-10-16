@@ -17,3 +17,6 @@ Su indicazione del fondatore ridotta la roadmap iniziale al primo ciclo M01–M0
 
 ## 16 ottobre 2026 — Roadmap inbound pubblicata con autorizzazione esplicita
 Il fondatore ha autorizzato la pubblicazione della strategia commerciale precedentemente rimasta locale. Aggiunti piano pre-pubblicazione e task N01–N08; aggiornati stato, istruzioni, guida, indice e precedenti roadmap. Catalogo plugin verificato; suggerita la sola integrazione Windsor.ai, non ancora collegata. Team minimo e accessi in 17_Team_e_plugin_operativi.md. Nessuna campagna, contatto, attivazione endpoint o test prodotto eseguiti.
+
+## 16 ottobre 2026 — Task ricezione sincronizzati
+Su richiesta esplicita sincronizzato il piano C01–C14, con unico responsabile per task, dipendenze e criteri. Registro privato come fonte autorevole, email e Telegram notifiche; CRM rinviato. Prossimi C02/A04 e C04/A05-ARCH. Nessuna implementazione dei task o attivazione invii implicita. Sincronizzazione limitata al piano e ai punti di ripresa: prototipo B e altri documenti locali non inclusi.

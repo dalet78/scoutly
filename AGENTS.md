@@ -21,3 +21,6 @@ Niente credenziali, .env, recapiti proprietari, conversazioni, backup browser o 
 
 ## A fine sessione
 Aggiorna `docs/PROJECT_STATE.md`, stato/evidenza dei task nel backlog e diario/decisioni pertinenti. Indica cosa resta, dipendenze e primo task riprendibile. I documenti nella repository sono la fonte di continuità tra PC; Obsidian è una copia locale opzionale da riconciliare, mai un prerequisito o una sorgente da sovrascrivere in blocco. Non fissare percorsi assoluti o dipendenze da uno specifico PC. Pubblica gli aggiornamenti Git solo entro l’autorizzazione ricevuta; se restano locali, dichiaralo prima del cambio PC.
+
+## Ricezione richieste: prossimo lavoro
+Leggi `docs/project/20_Task_ricezione_email_telegram.md`. Unico responsabile per C01–C14; sottoprofili A05-ARCH/BE/FE/INT/OPS definiti nel piano. Prossimi C02 ad A04 e C04 ad A05-ARCH. Registro privato autorevole, email e Telegram notifiche, CRM rinviato. Questa assegnazione non implica agenti in background o attivazione di invii.

@@ -1,3 +1,5 @@
+> Prossimo lavoro: [C01–C14, ricezione e notifiche](20_Task_ricezione_email_telegram.md). Partire da C02 (UX) e C04 (architettura); prototipo B scelto, CRM rinviato.
+
 > Copia portabile del dossier Obsidian. Fonte di continuità corrente: [PROJECT_STATE](../PROJECT_STATE.md); archivio condiviso: questa repository. Le indicazioni storiche sulla cartella locale non sono prerequisiti.
 
 ---

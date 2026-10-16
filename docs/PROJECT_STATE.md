@@ -1,3 +1,5 @@
+> Aggiornamento corrente: [task ricezione C01–C14](project/20_Task_ricezione_email_telegram.md), ciascuno con unico profilo responsabile. Scelti registro privato + email, Telegram per notifiche; CRM rinviato. Prossimi task C02 (A04 UX) e C04 (A05-ARCH); C01 raccoglie destinatari/accessi mancanti. Direzione B scelta; prototipo locale sviluppato e verificato, non incluso in questa sincronizzazione documentale. Nessun task C01–C14 dichiarato eseguito; nessun invio o deploy attivato. Le indicazioni precedenti N01 come prossimo task sono storiche.
+
 # Stato di ripresa Scoutly
 Aggiornato: 16 ottobre 2026. Curatore A00.
 
