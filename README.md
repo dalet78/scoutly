@@ -54,3 +54,11 @@ Scarica o clona il branch `main`, apri la cartella e chiedi all’assistente di 
 - [Dossier completo](docs/project/Scoutly.md)
 
 Prima di cambiare PC sincronizza il lavoro con Git: un download di main contiene solo file caricati nel repository. Credenziali e dati salvati nel browser non si trasferiscono. La guida descrive setup e limiti noti dell’avvio locale.
+
+## Landing B — Prima di pubblicare
+
+Nuova pagina indipendente: [Prima di pubblicare](tools/prima-di-pubblicare.html), pubblicata sul sito statico all’indirizzo `https://dalet78.github.io/scoutly/tools/prima-di-pubblicare.html` dopo il completamento di GitHub Pages.
+
+Questa anteprima B genera la checklist nel browser e permette di scaricarla. Non raccoglie recapiti, non invia richieste e non usa storage del browser. Le altre 22 landing mantengono il proprio percorso; B mostra il risultato senza recapito. Gli asset isolati sono in `assets/prima-di-pubblicare/`; test: `node --test tests/prima-di-pubblicare.test.mjs`.
+
+GitHub Pages ospita solo la parte statica. Il backend Node/SQLite rimane nella [PR #1](https://github.com/dalet78/scoutly/pull/1), non attivo su Pages. Email e Telegram restano da configurare.

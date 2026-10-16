@@ -1,3 +1,5 @@
+> Aggiornamento 16 ottobre 2026: sorgenti della landing B aggiunti in `tools/prima-di-pubblicare.html`, con asset isolati e sei test di logica passati. Pubblicazione richiesta su GitHub Pages: URL atteso https://dalet78.github.io/scoutly/tools/prima-di-pubblicare.html, da verificare dopo il deploy. Anteprima senza raccolta di recapiti o invii. Backend Node/SQLite nella PR #1, non distribuito né eseguibile su Pages. Le indicazioni storiche sul prototipo solo locale sono superate per la parte statica.
+
 > Aggiornamento corrente: [task ricezione C01–C14](project/20_Task_ricezione_email_telegram.md), ciascuno con unico profilo responsabile. Scelti registro privato + email, Telegram per notifiche; CRM rinviato. Prossimi task C02 (A04 UX) e C04 (A05-ARCH); C01 raccoglie destinatari/accessi mancanti. Direzione B scelta; prototipo locale sviluppato e verificato, non incluso in questa sincronizzazione documentale. Nessun task C01–C14 dichiarato eseguito; nessun invio o deploy attivato. Le indicazioni precedenti N01 come prossimo task sono storiche.
 
 # Stato di ripresa Scoutly

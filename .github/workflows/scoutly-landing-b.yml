@@ -1,0 +1,17 @@
+name: Scoutly landing B checks
+on:
+  push:
+    paths: ['tools/prima-di-pubblicare.html', 'assets/prima-di-pubblicare/**', 'tests/prima-di-pubblicare.test.mjs', '.github/workflows/scoutly-landing-b.yml']
+  pull_request:
+    paths: ['tools/prima-di-pubblicare.html', 'assets/prima-di-pubblicare/**', 'tests/prima-di-pubblicare.test.mjs', '.github/workflows/scoutly-landing-b.yml']
+permissions:
+  contents: read
+jobs:
+  checklist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node --test tests/prima-di-pubblicare.test.mjs
