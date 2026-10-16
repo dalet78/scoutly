@@ -1,25 +1,27 @@
-> Aggiornamento corrente: [task ricezione C01–C14](project/20_Task_ricezione_email_telegram.md), ciascuno con unico profilo responsabile. Scelti registro privato + email, Telegram per notifiche; CRM rinviato. Prossimi task C02 (A04 UX) e C04 (A05-ARCH); C01 raccoglie destinatari/accessi mancanti. Direzione B scelta; prototipo locale sviluppato e verificato, non incluso in questa sincronizzazione documentale. Nessun task C01–C14 dichiarato eseguito; nessun invio o deploy attivato. Le indicazioni precedenti N01 come prossimo task sono storiche.
-
 # Stato di ripresa Scoutly
 Aggiornato: 16 ottobre 2026. Curatore A00.
 
-## Priorità e prossimo task
-Preparare inbound pre-pubblicazione: una promessa, una landing, un destinatario privato e un test circoscritto. [Strategia e task N01–N08](project/16_Inbound_pre_pubblicazione.md). Primo task N01: risultato utile e sostenibile, con esempio concreto; poi scelta N02 vendita o affitto per il primo test.
-La sequenza Radar-prima M01–M08 è rinviata; codice e backlog conservati. Nessun pilot o campagna avviati.
+## Ultimo incremento
+Backend in `backend/` implementato e verificato in locale: Node 24, registro SQLite, contratto richiesta finale, amministrazione autenticata, coda email/Telegram, simulazione, ritentativi, export/delete/backup. [Consegna e stato task](project/21_Backend_consegna.md).
+29 test superati, incluse prove HTTP e processo/worker reali locali; provider sempre simulati. Nessuna credenziale, raccolta reale, campagna o deploy attivati. CI predisposta: verificare il suo esito remoto sulla PR.
 
-## Ultimo risultato
-Pubblicazione della nuova roadmap e del [team operativo minimo](project/17_Team_e_plugin_operativi.md) autorizzata esplicitamente dal fondatore il 16 ottobre 2026, compresa la strategia commerciale del piano. Aggiornati i punti di ingresso e la continuità tra PC. Nessuna attivazione pubblicitaria, endpoint o scheduler implicita.
-Plugin verificati nel catalogo: GitHub già usato; Google Drive installato; Windsor.ai suggerito, non ancora collegato; CRM e Canva facoltativi. Nessun test tecnico prodotto eseguito in questo aggiornamento.
+## Prossimo lavoro
+C02/C03/C08: collegare il form facoltativo della landing B al nuovo contratto `POST /v1/requests`, partendo dalla modalità simulata. Non usare il vecchio invio progressivo contact/case_step/complete.
+C01 resta aperto: soggetto/identità, informativa, email destinataria, disponibilità agente, bot/chat Telegram e durata dati.
+Hosting Node 24 con volume persistente e HTTPS da scegliere; SQLite non può essere ospitato in GitHub Pages o su filesystem effimero.
 
-## Stato prodotto e ipotesi
-Esistono 22 landing e Radar dimostrativo. Nella baseline letta inbound è demo senza destinatario configurato. Codice esaminato inizialmente al commit ac3d7878c095739e82edba7bda88b42e65f7990d: verificare file attuali prima di intervenire.
-Ipotesi: opportunità più utili arrivando prima della pubblicazione. Nessuna esclusività, conversione o disponibilità al mandato dimostrate. Offerta proposta: checklist di preparazione annuncio; non una valutazione immobiliare inventata.
+## Priorità prodotto
+Inbound prima della pubblicazione, direzione B scelta. Un solo percorso e un solo agente prima dell’estensione; registro privato autorevole, email/Telegram notifiche, CRM rinviato. Radar e M01–M08 conservati e rinviati.
+Il prototipo B rimane una copia locale non inclusa in questo incremento backend. Nessun beneficio commerciale o conversione dichiarati validati.
 
-## Decisioni da completare
-Vendita o affitto per la prima prova; risultato e ruolo dell’agente; posizione del recapito e richiesta esplicita; destinatario privato; budget massimo, finestra e capacità di ricontatto. La preferenza per inbound non decide automaticamente questi punti. Prezzi ed esclusiva territoriale restano aperti.
+## Task e documenti
+- [Task C01–C14 e responsabili](project/20_Task_ricezione_email_telegram.md)
+- [Consegna backend e limiti](project/21_Backend_consegna.md)
+- [Strategia inbound N01–N08](project/16_Inbound_pre_pubblicazione.md)
+- [Team operativo](project/17_Team_e_plugin_operativi.md)
+- [Guida backend](../backend/README.md)
+
+Non marcare C09/C10 come invii reali completati: adattatori testati con stub, account/destinatari non configurati. C12 parziale per infrastruttura e policy; C13 backend superato, prova integrata frontend/provider ancora aperta.
 
 ## Vincoli
-Milano Comune, residenziale vendita/affitto con metriche separate, proprietari/autorizzati. Richiesta di telefonata distinta da mandato. Niente identità fittizie. Dati operativi privati fuori dal repository. Nessun lancio, contatto esterno o pubblicazione prodotto autorizzati dalla sola roadmap.
-
-## Ripresa su un altro PC
-Leggere AGENTS.md, [guida](START_HERE.md), strategia 16 e piano team 17. Riprendere N01 senza chiedere di nuovo il contesto iniziale. Aggiornare questo stato, diario e task con evidenze reali prima di sincronizzare. Il backlog di 45 task è inventario, non prerequisito per completare tutto prima della prima prova.
+Milano Comune, residenziale vendita/affitto con metriche separate. Richiesta volontaria distinta da mandato; nessuna identità fittizia. Segreti e dati operativi fuori da Git. Registro non pubblico. Nuovi invii esterni, creazione account e deploy richiedono istruzione distinta. Prima di cambiare PC sincronizzare il codice autorizzato e verificare su quale branch è disponibile.

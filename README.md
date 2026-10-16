@@ -54,3 +54,7 @@ Scarica o clona il branch `main`, apri la cartella e chiedi all’assistente di 
 - [Dossier completo](docs/project/Scoutly.md)
 
 Prima di cambiare PC sincronizza il lavoro con Git: un download di main contiene solo file caricati nel repository. Credenziali e dati salvati nel browser non si trasferiscono. La guida descrive setup e limiti noti dell’avvio locale.
+
+## Backend delle richieste di ricontatto
+
+Il servizio in [backend/](backend/README.md) salva le richieste in un registro privato e prepara notifiche email/Telegram tramite coda persistente. Node 24, nessuna dipendenza npm; ricezione e invii disattivati per default. [Consegna e verifiche](docs/project/21_Backend_consegna.md). Non è un servizio già distribuito e non modifica gli invii delle landing esistenti.
