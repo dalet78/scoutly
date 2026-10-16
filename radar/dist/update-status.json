@@ -5,11 +5,11 @@
     8,
     16
   ],
-  "lastAttemptAt": "2026-10-15T14:03:39Z",
+  "lastAttemptAt": "2026-10-16T06:01:04.856Z",
   "lastSuccessAt": null,
   "firstRunAt": "2026-10-14T08:00:00+02:00",
   "status": "partial",
-  "note": "15 ottobre, pomeriggio: 1 nuovo affitto (Rogoredo/Santa Giulia), 1 nuova vendita (Tortona/MUDEC). Scheda Turro HTTP 410: stato immobile sconosciuto. Facebook non acquisito, alcune schede Subito non recuperabili. Dati e prove precedenti preservati.",
+  "note": "16 ottobre: 15 schede esistenti rilette; aggiunto bilocale Primaticcio (40 m², €900 + circa €140), da verificare perché catalogato in vendita ma descritto in affitto. Ruolo inserzionista non confermato. Facebook non accessibile; 9 schede Subito non recuperabili. Prove precedenti preservate.",
   "runHistory": [
     {
       "lastAttemptAt": "2026-10-14T07:45:12Z",
@@ -36,6 +36,14 @@
       "newRentals": 1,
       "newSales": 1,
       "removedSourceListings": 1
+    },
+    {
+      "lastAttemptAt": "2026-10-16T06:01:04.856Z",
+      "status": "partial",
+      "newRentals": 1,
+      "newSales": 0,
+      "retrievedExisting": 15,
+      "failedExisting": 9
     }
   ]
 }
