@@ -1,3 +1,5 @@
+> Avanzamento sviluppo: leggere [consegna backend e stato effettivo C01–C14](21_Backend_consegna.md). La tabella sottostante conserva lo stato iniziale del piano, non il consuntivo. C07/C11 implementati e testati; C09/C10 adattatori in simulazione; C08 e configurazioni reali restano aperti.
+
 # N05 — Task: registro privato, email e Telegram
 16 ottobre 2026. Input: prototipo B locale, richiesta di ricontatto volontaria, scelta email/telefono più notifiche Telegram. CRM rinviato. Piano di assegnazione: nessuno di questi incarichi è dichiarato eseguito o attivo in background.
 

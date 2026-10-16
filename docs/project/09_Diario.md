@@ -20,3 +20,6 @@ Il fondatore ha autorizzato la pubblicazione della strategia commerciale precede
 
 ## 16 ottobre 2026 — Task ricezione sincronizzati
 Su richiesta esplicita sincronizzato il piano C01–C14, con unico responsabile per task, dipendenze e criteri. Registro privato come fonte autorevole, email e Telegram notifiche; CRM rinviato. Prossimi C02/A04 e C04/A05-ARCH. Nessuna implementazione dei task o attivazione invii implicita. Sincronizzazione limitata al piano e ai punti di ripresa: prototipo B e altri documenti locali non inclusi.
+
+## 16 ottobre 2026 — Sviluppo backend ricezione
+Implementato backend Node 24/SQLite con contratto finale, coda transazionale e adattatori email/Telegram. 29 test superati in locale con soli dati fittizi, compresi HTTP reale e processo/worker/arresto. Configurazioni di esempio senza segreti, CI e documentazione incluse. Nessun provider chiamato, account creato o deployment eseguito. C08 frontend e configurazioni reali restano aperti; consuntivo in 21_Backend_consegna.md.

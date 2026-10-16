@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "requestId": "e08d4a28-a8ec-40b8-b515-8aeb2f489b23",
+  "contact": {
+    "name": "Persona di prova",
+    "email": "owner@example.invalid",
+    "phone": "+390200000000",
+    "preferredChannel": "phone",
+    "timeSlot": "afternoon",
+    "requestedContact": true
+  },
+  "property": { "city": "milano", "type": "apartment", "role": "owner", "intent": "sale", "timing": "30", "publication": "draft" },
+  "preparation": { "info": "yes", "documents": "unknown", "price": "partial", "photos": "yes", "description": "no" },
+  "consent": { "accepted": true, "version": "callback-v1" },
+  "source": { "tool": "prima-di-pubblicare", "variant": "B", "campaign": "local-test" },
+  "website": ""
+}
