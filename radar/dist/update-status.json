@@ -5,11 +5,11 @@
     8,
     16
   ],
-  "lastAttemptAt": "2026-10-16T06:01:04.856Z",
+  "lastAttemptAt": "2026-10-16T14:00:55.922Z",
   "lastSuccessAt": null,
   "firstRunAt": "2026-10-14T08:00:00+02:00",
   "status": "partial",
-  "note": "16 ottobre: 15 schede esistenti rilette; aggiunto bilocale Primaticcio (40 m², €900 + circa €140), da verificare perché catalogato in vendita ma descritto in affitto. Ruolo inserzionista non confermato. Facebook non accessibile; 9 schede Subito non recuperabili. Prove precedenti preservate.",
+  "note": "16 ottobre, pomeriggio: nuova vendita dichiarata da privato in viale Omero / Corvetto, 72 m², prezzo non visibile. Situazione locativa e disponibilità da verificare. Rilette 16 schede esistenti; 9 non recuperabili. Facebook non accessibile. Prove precedenti preservate.",
   "runHistory": [
     {
       "lastAttemptAt": "2026-10-14T07:45:12Z",
@@ -43,6 +43,14 @@
       "newRentals": 1,
       "newSales": 0,
       "retrievedExisting": 15,
+      "failedExisting": 9
+    },
+    {
+      "lastAttemptAt": "2026-10-16T14:00:55.922Z",
+      "status": "partial",
+      "newRentals": 0,
+      "newSales": 1,
+      "retrievedExisting": 16,
       "failedExisting": 9
     }
   ]
