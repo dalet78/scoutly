@@ -11,3 +11,7 @@ L'agente ogni 30 minuti resta in pausa finché Gmail non è collegato alla casel
 Verifiche locali: quattro test passati (zero foto, formati, file vuoti, numero e totale aggregato). Il client non sostituisce controlli server del provider. Deployment, browser e ricezione da verificare. Generazione AI non attiva; identità, informativa completa e gestione operativa da definire prima del pilot con persone reali. Prezzi/esclusiva non decisi. Nessuna campagna.
 
 Riferimento: https://formsubmit.co/documentation
+
+
+## Destinatario temporaneo
+Il fondatore conferma espressamente david.perugia78@gmail.com (correzione del refuso gail.com), da usare nel form mentre la casella Scoutly è in creazione. Il destinatario cambia anche nell'azione FormSubmit. Serve attivare questa casella; l'agente pianificato conserva il blocco precedente e resta in pausa, da aggiornare dopo la prova del formato ricevuto. Gli asset upload hanno nomi propri per evitare incompatibilità con le versioni checklist/mailto rimaste nella cache.

@@ -1,3 +1,5 @@
+> Destinatario temporaneo confermato: david.perugia78@gmail.com; Scoutly è in creazione. FormSubmit richiede attivazione su questa casella. Agente ancora in pausa.
+
 > 17 ottobre 2026 — [Invio dal sito con foto](project/26_FormSubmit_foto.md): sostituito mailto con FormSubmit autorizzato per il test. Email e fino a sei JPG/PNG (8 MB totali); attivazione casella e ricezione allegati da verificare. Agente email ancora in pausa, parsing notifiche provider da adattare dopo prova. Le istruzioni mailto precedenti sono storico.
 
 > Verifica 17 ottobre 2026 completata: pagina online, CI e Pages riusciti; percorso provato nel browser con dati simulati e scelta consulenza distinta. Nessuna email inviata e nessuna ricezione in casella verificata. Dettagli nel documento 24.
