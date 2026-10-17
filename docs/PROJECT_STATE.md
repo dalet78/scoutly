@@ -1,3 +1,5 @@
+> 17 ottobre 2026 — [Invio dal sito con foto](project/26_FormSubmit_foto.md): sostituito mailto con FormSubmit autorizzato per il test. Email e fino a sei JPG/PNG (8 MB totali); attivazione casella e ricezione allegati da verificare. Agente email ancora in pausa, parsing notifiche provider da adattare dopo prova. Le istruzioni mailto precedenti sono storico.
+
 > Verifica 17 ottobre 2026 completata: pagina online, CI e Pages riusciti; percorso provato nel browser con dati simulati e scelta consulenza distinta. Nessuna email inviata e nessuna ricezione in casella verificata. Dettagli nel documento 24.
 
 > Aggiornamento 17 ottobre 2026: offerta annuncio via email al posto della checklist. [Percorso attuale](project/24_Richiesta_annuncio_email.md). Pagina B adattata con preparazione email a scoutlyhome@gmail.com, allegati e invio dalla posta del proprietario. Nessun invio automatico o AI attiva; backend PR #1 separato. Prossimo A05-ARCH: ricezione privata, foto, generazione e revisione. Le priorità storiche sotto sono superate per questa offerta.
