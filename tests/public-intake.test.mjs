@@ -60,7 +60,7 @@ test('ambiguous submission keeps one code and prevents changed material from bei
  let calls=0;
  const {elements,store,redirects}=ui(async()=>{calls++;throw new SubmissionError('Esito incerto');});
  await new Promise(setImmediate);await elements.request.submit({preventDefault(){}});
- assert.equal(JSON.parse([...store.values()][0]).id,id);assert.equal(calls,1);assert.equal(redirects.length,0);
+ assert.equal(JSON.parse([...store.values()][0]).id,id);assert.equal(calls,1);assert.equal(redirects.length,0);assert.equal(elements['upload-status'].hidden,true);
  elements.request.fields.description+=' Modificata.';
  await elements.request.submit({preventDefault(){}});
  assert.equal(calls,1);assert.match(elements['upload-error'].textContent,/stessi dati/);

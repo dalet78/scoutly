@@ -153,7 +153,7 @@ form.addEventListener('submit',async event=>{
   error.textContent=(reason instanceof SubmissionError?reason.message:'Invio non confermato. Il salvataggio potrebbe essere riuscito.')+
    (pending?.id?' Codice da conservare: '+pending.id+'. Nessun nuovo invio automatico.':'');
   gate=null;
-  stage('Invio non confermato. Controlla il messaggio e conserva il codice richiesta.');
+  if(progressPanel)progressPanel.hidden=true;
  } finally {
   clearTimeout(timer);submitting=false;picker.disabled=false;send.disabled=!gate;reconnect.disabled=false;send.textContent=submitLabel;
   form.setAttribute?.('aria-busy','false');
