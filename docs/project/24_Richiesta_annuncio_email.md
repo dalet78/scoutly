@@ -9,3 +9,7 @@ La PR backend #1 resta separata e non integra questa nuova offerta. Prossimi tas
 Verifica logica locale: destinazione, codifica caratteri e testo multilinea, scelta consulenza distinta e conservazione descrizione. Verifica browser live da completare dopo deploy. Email raccolta e richiesta consulenza sono eventi diversi. Pilot non avviato, prezzi ed esclusiva non decisi.
 
 Pubblicazione dell’indirizzo operativo nella pagina e nel repository pubblico autorizzata esplicitamente dal fondatore dopo segnalazione del relativo blocco automatico. Nessuna email inviata dall’assistente.
+
+
+## Verifica completata
+GitHub Pages build/deploy riusciti e CI landing riuscita sul commit 5c0efcaaa2220eed47afa903b586cc28ecf2dfe7. Verifica browser live: modulo completato con dati simulati; messaggio indirizzato alla casella corretta; consulenza assente/presente secondo la scelta esplicita; modifica e ritorno al form funzionanti. Nessuna email inviata, nessuna foto caricata e ricezione nella casella non verificata. Il percorso mailto richiede una posta configurata; disponibile fallback per copiare il testo. Verifica mobile specifica di questa versione non eseguita.
