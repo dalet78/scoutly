@@ -46,3 +46,8 @@ Fondatore conferma riuscita delle prove riservate e autorizza collegamento pubbl
 ## 17 ottobre 2026 — Impaginazione notifiche
 17 ottobre 2026 — Notifiche email impaginate in HTML: testata Scoutly, recapiti, consulenza, percorso, descrizione con a capo e numero/nome degli allegati. JSON firmato invariato nella parte MIME text/plain per l’agente; nessun dato reale nei sorgenti. 46 test Python locali passati, verifica visiva con dati simulati. Distribuire latest commit su Render per i nuovi invii; le email già consegnate conservano il formato precedente. Nessun reinvio eseguito.
 
+
+
+## 17 ottobre 2026 — Secondo form
+17 ottobre 2026 — Secondo percorso autorizzato: **Ristrutturare o vendere così?**, con foto, prezzo ipotizzato, superficie, zona e tempi. Confronto qualitativo di tre scenari, prezzo del proprietario non validato e consulenza gratuita facoltativa. Backend, pagina, notifiche e agente Gmail aggiornati; 59 test Python e 14 JavaScript locali passati. **Da attivare:** eseguire supabase/002_secondo_form.sql, impostare RENOVATION_FORM_ENABLED=true e Manual Deploy latest commit su Render. Nessuna prova reale del secondo form ancora eseguita. [Guida e task](40_Form_ristrutturare_o_vendere.md).
+

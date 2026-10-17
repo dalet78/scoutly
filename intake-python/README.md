@@ -131,3 +131,11 @@ Non è presente un worker autonomo di recupero delle notifiche pending/unknown: 
 Dopo **Manual Deploy → Deploy latest commit** su Render, aprire `/test#CODICE_RICHIESTA`, inserire SCOUTLY_TEST_TOKEN nel campo password e usare **Inoltra questa richiesta alla casella operativa**. Questo pulsante usa POST `/notify-request`, richiede la chiave privata e non accetta destinatari dal browser. Recupera il materiale da Supabase e usa lo stesso flag di deduplicazione del flusso pubblico. Non occorre ricaricare foto o creare una nuova richiesta. Nessuna nuova variabile né migrazione SQL sono necessarie se Resend e la casella operativa sono già configurati.
 
 La prima richiesta di dimostrazione e il suo eventuale permesso particolare sono registrati soltanto nella chat/automazione privata, non in GitHub. Tutti gli altri test tecnici restano esclusi dall'automazione. Verificare profilo Gmail esatto e destinatario prima di qualsiasi risposta.
+
+
+## Secondo percorso: ristrutturare o vendere così?
+Il nuovo form richiede prezzo ipotizzato, zona, superficie e tempi oltre a descrizione e almeno una foto. Il prezzo resta una dichiarazione del proprietario; l’agente produce un confronto qualitativo, non una stima di mercato. La consulenza gratuita è facoltativa.
+
+Prima eseguire una volta supabase/002_secondo_form.sql nel progetto Supabase, poi impostare RENOVATION_FORM_ENABLED=true su Render e distribuire latest commit. Nessuna cancellazione o modifica a RLS. La configurazione pubblica elenca il secondo percorso solo se la variabile è attiva; il nuovo modulo non invia a backend precedenti. Nessun nuovo segreto necessario. Form, versione e workflow devono corrispondere alla medesima riga di form_routes.py. Il verificatore mantiene HTTPS e usa il CA bundle certifi.
+
+Il primo form mantiene hash delle richieste e struttura firmata precedente. Registro pubblico: config/forms.json; istruzioni e attivazione: docs/project/40_Form_ristrutturare_o_vendere.md. Nessun invio reale del secondo percorso eseguito nella verifica locale.

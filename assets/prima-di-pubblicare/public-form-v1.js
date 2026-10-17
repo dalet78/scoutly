@@ -4,7 +4,10 @@ const API='https://scoutly-k76y.onrender.com';
 const form=document.getElementById('request'),picker=document.getElementById('photos'),previews=document.getElementById('photo-previews');
 const error=document.getElementById('upload-error'),send=document.getElementById('send'),summary=document.getElementById('photo-summary');
 const connection=document.getElementById('connection-status'),reconnect=document.getElementById('reconnect');
-const storageKey='scoutly-public-prima-di-pubblicare-v1';
+const renovation=form.dataset?.formId==='ristrutturare-o-vendere';
+const formId=renovation?'ristrutturare-o-vendere':'prima-di-pubblicare';
+const storageKey='scoutly-public-'+formId+'-v1';
+const submitLabel=renovation?'Ricevi il confronto via email →':'Invia descrizione e foto →';
 let photos=[],submitting=false,urls=[],gate=null,pending=null;
 send.disabled=true;picker.removeAttribute('name');
 function fileList(files){const transfer=new DataTransfer();for(const file of files)transfer.items.add(file);return transfer.files;}
@@ -31,6 +34,7 @@ async function connect(){
   const response=await fetch(API+'/public/config',{credentials:'omit',redirect:'error',signal:controller.signal});
   if(!response.ok)throw new Error();const data=await response.json();
   if(data.protocol!==1||typeof data.challenge!=='string'||data.max_photos!==8||data.max_bytes!==8000000)throw new Error();
+  if(renovation&&!data.supported_forms?.some(item=>item.form_id===formId&&item.form_version===1))throw new Error();
   gate={token:data.challenge,receivedAt:Date.now(),readyAt:Date.now()+3100};
   connection.textContent='Puoi inviare la richiesta. Riceverai un codice di conferma dopo il salvataggio.';
   send.disabled=false;
@@ -48,7 +52,9 @@ async function fingerprint(payload){
 function persist(value){sessionStorage.setItem(storageKey,JSON.stringify(value));pending=value;}
 form.addEventListener('submit',async event=>{
  event.preventDefault();if(submitting)return;
- if(!form.reportValidity())return;const message=validatePhotos(photos);if(message){error.textContent=message;return;}
+ if(!form.reportValidity())return;
+ if(renovation&&!photos.length){error.textContent='Carica almeno una foto per ricevere il confronto.';return;}
+ const message=validatePhotos(photos);if(message){error.textContent=message;return;}
  submitting=true;send.disabled=true;reconnect.disabled=true;picker.disabled=true;error.textContent='';send.textContent='Salvataggio in corso…';
  const controller=new AbortController();let timer;
  try {
@@ -56,10 +62,13 @@ form.addEventListener('submit',async event=>{
   if(!gate)throw new SubmissionError('Collegamento non disponibile. Riprova più tardi.',false);
   send.disabled=true;reconnect.disabled=true;
   const data=new FormData(form);
-  const payload={idempotency_key:pending?.id||crypto.randomUUID(),form_id:'prima-di-pubblicare',form_version:2,workflow_id:'annuncio-da-foto-e-descrizione',
+  const payload={idempotency_key:pending?.id||crypto.randomUUID(),form_id:formId,form_version:renovation?1:2,workflow_id:renovation?'confronto-ristrutturare-o-vendere':'annuncio-da-foto-e-descrizione',
    email:String(data.get('email')||'').trim(),name:String(data.get('name')||'').trim()||null,phone:String(data.get('phone')||'').trim()||null,
    description:String(data.get('description')||'').trim(),city:data.get('city'),intent:data.get('intent'),role:data.get('role'),publication:data.get('publication'),
    service_requested:document.getElementById('service-request').checked,consultation_requested:document.getElementById('consultation').checked};
+  if(renovation)Object.assign(payload,{
+   target_price:Number(data.get('target_price')),area_sqm:Number(data.get('area_sqm')),
+   zone:String(data.get('zone')||'').trim(),timeframe:data.get('timeframe')});
   const signature=await fingerprint(payload);
   if(pending?.uncertain&&pending.signature!==signature)throw new SubmissionError('Il tentativo precedente ha un esito da verificare. Mantieni gli stessi dati e foto prima di riprovare con il suo codice.');
   await new Promise(resolve=>setTimeout(resolve,Math.max(0,gate.readyAt-Date.now())));
@@ -68,14 +77,14 @@ form.addEventListener('submit',async event=>{
   timer=setTimeout(()=>controller.abort(),90000);
   const receipt=await submitPublic({endpoint:API+'/public/requests',payload,photos,website:String(data.get('website')||''),challenge:gate.token,signal:controller.signal});
   persist({id:receipt.request_id,confirmed:true});
-  location.assign('richiesta-inviata.html#'+receipt.request_id);
+  location.assign((renovation?'richiesta-ristrutturare-inviata.html':'richiesta-inviata.html')+'#'+receipt.request_id);
  } catch(reason) {
   if(reason instanceof SubmissionError&&!reason.ambiguous&&pending)persist({...pending,uncertain:false});
   error.textContent=(reason instanceof SubmissionError?reason.message:'Invio non confermato. Il salvataggio potrebbe essere riuscito.')+
    (pending?.id?' Codice da conservare: '+pending.id+'. Nessun nuovo invio automatico.':'');
   gate=null;
  } finally {
-  clearTimeout(timer);submitting=false;picker.disabled=false;send.disabled=false;reconnect.disabled=false;send.textContent='Invia descrizione e foto →';
+  clearTimeout(timer);submitting=false;picker.disabled=false;send.disabled=false;reconnect.disabled=false;send.textContent=submitLabel;
  }
 });
 try {
@@ -86,4 +95,4 @@ try {
  if(typeof DataTransfer!=='function'||!crypto.randomUUID||!crypto.subtle)throw new Error();
  render();connect();
 } catch {send.disabled=true;picker.disabled=true;connection.textContent='Per inviare usa un browser aggiornato con memoria di sessione disponibile.';}
-window.addEventListener('pageshow',()=>{submitting=false;send.textContent='Invia descrizione e foto →';});
+window.addEventListener('pageshow',()=>{submitting=false;send.textContent=submitLabel;});

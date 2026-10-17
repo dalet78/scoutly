@@ -26,21 +26,22 @@ for(const variant of ['network','malformed','wrong-code','error'])test('never re
  }}),SubmissionError);
  assert.equal(calls,1);
 });
-function ui(sender){
+function ui(sender,options={}){
  const elements=Object.fromEntries(['request','photos','photo-previews','upload-error','send','photo-summary','connection-status','reconnect','service-request','consultation'].map(name=>[name,{
-  textContent:'',files:[],checked:name==='service-request',removeAttribute(){},replaceChildren(){},
+  dataset:options.renovation?{formId:'ristrutturare-o-vendere'}:{},append(){},textContent:'',files:[],checked:name==='service-request',removeAttribute(){},replaceChildren(){},
   addEventListener(event,handler){this[event]=handler;},reportValidity(){return true;}
  }]));
  elements.request.fields={email:'owner@example.com',name:'',phone:'',description:'Descrizione simulata da almeno venti caratteri.',city:'Milano Comune',intent:'Vendere',role:'Proprietario',publication:'Bozza in preparazione',website:''};
+ if(options.renovation)Object.assign(elements.request.fields,{target_price:'300000',area_sqm:'75',zone:'Zona simulata',timeframe:'Sto valutando'});
  const store=new Map(),redirects=[];
  class DataTransfer {items={add:()=>{}};files=[];}
  class FakeFormData{constructor(form){this.form=form;}get(key){return this.form.fields[key];}}
- const context={document:{getElementById:key=>elements[key]},window:{addEventListener(){}},
+ const context={document:{getElementById:key=>elements[key],createElement:()=>({addEventListener(){},append(){}})},window:{addEventListener(){}},
   sessionStorage:{getItem:key=>store.get(key),setItem:(key,value)=>store.set(key,value),removeItem:key=>store.delete(key)},
   crypto:{randomUUID:()=>id,subtle:webcrypto.subtle},DataTransfer,FormData:FakeFormData,TextEncoder,
   AbortController,Date,URL,location:{assign:url=>redirects.push(url)},
   setTimeout:(fn,delay)=>{if(delay<5000)queueMicrotask(fn);return 1;},clearTimeout(){},
-  fetch:async()=>({ok:true,json:async()=>({protocol:1,challenge:'signed-public-challenge',max_photos:8,max_bytes:8000000})}),
+  fetch:async()=>({ok:true,json:async()=>({protocol:1,challenge:'signed-public-challenge',max_photos:8,max_bytes:8000000,supported_forms:options.supported===false?[]:[{form_id:'ristrutturare-o-vendere',form_version:1}]})}),
   validatePhotos:()=>'',submitPublic:sender,SubmissionError};
  const source=readFileSync(new URL('../assets/prima-di-pubblicare/public-form-v1.js',import.meta.url),'utf8').replace(/^import .+;\n/gm,'');
  runInNewContext(source,context);
@@ -61,4 +62,26 @@ test('ambiguous submission keeps one code and prevents changed material from bei
  elements.request.fields.description+=' Modificata.';
  await elements.request.submit({preventDefault(){}});
  assert.equal(calls,1);assert.match(elements['upload-error'].textContent,/stessi dati/);
+});
+
+test('second form carries its own route, price and receipt without leaking contact into session',async()=>{
+ let captured;
+ const {elements,store,redirects}=ui(async options=>{captured=options.payload;return {status:'received',request_id:id};},{renovation:true});
+ await new Promise(setImmediate);
+ elements.photos.files=[new File(['synthetic'],'simulata.png',{type:'image/png'})];elements.photos.change();
+ await elements.request.submit({preventDefault(){}});
+ assert.equal(captured.form_id,'ristrutturare-o-vendere');assert.equal(captured.form_version,1);
+ assert.equal(captured.target_price,300000);assert.equal(captured.area_sqm,75);
+ assert.deepEqual(redirects,['richiesta-ristrutturare-inviata.html#'+id]);
+ assert.ok(store.has('scoutly-public-ristrutturare-o-vendere-v1'));
+ assert.doesNotMatch([...store.values()][0],/owner@example|Zona simulata|300000/);
+});
+test('second form refuses to submit against an older backend or without a photo',async()=>{
+ for(const supported of [true,false]){
+  let calls=0;const {elements}=ui(async()=>{calls++;},{renovation:true,supported});
+  await new Promise(setImmediate);
+  if(!supported){elements.photos.files=[new File(['synthetic'],'simulata.png',{type:'image/png'})];elements.photos.change();}
+  await elements.request.submit({preventDefault(){}});
+  assert.equal(calls,0);
+ }
 });

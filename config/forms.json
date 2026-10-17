@@ -17,6 +17,22 @@
         "osservazione_motivata_se_presente",
         "invito_consulenza_facoltativo"
       ]
+    },
+    {
+      "form_id": "ristrutturare-o-vendere",
+      "form_name": "Ristrutturare o vendere così?",
+      "form_version": "1",
+      "path": "tools/ristrutturare-o-vendere.html",
+      "workflow_id": "confronto-ristrutturare-o-vendere",
+      "email_subject": "[Scoutly][ristrutturare-o-vendere] Ristrutturare o vendere così? — Richiesta orientamento",
+      "status": "test",
+      "output": [
+        "confronto_qualitativo_tre_scenari",
+        "prezzo_proprietario_indicativo_non_validato",
+        "informazioni_da_confermare",
+        "osservazioni_foto_se_analizzate",
+        "consulenza_gratuita_facoltativa"
+      ]
     }
   ],
   "routing_policy": {

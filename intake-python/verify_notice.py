@@ -2,6 +2,9 @@
 import json
 import sys
 import urllib.request
+import ssl
+import certifi
+from form_routes import ROUTES
 
 ENDPOINT = 'https://scoutly-k76y.onrender.com/notifications/verify'
 
@@ -19,13 +22,16 @@ def verify_remote(signed, opener=None):
         raise ValueError('Notifica troppo grande')
     request = urllib.request.Request(ENDPOINT, data=data, headers={'Content-Type': 'application/json'}, method='POST')
     if opener is None:
-        opener = urllib.request.build_opener(NoRedirect())
+        opener = urllib.request.build_opener(NoRedirect(), urllib.request.HTTPSHandler(
+            context=ssl.create_default_context(cafile=certifi.where())))
     with opener.open(request, timeout=90) as response:
         result = json.loads(response.read(4096))
-    if (result.get('valid') is not True or result.get('request_id') != signed['envelope'].get('request_id')
-            or result.get('form_id') != 'prima-di-pubblicare' or result.get('form_version') != 2):
+    form_id = signed['envelope'].get('form_id')
+    route = ROUTES.get(form_id)
+    if (not route or result.get('valid') is not True or result.get('request_id') != signed['envelope'].get('request_id')
+            or result.get('form_id') != form_id or result.get('form_version') != route['form_version']):
         raise ValueError('Firma o identità notifica non verificata')
-    return {'verified': True, 'request_id': result['request_id'], 'form_id': result['form_id'], 'form_version': 2}
+    return {'verified': True, 'request_id': result['request_id'], 'form_id': result['form_id'], 'form_version': result['form_version']}
 
 
 if __name__ == '__main__':

@@ -15,10 +15,11 @@ from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import RequestValidationError
 from PIL import Image, UnidentifiedImageError
-from pydantic import BaseModel, ConfigDict, EmailStr, Field, TypeAdapter, ValidationError
+from pydantic import BaseModel, ConfigDict, EmailStr, Field, TypeAdapter, ValidationError, model_validator
 from starlette.responses import JSONResponse, Response
 from public_gate import ORIGIN, MAX_RECORDS, PublicGate, challenge, enabled
 from notices import SignedNotice, notify_saved, verify
+from form_routes import ROUTES, check_route
 
 MAX_BYTES = 8_000_000
 Image.MAX_IMAGE_PIXELS = 25_000_000
@@ -66,9 +67,9 @@ def send_test_email(request_id):
 class Payload(BaseModel):
     model_config = ConfigDict(extra='forbid', str_strip_whitespace=True)
     idempotency_key: UUID
-    form_id: Literal['prima-di-pubblicare']
-    form_version: Literal[2]
-    workflow_id: Literal['annuncio-da-foto-e-descrizione']
+    form_id: Literal['prima-di-pubblicare', 'ristrutturare-o-vendere']
+    form_version: Literal[1, 2]
+    workflow_id: Literal['annuncio-da-foto-e-descrizione', 'confronto-ristrutturare-o-vendere']
     email: EmailStr
     name: str | None = Field(default=None, max_length=80)
     phone: str | None = Field(default=None, max_length=30)
@@ -79,6 +80,21 @@ class Payload(BaseModel):
     publication: Literal['Annuncio non ancora preparato', 'Bozza in preparazione', 'Annuncio già online']
     service_requested: Literal[True]
     consultation_requested: bool = False
+    target_price: int | None = Field(default=None, strict=True, gt=0, le=100_000_000)
+    area_sqm: float | None = Field(default=None, gt=0, le=5000)
+    zone: str | None = Field(default=None, min_length=2, max_length=120)
+    timeframe: Literal['Entro 3 mesi', 'Tra 3 e 6 mesi', 'Oltre 6 mesi', 'Sto valutando'] | None = None
+
+    @model_validator(mode='after')
+    def route_fields(self):
+        check_route(self.form_id, self.form_version, self.workflow_id)
+        fields = (self.target_price, self.area_sqm, self.zone, self.timeframe)
+        if self.form_id == 'ristrutturare-o-vendere':
+            if any(value is None for value in fields) or self.intent != 'Vendere':
+                raise ValueError('Servono prezzo ipotizzato, metratura, zona e tempi per una vendita')
+        elif any(value is not None for value in fields):
+            raise ValueError('Campi non previsti per questo form')
+        return self
 
 
 class SupabaseStore:
@@ -258,6 +274,10 @@ def check_photo(data, declared_type):
 def accept(payload, photos, store, public=False):
     key = str(payload.idempotency_key)
     values = payload.model_dump(mode='json')
+    if payload.form_id == 'prima-di-pubblicare':
+        # Mantiene invariati gli hash delle richieste già ricevute con il primo form.
+        for field in ('target_price', 'area_sqm', 'zone', 'timeframe'):
+            values.pop(field)
     fingerprint = hashlib.sha256(json.dumps({
         'payload': values, 'photos': [hashlib.sha256(data).hexdigest() for data, _, _ in photos]
     }, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
@@ -278,6 +298,8 @@ def accept(payload, photos, store, public=False):
            'name', 'phone', 'description', 'service_requested', 'consultation_requested')}
     row.update(id=key, idempotency_key=key, payload_hash=fingerprint,
                answers={k: values[k] for k in ('city', 'intent', 'role', 'publication')})
+    if payload.form_id == 'ristrutturare-o-vendere':
+        row['answers'].update({k: values[k] for k in ('target_price', 'area_sqm', 'zone', 'timeframe')})
     if public:
         row['answers']['email_notice'] = {'status': 'pending'}
     if not store.insert(row):
@@ -349,7 +371,8 @@ def create_app(store_factory=SupabaseStore, email_sender=send_test_email, notice
     def health():
         return {'status': 'ok', 'mode': 'limited-public-test' if enabled() else 'private-test', 'email_enabled': False,
                 'email_test_configured': bool(os.environ.get('RESEND_API_KEY') and os.environ.get('SCOUTLY_TEST_EMAIL')),
-                'public_intake_enabled': enabled(), 'public_protocol': 1, 'gmail_notice_protocol': 1}
+                'public_intake_enabled': enabled(), 'public_protocol': 1, 'gmail_notice_protocol': 1,
+                'renovation_form_enabled': os.environ.get('RENOVATION_FORM_ENABLED', '').lower() == 'true'}
 
     @app.post('/notifications/verify')
     def verify_notification(body: SignedNotice):
@@ -382,6 +405,9 @@ def create_app(store_factory=SupabaseStore, email_sender=send_test_email, notice
         if not enabled():
             raise HTTPException(503, 'Invio temporaneamente non disponibile. Riprova più tardi.')
         return JSONResponse({'protocol': 1, 'challenge': challenge(), 'min_age_seconds': 3,
+                             'supported_forms': [dict(form_id=key, form_version=value['form_version'])
+                                 for key, value in ROUTES.items() if key == 'prima-di-pubblicare'
+                                 or os.environ.get('RENOVATION_FORM_ENABLED', '').lower() == 'true'],
                              'max_photos': 8, 'max_bytes': MAX_BYTES}, headers={'Cache-Control': 'no-store'})
 
     @app.post('/test-email')
@@ -429,6 +455,11 @@ def create_app(store_factory=SupabaseStore, email_sender=send_test_email, notice
             parsed = Payload.model_validate_json(payload)
         except ValidationError:
             raise HTTPException(422, 'Dati incompleti o percorso form non riconosciuto.') from None
+        if parsed.form_id == 'ristrutturare-o-vendere':
+            if os.environ.get('RENOVATION_FORM_ENABLED', '').lower() != 'true':
+                raise HTTPException(503, 'Questo percorso è in preparazione. Riprova più tardi.')
+            if not photos:
+                raise HTTPException(422, 'Carica almeno una foto per questo percorso.')
         if len(photos) > 8:
             raise HTTPException(422, 'Massimo otto foto.')
         validated = []
