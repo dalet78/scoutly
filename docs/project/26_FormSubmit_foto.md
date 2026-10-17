@@ -15,3 +15,7 @@ Riferimento: https://formsubmit.co/documentation
 
 ## Destinatario temporaneo
 Il fondatore conferma espressamente david.perugia78@gmail.com (correzione del refuso gail.com), da usare nel form mentre la casella Scoutly è in creazione. Il destinatario cambia anche nell'azione FormSubmit. Serve attivare questa casella; l'agente pianificato conserva il blocco precedente e resta in pausa, da aggiornare dopo la prova del formato ricevuto. Gli asset upload hanno nomi propri per evitare incompatibilità con le versioni checklist/mailto rimaste nella cache.
+
+
+## Verifica eseguita
+CI e Pages riusciti. Verifica browser: aggiunta secondo campo foto, selezione effettiva di PNG sintetico con anteprima e conteggio, compilazione e invio POST con allegato. FormSubmit ha mostrato “The form was submitted successfully”. Nessuna foto o informazione immobiliare reale inviata. La ricerca Gmail del messaggio di prova non ha ancora trovato risultati: consegna in casella, eventuale attivazione e ricezione dell'allegato non ancora confermate. L'agente automatico rimane in pausa. Asset upload separati per evitare la vecchia app da cache.
