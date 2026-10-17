@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {submitRequest} from '../assets/prima-di-pubblicare/submit-request.js';
+import {submitRequest} from '../assets/prima-di-pubblicare/submit-request-v2.js';
 test('conferma solo su risposta positiva esplicita, preservando body multipart',async()=>{
  const body={fake:'multipart-fixture'};
  for(const success of [true,'true'])await submitRequest(body,{fetchImpl:async(url,options)=>{assert.equal(url,'https://formsubmit.co/ajax/david.perugia78@gmail.com');assert.equal(options.body,body);assert.equal(options.headers.Accept,'application/json');assert.equal(options.headers['Content-Type'],undefined);return {ok:true,json:async()=>({success})};}});
@@ -11,3 +11,5 @@ test('rifiuta errore HTTP, risultato negativo o inatteso',async()=>{
 test('non ritenta automaticamente quando la rete fallisce',async()=>{
  let calls=0;await assert.rejects(submitRequest({}, {fetchImpl:async()=>{calls++;throw Error('timeout');}}));assert.equal(calls,1);
 });
+
+test('identifica la casella non attivata senza confermare invio',async()=>{await assert.rejects(submitRequest({}, {fetchImpl:async()=>({ok:true,json:async()=>({success:'false',message:'This form needs Activation.'})})}),error=>error.code==='activation_required');});
