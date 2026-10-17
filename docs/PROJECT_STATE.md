@@ -1,3 +1,5 @@
+> 17 ottobre 2026 — Dopo l’invio FormSubmit torna alla pagina Scoutly tools/richiesta-inviata.html, con pulsante Torna a Scoutly e link al form. Nessuna nuova email di prova inviata.
+
 > 17 ottobre 2026 — Aggiunto telefono facoltativo al form Prima di pubblicare: inviato con il campo phone a FormSubmit; richiesta consulenza distinta, email sufficiente per ricevere la bozza. Nessuna telefonata o messaggio di prova inviato.
 
 > 17 ottobre 2026 — Agente email aggiornato su autorizzazione esplicita del fondatore: ACTIVE, ogni 30 minuti, casella temporanea david.perugia78@gmail.com. Form prima-di-pubblicare v2 riconosciuto; notifiche FormSubmit con Reply-To verificato e controllo duplicati. Posta personale estranea e test tecnici esclusi. Nessuna richiesta trovata nell’ultima ricerca; prima risposta reale e primo ciclo pianificato non ancora verificati. Le indicazioni precedenti di pausa/guardia su scoutlyhome sono superate.
