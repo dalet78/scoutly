@@ -1,0 +1,3 @@
+# Invio nativo verificabile con allegati
+
+17 ottobre 2026. Il test ricevuto via percorso AJAX non contiene l'allegato: il successo testuale non basta. Ripristinato POST multipart nativo documentato dal provider per file, con selezione multipla convertita in singoli campi file. Conservato _next verso la conferma Scoutly. Prima del POST l'URL viene normalizzato al percorso pubblico del modulo (senza query) e il referrer trasmette quel percorso attivato, evitando la diversa origine root che richiedeva un'altra attivazione. Nessun dato proprietario è messo nell'URL. Antispam del provider mantenuto. Prova con le otto foto e verifica effettiva allegati da completare.
