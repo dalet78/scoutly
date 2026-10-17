@@ -18,6 +18,7 @@ from PIL import Image, UnidentifiedImageError
 from pydantic import BaseModel, ConfigDict, EmailStr, Field, TypeAdapter, ValidationError
 from starlette.responses import JSONResponse, Response
 from public_gate import ORIGIN, MAX_RECORDS, PublicGate, challenge, enabled
+from notices import SignedNotice, notify_saved, verify
 
 MAX_BYTES = 8_000_000
 Image.MAX_IMAGE_PIXELS = 25_000_000
@@ -152,6 +153,55 @@ class SupabaseStore:
         if len(response.json()) != 1:
             raise RuntimeError('Registrazione esito non confermata')
 
+    def notice_request(self, key):
+        response = self.client.get('/rest/v1/scoutly_requests', params={
+            'id': f'eq.{key}', 'select': 'id,status,form_id,form_version,workflow_id,email,name,phone,description,answers,service_requested,consultation_requested', 'limit': '1'})
+        response.raise_for_status()
+        rows = response.json()
+        return rows[0] if rows else None
+
+    def notice_photos(self, key):
+        response = self.client.get('/rest/v1/scoutly_photos', params={
+            'request_id': f'eq.{key}', 'select': 'position,object_path,content_type,size_bytes', 'order': 'position.asc'})
+        response.raise_for_status()
+        rows = response.json()
+        if len(rows) > 8 or len({r['position'] for r in rows}) != len(rows):
+            raise RuntimeError('Elenco foto da verificare')
+        files, total = [], 0
+        for row in rows:
+            extension = {'image/png': 'png', 'image/jpeg': 'jpg'}.get(row['content_type'])
+            if extension is None or not 1 <= row['position'] <= 8 or row['object_path'] != f"{key}/{row['position']}.{extension}":
+                raise RuntimeError('Percorso foto da verificare')
+            data = bytearray()
+            with self.client.stream('GET', '/storage/v1/object/authenticated/scoutly-photos/' + row['object_path']) as download:
+                download.raise_for_status()
+                for chunk in download.iter_bytes():
+                    data.extend(chunk)
+                    if total + len(data) > MAX_BYTES:
+                        raise RuntimeError('Dimensioni foto da verificare')
+            if len(data) != row['size_bytes']:
+                raise RuntimeError('Foto incompleta')
+            check_photo(data, row['content_type'])
+            total += len(data)
+            files.append((row['position'], row['content_type'], bytes(data)))
+        return files
+
+    def claim_notice(self, key, answers, missing):
+        condition = {'answers->email_notice': 'is.null'} if missing else {'answers->email_notice->>status': 'eq.pending'}
+        response = self.client.patch('/rest/v1/scoutly_requests', params={
+            'id': f'eq.{key}', 'status': 'eq.received', **condition},
+            headers={'Prefer': 'return=representation'}, json={'answers': answers})
+        response.raise_for_status()
+        return len(response.json()) == 1
+
+    def record_notice(self, key, answers):
+        response = self.client.patch('/rest/v1/scoutly_requests', params={
+            'id': f'eq.{key}', 'answers->email_notice->>status': 'eq.sending'},
+            headers={'Prefer': 'return=representation'}, json={'answers': answers})
+        response.raise_for_status()
+        if len(response.json()) != 1:
+            raise RuntimeError('Esito notifica non registrato')
+
 
 def accept_test_email(key, store, sender):
     row = store.mail_request(key)
@@ -228,6 +278,8 @@ def accept(payload, photos, store, public=False):
            'name', 'phone', 'description', 'service_requested', 'consultation_requested')}
     row.update(id=key, idempotency_key=key, payload_hash=fingerprint,
                answers={k: values[k] for k in ('city', 'intent', 'role', 'publication')})
+    if public:
+        row['answers']['email_notice'] = {'status': 'pending'}
     if not store.insert(row):
         previous = store.lookup(key)
         if not previous:
@@ -249,14 +301,16 @@ class TestGate:
         self.app = app
 
     async def __call__(self, scope, receive, send):
-        if scope['type'] != 'http' or scope['path'] not in ('/requests', '/test-email'):
+        paths = ('/requests', '/test-email', '/notify-request', '/notifications/verify')
+        if scope['type'] != 'http' or scope['path'] not in paths:
             return await self.app(scope, receive, send)
         token = os.environ.get('SCOUTLY_TEST_TOKEN', '')
         headers = dict(scope['headers'])
         supplied = headers.get(b'x-scoutly-test-token', b'').decode('latin-1')
-        if len(token) < 32:
+        public_verify = scope['path'] == '/notifications/verify'
+        if not public_verify and len(token) < 32:
             return await JSONResponse({'detail': 'Ricevitore di prova non configurato.'}, 503)(scope, receive, send)
-        if not secrets.compare_digest(token.encode(), supplied.encode()):
+        if not public_verify and not secrets.compare_digest(token.encode(), supplied.encode()):
             return await JSONResponse({'detail': 'Accesso riservato alle prove.'}, 401)(scope, receive, send)
         body = bytearray()
         while True:
@@ -264,7 +318,7 @@ class TestGate:
             if message['type'] == 'http.disconnect':
                 return
             body.extend(message.get('body', b''))
-            limit = 4000 if scope['path'] == '/test-email' else MAX_BYTES + 100_000
+            limit = 32_000 if public_verify else (MAX_BYTES + 100_000 if scope['path'] == '/requests' else 4000)
             if len(body) > limit:
                 return await JSONResponse({'detail': 'Richiesta troppo grande.'}, 413)(scope, receive, send)
             if not message.get('more_body', False):
@@ -280,7 +334,7 @@ class TestGate:
         await self.app(scope, bounded_receive, send)
 
 
-def create_app(store_factory=SupabaseStore, email_sender=send_test_email):
+def create_app(store_factory=SupabaseStore, email_sender=send_test_email, notice_sender=None):
     app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
     app.add_middleware(TestGate)
     app.add_middleware(PublicGate)
@@ -295,7 +349,31 @@ def create_app(store_factory=SupabaseStore, email_sender=send_test_email):
     def health():
         return {'status': 'ok', 'mode': 'limited-public-test' if enabled() else 'private-test', 'email_enabled': False,
                 'email_test_configured': bool(os.environ.get('RESEND_API_KEY') and os.environ.get('SCOUTLY_TEST_EMAIL')),
-                'public_intake_enabled': enabled(), 'public_protocol': 1}
+                'public_intake_enabled': enabled(), 'public_protocol': 1, 'gmail_notice_protocol': 1}
+
+    @app.post('/notifications/verify')
+    def verify_notification(body: SignedNotice):
+        valid = verify(body)
+        result = {'valid': valid}
+        if valid:
+            result.update(request_id=str(body.envelope.request_id), form_id=body.envelope.form_id,
+                          form_version=body.envelope.form_version)
+        return JSONResponse(result, headers={'Cache-Control': 'no-store'})
+
+    def emit_notice(key):
+        api_key, recipient = mail_configuration()
+        store = store_factory()
+        try:
+            kwargs = {} if notice_sender is None else {'sender': notice_sender}
+            return notify_saved(key, store, api_key, recipient, **kwargs)
+        except (httpx.HTTPError, RuntimeError, ValueError, KeyError):
+            raise HTTPException(503, 'Notifica da verificare in Supabase/Resend. Nessun retry automatico.') from None
+        finally:
+            store.close()
+
+    @app.post('/notify-request')
+    def notify_request(body: MailTestRequest):
+        return emit_notice(str(body.request_id))
 
     @app.get('/public/config')
     def public_config(request: Request):
@@ -338,7 +416,13 @@ def create_app(store_factory=SupabaseStore, email_sender=send_test_email):
                        photos: list[UploadFile] = File(default=[]), website: str = Form(default='', max_length=80)):
         if website:
             raise HTTPException(422, 'Controllo invio non superato. Aggiorna il modulo e riprova.')
-        return save_submission(payload, photos, True)
+        receipt = save_submission(payload, photos, True)
+        try:
+            receipt['email_notice'] = emit_notice(receipt['request_id'])['status']
+        except HTTPException:
+            # La richiesta salvata resta una ricevuta valida anche se la notifica fallisce.
+            receipt['email_notice'] = 'review'
+        return receipt
 
     def save_submission(payload, photos, public):
         try:

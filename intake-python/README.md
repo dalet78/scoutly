@@ -1,6 +1,6 @@
 # Ricevitore Python — prova privata
 
-Questo componente salva testo e foto su Supabase prima di confermare la ricezione. Non invia risposte automatiche, non esegue AI e non è collegato al form pubblico. È disponibile soltanto un invio email manuale di prova al fondatore. È separato dal precedente backend Node/SQLite della PR #1: nessuna migrazione automatica di quel backend.
+Questo componente salva testo e foto su Supabase e inoltra le richieste pubbliche alla casella operativa tramite Resend. L’agente Gmail analizza le notifiche verificate e risponde tramite Gmail ogni 30 minuti. Il backend non esegue AI né risponde direttamente al proprietario. Le sezioni di prova private restano disponibili. È separato dal precedente backend Node/SQLite della PR #1: nessuna migrazione automatica di quel backend.
 
 ## Configurare Render
 
@@ -63,7 +63,7 @@ Python 3.14.6; creare un ambiente virtuale, installare `requirements-dev.txt`, p
 - L'accesso è riservato tramite chiave: non distribuirla nel browser. Prima di collegare la landing servono antispam e limiti di frequenza per un endpoint pubblico, oltre a CORS per l'origine concordata.
 - Massimo 8 immagini JPG/PNG, 8 MB totali; formato reale controllato con Pillow e dimensioni immagine limitate. I file originali restano privati; possono contenere metadati. Nessuna analisi automatica è attivata.
 - Scritture tra database e Storage non sono atomiche. Gli errori lasciano la richiesta `uploading`, con eventuali file parziali: va verificata e ripulita manualmente prima di un nuovo tentativo. Non cancellare righe senza controllare/eliminare anche i relativi oggetti Storage. Nessun job di pulizia o conservazione è ancora attivo.
-- Nessuna coda email o AI; il monitor Gmail esistente non legge questo archivio. Va progettato il passaggio successivo, senza confondere la ricevuta con la risposta all'utente.
+- Nessun processo AI o coda di recupero sul server: il monitor Gmail riceve il materiale tramite notifiche email, senza leggere Supabase. La ricevuta di salvataggio non attesta la risposta al proprietario.
 - Render Free si sospende dopo inattività; i file locali non sono persistenti. Supabase Free può essere sospeso per inattività. Nessuna garanzia di disponibilità per pilot reali.
 
 Documentazione: [Render/FastAPI](https://render.com/docs/deploy-fastapi), [piani gratuiti](https://render.com/docs/free), [chiavi Supabase](https://supabase.com/docs/guides/getting-started/api-keys).
@@ -109,6 +109,25 @@ Questi sono controlli di base per poche prove: **origine/CORS e token pubblico n
 
 Il browser conserva in sessionStorage soltanto codice richiesta, hash del materiale e stato, non testo/recapiti/foto. Tentativi con esito incerto mantengono il codice e non permettono di cambiare materiale e reinviare alla cieca. Nessun retry automatico; foto e testo restano nel modulo in caso di errore. La navigazione alla pagina di conferma segue solo una ricevuta received con il codice corretto. Aprire direttamente la pagina di conferma non dichiara una richiesta salvata.
 
-**Il salvataggio pubblico non invia ancora notifiche né risposte email.** L'operatore verifica le nuove richieste in Supabase; il monitor Gmail esistente non legge questo archivio. Il pulsante email riservato resta limitato alle richieste sintetiche. Collegamento AI, coda notifiche/risposte, dominio mittente verificato e gestione richieste reali sono task successivi.
+**Il salvataggio pubblico inoltra una notifica alla casella operativa.** L’analisi e la risposta appartengono all’agente Gmail, previa verifica della notifica. Il pulsante tecnico precedente resta limitato alle richieste sintetiche; il nuovo pulsante di inoltro recupera una richiesta ricevuta usando il suo codice. Distribuire questa revisione su Render prima di provare il flusso completo; vedere la sezione seguente.
 
 Prova live dopo il deploy: compilare la landing con TEST TECNICO SCOUTLY e dati simulati, caricare immagini sintetiche, inviare una volta; verificare codice sul sito, stato received e file privati in Supabase. Controllare anche un errore di rete senza perdita del modulo. Non chiamare questa prova completa finché questi passaggi non sono realmente verificati.
+
+
+## Flusso scelto dal fondatore: form → Gmail → agente → risposta Gmail
+
+Questo è il flusso corrente; supera la proposta di eseguire l'AI su Render. **Nessuna OPENAI_API_KEY necessaria o usata da questo backend.** Dopo aver completato il salvataggio di una richiesta pubblica, il server prepara una notifica con testo, recapiti, metadati del form e foto allegate e la inoltra tramite Resend alla casella operativa configurata in SCOUTLY_TEST_EMAIL. Il Reply-To contiene l'email strutturata del richiedente. L'oggetto identifica il form: `[Scoutly][prima-di-pubblicare] Prima di pubblicare — Richiesta bozza annuncio`. Il backend non risponde al proprietario.
+
+L'automazione Gmail esistente è stata aggiornata mantenendo il controllo ogni 30 minuti: legge le notifiche pertinenti, verifica provenienza/metadati/firma e Reply-To, analizza il materiale accessibile e risponde tramite il connettore Gmail. Verifica effettiva della prima risposta del nuovo flusso ancora da fare. Gli allegati non supportati non devono essere dichiarati analizzati.
+
+Le notifiche Resend contengono un JSON firmato HMAC con dominio `scoutly-gmail-v1`. Il solo mittente condiviso onboarding@resend.dev non autentica Scoutly. `/notifications/verify` confronta la firma su tutti i campi normalizzati; nessun record o file viene restituito. L'agente può usare `verify_notice.py` passando l'oggetto firmato via stdin: la verifica usa POST sul solo host Scoutly, non inserisce recapiti in URL, rifiuta redirect e non stampa il corpo personale. Non eseguire allegati o seguire link delle email.
+
+Il flag privato `answers.email_notice` è inizialmente pending nelle nuove richieste; il tentativo viene reclamato atomicamente prima dell'invio, poi registrato accepted con ID provider o rejected/unknown in caso di problemi. Una seconda elaborazione con lo stesso codice non spedisce un'altra notifica accepted. La chiave idempotenza Resend è un controllo aggiuntivo per 24 ore. Nessun retry automatico dopo esito ambiguo; nessuna garanzia esattamente-una-volta. Un errore di notifica non trasforma in fallimento il salvataggio già riuscito: la richiesta resta privata e disponibile in Supabase. Non eliminare o azzerare i flag per riprovare senza verifica di Resend/Gmail.
+
+Non è presente un worker autonomo di recupero delle notifiche pending/unknown: occorre controllo operativo e recupero manuale; questo limite resta aperto prima di traffico reale. Non promettere recapito o tempi di risposta garantiti. Ruotare SCOUTLY_TEST_TOKEN cambia anche la chiave di firma: vecchie notifiche non ancora elaborate richiedono revisione. Le chiavi restano sul server, mai nella notifica o nei sorgenti.
+
+### Recuperare una richiesta già salvata
+
+Dopo **Manual Deploy → Deploy latest commit** su Render, aprire `/test#CODICE_RICHIESTA`, inserire SCOUTLY_TEST_TOKEN nel campo password e usare **Inoltra questa richiesta alla casella operativa**. Questo pulsante usa POST `/notify-request`, richiede la chiave privata e non accetta destinatari dal browser. Recupera il materiale da Supabase e usa lo stesso flag di deduplicazione del flusso pubblico. Non occorre ricaricare foto o creare una nuova richiesta. Nessuna nuova variabile né migrazione SQL sono necessarie se Resend e la casella operativa sono già configurati.
+
+La prima richiesta di dimostrazione e il suo eventuale permesso particolare sono registrati soltanto nella chat/automazione privata, non in GitHub. Tutti gli altri test tecnici restano esclusi dall'automazione. Verificare profilo Gmail esatto e destinatario prima di qualsiasi risposta.

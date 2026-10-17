@@ -12,6 +12,10 @@
 <button id="send-email" type="button" disabled>Invia email di prova</button>
 <p id="email-result" role="status" aria-live="polite"></p>
 <small>La conferma di Resend attesta che il servizio ha accettato l’email. La consegna va verificata nella casella o in Resend → Emails. Nessuna risposta AI o consulenza viene attivata.</small>
+<h2>Inoltra una richiesta già salvata</h2><p>Per recuperare una richiesta arrivata prima del collegamento a Gmail, inserisci il suo codice. Questa azione inoltra testo, recapiti e foto alla casella operativa configurata su Render. L’agente email potrà poi analizzarla.</p>
+<label for="notice-request">Codice della richiesta</label><input id="notice-request" maxlength="36" autocomplete="off" spellcheck="false" placeholder="Incolla il codice ricevuto dal modulo">
+<p>Reinserisci SCOUTLY_TEST_TOKEN nel campo password sopra.</p><button id="notify-request" type="button">Inoltra questa richiesta alla casella operativa</button>
+<p id="notice-result" role="status" aria-live="polite"></p>
 <p>Se compare un errore, conserva il codice e il messaggio. Non creare altri tentativi con codici nuovi: un errore può seguire un salvataggio parziale.</p>
 <p>Dopo la conferma, in Supabase trovi il codice in <strong>Table Editor → scoutly_requests</strong> con stato <strong>received</strong>, otto riferimenti in <strong>scoutly_photos</strong> e otto file nella cartella corrispondente di <strong>Storage → scoutly-photos</strong>.</p>
 <a href="https://dalet78.github.io/scoutly/">Torna a Scoutly</a>

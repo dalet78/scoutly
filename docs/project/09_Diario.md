@@ -36,3 +36,8 @@ Fondatore conferma richiesta e otto file visibili in Supabase e configurazione a
 
 ## 17 ottobre 2026 — Form pubblico predisposto per Render
 Fondatore conferma riuscita delle prove riservate e autorizza collegamento pubblico. Tolto FormSubmit dalla landing: multipart al nuovo endpoint, token pubblico temporaneo senza chiavi private, origine esplicita e limiti di prova, codice e ricevuta solo dopo salvataggio, nessun retry automatico. Test locali: 38 Python e 11 JavaScript passati, archivio/provider simulati. Nuova configurazione richiede PUBLIC_INTAKE_ENABLED=true e deploy Render; ricezione live ancora da verificare. Capienza iniziale 20 record totali. Nessuna nuova migrazione SQL. Nessuna generazione AI, notifica o email ai proprietari implicita; campagna non avviata.
+
+
+## 17 ottobre 2026 — Flusso Gmail confermato
+17 ottobre 2026 — Flusso chiarito dal fondatore: form → notifica Resend alla casella operativa → agente Gmail ogni 30 minuti → risposta Gmail al richiedente. Nessuna OpenAI API su Render. Inoltro firmato, allegati, recupero della richiesta già salvata e verifica destinatario implementati; automazione aggiornata. **45 test Python + 5 JavaScript della pagina riservata passati localmente**. Serve Manual Deploy su Render e prova completa; nessuna risposta AI dal nuovo flusso dichiarata inviata. [Stato e task](39_Flusso_form_Gmail_AI.md).
+

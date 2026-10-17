@@ -83,3 +83,22 @@ sendEmail.addEventListener('click',async()=>{
     token='';clearTimeout(timer);sendEmail.disabled=false;run.disabled=false;
   }
 });
+
+const noticeInput=document.getElementById('notice-request'),notifyButton=document.getElementById('notify-request'),noticeResult=document.getElementById('notice-result');
+const incomingId=location.hash.slice(1);
+if(/^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/i.test(incomingId))noticeInput.value=incomingId;
+notifyButton.addEventListener('click',async()=>{
+ const selectedId=noticeInput.value.trim();let token=tokenInput.value;tokenInput.value='';
+ if(!/^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/i.test(selectedId)){noticeResult.textContent='Inserisci il codice UUID della richiesta già salvata.';return;}
+ if(token.length<32||token.startsWith('sb_')||token.startsWith('re_')){noticeResult.textContent='Inserisci SCOUTLY_TEST_TOKEN nel campo password sopra.';return;}
+ notifyButton.disabled=true;noticeResult.textContent='Preparazione e inoltro di testo e foto in corso…';
+ try {
+  const pending=fetch('/notify-request',{method:'POST',headers:{'Content-Type':'application/json','X-Scoutly-Test-Token':token},
+   body:JSON.stringify({request_id:selectedId}),credentials:'omit',mode:'same-origin',redirect:'error'});
+  token='';const response=await pending;const receipt=await response.json();
+  if(!response.ok)throw new Error(typeof receipt.detail==='string'?receipt.detail:'Notifica da verificare.');
+  if(receipt.status!=='accepted')throw new Error('Esito notifica non verificabile.');
+  noticeResult.textContent=(receipt.duplicate?'Notifica già accettata: nessun doppione inviato.':'Resend ha accettato la notifica con testo e foto.')+' Controlla la casella operativa. L’agente controlla Gmail ogni 30 minuti; verifica dell’email e risposta sono passaggi distinti.';
+ } catch(error){noticeResult.textContent=error.message+' Conserva il codice '+selectedId+' e controlla Resend/Gmail prima di riprovare.';}
+ finally{token='';notifyButton.disabled=false;}
+});

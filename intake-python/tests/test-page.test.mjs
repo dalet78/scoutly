@@ -5,11 +5,11 @@ import {runInNewContext} from 'node:vm';
 const source=readFileSync(new URL('../test.js',import.meta.url),'utf8');
 const id='b3e72074-656e-4184-9ad1-4012ca135fd7';
 function page(fetch) {
- const elements=Object.fromEntries(['token','run','result','request-id','send-email','email-result'].map(key=>[key,{value:'',textContent:'',addEventListener(event,fn){this.click=fn;}}]));
+ const elements=Object.fromEntries(['token','run','result','request-id','send-email','email-result','notice-request','notify-request','notice-result'].map(key=>[key,{value:'',textContent:'',addEventListener(event,fn){this.click=fn;}}]));
  const storage=new Map();
  const context={document:{getElementById:key=>elements[key],createElement:()=>({getContext:()=>({fillRect(){}}),toBlob:fn=>fn(new Blob(['synthetic'],{type:'image/png'}))})},
   sessionStorage:{getItem:key=>storage.get(key),setItem:(key,value)=>storage.set(key,value)},
-  crypto:{randomUUID:()=>id},setTimeout,clearTimeout,fetch,Blob,FormData,AbortController};
+  crypto:{randomUUID:()=>id},location:{hash:''},setTimeout,clearTimeout,fetch,Blob,FormData,AbortController};
  runInNewContext(source,context);
  return {elements,storage};
 }
@@ -62,4 +62,17 @@ test('email button posts only request ID, no recipient, same-origin and no retry
  assert.equal(calls[0].options.redirect,'error');
  assert.match(elements['email-result'].textContent,/accettato/);
  assert.doesNotMatch(elements['email-result'].textContent,/consegnata/);
+});
+test('existing-request notice posts only its code and clears the private token',async()=>{
+ const calls=[];
+ const {elements}=page(async(url,options)=>{
+  calls.push({url,options});assert.equal(elements.token.value,'');
+  return {ok:true,json:async()=>({status:'accepted',duplicate:false})};
+ });
+ elements['notice-request'].value=id;elements.token.value='private-test-'.padEnd(40,'x');
+ await elements['notify-request'].click();
+ assert.equal(calls.length,1);assert.equal(calls[0].url,'/notify-request');
+ assert.deepEqual(JSON.parse(calls[0].options.body),{request_id:id});
+ assert.equal(calls[0].options.credentials,'omit');assert.equal(calls[0].options.redirect,'error');
+ assert.match(elements['notice-result'].textContent,/testo e foto/);
 });
