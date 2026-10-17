@@ -4,6 +4,7 @@ import hashlib
 import hmac
 import json
 import os
+from html import escape
 from datetime import datetime, timezone
 from typing import Literal
 from uuid import UUID
@@ -91,6 +92,58 @@ def make_envelope(row, files):
     return envelope, attachments
 
 
+def render_html(envelope):
+    """Vista operativa: i dati firmati restano nella parte MIME text/plain."""
+    def safe(value):
+        return escape(str(value))
+
+    def row(label, value):
+        return ('<tr><th align="left" valign="top" style="padding:10px 12px 10px 0;'
+                'font-weight:400;color:#66736c;width:35%">' + safe(label) + '</th>'
+                '<td valign="top" style="padding:10px 0;overflow-wrap:anywhere">'
+                + safe(value) + '</td></tr>')
+
+    contact = ''.join(row(label, value) for label, value in [
+        ('Nome', envelope.name or 'Non indicato'), ('Email', envelope.email),
+        ('Telefono', envelope.phone or 'Non indicato'),
+    ])
+    details = ''.join(row(label, value) for label, value in [
+        ('Comune', envelope.answers.city), ('Obiettivo', envelope.answers.intent),
+        ('Ruolo dichiarato', envelope.answers.role), ('Pubblicazione', envelope.answers.publication),
+    ])
+    consultation = 'Richiesta' if envelope.consultation_requested else 'Non richiesta'
+    photo_count = len(envelope.photos)
+    photo_text = (f'{photo_count} foto allegate' if photo_count else 'Nessuna foto allegata')
+    photo_names = ' · '.join(safe(p.filename) for p in envelope.photos)
+    description = safe(envelope.description).replace('\n', '<br>')
+    return f'''<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Nuova richiesta Scoutly</title></head>
+<body style="margin:0;padding:24px 12px;background:#f3f1e9;color:#193d31;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6">
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0"><tr><td align="center">
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width:640px;background:#ffffff;border:1px solid #dedfd7;border-radius:16px">
+<tr><td style="padding:28px 28px 24px;background:#193d31;border-radius:16px 16px 0 0;color:#ffffff">
+<p style="margin:0 0 20px;font-family:Georgia,serif;font-size:30px">scoutly.</p>
+<p style="margin:0 0 8px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase">Nuova richiesta dal form</p>
+<h1 style="margin:0;font-family:Georgia,serif;font-size:30px;font-weight:400">{safe(envelope.form_name)}</h1>
+</td></tr><tr><td style="padding:28px">
+<h2 style="margin:0 0 8px;font-size:19px">Chi ti ha scritto</h2>
+<table width="100%" cellspacing="0" cellpadding="0" style="font-size:15px;line-height:1.5">{contact}</table>
+<div style="margin:22px 0;padding:16px;background:#eef4ef;border-left:4px solid #3f6d51">
+<strong>Consulenza con un agente: {consultation}</strong>
+<p style="margin:4px 0 0;font-size:14px">La richiesta della bozza è confermata. Il ricontatto resta facoltativo.</p></div>
+<h2 style="margin:28px 0 8px;font-size:19px">L'immobile e il percorso</h2>
+<table width="100%" cellspacing="0" cellpadding="0" style="font-size:15px;line-height:1.5">{details}</table>
+<h2 style="margin:28px 0 12px;font-size:19px">Descrizione inviata</h2>
+<div style="color:#283e34;overflow-wrap:anywhere">{description}</div>
+<h2 style="margin:28px 0 8px;font-size:19px">Foto</h2>
+<p style="margin:0">{photo_text}</p><p style="margin:4px 0 0;font-size:13px;color:#66736c;overflow-wrap:anywhere">{photo_names}</p>
+<div style="margin:28px 0 0;padding-top:20px;border-top:1px solid #dedfd7;font-size:13px;color:#66736c">
+<p style="margin:0 0 8px">Materiale da verificare prima di preparare la bozza. Questa email non conferma che l'analisi sia già avvenuta.</p>
+<p style="margin:0">Form: {safe(envelope.form_id)} · versione {envelope.form_version}<br>
+Riferimento richiesta: <span style="overflow-wrap:anywhere">{safe(envelope.request_id)}</span></p>
+</div></td></tr></table></td></tr></table></body></html>'''
+
+
 def send(envelope, attachments, api_key, recipient):
     signed = SignedNotice(envelope=envelope, signature=signature(envelope))
     body = MARKER + '\n' + signed.model_dump_json() + '\n'
@@ -100,6 +153,7 @@ def send(envelope, attachments, api_key, recipient):
             'Idempotency-Key': 'scoutly-gmail-notice/v1/' + str(envelope.request_id),
         }, json={'from': 'Scoutly richieste <onboarding@resend.dev>', 'to': [recipient],
                  'reply_to': str(envelope.email), 'subject': SUBJECT, 'text': body,
+                 'html': render_html(envelope),
                  'attachments': attachments})
         response.raise_for_status()
         provider_id = response.json().get('id')

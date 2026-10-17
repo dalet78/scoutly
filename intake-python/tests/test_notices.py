@@ -145,9 +145,28 @@ def test_resend_contract_contains_reply_to_signed_fields_and_attachments(setup, 
     assert sent_body['to'] == ['founder@example.com']
     assert sent_body['subject'] == notices.SUBJECT
     assert len(sent_body['attachments']) == 1
+    assert '<h1' in sent_body['html'] and envelope.form_name in sent_body['html']
+    assert 'SCOUTLY_SIGNED_NOTIFICATION_V1' not in sent_body['html']
     parsed = notices.SignedNotice.model_validate_json(sent_body['text'].split('\n')[1])
     assert notices.verify(parsed)
     assert 'cc' not in sent_body and 'bcc' not in sent_body
+
+
+def test_email_layout_escapes_submitted_html_and_distinguishes_consultation(setup):
+    client, _, sent, _ = setup
+    data = payload()
+    data['name'] = '<img src=x onerror=alert(1)>'
+    data['description'] = 'Descrizione di prova con <script>alert(1)</script>\nSeconda riga.'
+    submit(client, data)
+    envelope = sent[0][0]
+    html = notices.render_html(envelope)
+    assert '<script>' not in html and '<img src=x' not in html
+    assert '&lt;script&gt;' in html and '&lt;img src=x' in html
+    assert '<br>Seconda riga.' in html
+    assert 'Nessuna foto allegata' in html
+    assert 'Consulenza con un agente: Non richiesta' in html
+    envelope.consultation_requested = True
+    assert 'Consulenza con un agente: Richiesta' in notices.render_html(envelope)
 
 
 def test_verifier_posts_only_to_fixed_endpoint_and_returns_no_contact(setup):
