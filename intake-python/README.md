@@ -67,3 +67,14 @@ Python 3.14.6; creare un ambiente virtuale, installare `requirements-dev.txt`, p
 - Render Free si sospende dopo inattività; i file locali non sono persistenti. Supabase Free può essere sospeso per inattività. Nessuna garanzia di disponibilità per pilot reali.
 
 Documentazione: [Render/FastAPI](https://render.com/docs/deploy-fastapi), [piani gratuiti](https://render.com/docs/free), [chiavi Supabase](https://supabase.com/docs/guides/getting-started/api-keys).
+
+
+## Prova guidata dal browser
+
+Dopo il deploy aprire `/test` sull'host Render. La pagina contiene soltanto un test sintetico; non espone record e non contiene chiavi. Inserire nel campo password **SCOUTLY_TEST_TOKEN**, non la Secret key Supabase. La chiave viene inviata solo al ricevitore della stessa origine nell'header HTTPS e non viene salvata nella memoria del browser. Il codice UUID della prova viene invece conservato in sessionStorage per non generare doppioni dopo un aggiornamento della pagina. Nessuna dipendenza o script esterno nella pagina.
+
+Premere **Salva la prova con otto immagini**. Il programma prepara una descrizione simulata e otto PNG con barre numerate. Nessuna foto proprietario, generazione AI o email. Una ricevuta conferma che le scritture API sono terminate; verificare anche nel progetto Supabase una riga `received` in `scoutly_requests`, otto riferimenti in `scoutly_photos` e otto oggetti sotto quel codice in `Storage → scoutly-photos`. Le immagini non sono pubbliche. In caso di errore mantenere il codice: nessun nuovo invio con un altro UUID prima di aver verificato il tentativo precedente.
+
+Con Auto Deploy Off, dopo ogni aggiornamento Git scegliere **Manual Deploy → Deploy latest commit** in Render. Il collegamento `/test` non è disponibile sul primo commit 87c6888.
+
+Verifiche aggiuntive: `node --test tests/test-page.test.mjs` (Node 20+ solo per questi test; l'host resta Python). Le prove simulate coprono uso dello stesso UUID, invio della chiave solo all'origine corrente, nessun retry automatico e rifiuto di una chiave Supabase nel campo sbagliato. Il controllo `/health` dal vivo del servizio assegnato ha risposto `ok`; non dimostra ancora la ricezione remota.

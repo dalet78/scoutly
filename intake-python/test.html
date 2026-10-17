@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Verifica ricezione — Scoutly</title>
+<style>body{font:18px/1.6 system-ui,sans-serif;color:#183c34;background:#f5f4ee;margin:0;padding:32px 20px}main{max-width:680px;margin:32px auto;background:white;border-radius:20px;padding:32px}h1{line-height:1.15;font-size:36px}label{display:block;font-weight:600;margin-top:24px}input,button{box-sizing:border-box;font:inherit;padding:14px;width:100%;margin-top:8px;border-radius:8px;border:1px solid #7b8c85}button{background:#183c34;color:white;cursor:pointer}button:disabled{opacity:.6;cursor:wait}small{display:block;color:#52635b}#result{white-space:pre-wrap;overflow-wrap:anywhere}code{overflow-wrap:anywhere}a{color:#183c34}</style>
+<script defer src="/test.js"></script></head><body><main>
+<small>SCOUTLY · VERIFICA RISERVATA</small><h1>La richiesta arriva davvero?</h1>
+<p>Questa prova salva una descrizione simulata e otto piccole immagini numerate nel tuo archivio Supabase. Non invia email e non attiva l’AI.</p>
+<label for="token">Chiave della prova</label><input id="token" type="password" autocomplete="off" spellcheck="false" autocapitalize="off" aria-describedby="token-help"><small id="token-help">Copia il valore SCOUTLY_TEST_TOKEN da Render. Non inserire la chiave segreta di Supabase. Non salviamo questo valore nel browser.</small>
+<p>Codice della prova: <code id="request-id">Preparazione…</code></p>
+<button id="run" type="button" disabled>Salva la prova con otto immagini</button>
+<p id="result" role="status" aria-live="polite"></p>
+<p>Se compare un errore, conserva il codice e il messaggio. Non creare altri tentativi con codici nuovi: un errore può seguire un salvataggio parziale.</p>
+<p>Dopo la conferma, in Supabase trovi il codice in <strong>Table Editor → scoutly_requests</strong> con stato <strong>received</strong>, otto riferimenti in <strong>scoutly_photos</strong> e otto file nella cartella corrispondente di <strong>Storage → scoutly-photos</strong>.</p>
+<a href="https://dalet78.github.io/scoutly/">Torna a Scoutly</a>
+</main></body></html>

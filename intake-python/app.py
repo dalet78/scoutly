@@ -5,6 +5,7 @@ import json
 import os
 import secrets
 import warnings
+from pathlib import Path
 from typing import Literal
 from uuid import UUID
 
@@ -13,7 +14,7 @@ from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.exceptions import RequestValidationError
 from PIL import Image, UnidentifiedImageError
 from pydantic import BaseModel, ConfigDict, EmailStr, Field, ValidationError
-from starlette.responses import JSONResponse
+from starlette.responses import JSONResponse, Response
 
 MAX_BYTES = 8_000_000
 Image.MAX_IMAGE_PIXELS = 25_000_000
@@ -177,6 +178,17 @@ def create_app(store_factory=SupabaseStore):
     @app.get('/health')
     def health():
         return {'status': 'ok', 'mode': 'private-test', 'email_enabled': False}
+
+    @app.get('/test')
+    def test_page():
+        return Response(Path(__file__).with_name('test.html').read_text(), media_type='text/html', headers={
+            'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer',
+            'Content-Security-Policy': "default-src 'none'; script-src 'self'; style-src 'unsafe-inline'; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'"})
+
+    @app.get('/test.js')
+    def test_script():
+        return Response(Path(__file__).with_name('test.js').read_text(), media_type='text/javascript',
+                        headers={'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff'})
 
     @app.post('/requests', status_code=201)
     def receive_request(payload: str = Form(..., max_length=20_000),

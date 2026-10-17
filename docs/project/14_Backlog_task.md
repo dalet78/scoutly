@@ -1,3 +1,5 @@
+> P02, avanzamento 17 ottobre 2026: host Render avviato e `/health` verificato. Pagina di prova riservata `/test` preparata e testata localmente (16 Python + 3 JavaScript). Deploy nuova revisione e verifica effettiva record/foto in Supabase ancora da eseguire. Nessun collegamento alla landing o AI/email implicito.
+
 > Aggiornamento 17 ottobre 2026: task ricezione privata Python/Supabase. P01 (A05-BE) codice e 15 test locali: completato. P02 (A05-OPS) Render Free e verifica salvataggio remoto: da eseguire, dipende dalle variabili server. P03 (A05-FE/BE) antispam pubblico, collegamento landing e ricevuta: da eseguire dopo P02. P04 (A05-INT) coda AI/email e prova completa: da eseguire. Fonte: [ricevitore](../../intake-python/README.md). Nessuno di P02–P04 dichiarato live.
 
 > Priorità superata nell’ordine di esecuzione — 16 ottobre 2026: seguire [Inbound pre-pubblicazione e N01–N08](16_Inbound_pre_pubblicazione.md). Il principio 80/20 resta, Radar viene rinviato. Questo documento resta storico/inventario e non blocca la prova inbound.

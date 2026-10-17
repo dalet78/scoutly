@@ -24,3 +24,7 @@ Su richiesta esplicita sincronizzato il piano C01–C14, con unico responsabile 
 
 ## 17 ottobre 2026 — Ricevitore privato Python per test
 Fondatore dichiara completati creazione progetto Supabase e script SQL. Preparato ricevitore separato FastAPI, archivio privato richieste/foto e configurazione Render Free. 15 test locali passati con archivio/trasporto simulati: otto foto, validazione, doppioni, fallimenti e timeout. Segnalazione di deprecazione Starlette TestClient/httpx, nessun test fallito. Non verificati credenziali/schema/persistenza remoti. Nessun deploy Render, modifica landing, invio email o AI attivati. Prossimo: configurazione Render e ricezione sintetica verificata in Supabase. File del fondatore assenti dal codice pubblicabile.
+
+
+## 17 ottobre 2026 — Host avviato e prova riservata pronta
+Log Render confermano avvio Uvicorn; controllo diretto /health risponde ok/private-test/email_enabled=false. Preparata /test con campo password per la sola chiave della prova, nessuna credenziale inclusa nei sorgenti e nessun invio AI/email. Descrizione e otto PNG sintetici, UUID conservato per evitare doppioni, nessun retry automatico su errori. 16 test Python e 3 JavaScript passati localmente; archivio/trasporto simulati, una segnalazione deprecazione TestClient/httpx. Salvataggio remoto ancora da verificare dopo il deploy della nuova revisione. Prossimo A05-OPS: esecuzione della prova e controllo tabelle/oggetti in Supabase.

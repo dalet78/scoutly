@@ -176,3 +176,18 @@ def test_validation_error_does_not_echo_large_payload(setup):
     assert response.status_code == 422
     assert 'PRIVATE' not in response.text
     assert not store.rows
+
+
+def test_test_page_has_no_secrets_or_external_scripts(setup):
+    client, store = setup
+    page = client.get('/test')
+    assert page.status_code == 200
+    assert 'type="password"' in page.text
+    assert TOKEN not in page.text
+    assert page.headers['cache-control'] == 'no-store'
+    assert "connect-src 'self'" in page.headers['content-security-policy']
+    script = client.get('/test.js')
+    assert script.status_code == 200
+    assert TOKEN not in script.text
+    assert "credentials:'omit'" in script.text
+    assert not store.rows
