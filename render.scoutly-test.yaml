@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: scoutly-intake-test
+    runtime: python
+    plan: free
+    region: frankfurt
+    branch: main
+    rootDir: intake-python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT --workers 1 --no-access-log
+    healthCheckPath: /health
+    autoDeployTrigger: off
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.14.6
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SECRET_KEY
+        sync: false
+      - key: SCOUTLY_TEST_TOKEN
+        generateValue: true

@@ -20,3 +20,7 @@ Il fondatore ha autorizzato la pubblicazione della strategia commerciale precede
 
 ## 16 ottobre 2026 — Task ricezione sincronizzati
 Su richiesta esplicita sincronizzato il piano C01–C14, con unico responsabile per task, dipendenze e criteri. Registro privato come fonte autorevole, email e Telegram notifiche; CRM rinviato. Prossimi C02/A04 e C04/A05-ARCH. Nessuna implementazione dei task o attivazione invii implicita. Sincronizzazione limitata al piano e ai punti di ripresa: prototipo B e altri documenti locali non inclusi.
+
+
+## 17 ottobre 2026 — Ricevitore privato Python per test
+Fondatore dichiara completati creazione progetto Supabase e script SQL. Preparato ricevitore separato FastAPI, archivio privato richieste/foto e configurazione Render Free. 15 test locali passati con archivio/trasporto simulati: otto foto, validazione, doppioni, fallimenti e timeout. Segnalazione di deprecazione Starlette TestClient/httpx, nessun test fallito. Non verificati credenziali/schema/persistenza remoti. Nessun deploy Render, modifica landing, invio email o AI attivati. Prossimo: configurazione Render e ricezione sintetica verificata in Supabase. File del fondatore assenti dal codice pubblicabile.
