@@ -1,9 +1,9 @@
 name: Scoutly landing B checks
 on:
   push:
-    paths: ['tools/prima-di-pubblicare.html', 'assets/prima-di-pubblicare/**', 'tests/prima-di-pubblicare.test.mjs', '.github/workflows/scoutly-landing-b.yml']
+    paths: ['tools/prima-di-pubblicare.html', 'assets/prima-di-pubblicare/**', 'tests/prima-di-pubblicare.test.mjs', 'tests/annuncio-email.test.mjs', '.github/workflows/scoutly-landing-b.yml']
   pull_request:
-    paths: ['tools/prima-di-pubblicare.html', 'assets/prima-di-pubblicare/**', 'tests/prima-di-pubblicare.test.mjs', '.github/workflows/scoutly-landing-b.yml']
+    paths: ['tools/prima-di-pubblicare.html', 'assets/prima-di-pubblicare/**', 'tests/prima-di-pubblicare.test.mjs', 'tests/annuncio-email.test.mjs', '.github/workflows/scoutly-landing-b.yml']
 permissions:
   contents: read
 jobs:
@@ -14,4 +14,4 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - run: node --test tests/prima-di-pubblicare.test.mjs
+      - run: node --test tests/prima-di-pubblicare.test.mjs tests/annuncio-email.test.mjs
