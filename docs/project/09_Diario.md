@@ -1,3 +1,5 @@
+> 17 ottobre 2026 — Correzione operativa verificata: il flag Render era attivo, ma Supabase conservava i tre CHECK limitati al primo form. Applicata nel progetto di test la migrazione supabase/002_secondo_form.sql; esito SQL riuscito. La stessa prova tecnica sintetica, prima respinta con HTTP 503, dopo la migrazione restituisce HTTP 201, status received ed email_notice accepted. Non confondere il codice di un tentativo incerto con una conferma di salvataggio. Restano da verificare una richiesta reale del secondo percorso e la relativa risposta AI; i test tecnici sono esclusi dalle risposte automatiche. Permessi, RLS e dati precedenti invariati.
+
 # Diario pubblico di continuità
 
 ## 16 ottobre 2026 — Consolidamento del progetto
