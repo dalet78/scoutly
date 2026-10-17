@@ -1,3 +1,5 @@
+> P03a (A05-BE) e P03b (A05-FE) implementati e testati localmente: endpoint pubblico e landing senza FormSubmit. P03c (A05-OPS) richiede deploy Render, PUBLIC_INTAKE_ENABLED=true e prova sintetica live; ancora aperto. P03d antispam/quote più forti prima di campagne, P04 AI/coda email ancora aperti. Salvataggio/foto/email riservata confermati dal fondatore. [Dettagli](38_Collegamento_pubblico_Render.md).
+
 > P02: fondatore conferma ricevuta, richiesta e otto foto visibili su Supabase, doppioni riconosciuti. P04a (A05-INT): adapter Resend e pulsante invio tecnico al fondatore implementati; 29 test Python + 4 JavaScript locali passati; consegna reale ancora da verificare dopo deploy. P03 e flusso AI/email proprietari ancora aperti. Nessun destinatario proprietario abilitato dal test.
 
 > P02, avanzamento 17 ottobre 2026: host Render avviato e `/health` verificato. Pagina di prova riservata `/test` preparata e testata localmente (16 Python + 3 JavaScript). Deploy nuova revisione e verifica effettiva record/foto in Supabase ancora da eseguire. Nessun collegamento alla landing o AI/email implicito.

@@ -23,3 +23,5 @@ services:
         sync: false
       - key: SCOUTLY_TEST_EMAIL
         sync: false
+      - key: PUBLIC_INTAKE_ENABLED
+        value: "false"

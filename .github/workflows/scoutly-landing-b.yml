@@ -1,9 +1,9 @@
 name: Scoutly landing B checks
 on:
   push:
-    paths: ['tools/prima-di-pubblicare.html', 'assets/prima-di-pubblicare/**', 'tests/prima-di-pubblicare.test.mjs', 'tests/annuncio-email.test.mjs', 'tests/annuncio-upload.test.mjs', 'tests/submit-request.test.mjs', '.github/workflows/scoutly-landing-b.yml']
+    paths: ['tools/prima-di-pubblicare.html', 'assets/prima-di-pubblicare/**', 'tests/prima-di-pubblicare.test.mjs', 'tests/annuncio-email.test.mjs', 'tests/annuncio-upload.test.mjs', 'tests/submit-request.test.mjs', 'tests/public-intake.test.mjs', 'intake-python/**', '.github/workflows/scoutly-landing-b.yml']
   pull_request:
-    paths: ['tools/prima-di-pubblicare.html', 'assets/prima-di-pubblicare/**', 'tests/prima-di-pubblicare.test.mjs', 'tests/annuncio-email.test.mjs', 'tests/annuncio-upload.test.mjs', 'tests/submit-request.test.mjs', '.github/workflows/scoutly-landing-b.yml']
+    paths: ['tools/prima-di-pubblicare.html', 'assets/prima-di-pubblicare/**', 'tests/prima-di-pubblicare.test.mjs', 'tests/annuncio-email.test.mjs', 'tests/annuncio-upload.test.mjs', 'tests/submit-request.test.mjs', 'tests/public-intake.test.mjs', 'intake-python/**', '.github/workflows/scoutly-landing-b.yml']
 permissions:
   contents: read
 jobs:
@@ -14,4 +14,18 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - run: node --test tests/prima-di-pubblicare.test.mjs tests/annuncio-email.test.mjs tests/annuncio-upload.test.mjs tests/submit-request.test.mjs
+      - run: node --test tests/prima-di-pubblicare.test.mjs tests/annuncio-email.test.mjs tests/annuncio-upload.test.mjs tests/submit-request.test.mjs tests/public-intake.test.mjs
+  python-intake:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14.6'
+      - run: pip install -r intake-python/requirements-dev.txt
+      - run: python -m pytest -q
+        working-directory: intake-python
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - run: node --test intake-python/tests/test-page.test.mjs

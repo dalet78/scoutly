@@ -95,3 +95,20 @@ Ogni chiamata include anche una chiave idempotenza Resend deterministica. Il pro
 Prova Supabase: il fondatore ha riferito ricevuta senza doppioni e presenza della richiesta/otto foto nella dashboard. Osservazione umana dichiarata, non lettura remota dell'assistente. Invio Resend/Gmail ancora da provare al momento di questa revisione.
 
 Fonti: https://resend.com/docs/dashboard/emails/idempotency-keys e https://resend.com/docs/api-reference/emails/send-email
+
+
+## Collegare il form pubblico a Render (fase di prova limitata)
+
+Configurazione nuova, successiva alle prove riservate: dopo aver distribuito questa revisione aggiungere su Render **PUBLIC_INTAKE_ENABLED=true**. Con valore assente o false la ricezione pubblica è chiusa. Non sono richieste nuove chiavi né migrazioni SQL. Il form pubblico non contiene SCOUTLY_TEST_TOKEN, credenziali Supabase o Resend. Il dominio mittente Resend non è necessario per il solo salvataggio; gli invii reali ai proprietari rimangono disattivati.
+
+La landing usa `/public/config` e `/public/requests` sull'host Render. Finché Render non esegue questa revisione con la variabile attiva, il form mostra invio temporaneamente non disponibile: nessun fallback a FormSubmit o mailto. Il testo resta compilabile, ma non viene dichiarato salvato. Dopo il deploy riaprire/aggiornare la landing.
+
+Controlli per questa prova: origine browser autorizzata esplicita, CORS senza credenziali, campo esca, token temporaneo firmato dal server con attesa minima 3 secondi e durata 30 minuti, body massimo 8,1 MB prima del parsing, massimo 8 foto/8 MB, un solo invio pubblico in corso per processo, massimo 60 tentativi/ora per processo. Una verifica del totale nel database blocca nuove richieste quando l'archivio ha già 20 righe (incluse le prove riservate e incomplete); le ricevute di richieste già salvate restano recuperabili con stesso materiale/codice. Verifica count non disponibile: nessun nuovo salvataggio. Nessun job elimina record o file per liberare spazio.
+
+Questi sono controlli di base per poche prove: **origine/CORS e token pubblico non autenticano un proprietario e non sostituiscono un CAPTCHA**. Un client non browser può imitare l'origine e richiedere token. Il limite di tentativi si azzera al riavvio; il controllo capienza si basa invece sui record persistenti. Il conteggio non è una quota transazionale tra più processi/istanze: usare il singolo worker configurato, nessuna campagna o aumento di traffico prima di protezione antispam e quote persistenti più forti.
+
+Il browser conserva in sessionStorage soltanto codice richiesta, hash del materiale e stato, non testo/recapiti/foto. Tentativi con esito incerto mantengono il codice e non permettono di cambiare materiale e reinviare alla cieca. Nessun retry automatico; foto e testo restano nel modulo in caso di errore. La navigazione alla pagina di conferma segue solo una ricevuta received con il codice corretto. Aprire direttamente la pagina di conferma non dichiara una richiesta salvata.
+
+**Il salvataggio pubblico non invia ancora notifiche né risposte email.** L'operatore verifica le nuove richieste in Supabase; il monitor Gmail esistente non legge questo archivio. Il pulsante email riservato resta limitato alle richieste sintetiche. Collegamento AI, coda notifiche/risposte, dominio mittente verificato e gestione richieste reali sono task successivi.
+
+Prova live dopo il deploy: compilare la landing con TEST TECNICO SCOUTLY e dati simulati, caricare immagini sintetiche, inviare una volta; verificare codice sul sito, stato received e file privati in Supabase. Controllare anche un errore di rete senza perdita del modulo. Non chiamare questa prova completa finché questi passaggi non sono realmente verificati.

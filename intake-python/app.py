@@ -1,4 +1,4 @@
-"""Ricevitore per prove riservate; nessuna generazione AI o email implicita."""
+"""Ricevitore di prova, con apertura pubblica limitata; nessuna AI o email implicita."""
 import hashlib
 import io
 import json
@@ -11,11 +11,13 @@ from typing import Literal
 from uuid import UUID
 
 import httpx
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile
+from fastapi import FastAPI, File, Form, HTTPException, Request, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import RequestValidationError
 from PIL import Image, UnidentifiedImageError
 from pydantic import BaseModel, ConfigDict, EmailStr, Field, TypeAdapter, ValidationError
 from starlette.responses import JSONResponse, Response
+from public_gate import ORIGIN, MAX_RECORDS, PublicGate, challenge, enabled
 
 MAX_BYTES = 8_000_000
 Image.MAX_IMAGE_PIXELS = 25_000_000
@@ -95,6 +97,16 @@ class SupabaseStore:
         response.raise_for_status()
         rows = response.json()
         return rows[0] if rows else None
+
+    def ensure_public_capacity(self):
+        response = self.client.get('/rest/v1/scoutly_requests',
+            params={'select': 'id', 'limit': '0'}, headers={'Prefer': 'count=exact'})
+        response.raise_for_status()
+        total = response.headers.get('Content-Range', '').rsplit('/', 1)[-1]
+        if not total.isdigit():
+            raise RuntimeError('Capienza archivio non verificabile')
+        if int(total) >= MAX_RECORDS:
+            raise HTTPException(429, 'La fase di prova ha raggiunto il limite di richieste. Riprova più tardi.')
 
     def insert(self, row):
         response = self.client.post('/rest/v1/scoutly_requests', json=row)
@@ -193,7 +205,7 @@ def check_photo(data, declared_type):
         raise HTTPException(422, 'Una foto non è un JPG o PNG valido.') from None
 
 
-def accept(payload, photos, store):
+def accept(payload, photos, store, public=False):
     key = str(payload.idempotency_key)
     values = payload.model_dump(mode='json')
     fingerprint = hashlib.sha256(json.dumps({
@@ -210,6 +222,8 @@ def accept(payload, photos, store):
     previous = store.lookup(key)
     if previous:
         return previous_receipt(previous)
+    if public:
+        store.ensure_public_capacity()
     row = {k: values[k] for k in ('form_id', 'form_version', 'workflow_id', 'email',
            'name', 'phone', 'description', 'service_requested', 'consultation_requested')}
     row.update(id=key, idempotency_key=key, payload_hash=fingerprint,
@@ -269,6 +283,9 @@ class TestGate:
 def create_app(store_factory=SupabaseStore, email_sender=send_test_email):
     app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
     app.add_middleware(TestGate)
+    app.add_middleware(PublicGate)
+    app.add_middleware(CORSMiddleware, allow_origins=[ORIGIN], allow_credentials=False,
+                       allow_methods=['GET', 'POST'], allow_headers=['Content-Type', 'X-Scoutly-Challenge'])
 
     @app.exception_handler(RequestValidationError)
     async def invalid_request(request, exc):
@@ -276,8 +293,18 @@ def create_app(store_factory=SupabaseStore, email_sender=send_test_email):
 
     @app.get('/health')
     def health():
-        return {'status': 'ok', 'mode': 'private-test', 'email_enabled': False,
-                'email_test_configured': bool(os.environ.get('RESEND_API_KEY') and os.environ.get('SCOUTLY_TEST_EMAIL'))}
+        return {'status': 'ok', 'mode': 'limited-public-test' if enabled() else 'private-test', 'email_enabled': False,
+                'email_test_configured': bool(os.environ.get('RESEND_API_KEY') and os.environ.get('SCOUTLY_TEST_EMAIL')),
+                'public_intake_enabled': enabled(), 'public_protocol': 1}
+
+    @app.get('/public/config')
+    def public_config(request: Request):
+        if request.headers.get('origin') != ORIGIN:
+            raise HTTPException(403, 'Apri il modulo dal sito Scoutly.')
+        if not enabled():
+            raise HTTPException(503, 'Invio temporaneamente non disponibile. Riprova più tardi.')
+        return JSONResponse({'protocol': 1, 'challenge': challenge(), 'min_age_seconds': 3,
+                             'max_photos': 8, 'max_bytes': MAX_BYTES}, headers={'Cache-Control': 'no-store'})
 
     @app.post('/test-email')
     def test_email(body: MailTestRequest):
@@ -304,6 +331,16 @@ def create_app(store_factory=SupabaseStore, email_sender=send_test_email):
     @app.post('/requests', status_code=201)
     def receive_request(payload: str = Form(..., max_length=20_000),
                         photos: list[UploadFile] = File(default=[])):
+        return save_submission(payload, photos, False)
+
+    @app.post('/public/requests', status_code=201)
+    def public_request(payload: str = Form(..., max_length=20_000),
+                       photos: list[UploadFile] = File(default=[]), website: str = Form(default='', max_length=80)):
+        if website:
+            raise HTTPException(422, 'Controllo invio non superato. Aggiorna il modulo e riprova.')
+        return save_submission(payload, photos, True)
+
+    def save_submission(payload, photos, public):
         try:
             parsed = Payload.model_validate_json(payload)
         except ValidationError:
@@ -321,8 +358,8 @@ def create_app(store_factory=SupabaseStore, email_sender=send_test_email):
             validated.append((data, photo.content_type, extension))
         store = store_factory()
         try:
-            return accept(parsed, validated, store)
-        except (httpx.HTTPError, RuntimeError):
+            return accept(parsed, validated, store, public=public)
+        except (httpx.HTTPError, RuntimeError, ValueError):
             # Un timeout può seguire una scrittura riuscita: nessun retry o cancellazione ciechi.
             raise HTTPException(503, 'Esito da verificare. Conserva il codice richiesta e non crearne uno nuovo.') from None
         finally:
