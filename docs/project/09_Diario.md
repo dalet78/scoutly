@@ -56,3 +56,8 @@ Fondatore conferma riuscita delle prove riservate e autorizza collegamento pubbl
 ## 17 ottobre 2026 — Planimetria separata
 17 ottobre 2026 — Secondo form: aggiunta **planimetria catastale facoltativa come immagine separata**, anteprima/rimozione, metadati firmati e allegato dedicato. Limite 8 immagini/8 MB: con la piantina fino a 7 foto. Agente aggiornato, nessuna attestazione di conformità. 65 test Python e 11 JavaScript pubblici locali passati; nessuna nuova migrazione SQL. Serve deploy latest commit Render e prova completa.
 
+
+
+## 17 ottobre 2026 — Piccoli interventi dalle foto
+17 ottobre 2026 — Agente del secondo form aggiornato: consigli pratici dalle foto con schema osservazione → intervento circoscritto → beneficio di presentazione; normalmente 2–3, solo se motivati. Nessun costo o aumento di prezzo inventato. Nessuna modifica al primo form e nessun nuovo deploy richiesto per questa modifica alle istruzioni. Restano le attivazioni backend già indicate sotto.
+

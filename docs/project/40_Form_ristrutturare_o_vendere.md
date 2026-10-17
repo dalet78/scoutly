@@ -46,3 +46,7 @@ La planimetria viene aggiunta per ultima nel multipart, conservata nell'archivio
 Nessuna nuova migrazione SQL oltre a 002_secondo_form.sql già prevista per il secondo form. Aggiornare Render a latest commit; il browser richiede floor_plan_upload=true per evitare invii alla revisione precedente. Hash e firme delle richieste precedenti restano compatibili. Test locali: 65 Python e 11 JavaScript pubblici passati (più i 5 della pagina privata già verificati); provider/archivio simulati. Nessun caricamento reale di una piantina o invio email effettuato in questa modifica.
 
 Task R07 (A05-FE/BE/INT): caricamento dedicato, metadati e notifica implementati; R08 (agente email): istruzioni aggiornate; R09 (A05-OPS/QA): deploy e verifica completa ancora da eseguire.
+
+
+## Consigli pratici dalle fotografie
+Su richiesta del fondatore l’agente del secondo form include 2–3 piccoli interventi quando supportati dalle immagini lette, con schema: cosa noto nella foto, cosa fare e perché può aiutare. Distingue gli interventi nell’immobile dai suggerimenti per lo scatto. Priorità a interventi circoscritti, reversibili e di presentazione; nessun difetto inventato per riempire la lista, diagnosi tecnica, costo stimato o incremento di valore promesso. Se immagini/render non rappresentano chiaramente lo stato attuale, chiede conferma. Nessuna modifica al singolo punto previsto dal primo form. Automazione aggiornata; nessuna nuova email inviata, nessun cambiamento al backend o nuovo deploy richiesto per queste sole istruzioni.
