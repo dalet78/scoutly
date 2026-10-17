@@ -66,3 +66,8 @@ Fondatore conferma riuscita delle prove riservate e autorizza collegamento pubbl
 ## 17 ottobre 2026 — Stato invio, importo e comuni
 17 ottobre 2026 — UX del secondo form: anteprime locali distinte dall'invio, avanzamento byte e conferma salvataggio separati; prezzo con punti delle migliaia; ricerca comuni ISTAT con Milano predefinito. Codice/nome del comune validati e firmati, perimetro Milano invariato. 73 test Python e 17 JS pubblici locali passati. Diagnosi live: RENOVATION_FORM_ENABLED ancora false, quindi invio disabilitato; servono attivazione già prevista e latest deploy, nessun nuovo SQL.
 
+
+
+## 17 ottobre 2026 — Servizio abilitato nel controllo finale
+Verifica finale 17 ottobre 2026: controlli GitHub e Pages riusciti su e54e4dd. Browser pubblico: Milano predefinito, prezzo 392.000 e pulsante attivo. /health riporta renovation_form_enabled=true e /public/config espone entrambi i form, floor_plan_upload=true e municipality_support=true. La configurazione Render ora è aggiornata e abilitata; la diagnosi false sotto descrive lo stato precedente. Nessuna richiesta reale inviata in questa modifica: salvataggio remoto del secondo form, notifica e risposta completa restano da verificare con un invio autorizzato.
+
