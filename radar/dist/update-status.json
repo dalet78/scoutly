@@ -5,11 +5,11 @@
     8,
     16
   ],
-  "lastAttemptAt": "2026-10-16T14:00:55.922Z",
+  "lastAttemptAt": "2026-10-17T06:01:33.968Z",
   "lastSuccessAt": null,
   "firstRunAt": "2026-10-14T08:00:00+02:00",
   "status": "partial",
-  "note": "16 ottobre, pomeriggio: nuova vendita dichiarata da privato in viale Omero / Corvetto, 72 m², prezzo non visibile. Situazione locativa e disponibilità da verificare. Rilette 16 schede esistenti; 9 non recuperabili. Facebook non accessibile. Prove precedenti preservate.",
+  "note": "17 ottobre: nessun nuovo risultato utile nel campione verificato. Rilette 17 schede Subito; 9 dettagli non recuperabili. Facebook non accessibile. Prove, controlli manuali e date precedenti preservati; nessuna disponibilità o assenza di incarico confermata.",
   "runHistory": [
     {
       "lastAttemptAt": "2026-10-14T07:45:12Z",
@@ -51,6 +51,14 @@
       "newRentals": 0,
       "newSales": 1,
       "retrievedExisting": 16,
+      "failedExisting": 9
+    },
+    {
+      "lastAttemptAt": "2026-10-17T06:01:33.968Z",
+      "status": "partial",
+      "newRentals": 0,
+      "newSales": 0,
+      "retrievedExisting": 17,
       "failedExisting": 9
     }
   ]
