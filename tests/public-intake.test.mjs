@@ -27,7 +27,7 @@ for(const variant of ['network','malformed','wrong-code','error'])test('never re
  assert.equal(calls,1);
 });
 function ui(sender,options={}){
- const elements=Object.fromEntries(['request','photos','photo-previews','upload-error','send','photo-summary','connection-status','reconnect','service-request','consultation'].map(name=>[name,{
+ const elements=Object.fromEntries(['request','photos','photo-previews','upload-error','send','photo-summary','connection-status','reconnect','service-request','consultation','floor-plan','floor-plan-preview','floor-plan-summary'].map(name=>[name,{
   dataset:options.renovation?{formId:'ristrutturare-o-vendere'}:{},append(){},textContent:'',files:[],checked:name==='service-request',removeAttribute(){},replaceChildren(){},
   addEventListener(event,handler){this[event]=handler;},reportValidity(){return true;}
  }]));
@@ -36,12 +36,12 @@ function ui(sender,options={}){
  const store=new Map(),redirects=[];
  class DataTransfer {items={add:()=>{}};files=[];}
  class FakeFormData{constructor(form){this.form=form;}get(key){return this.form.fields[key];}}
- const context={document:{getElementById:key=>elements[key],createElement:()=>({addEventListener(){},append(){}})},window:{addEventListener(){}},
+ const context={document:{getElementById:key=>elements[key],createElement:()=>({style:{},addEventListener(){},append(){}})},window:{addEventListener(){}},
   sessionStorage:{getItem:key=>store.get(key),setItem:(key,value)=>store.set(key,value),removeItem:key=>store.delete(key)},
   crypto:{randomUUID:()=>id,subtle:webcrypto.subtle},DataTransfer,FormData:FakeFormData,TextEncoder,
   AbortController,Date,URL,location:{assign:url=>redirects.push(url)},
   setTimeout:(fn,delay)=>{if(delay<5000)queueMicrotask(fn);return 1;},clearTimeout(){},
-  fetch:async()=>({ok:true,json:async()=>({protocol:1,challenge:'signed-public-challenge',max_photos:8,max_bytes:8000000,supported_forms:options.supported===false?[]:[{form_id:'ristrutturare-o-vendere',form_version:1}]})}),
+  fetch:async()=>({ok:true,json:async()=>({protocol:1,challenge:'signed-public-challenge',max_photos:8,max_bytes:8000000,floor_plan_upload:options.planSupported!==false,supported_forms:options.supported===false?[]:[{form_id:'ristrutturare-o-vendere',form_version:1}]})}),
   validatePhotos:()=>'',submitPublic:sender,SubmissionError};
  const source=readFileSync(new URL('../assets/prima-di-pubblicare/public-form-v1.js',import.meta.url),'utf8').replace(/^import .+;\n/gm,'');
  runInNewContext(source,context);
@@ -84,4 +84,24 @@ test('second form refuses to submit against an older backend or without a photo'
   await elements.request.submit({preventDefault(){}});
   assert.equal(calls,0);
  }
+});
+
+test('floor plan stays separate in the UI and is appended with signed routing metadata',async()=>{
+ let captured;
+ const {elements}=ui(async options=>{captured=options;return {status:'received',request_id:id,duplicate:false};},{renovation:true});
+ await new Promise(setImmediate);
+ elements.photos.files=[new File(['room'],'stanza.png',{type:'image/png'})];elements.photos.change();
+ elements['floor-plan'].files=[new File(['plan'],'piantina.png',{type:'image/png'})];elements['floor-plan'].change();
+ await elements.request.submit({preventDefault(){}});
+ assert.equal(captured.photos.length,2);assert.equal(captured.photos[1].name,'piantina.png');
+ assert.equal(captured.payload.floor_plan_position,2);
+ assert.match(elements['floor-plan-summary'].textContent,/piantina/);
+});
+test('floor plan capability is required before a new form can submit',async()=>{
+ let calls=0;
+ const {elements}=ui(async()=>{calls++;},{renovation:true,planSupported:false});
+ await new Promise(setImmediate);
+ elements.photos.files=[new File(['room'],'stanza.png',{type:'image/png'})];elements.photos.change();
+ await elements.request.submit({preventDefault(){}});
+ assert.equal(calls,0);
 });

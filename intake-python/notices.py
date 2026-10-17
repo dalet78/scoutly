@@ -24,7 +24,7 @@ class Strict(BaseModel):
 
 class Photo(Strict):
     position: int = Field(ge=1, le=8)
-    filename: str = Field(pattern=r'^foto-[1-8]\.(png|jpg)$')
+    filename: str = Field(pattern=r'^(foto-[1-8]|planimetria-catastale)\.(png|jpg)$')
     sha256: str = Field(pattern=r'^[0-9a-f]{64}$')
     size_bytes: int = Field(gt=0, le=8_000_000)
     content_type: Literal['image/jpeg', 'image/png']
@@ -44,6 +44,10 @@ class RenovationAnswers(Answers):
     timeframe: Literal['Entro 3 mesi', 'Tra 3 e 6 mesi', 'Oltre 6 mesi', 'Sto valutando']
 
 
+class RenovationPlanAnswers(RenovationAnswers):
+    floor_plan_position: int = Field(strict=True, ge=2, le=8)
+
+
 class Envelope(Strict):
     notification_schema: Literal['scoutly-gmail-v1']
     request_id: UUID
@@ -55,7 +59,7 @@ class Envelope(Strict):
     name: str | None = Field(max_length=80)
     phone: str | None = Field(max_length=30)
     description: str = Field(min_length=20, max_length=4000)
-    answers: Answers | RenovationAnswers
+    answers: Answers | RenovationAnswers | RenovationPlanAnswers
     service_requested: Literal[True]
     consultation_requested: bool
     photos: list[Photo] = Field(max_length=8)
@@ -70,6 +74,14 @@ class Envelope(Strict):
             raise ValueError('Dati non coerenti con il percorso')
         if renovation and (self.answers.intent != 'Vendere' or not self.photos):
             raise ValueError('Servono foto e finalità vendita')
+        plan_position = getattr(self.answers, 'floor_plan_position', None)
+        plans = [p for p in self.photos if p.filename.startswith('planimetria-catastale.')]
+        if plan_position is not None:
+            if (len(plans) != 1 or plans[0].position != plan_position
+                    or plan_position != len(self.photos) or len(self.photos) < 2):
+                raise ValueError('Planimetria discordante')
+        elif plans:
+            raise ValueError('Planimetria senza metadati')
         return self
 
 
@@ -98,7 +110,8 @@ def make_envelope(row, files):
     photo_info = []
     attachments = []
     for position, content_type, data in files:
-        filename = f'foto-{position}.' + ('png' if content_type == 'image/png' else 'jpg')
+        prefix = ('planimetria-catastale' if row['answers'].get('floor_plan_position') == position else f'foto-{position}')
+        filename = prefix + '.' + ('png' if content_type == 'image/png' else 'jpg')
         photo_info.append(dict(position=position, filename=filename,
             sha256=hashlib.sha256(data).hexdigest(), size_bytes=len(data), content_type=content_type))
         attachments.append({'filename': filename, 'content': base64.b64encode(data).decode()})
@@ -106,6 +119,8 @@ def make_envelope(row, files):
     answer_keys = ('city', 'intent', 'role', 'publication')
     if row['form_id'] == 'ristrutturare-o-vendere':
         answer_keys += ('target_price', 'area_sqm', 'zone', 'timeframe')
+        if row['answers'].get('floor_plan_position') is not None:
+            answer_keys += ('floor_plan_position',)
     envelope = Envelope.model_validate(dict(notification_schema='scoutly-gmail-v1',
         request_id=row['id'], form_id=row['form_id'], form_name=route['form_name'],
         form_version=row['form_version'], workflow_id=row['workflow_id'], email=row['email'],
@@ -143,9 +158,11 @@ def render_html(envelope):
             ('Tempi di vendita', envelope.answers.timeframe),
         ])
     consultation = 'Richiesta' if envelope.consultation_requested else 'Non richiesta'
-    photo_count = len(envelope.photos)
-    photo_text = (f'{photo_count} foto allegate' if photo_count else 'Nessuna foto allegata')
-    photo_names = ' · '.join(safe(p.filename) for p in envelope.photos)
+    plan = next((p for p in envelope.photos if p.filename.startswith('planimetria-catastale.')), None)
+    photo_count = len(envelope.photos) - bool(plan)
+    photo_text = ('1 foto allegata' if photo_count == 1 else f'{photo_count} foto allegate' if photo_count else 'Nessuna foto allegata')
+    photo_names = ' · '.join(safe(p.filename) for p in envelope.photos if p is not plan)
+    plan_html = (f'<h2 style="margin:28px 0 8px;font-size:19px">Planimetria catastale</h2><p>Immagine separata allegata: {safe(plan.filename)}. Documento dichiarato dal richiedente; non attesta la conformità catastale.</p>' if plan else '')
     description = safe(envelope.description).replace('\n', '<br>')
     service_label = ('La richiesta di orientamento è confermata. La consulenza gratuita resta facoltativa.'
                      if renovation else 'La richiesta della bozza è confermata. Il ricontatto resta facoltativo.')
@@ -171,6 +188,7 @@ def render_html(envelope):
 <div style="color:#283e34;overflow-wrap:anywhere">{description}</div>
 <h2 style="margin:28px 0 8px;font-size:19px">Foto</h2>
 <p style="margin:0">{photo_text}</p><p style="margin:4px 0 0;font-size:13px;color:#66736c;overflow-wrap:anywhere">{photo_names}</p>
+{plan_html}
 <div style="margin:28px 0 0;padding-top:20px;border-top:1px solid #dedfd7;font-size:13px;color:#66736c">
 <p style="margin:0 0 8px">Materiale da verificare prima di preparare {result_label}. Questa email non conferma che l'analisi sia già avvenuta.</p>
 <p style="margin:0">Form: {safe(envelope.form_id)} · versione {envelope.form_version}<br>

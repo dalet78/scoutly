@@ -8,8 +8,31 @@ const renovation=form.dataset?.formId==='ristrutturare-o-vendere';
 const formId=renovation?'ristrutturare-o-vendere':'prima-di-pubblicare';
 const storageKey='scoutly-public-'+formId+'-v1';
 const submitLabel=renovation?'Ricevi il confronto via email →':'Invia descrizione e foto →';
+const planPicker=renovation?document.getElementById('floor-plan'):null;
+const planPreview=renovation?document.getElementById('floor-plan-preview'):null;
+const planSummary=renovation?document.getElementById('floor-plan-summary'):null;
+let floorPlan=null,planUrl=null;
+function material(){return floorPlan?[...photos,floorPlan]:photos;}
 let photos=[],submitting=false,urls=[],gate=null,pending=null;
 send.disabled=true;picker.removeAttribute('name');
+planPicker?.removeAttribute('name');
+function renderPlan(){
+ if(!planPicker)return;
+ if(planUrl)URL.revokeObjectURL(planUrl);planUrl=null;planPreview.replaceChildren();
+ planPicker.files=fileList(floorPlan?[floorPlan]:[]);
+ planSummary.textContent=floorPlan?'Planimetria selezionata: '+floorPlan.name:'Nessuna planimetria selezionata (facoltativa).';
+ if(!floorPlan)return;
+ const image=document.createElement('img');planUrl=URL.createObjectURL(floorPlan);image.src=planUrl;image.alt='Anteprima della planimetria catastale';image.style.maxWidth='100%';
+ const remove=document.createElement('button');remove.type='button';remove.className='text-button';remove.textContent='Rimuovi planimetria';
+ remove.addEventListener('click',()=>{if(submitting)return;floorPlan=null;error.textContent='';renderPlan();render();});
+ planPreview.append(image,remove);
+}
+planPicker?.addEventListener('change',()=>{
+ const selected=[...planPicker.files];if(!selected.length)return;
+ const message=selected.length!==1?'Seleziona una sola planimetria.':validatePhotos([...photos,...selected]);
+ if(message){error.textContent=message+' Il limite è 8 immagini totali, planimetria inclusa.';renderPlan();return;}
+ floorPlan=selected[0];error.textContent='';renderPlan();render();
+});
 function fileList(files){const transfer=new DataTransfer();for(const file of files)transfer.items.add(file);return transfer.files;}
 function render(){
  for(const url of urls)URL.revokeObjectURL(url);urls=[];previews.replaceChildren();picker.files=fileList(photos);
@@ -20,11 +43,11 @@ function render(){
   remove.addEventListener('click',()=>{if(submitting)return;photos.splice(index,1);error.textContent='';render();picker.focus();});
   card.append(image,name,remove);previews.append(card);
  });
- summary.textContent=photos.length?photos.length+' foto selezionate · '+(photos.reduce((sum,file)=>sum+file.size,0)/1_000_000).toFixed(1)+' MB su 8 MB':'Nessuna foto selezionata.';
+ summary.textContent=(photos.length?photos.length+' foto selezionate':'Nessuna foto selezionata')+(floorPlan?' + 1 planimetria':'')+' · '+(material().reduce((sum,file)=>sum+file.size,0)/1_000_000).toFixed(1)+' MB totali su 8 MB';
 }
 picker.addEventListener('change',()=>{
  const candidates=[...photos];for(const file of picker.files)if(!candidates.some(old=>old.name===file.name&&old.size===file.size&&old.lastModified===file.lastModified))candidates.push(file);
- const message=validatePhotos(candidates);if(message){error.textContent=message+' La nuova selezione non è stata aggiunta.';render();return;}
+ const message=validatePhotos(floorPlan?[...candidates,floorPlan]:candidates);if(message){error.textContent=message+' La nuova selezione non è stata aggiunta. Il limite include la planimetria.';render();return;}
  photos=candidates;error.textContent='';render();
 });
 async function connect(){
@@ -35,6 +58,7 @@ async function connect(){
   if(!response.ok)throw new Error();const data=await response.json();
   if(data.protocol!==1||typeof data.challenge!=='string'||data.max_photos!==8||data.max_bytes!==8000000)throw new Error();
   if(renovation&&!data.supported_forms?.some(item=>item.form_id===formId&&item.form_version===1))throw new Error();
+  if(planPicker&&data.floor_plan_upload!==true)throw new Error();
   gate={token:data.challenge,receivedAt:Date.now(),readyAt:Date.now()+3100};
   connection.textContent='Puoi inviare la richiesta. Riceverai un codice di conferma dopo il salvataggio.';
   send.disabled=false;
@@ -43,9 +67,9 @@ async function connect(){
 }
 reconnect.addEventListener('click',()=>{if(!submitting)connect();});
 async function fingerprint(payload){
- const material={...payload};delete material.idempotency_key;
- const chunks=[JSON.stringify(material)];
- for(const file of photos){const hash=await crypto.subtle.digest('SHA-256',await file.arrayBuffer());chunks.push([...new Uint8Array(hash)].map(x=>x.toString(16).padStart(2,'0')).join(''));}
+ const fields={...payload};delete fields.idempotency_key;
+ const chunks=[JSON.stringify(fields)];
+ for(const file of material()){const hash=await crypto.subtle.digest('SHA-256',await file.arrayBuffer());chunks.push([...new Uint8Array(hash)].map(x=>x.toString(16).padStart(2,'0')).join(''));}
  const hash=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(chunks.join('\n')));
  return [...new Uint8Array(hash)].map(x=>x.toString(16).padStart(2,'0')).join('');
 }
@@ -54,8 +78,9 @@ form.addEventListener('submit',async event=>{
  event.preventDefault();if(submitting)return;
  if(!form.reportValidity())return;
  if(renovation&&!photos.length){error.textContent='Carica almeno una foto per ricevere il confronto.';return;}
- const message=validatePhotos(photos);if(message){error.textContent=message;return;}
+ const message=validatePhotos(material());if(message){error.textContent=message;return;}
  submitting=true;send.disabled=true;reconnect.disabled=true;picker.disabled=true;error.textContent='';send.textContent='Salvataggio in corso…';
+ if(planPicker)planPicker.disabled=true;
  const controller=new AbortController();let timer;
  try {
   if(!gate||Date.now()-gate.receivedAt>1200000)await connect();
@@ -69,13 +94,14 @@ form.addEventListener('submit',async event=>{
   if(renovation)Object.assign(payload,{
    target_price:Number(data.get('target_price')),area_sqm:Number(data.get('area_sqm')),
    zone:String(data.get('zone')||'').trim(),timeframe:data.get('timeframe')});
+  if(floorPlan)payload.floor_plan_position=photos.length+1;
   const signature=await fingerprint(payload);
   if(pending?.uncertain&&pending.signature!==signature)throw new SubmissionError('Il tentativo precedente ha un esito da verificare. Mantieni gli stessi dati e foto prima di riprovare con il suo codice.');
   await new Promise(resolve=>setTimeout(resolve,Math.max(0,gate.readyAt-Date.now())));
   persist({id:payload.idempotency_key,signature,uncertain:true});
   error.textContent='Codice richiesta: '+pending.id+'. Attendi la conferma senza chiudere la pagina.';
   timer=setTimeout(()=>controller.abort(),90000);
-  const receipt=await submitPublic({endpoint:API+'/public/requests',payload,photos,website:String(data.get('website')||''),challenge:gate.token,signal:controller.signal});
+  const receipt=await submitPublic({endpoint:API+'/public/requests',payload,photos:material(),website:String(data.get('website')||''),challenge:gate.token,signal:controller.signal});
   persist({id:receipt.request_id,confirmed:true});
   location.assign((renovation?'richiesta-ristrutturare-inviata.html':'richiesta-inviata.html')+'#'+receipt.request_id);
  } catch(reason) {
@@ -85,6 +111,7 @@ form.addEventListener('submit',async event=>{
   gate=null;
  } finally {
   clearTimeout(timer);submitting=false;picker.disabled=false;send.disabled=false;reconnect.disabled=false;send.textContent=submitLabel;
+  if(planPicker)planPicker.disabled=false;
  }
 });
 try {
@@ -93,6 +120,7 @@ try {
  if(pending&&!/^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/i.test(pending.id))throw new Error();
  if(pending)error.textContent='Tentativo precedente da verificare. Codice: '+pending.id+'. Per riprovare usa gli stessi dati e foto.';
  if(typeof DataTransfer!=='function'||!crypto.randomUUID||!crypto.subtle)throw new Error();
- render();connect();
+ render();renderPlan();connect();
 } catch {send.disabled=true;picker.disabled=true;connection.textContent='Per inviare usa un browser aggiornato con memoria di sessione disponibile.';}
 window.addEventListener('pageshow',()=>{submitting=false;send.textContent=submitLabel;});
+

@@ -32,6 +32,20 @@
         "informazioni_da_confermare",
         "osservazioni_foto_se_analizzate",
         "consulenza_gratuita_facoltativa"
+      ],
+      "optional_uploads": [
+        {
+          "field": "floor-plan",
+          "type": "planimetria_catastale_dichiarata",
+          "formats": [
+            "image/jpeg",
+            "image/png"
+          ],
+          "max_files": 1,
+          "max_images_including_photos": 8,
+          "max_total_bytes": 8000000,
+          "signed_position": "envelope.answers.floor_plan_position"
+        }
       ]
     }
   ],

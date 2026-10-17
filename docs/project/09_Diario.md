@@ -51,3 +51,8 @@ Fondatore conferma riuscita delle prove riservate e autorizza collegamento pubbl
 ## 17 ottobre 2026 — Secondo form
 17 ottobre 2026 — Secondo percorso autorizzato: **Ristrutturare o vendere così?**, con foto, prezzo ipotizzato, superficie, zona e tempi. Confronto qualitativo di tre scenari, prezzo del proprietario non validato e consulenza gratuita facoltativa. Backend, pagina, notifiche e agente Gmail aggiornati; 59 test Python e 14 JavaScript locali passati. **Da attivare:** eseguire supabase/002_secondo_form.sql, impostare RENOVATION_FORM_ENABLED=true e Manual Deploy latest commit su Render. Nessuna prova reale del secondo form ancora eseguita. [Guida e task](40_Form_ristrutturare_o_vendere.md).
 
+
+
+## 17 ottobre 2026 — Planimetria separata
+17 ottobre 2026 — Secondo form: aggiunta **planimetria catastale facoltativa come immagine separata**, anteprima/rimozione, metadati firmati e allegato dedicato. Limite 8 immagini/8 MB: con la piantina fino a 7 foto. Agente aggiornato, nessuna attestazione di conformità. 65 test Python e 11 JavaScript pubblici locali passati; nessuna nuova migrazione SQL. Serve deploy latest commit Render e prova completa.
+

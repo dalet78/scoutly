@@ -84,6 +84,7 @@ class Payload(BaseModel):
     area_sqm: float | None = Field(default=None, gt=0, le=5000)
     zone: str | None = Field(default=None, min_length=2, max_length=120)
     timeframe: Literal['Entro 3 mesi', 'Tra 3 e 6 mesi', 'Oltre 6 mesi', 'Sto valutando'] | None = None
+    floor_plan_position: int | None = Field(default=None, strict=True, ge=1, le=8)
 
     @model_validator(mode='after')
     def route_fields(self):
@@ -94,6 +95,8 @@ class Payload(BaseModel):
                 raise ValueError('Servono prezzo ipotizzato, metratura, zona e tempi per una vendita')
         elif any(value is not None for value in fields):
             raise ValueError('Campi non previsti per questo form')
+        if self.form_id != 'ristrutturare-o-vendere' and self.floor_plan_position is not None:
+            raise ValueError('Planimetria separata non prevista per questo form')
         return self
 
 
@@ -274,6 +277,8 @@ def check_photo(data, declared_type):
 def accept(payload, photos, store, public=False):
     key = str(payload.idempotency_key)
     values = payload.model_dump(mode='json')
+    if values['floor_plan_position'] is None:
+        values.pop('floor_plan_position')
     if payload.form_id == 'prima-di-pubblicare':
         # Mantiene invariati gli hash delle richieste già ricevute con il primo form.
         for field in ('target_price', 'area_sqm', 'zone', 'timeframe'):
@@ -300,6 +305,8 @@ def accept(payload, photos, store, public=False):
                answers={k: values[k] for k in ('city', 'intent', 'role', 'publication')})
     if payload.form_id == 'ristrutturare-o-vendere':
         row['answers'].update({k: values[k] for k in ('target_price', 'area_sqm', 'zone', 'timeframe')})
+        if payload.floor_plan_position is not None:
+            row['answers']['floor_plan_position'] = payload.floor_plan_position
     if public:
         row['answers']['email_notice'] = {'status': 'pending'}
     if not store.insert(row):
@@ -405,6 +412,7 @@ def create_app(store_factory=SupabaseStore, email_sender=send_test_email, notice
         if not enabled():
             raise HTTPException(503, 'Invio temporaneamente non disponibile. Riprova più tardi.')
         return JSONResponse({'protocol': 1, 'challenge': challenge(), 'min_age_seconds': 3,
+                             'floor_plan_upload': True,
                              'supported_forms': [dict(form_id=key, form_version=value['form_version'])
                                  for key, value in ROUTES.items() if key == 'prima-di-pubblicare'
                                  or os.environ.get('RENOVATION_FORM_ENABLED', '').lower() == 'true'],
@@ -462,6 +470,8 @@ def create_app(store_factory=SupabaseStore, email_sender=send_test_email, notice
                 raise HTTPException(422, 'Carica almeno una foto per questo percorso.')
         if len(photos) > 8:
             raise HTTPException(422, 'Massimo otto foto.')
+        if parsed.floor_plan_position is not None and (parsed.floor_plan_position != len(photos) or len(photos) < 2):
+            raise HTTPException(422, 'La planimetria deve seguire almeno una foto della casa.')
         validated = []
         total = 0
         for photo in photos:

@@ -36,3 +36,13 @@ Il secondo form non invia se il backend non dichiara di supportarlo. Il primo re
 
 ## Evidenze e limiti
 59 test Python e 14 JavaScript locali passati (9 ricezione pubblica + 5 pagina riservata), con provider/archivio simulati. Anteprima visiva locale verificata, nessun invio reale del secondo form. Migrazione SQL e deploy non ancora eseguiti dall'operatore; prova reale end-to-end ancora aperta. Nessuna campagna o spesa avviata.
+
+
+## Planimetria catastale come immagine separata
+Campo facoltativo dedicato, JPG/PNG, con anteprima e rimozione indipendenti. Massimo 8 immagini e 8 MB complessivi: con la planimetria fino a 7 foto più una piantina; almeno una foto della casa resta necessaria. Nessun PDF in questa prima versione.
+
+La planimetria viene aggiunta per ultima nel multipart, conservata nell'archivio privato con lo stesso schema immagini e identificata da answers.floor_plan_position. L'email ha una sezione separata e un allegato planimetria-catastale.jpg/png. Posizione, nome e hash sono firmati; il campo non autentica il documento catastale. L'agente distingue foto e disegno, non attesta conformità o fattibilità dei lavori e non riporta dati personali/intestazioni della piantina. La UI invita a oscurare i dati personali non necessari.
+
+Nessuna nuova migrazione SQL oltre a 002_secondo_form.sql già prevista per il secondo form. Aggiornare Render a latest commit; il browser richiede floor_plan_upload=true per evitare invii alla revisione precedente. Hash e firme delle richieste precedenti restano compatibili. Test locali: 65 Python e 11 JavaScript pubblici passati (più i 5 della pagina privata già verificati); provider/archivio simulati. Nessun caricamento reale di una piantina o invio email effettuato in questa modifica.
+
+Task R07 (A05-FE/BE/INT): caricamento dedicato, metadati e notifica implementati; R08 (agente email): istruzioni aggiornate; R09 (A05-OPS/QA): deploy e verifica completa ancora da eseguire.
