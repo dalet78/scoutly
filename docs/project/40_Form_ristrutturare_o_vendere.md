@@ -50,3 +50,13 @@ Task R07 (A05-FE/BE/INT): caricamento dedicato, metadati e notifica implementati
 
 ## Consigli pratici dalle fotografie
 Su richiesta del fondatore l’agente del secondo form include 2–3 piccoli interventi quando supportati dalle immagini lette, con schema: cosa noto nella foto, cosa fare e perché può aiutare. Distingue gli interventi nell’immobile dai suggerimenti per lo scatto. Priorità a interventi circoscritti, reversibili e di presentazione; nessun difetto inventato per riempire la lista, diagnosi tecnica, costo stimato o incremento di valore promesso. Se immagini/render non rappresentano chiaramente lo stato attuale, chiede conferma. Nessuna modifica al singolo punto previsto dal primo form. Automazione aggiornata; nessuna nuova email inviata, nessun cambiamento al backend o nuovo deploy richiesto per queste sole istruzioni.
+
+
+## Esperienza di invio, prezzo e comuni
+Aggiornamento 17 ottobre 2026 su richiesta del fondatore: anteprime esplicitamente locali/non inviate, barra reale sui byte trasferiti e fase successiva di attesa ricevuta. Il 100% del trasferimento non equivale al salvataggio: solo received con UUID corretto conferma la richiesta. Nessun retry automatico; conservare lo stesso codice dopo errore ambiguo. Gli errori di collegamento o workflow non abilitato spiegano perché il pulsante resta disabilitato.
+
+Il prezzo mostra punti ogni tre cifre (392.000) e viene inviato come intero 392000, senza virgole decimali o valori negativi. Il comune è una ricerca nell'elenco completo ISTAT (7.894 record, snapshot ufficiale 21 febbraio 2026), con Milano (MI) preselezionato. Codice e denominazione derivata sono validati dal server e firmati; campo libero non autorizza località inventate. Il perimetro resta Milano Comune e la pagina segnala il limite per altre località. Fonte e trasformazione: intake-python/COMUNI_SOURCE.md.
+
+Diagnosi live prima dell'aggiornamento: il servizio pubblico risponde, ma renovation_form_enabled=false e supported_forms elenca solo il primo form. Il blocco non dipende dalle immagini: serve abilitare RENOVATION_FORM_ENABLED=true su Render dopo la migrazione 002 già prevista e distribuire latest commit. Non occorre nuovo SQL. La nuova revisione espone municipality_support=true.
+
+Verifica locale: 73 test Python e 17 JavaScript pubblici passati con provider/archivio e trasferimento simulati; 5 JavaScript della pagina riservata passati. Controllo browser del prezzo formattato e Milano predefinito. Nessun invio reale eseguito in questa modifica; prova completa dopo attivazione/deploy ancora da eseguire.

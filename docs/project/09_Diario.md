@@ -61,3 +61,8 @@ Fondatore conferma riuscita delle prove riservate e autorizza collegamento pubbl
 ## 17 ottobre 2026 — Piccoli interventi dalle foto
 17 ottobre 2026 — Agente del secondo form aggiornato: consigli pratici dalle foto con schema osservazione → intervento circoscritto → beneficio di presentazione; normalmente 2–3, solo se motivati. Nessun costo o aumento di prezzo inventato. Nessuna modifica al primo form e nessun nuovo deploy richiesto per questa modifica alle istruzioni. Restano le attivazioni backend già indicate sotto.
 
+
+
+## 17 ottobre 2026 — Stato invio, importo e comuni
+17 ottobre 2026 — UX del secondo form: anteprime locali distinte dall'invio, avanzamento byte e conferma salvataggio separati; prezzo con punti delle migliaia; ricerca comuni ISTAT con Milano predefinito. Codice/nome del comune validati e firmati, perimetro Milano invariato. 73 test Python e 17 JS pubblici locali passati. Diagnosi live: RENOVATION_FORM_ENABLED ancora false, quindi invio disabilitato; servono attivazione già prevista e latest deploy, nessun nuovo SQL.
+

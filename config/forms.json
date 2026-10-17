@@ -46,7 +46,14 @@
           "max_total_bytes": 8000000,
           "signed_position": "envelope.answers.floor_plan_position"
         }
-      ]
+      ],
+      "municipality_catalog": "intake-python/comuni.json",
+      "municipality_default": "015146",
+      "signed_optional_fields": [
+        "municipality_code",
+        "municipality_name"
+      ],
+      "service_scope": "Milano Comune"
     }
   ],
   "routing_policy": {

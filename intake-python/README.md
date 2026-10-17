@@ -139,3 +139,9 @@ Il nuovo form richiede prezzo ipotizzato, zona, superficie e tempi oltre a descr
 Prima eseguire una volta supabase/002_secondo_form.sql nel progetto Supabase, poi impostare RENOVATION_FORM_ENABLED=true su Render e distribuire latest commit. Nessuna cancellazione o modifica a RLS. La configurazione pubblica elenca il secondo percorso solo se la variabile è attiva; il nuovo modulo non invia a backend precedenti. Nessun nuovo segreto necessario. Form, versione e workflow devono corrispondere alla medesima riga di form_routes.py. Il verificatore mantiene HTTPS e usa il CA bundle certifi.
 
 Il primo form mantiene hash delle richieste e struttura firmata precedente. Registro pubblico: config/forms.json; istruzioni e attivazione: docs/project/40_Form_ristrutturare_o_vendere.md. Nessun invio reale del secondo percorso eseguito nella verifica locale.
+
+
+## Avanzamento, prezzo e ricerca comuni
+La barra mostra byte trasferiti con XMLHttpRequest; al 100% resta in attesa della ricevuta received, senza dichiarare salvato il materiale prima della conferma. Errori, abort e timeout mantengono il codice, senza retry automatici. Le anteprime sono etichettate come locali e non inviate. Un workflow non abilitato restituisce un messaggio esplicito e mantiene disabilitato il pulsante.
+
+Il prezzo usa punti delle migliaia e viene trasmesso come intero in euro. Il secondo form ricerca i 7.894 comuni nello snapshot ufficiale ISTAT, con Milano preselezionato; codice e denominazione sono verificati server-side e firmati in answers. Il perimetro operativo rimane Milano Comune: la selezione di altre località non abilita una consulenza locale. Nessun nuovo SQL richiesto, ma servono RENOVATION_FORM_ENABLED=true e deploy della nuova revisione; /public/config espone municipality_support=true.

@@ -13,6 +13,7 @@ import httpx
 from fastapi import HTTPException
 from pydantic import BaseModel, ConfigDict, EmailStr, Field, model_validator
 from form_routes import ROUTES, check_route
+from municipalities import check_municipality
 
 SUBJECT = '[Scoutly][prima-di-pubblicare] Prima di pubblicare — Richiesta bozza annuncio'
 MARKER = 'SCOUTLY_SIGNED_NOTIFICATION_V1'
@@ -48,6 +49,16 @@ class RenovationPlanAnswers(RenovationAnswers):
     floor_plan_position: int = Field(strict=True, ge=2, le=8)
 
 
+class MunicipalAnswers(RenovationAnswers):
+    municipality_code: str = Field(pattern=r'^\d{6}$')
+    municipality_name: str = Field(min_length=2, max_length=180)
+
+
+class MunicipalPlanAnswers(RenovationPlanAnswers):
+    municipality_code: str = Field(pattern=r'^\d{6}$')
+    municipality_name: str = Field(min_length=2, max_length=180)
+
+
 class Envelope(Strict):
     notification_schema: Literal['scoutly-gmail-v1']
     request_id: UUID
@@ -59,7 +70,7 @@ class Envelope(Strict):
     name: str | None = Field(max_length=80)
     phone: str | None = Field(max_length=30)
     description: str = Field(min_length=20, max_length=4000)
-    answers: Answers | RenovationAnswers | RenovationPlanAnswers
+    answers: Answers | RenovationAnswers | RenovationPlanAnswers | MunicipalAnswers | MunicipalPlanAnswers
     service_requested: Literal[True]
     consultation_requested: bool
     photos: list[Photo] = Field(max_length=8)
@@ -75,6 +86,8 @@ class Envelope(Strict):
         if renovation and (self.answers.intent != 'Vendere' or not self.photos):
             raise ValueError('Servono foto e finalità vendita')
         plan_position = getattr(self.answers, 'floor_plan_position', None)
+        if getattr(self.answers, 'municipality_code', None) is not None:
+            check_municipality(self.answers.municipality_code, self.answers.city, self.answers.municipality_name)
         plans = [p for p in self.photos if p.filename.startswith('planimetria-catastale.')]
         if plan_position is not None:
             if (len(plans) != 1 or plans[0].position != plan_position
@@ -121,6 +134,8 @@ def make_envelope(row, files):
         answer_keys += ('target_price', 'area_sqm', 'zone', 'timeframe')
         if row['answers'].get('floor_plan_position') is not None:
             answer_keys += ('floor_plan_position',)
+        if row['answers'].get('municipality_code') is not None:
+            answer_keys += ('municipality_code', 'municipality_name')
     envelope = Envelope.model_validate(dict(notification_schema='scoutly-gmail-v1',
         request_id=row['id'], form_id=row['form_id'], form_name=route['form_name'],
         form_version=row['form_version'], workflow_id=row['workflow_id'], email=row['email'],
@@ -147,7 +162,7 @@ def render_html(envelope):
         ('Telefono', envelope.phone or 'Non indicato'),
     ])
     details = ''.join(row(label, value) for label, value in [
-        ('Comune', envelope.answers.city), ('Obiettivo', envelope.answers.intent),
+        ('Comune', getattr(envelope.answers, 'municipality_name', envelope.answers.city)), ('Obiettivo', envelope.answers.intent),
         ('Ruolo dichiarato', envelope.answers.role), ('Pubblicazione', envelope.answers.publication),
     ])
     renovation = envelope.form_id == 'ristrutturare-o-vendere'
