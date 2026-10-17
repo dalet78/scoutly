@@ -1,3 +1,5 @@
+> 17 ottobre 2026 — Nome e ID del form nell’oggetto email e nel payload; registro config/forms.json per i futuri ingressi. [Regole identificazione AI](project/27_Identita_form_e_routing_AI.md). Agente ancora in pausa; nessuna ricezione o risposta automatica dichiarata verificata.
+
 > Prova browser conclusa: foto sintetica selezionata e form inviato; FormSubmit conferma il submit. Ricezione nella casella e allegato ancora da verificare. Nessun dato immobiliare reale usato. Agente automatico in pausa.
 
 > Destinatario temporaneo confermato: david.perugia78@gmail.com; Scoutly è in creazione. FormSubmit richiede attivazione su questa casella. Agente ancora in pausa.
