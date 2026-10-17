@@ -1,3 +1,5 @@
+> 17 ottobre 2026 — Prova completa NON superata sul tratto form→casella con 8 allegati. Risposta di prova Gmail al fondatore consegnata, ma prodotta dal materiale in chat; non dimostra analisi di posta ricevuta né ciclo pianificato. [Esito e prossimo passo](project/37_Esito_prova_completa.md). Limite 8 foto/8 MB, endpoint FormSubmit assegnato e POST nativo con antispam; ricezione allegati da verificare prima di traffico reale.
+
 > 17 ottobre 2026 — Foto selezionabili insieme con un solo selettore; aggiunta successiva e rimozione individuale. Limiti 6 foto / 8 MB invariati; verifica browser completata con due immagini sintetiche e campi allegati senza duplicati. Nessuna email aggiuntiva inviata.
 
 > 17 ottobre 2026 — Dopo l’invio FormSubmit torna alla pagina Scoutly tools/richiesta-inviata.html, con pulsante Torna a Scoutly e link al form. Nessuna nuova email di prova inviata.
