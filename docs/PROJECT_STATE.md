@@ -1,3 +1,7 @@
+> Configurazione aggiuntiva: impostare SCOUTLY_TEST_EMAIL su Render con la email dell'account Resend. Il recapito non viene incluso nel codice pubblico né accettato dal browser. Senza destinatario configurato nessun tentativo email viene reclamato.
+
+> 17 ottobre 2026 — Il fondatore conferma richiesta e otto immagini visibili in Supabase; doppioni riconosciuti. Preparato collegamento Resend **solo per una email manuale di prova al fondatore**, tramite pulsante `/test`; chiave RESEND_API_KEY configurata su Render secondo dichiarazione del fondatore. Flag persistente prima dell'invio e nessun retry cieco; nessun nuovo SQL richiesto. **29 test Python + 4 JavaScript locali passati**, con provider/archivio simulati. Prossimo: deploy nuova revisione e verifica consegna della email tecnica. AI e risposte automatiche ai proprietari restano disattivate; landing pubblica ancora su FormSubmit. [Guida](../intake-python/README.md).
+
 > 17 ottobre 2026 — Host Python avviato: verifica diretta di `/health` riuscita (`ok`, modalità private-test, email disattivata). Preparata pagina `/test` per una descrizione e otto PNG sintetici; richiede SCOUTLY_TEST_TOKEN inserito solo sul sito Render, nessuna chiave inclusa nel codice. **16 test Python + 3 test JavaScript locali passati** con archivio simulato. Nuova pagina da distribuire tramite Manual Deploy, poi verificare ricevuta e oggetti nel progetto Supabase. Ricezione remota non ancora provata; form pubblico e AI/email ancora separati. [Guida](../intake-python/README.md).
 
 > 17 ottobre 2026 — Preparato ricevitore Python per prove riservate su Render Free + Supabase. Il fondatore dichiara progetto e SQL creati; verifica remota ancora da fare. **15 test locali passati**, con archivio/trasporto simulati. [Configurazione Render](../intake-python/README.md). Nessun deploy Render eseguito, nessun collegamento al form, nessuna email/AI da questo componente. Prossimo: configurare le variabili server e provare ricezione sintetica su Supabase; poi antispam pubblico e integrazione landing. Il monitor Gmail esistente è separato.
@@ -10,13 +14,13 @@
 
 > 17 ottobre 2026 — Aggiunto telefono facoltativo al form Prima di pubblicare: inviato con il campo phone a FormSubmit; richiesta consulenza distinta, email sufficiente per ricevere la bozza. Nessuna telefonata o messaggio di prova inviato.
 
-> 17 ottobre 2026 — Agente email aggiornato su autorizzazione esplicita del fondatore: ACTIVE, ogni 30 minuti, casella temporanea david.perugia78@gmail.com. Form prima-di-pubblicare v2 riconosciuto; notifiche FormSubmit con Reply-To verificato e controllo duplicati. Posta personale estranea e test tecnici esclusi. Nessuna richiesta trovata nell’ultima ricerca; prima risposta reale e primo ciclo pianificato non ancora verificati. Le indicazioni precedenti di pausa/guardia su scoutlyhome sono superate.
+> 17 ottobre 2026 — Agente email aggiornato su autorizzazione esplicita del fondatore: ACTIVE, ogni 30 minuti, casella temporanea casella temporanea autorizzata. Form prima-di-pubblicare v2 riconosciuto; notifiche FormSubmit con Reply-To verificato e controllo duplicati. Posta personale estranea e test tecnici esclusi. Nessuna richiesta trovata nell’ultima ricerca; prima risposta reale e primo ciclo pianificato non ancora verificati. Le indicazioni precedenti di pausa/guardia su scoutlyhome sono superate.
 
 > 17 ottobre 2026 — Nome e ID del form nell’oggetto email e nel payload; registro config/forms.json per i futuri ingressi. [Regole identificazione AI](project/27_Identita_form_e_routing_AI.md). Agente ancora in pausa; nessuna ricezione o risposta automatica dichiarata verificata.
 
 > Prova browser conclusa: foto sintetica selezionata e form inviato; FormSubmit conferma il submit. Ricezione nella casella e allegato ancora da verificare. Nessun dato immobiliare reale usato. Agente automatico in pausa.
 
-> Destinatario temporaneo confermato: david.perugia78@gmail.com; Scoutly è in creazione. FormSubmit richiede attivazione su questa casella. Agente ancora in pausa.
+> Destinatario temporaneo confermato: casella temporanea autorizzata; Scoutly è in creazione. FormSubmit richiede attivazione su questa casella. Agente ancora in pausa.
 
 > 17 ottobre 2026 — [Invio dal sito con foto](project/26_FormSubmit_foto.md): sostituito mailto con FormSubmit autorizzato per il test. Email e fino a sei JPG/PNG (8 MB totali); attivazione casella e ricezione allegati da verificare. Agente email ancora in pausa, parsing notifiche provider da adattare dopo prova. Le istruzioni mailto precedenti sono storico.
 

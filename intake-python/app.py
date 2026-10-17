@@ -5,6 +5,7 @@ import json
 import os
 import secrets
 import warnings
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Literal
 from uuid import UUID
@@ -13,11 +14,50 @@ import httpx
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.exceptions import RequestValidationError
 from PIL import Image, UnidentifiedImageError
-from pydantic import BaseModel, ConfigDict, EmailStr, Field, ValidationError
+from pydantic import BaseModel, ConfigDict, EmailStr, Field, TypeAdapter, ValidationError
 from starlette.responses import JSONResponse, Response
 
 MAX_BYTES = 8_000_000
 Image.MAX_IMAGE_PIXELS = 25_000_000
+
+
+class MailTestRequest(BaseModel):
+    model_config = ConfigDict(extra='forbid')
+    request_id: UUID
+
+
+def mail_configuration():
+    api_key = os.environ.get('RESEND_API_KEY', '')
+    if not api_key:
+        raise HTTPException(503, 'Aggiungi RESEND_API_KEY nelle variabili Render.')
+    try:
+        recipient = str(TypeAdapter(EmailStr).validate_python(os.environ.get('SCOUTLY_TEST_EMAIL', '')))
+    except ValidationError:
+        raise HTTPException(503, 'Aggiungi SCOUTLY_TEST_EMAIL nelle variabili Render con la email del tuo account Resend.') from None
+    return api_key, recipient
+
+
+def send_test_email(request_id):
+    api_key, recipient = mail_configuration()
+    # Destinatario e contenuto fissati dal server: nessun invio a recapiti nel form.
+    with httpx.Client(timeout=30) as client:
+        response = client.post('https://api.resend.com/emails', headers={
+            'Authorization': 'Bearer ' + api_key,
+            'Idempotency-Key': 'scoutly-email-test/v1/' + request_id,
+        }, json={
+            'from': 'Scoutly test <onboarding@resend.dev>',
+            'to': [recipient],
+            'subject': '[Scoutly][prima-di-pubblicare] TEST TECNICO SCOUTLY — Collegamento email',
+            'text': 'TEST TECNICO SCOUTLY\n\nIl collegamento Python → Resend è stato attivato per questa prova.\n'
+                    'Codice richiesta simulata: ' + request_id + '\n\n'
+                    'Questo messaggio non contiene una bozza AI e non è una richiesta di consulenza.\n'
+                    'Le risposte automatiche ai proprietari restano disattivate.\n',
+        })
+        response.raise_for_status()
+        provider_id = response.json().get('id')
+        if not isinstance(provider_id, str) or not provider_id:
+            raise RuntimeError('Risposta provider senza identificativo')
+        return provider_id
 
 
 class Payload(BaseModel):
@@ -78,6 +118,64 @@ class SupabaseStore:
         if len(response.json()) != 1:
             raise RuntimeError('Stato ricezione non confermato')
 
+    def mail_request(self, key):
+        response = self.client.get('/rest/v1/scoutly_requests', params={
+            'id': f'eq.{key}', 'select': 'id,status,form_id,form_version,workflow_id,email,description,answers', 'limit': '1'})
+        response.raise_for_status()
+        rows = response.json()
+        return rows[0] if rows else None
+
+    def claim_mail(self, key, answers):
+        response = self.client.patch('/rest/v1/scoutly_requests', params={
+            'id': f'eq.{key}', 'status': 'eq.received', 'answers->mail_test': 'is.null'},
+            headers={'Prefer': 'return=representation'}, json={'answers': answers})
+        response.raise_for_status()
+        return len(response.json()) == 1
+
+    def record_mail(self, key, answers):
+        response = self.client.patch('/rest/v1/scoutly_requests', params={
+            'id': f'eq.{key}', 'answers->mail_test->>status': 'eq.sending'},
+            headers={'Prefer': 'return=representation'}, json={'answers': answers})
+        response.raise_for_status()
+        if len(response.json()) != 1:
+            raise RuntimeError('Registrazione esito non confermata')
+
+
+def accept_test_email(key, store, sender):
+    row = store.mail_request(key)
+    if row is None:
+        raise HTTPException(404, 'Prima salva la prova con otto immagini.')
+    if (row['status'] != 'received' or row['email'] != 'prova@example.com'
+            or row['form_id'] != 'prima-di-pubblicare' or row['form_version'] != 2
+            or row['workflow_id'] != 'annuncio-da-foto-e-descrizione'
+            or not row['description'].startswith('TEST TECNICO SCOUTLY.')):
+        raise HTTPException(409, 'Email di prova consentita solo per una richiesta sintetica ricevuta.')
+    if not isinstance(row['answers'], dict):
+        raise HTTPException(409, 'Dati della prova da verificare.')
+    answers = dict(row['answers'])
+    previous = answers.get('mail_test')
+    if previous is not None:
+        if isinstance(previous, dict) and previous.get('status') == 'accepted':
+            return {'request_id': key, 'status': 'accepted', 'duplicate': True}
+        raise HTTPException(409, 'Invio già tentato o in corso. Controlla Resend → Emails prima di riprovare; non creare un nuovo codice.')
+    answers['mail_test'] = {'status': 'sending', 'attempted_at': datetime.now(timezone.utc).isoformat()}
+    if not store.claim_mail(key, answers):
+        raise HTTPException(409, 'Un invio risulta già in corso. Verifica il registro della prova.')
+    try:
+        provider_id = sender(key)
+    except (httpx.HTTPStatusError, httpx.RequestError, RuntimeError, ValueError) as exc:
+        # Un errore di rete può seguire l'invio: registrare l'incertezza e non ritentare.
+        known_rejection = isinstance(exc, httpx.HTTPStatusError) and exc.response.status_code in (400, 401, 403, 404, 405, 413, 422, 429)
+        status = 'rejected' if known_rejection else 'unknown'
+        answers['mail_test'] = {**answers['mail_test'], 'status': status}
+        store.record_mail(key, answers)
+        if status == 'rejected':
+            raise HTTPException(502, 'Resend ha rifiutato la prova. Controlla Resend → Emails e la chiave API; il dominio di test può inviare solo alla email del tuo account Resend.') from None
+        raise HTTPException(503, 'Esito email incerto. Controlla Resend → Emails e la casella prima di qualsiasi nuovo invio.') from None
+    answers['mail_test'] = {**answers['mail_test'], 'status': 'accepted', 'provider_id': provider_id}
+    store.record_mail(key, answers)
+    return {'request_id': key, 'status': 'accepted', 'duplicate': False}
+
 
 def check_photo(data, declared_type):
     try:
@@ -137,7 +235,7 @@ class TestGate:
         self.app = app
 
     async def __call__(self, scope, receive, send):
-        if scope['type'] != 'http' or scope['path'] != '/requests':
+        if scope['type'] != 'http' or scope['path'] not in ('/requests', '/test-email'):
             return await self.app(scope, receive, send)
         token = os.environ.get('SCOUTLY_TEST_TOKEN', '')
         headers = dict(scope['headers'])
@@ -152,7 +250,8 @@ class TestGate:
             if message['type'] == 'http.disconnect':
                 return
             body.extend(message.get('body', b''))
-            if len(body) > MAX_BYTES + 100_000:
+            limit = 4000 if scope['path'] == '/test-email' else MAX_BYTES + 100_000
+            if len(body) > limit:
                 return await JSONResponse({'detail': 'Richiesta troppo grande.'}, 413)(scope, receive, send)
             if not message.get('more_body', False):
                 break
@@ -167,7 +266,7 @@ class TestGate:
         await self.app(scope, bounded_receive, send)
 
 
-def create_app(store_factory=SupabaseStore):
+def create_app(store_factory=SupabaseStore, email_sender=send_test_email):
     app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
     app.add_middleware(TestGate)
 
@@ -177,7 +276,19 @@ def create_app(store_factory=SupabaseStore):
 
     @app.get('/health')
     def health():
-        return {'status': 'ok', 'mode': 'private-test', 'email_enabled': False}
+        return {'status': 'ok', 'mode': 'private-test', 'email_enabled': False,
+                'email_test_configured': bool(os.environ.get('RESEND_API_KEY') and os.environ.get('SCOUTLY_TEST_EMAIL'))}
+
+    @app.post('/test-email')
+    def test_email(body: MailTestRequest):
+        mail_configuration()
+        store = store_factory()
+        try:
+            return accept_test_email(str(body.request_id), store, email_sender)
+        except (httpx.HTTPError, RuntimeError, ValueError):
+            raise HTTPException(503, 'Esito da verificare nel registro Supabase e in Resend → Emails. Nessun retry automatico.') from None
+        finally:
+            store.close()
 
     @app.get('/test')
     def test_page():
