@@ -9,7 +9,7 @@ const proof=(text,date=NOW,extra={})=>({kind:'risposta_proprietario',text,date,s
 test('Campione aggiornato: schede rimosse escluse, nessuna disponibilità o assenza agenzia inventata',async()=>{
  const base=JSON.parse(await readFile(new URL('./dist/data.json',import.meta.url))),extra=JSON.parse(await readFile(new URL('./dist/research.json',import.meta.url)));
  const original=base.posts.map(o=>({...o,textComplete:true,...extra.originalCheck}));const posts=[...original,...extra.posts.map(o=>({...o,text:o.textRef?original[0].text:o.text}))];const r=analyzePosts(posts,NOW);
- const siteOnly=extra.posts.filter(o=>o.sourceType==='facebook').length; assert.equal(r.summary.acquired,19+siteOnly);assert.equal(r.summary.excluded,4+siteOnly);assert.equal(r.summary.duplicates,siteOnly?1:0);
+ const siteOnly=extra.posts.filter(o=>o.sourceType==='facebook').length; assert.equal(r.summary.acquired,20+siteOnly);assert.equal(r.summary.excluded,4+siteOnly);assert.equal(r.summary.duplicates,siteOnly?1:0);
  const primaticcio=r.records.find(o=>o.id==='subito-660144264');assert.equal(primaticcio.decision,'review');assert.equal(primaticcio.operation,'affitto');assert.equal(primaticcio.category,'non determinabile');assert.equal(primaticcio.availability.status,'unknown');assert.equal(primaticcio.agency.status,'unknown');
  assert.equal(r.records.filter(o=>o.availability.status==='available').length,0);assert.equal(r.records.filter(o=>o.agency.status==='no').length,0);
  assert.equal(r.records.find(o=>o.id==='subito-662027739').decision,'excluded');
