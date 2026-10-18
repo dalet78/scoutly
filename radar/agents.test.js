@@ -9,7 +9,7 @@ const proof=(text,date=NOW,extra={})=>({kind:'risposta_proprietario',text,date,s
 test('Campione aggiornato: schede rimosse escluse, nessuna disponibilità o assenza agenzia inventata',async()=>{
  const base=JSON.parse(await readFile(new URL('./dist/data.json',import.meta.url))),extra=JSON.parse(await readFile(new URL('./dist/research.json',import.meta.url)));
  const original=base.posts.map(o=>({...o,textComplete:true,...extra.originalCheck}));const posts=[...original,...extra.posts.map(o=>({...o,text:o.textRef?original[0].text:o.text}))];const r=analyzePosts(posts,NOW);
- const siteOnly=extra.posts.filter(o=>o.sourceType==='facebook').length; assert.equal(r.summary.acquired,17+siteOnly);assert.equal(r.summary.excluded,4+siteOnly);assert.equal(r.summary.duplicates,siteOnly?1:0);
+ const siteOnly=extra.posts.filter(o=>o.sourceType==='facebook').length; assert.equal(r.summary.acquired,19+siteOnly);assert.equal(r.summary.excluded,4+siteOnly);assert.equal(r.summary.duplicates,siteOnly?1:0);
  const primaticcio=r.records.find(o=>o.id==='subito-660144264');assert.equal(primaticcio.decision,'review');assert.equal(primaticcio.operation,'affitto');assert.equal(primaticcio.category,'non determinabile');assert.equal(primaticcio.availability.status,'unknown');assert.equal(primaticcio.agency.status,'unknown');
  assert.equal(r.records.filter(o=>o.availability.status==='available').length,0);assert.equal(r.records.filter(o=>o.agency.status==='no').length,0);
  assert.equal(r.records.find(o=>o.id==='subito-662027739').decision,'excluded');
@@ -55,3 +55,5 @@ test('Aggiornamento programmato: il vecchio snapshot nel browser non riattiva un
 
 
 test('Corvetto: prezzo assente e vecchia scadenza locativa non confermano disponibilità',async()=>{const sales=JSON.parse(await readFile(new URL('./dist/sales.json',import.meta.url)));const r=analyzePosts(sales.posts,'2026-10-16').records.find(p=>p.id==='subito-645898873');assert.equal(r.price,null);assert.equal(r.decision,'review');assert.equal(r.category,'privato probabile');assert.equal(r.availability.status,'unknown');assert.equal(r.agency.status,'unknown');});
+
+test('Nuovi affitti: privato probabile non significa proprietà o incarico verificati',async()=>{const d=JSON.parse(await readFile(new URL('./dist/research.json',import.meta.url)));const r=analyzePosts(d.posts,'2026-10-18').records;for(const id of ['subito-643064874','subito-653582665']){const p=r.find(p=>p.id===id);assert.equal(p.category,'privato probabile');assert.equal(p.decision,'review');assert.equal(p.agency.status,'unknown');assert.notEqual(p.availability.status,'available');}});

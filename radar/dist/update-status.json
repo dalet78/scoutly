@@ -5,11 +5,11 @@
     8,
     16
   ],
-  "lastAttemptAt": "2026-10-17T14:04:19.198Z",
+  "lastAttemptAt": "2026-10-18T05:57:19.233Z",
   "lastSuccessAt": null,
   "firstRunAt": "2026-10-14T08:00:00+02:00",
   "status": "partial",
-  "note": "17 ottobre, pomeriggio: nuovo affitto Paolo Sarpi (30 m², €1.150 + €50; condizioni diverse dal risultato indicizzato) e nuova vendita Bruzzano (94 m², €279.000, privato dichiarato). Rilette 17 schede esistenti; 9 non recuperabili. Facebook non accessibile. Disponibilità e incarichi da verificare.",
+  "note": "18 ottobre: due nuovi affitti dichiarati da privati, Crescenzago (45 m², €800 condominio incluso) e Villapizzone/Bovisa (35 m², €750 + €100). Rilette 19 schede esistenti; 9 non recuperabili. Facebook non accessibile. Disponibilità e incarichi da verificare.",
   "runHistory": [
     {
       "lastAttemptAt": "2026-10-14T07:45:12Z",
@@ -67,6 +67,14 @@
       "newRentals": 1,
       "newSales": 1,
       "retrievedExisting": 17,
+      "failedExisting": 9
+    },
+    {
+      "lastAttemptAt": "2026-10-18T05:57:19.233Z",
+      "status": "partial",
+      "newRentals": 2,
+      "newSales": 0,
+      "retrievedExisting": 19,
       "failedExisting": 9
     }
   ]

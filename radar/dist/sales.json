@@ -1,23 +1,23 @@
 {
-  "collectedAt": "2026-10-17",
+  "collectedAt": "2026-10-18",
   "sources": [
     {
       "name": "Subito.it · vendite nel comune di Milano",
       "url": "https://www.subito.it/annunci-lombardia/vendita/appartamenti/milano/milano/",
       "status": "12 annunci Subito acquisiti · campione parziale",
-      "note": "17 ottobre 2026, pomeriggio: ricerca comunale e campione di dettagli riletti; raccolta non esaustiva. Date di pubblicazione e disponibilità non confermate."
+      "note": "18 ottobre 2026: ricerca comunale e campione di dettagli riletti. Raccolta non esaustiva; dati e prove precedenti preservati."
     },
     {
       "name": "Facebook · milanocasavendo",
       "url": "https://www.facebook.com/groups/milanocasavendo",
       "status": "Non riletta · accesso pubblico fallito",
-      "note": "17 ottobre 2026, pomeriggio: accesso pubblico fallito; nessun post acquisito. Login e membership non aggirati."
+      "note": "18 ottobre 2026: accesso pubblico fallito; nessun nuovo post acquisito. Login e membership non aggirati."
     },
     {
       "name": "Facebook · 37587766628",
       "url": "https://www.facebook.com/groups/37587766628",
       "status": "Non riletta · accesso pubblico fallito",
-      "note": "17 ottobre 2026, pomeriggio: accesso pubblico fallito; nessun post acquisito. Login e membership non aggirati."
+      "note": "18 ottobre 2026: accesso pubblico fallito; nessun nuovo post acquisito. Login e membership non aggirati."
     }
   ],
   "posts": [
@@ -36,11 +36,11 @@
       "text": "VENDITA DIRETTA DA PRIVATO - Nessuna spesa di agenzia.",
       "textComplete": false,
       "collectedAt": "2026-10-14",
-      "sourceAccess": "17 ottobre 2026, pomeriggio: dettaglio non recuperabile; prove e ultima lettura utile preservate. Stato dell’immobile sconosciuto.",
+      "sourceAccess": "18 ottobre 2026: dettaglio non recuperabile; prove e ultima lettura utile preservate. Stato dell’immobile sconosciuto.",
       "notes": "Proprietà e incarico non verificati; annuncio leggibile ma disponibilità attuale non dichiarata esplicitamente.",
       "lastReadAt": "2026-10-14",
-      "lastAttemptAt": "2026-10-17T14:04:19.198Z",
-      "accessCheckedAt": "2026-10-17T14:04:19.198Z",
+      "lastAttemptAt": "2026-10-18T05:57:19.233Z",
+      "accessCheckedAt": "2026-10-18T05:57:19.233Z",
       "sourceRemoved": true,
       "sourceRemovalEvidence": "15 ottobre 2026, pomeriggio: HTTP 410 Gone. Stato dell’immobile sconosciuto, non prova di vendita."
     },
@@ -58,12 +58,12 @@
       "location": "Milano · via Ingegnoli",
       "text": "Direttamente da Privato\nDisponibilità immediata",
       "textComplete": false,
-      "sourceAccess": "17 ottobre 2026, pomeriggio: dettaglio non recuperabile; prove e ultima lettura utile preservate. Stato dell’immobile sconosciuto.",
+      "sourceAccess": "18 ottobre 2026: dettaglio non recuperabile; prove e ultima lettura utile preservate. Stato dell’immobile sconosciuto.",
       "notes": "Frammenti di descrizione e caratteristiche. Disponibilità dichiarata ma data non verificata; nessuna conferma diretta del proprietario.",
       "collectedAt": "2026-10-13",
       "lastReadAt": "2026-10-13",
-      "lastAttemptAt": "2026-10-17T14:04:19.198Z",
-      "accessCheckedAt": "2026-10-17T14:04:19.198Z"
+      "lastAttemptAt": "2026-10-18T05:57:19.233Z",
+      "accessCheckedAt": "2026-10-18T05:57:19.233Z"
     },
     {
       "id": "subito-660754373",
@@ -80,12 +80,12 @@
       "location": "Milano · via Mauro Macchi",
       "text": "Privato Vende: Trilocale Ristrutturato di 115 mq\nLibero al rogito.",
       "textComplete": false,
-      "collectedAt": "2026-10-17",
-      "sourceAccess": "Dettaglio pubblico riletto il 17 ottobre 2026, pomeriggio. Data di pubblicazione non verificata; nessuna conferma di disponibilità o incarico.",
+      "collectedAt": "2026-10-18",
+      "sourceAccess": "Contenuto pubblico riletto il 18 ottobre 2026. Data di pubblicazione non verificata; nessuna conferma di disponibilità o incarico.",
       "notes": "Liberazione al rogito dichiarata, senza una data di rogito. Disponibilità attuale, proprietà e incarico da verificare.",
-      "lastReadAt": "2026-10-17",
-      "lastAttemptAt": "2026-10-17T14:04:19.198Z",
-      "accessCheckedAt": "2026-10-17T14:04:19.198Z"
+      "lastReadAt": "2026-10-18",
+      "lastAttemptAt": "2026-10-18T05:57:19.233Z",
+      "accessCheckedAt": "2026-10-18T05:57:19.233Z"
     },
     {
       "id": "subito-652862012",
@@ -103,12 +103,12 @@
       "textComplete": false,
       "advertiserType": "professional",
       "advertiserEvidence": "Agenzia · badge fonte; inserzionista Radovix Immobiliare",
-      "sourceAccess": "Dettaglio pubblico riletto il 17 ottobre 2026, pomeriggio. Data di pubblicazione non verificata; nessuna conferma di disponibilità o incarico.",
+      "sourceAccess": "Contenuto pubblico riletto il 18 ottobre 2026. Data di pubblicazione non verificata; nessuna conferma di disponibilità o incarico.",
       "notes": "Venditore professionale escluso. Superficie riportata diversamente tra dati principali e descrizione: da verificare. L’incarico del proprietario non è documentato.",
-      "collectedAt": "2026-10-17",
-      "lastReadAt": "2026-10-17",
-      "lastAttemptAt": "2026-10-17T14:04:19.198Z",
-      "accessCheckedAt": "2026-10-17T14:04:19.198Z"
+      "collectedAt": "2026-10-18",
+      "lastReadAt": "2026-10-18",
+      "lastAttemptAt": "2026-10-18T05:57:19.233Z",
+      "accessCheckedAt": "2026-10-18T05:57:19.233Z"
     },
     {
       "id": "subito-654258588",
@@ -127,11 +127,11 @@
       "collectedAt": "2026-10-14",
       "advertiserType": "professional",
       "advertiserEvidence": "Ademas srl · società specializzata in riqualificazione immobiliare, dichiarata nel testo",
-      "sourceAccess": "17 ottobre 2026, pomeriggio: dettaglio non recuperabile; prove e ultima lettura utile preservate. Stato dell’immobile sconosciuto.",
+      "sourceAccess": "18 ottobre 2026: dettaglio non recuperabile; prove e ultima lettura utile preservate. Stato dell’immobile sconosciuto.",
       "notes": "Società venditrice esclusa dai proprietari privati. Il dettaglio più recente indica €420.000; un risultato precedente riportava €449.000. Vendita diretta non equivale a proprietario privato.",
       "lastReadAt": "2026-10-14",
-      "lastAttemptAt": "2026-10-17T14:04:19.198Z",
-      "accessCheckedAt": "2026-10-17T14:04:19.198Z"
+      "lastAttemptAt": "2026-10-18T05:57:19.233Z",
+      "accessCheckedAt": "2026-10-18T05:57:19.233Z"
     },
     {
       "id": "subito-660185020",
@@ -149,12 +149,12 @@
       "textComplete": false,
       "sourceRemoved": true,
       "sourceRemovalEvidence": "Apertura diretta della scheda: HTTP 410 Gone",
-      "sourceAccess": "17 ottobre 2026, pomeriggio: dettaglio non recuperabile; prove e ultima lettura utile preservate. Stato dell’immobile sconosciuto.",
+      "sourceAccess": "18 ottobre 2026: dettaglio non recuperabile; prove e ultima lettura utile preservate. Stato dell’immobile sconosciuto.",
       "notes": "Escluso perché la scheda è rimossa. Non dichiarare venduto o non disponibile: lo stato dell’immobile resta sconosciuto.",
       "collectedAt": "2026-10-13",
       "lastReadAt": "2026-10-13",
-      "lastAttemptAt": "2026-10-17T14:04:19.198Z",
-      "accessCheckedAt": "2026-10-17T14:04:19.198Z"
+      "lastAttemptAt": "2026-10-18T05:57:19.233Z",
+      "accessCheckedAt": "2026-10-18T05:57:19.233Z"
     },
     {
       "id": "subito-485841300",
@@ -170,12 +170,12 @@
       "location": "Milano · M1 / zona ovest da confermare",
       "text": "Vendesi delizioso e moderno loft a soli 50 mt dalla Metro Rossa. No provvigioni, trattativa fra privati. Appartamento già a reddito con contratti d’affitto e prenotazioni.",
       "textComplete": false,
-      "collectedAt": "2026-10-17",
-      "sourceAccess": "Dettaglio pubblico riletto il 17 ottobre 2026, pomeriggio. Data di pubblicazione non verificata; nessuna conferma di disponibilità o incarico.",
+      "collectedAt": "2026-10-18",
+      "sourceAccess": "Contenuto pubblico riletto il 18 ottobre 2026. Data di pubblicazione non verificata; nessuna conferma di disponibilità o incarico.",
       "notes": "Scheda riletta: €315.000; precedente valore indicizzato €319.000 conservato nella cronologia. Contratti e prenotazioni dichiarati: disponibilità effettiva da verificare, così come proprietà e incarico.",
-      "lastReadAt": "2026-10-17",
-      "lastAttemptAt": "2026-10-17T14:04:19.198Z",
-      "accessCheckedAt": "2026-10-17T14:04:19.198Z",
+      "lastReadAt": "2026-10-18",
+      "lastAttemptAt": "2026-10-18T05:57:19.233Z",
+      "accessCheckedAt": "2026-10-18T05:57:19.233Z",
       "history": [
         {
           "text": "Vendesi delizioso e moderno loft a soli 50 mt dalla Metro Rossa. No provvigioni, trattativa fra privati. Appartamento già a reddito con contratti d’affitto e prenotazioni.",
@@ -201,12 +201,12 @@
       "location": "Milano · via Cadibona",
       "text": "Vendesi monolocale circa 30 m, ristrutturato, arredato, catastale A/10, via Cadibona Milano.",
       "textComplete": false,
-      "collectedAt": "2026-10-17",
-      "sourceAccess": "Dettaglio pubblico riletto il 17 ottobre 2026, pomeriggio. Data di pubblicazione non verificata; nessuna conferma di disponibilità o incarico.",
+      "collectedAt": "2026-10-18",
+      "sourceAccess": "Contenuto pubblico riletto il 18 ottobre 2026. Data di pubblicazione non verificata; nessuna conferma di disponibilità o incarico.",
       "notes": "La lista odierna indica €145.000, mentre il dettaglio indicizzato mostra €155.000: prezzo da verificare. La categoria catastale A/10 è dichiarata; proprietà, disponibilità e incarico non verificati.",
-      "lastReadAt": "2026-10-17",
-      "lastAttemptAt": "2026-10-17T14:04:19.198Z",
-      "accessCheckedAt": "2026-10-17T14:04:19.198Z"
+      "lastReadAt": "2026-10-18",
+      "lastAttemptAt": "2026-10-18T05:57:19.233Z",
+      "accessCheckedAt": "2026-10-18T05:57:19.233Z"
     },
     {
       "id": "subito-662344216",
@@ -223,22 +223,22 @@
       "location": "Milano · Piazza Selinunte / M5 Segesta",
       "text": "Privato vende direttamente (zero commissioni). Libero subito e pronto da abitare o affittare.",
       "textComplete": false,
-      "collectedAt": "2026-10-17",
-      "lastReadAt": "2026-10-17",
-      "lastAttemptAt": "2026-10-17T14:04:19.198Z",
-      "sourceAccess": "Dettaglio pubblico riletto il 17 ottobre 2026, pomeriggio. Data di pubblicazione non verificata; nessuna conferma di disponibilità o incarico.",
+      "collectedAt": "2026-10-18",
+      "lastReadAt": "2026-10-18",
+      "lastAttemptAt": "2026-10-18T05:57:19.233Z",
+      "sourceAccess": "Contenuto pubblico riletto il 18 ottobre 2026. Data di pubblicazione non verificata; nessuna conferma di disponibilità o incarico.",
       "notes": "Superficie discordante: 55 m² nei dati principali e 50 m² nella descrizione. Nuovo nel radar, non necessariamente nuovo sul portale. Privato dichiarato; proprietà, disponibilità attuale e incarico non verificati.",
-      "accessCheckedAt": "2026-10-17T14:04:19.198Z"
+      "accessCheckedAt": "2026-10-18T05:57:19.233Z"
     },
     {
       "sourceType": "subito",
       "city": "Milano",
       "textComplete": false,
-      "collectedAt": "2026-10-17",
-      "lastReadAt": "2026-10-17",
-      "lastAttemptAt": "2026-10-17T14:04:19.198Z",
-      "accessCheckedAt": "2026-10-17T14:04:19.198Z",
-      "sourceAccess": "Dettaglio pubblico riletto il 17 ottobre 2026, pomeriggio. Data di pubblicazione non verificata; nessuna conferma di disponibilità o incarico.",
+      "collectedAt": "2026-10-18",
+      "lastReadAt": "2026-10-18",
+      "lastAttemptAt": "2026-10-18T05:57:19.233Z",
+      "accessCheckedAt": "2026-10-18T05:57:19.233Z",
+      "sourceAccess": "Contenuto pubblico riletto il 18 ottobre 2026. Data di pubblicazione non verificata; nessuna conferma di disponibilità o incarico.",
       "id": "subito-630637660",
       "source": 4,
       "operation": "vendita",
@@ -265,22 +265,22 @@
       "location": "Milano · Viale Omero / Corvetto",
       "text": "Privato vende trilocale di 72 mq in Viale Omero 17, senza commissioni agenzia.",
       "textComplete": false,
-      "collectedAt": "2026-10-17",
-      "lastReadAt": "2026-10-17",
-      "lastAttemptAt": "2026-10-17T14:04:19.198Z",
-      "accessCheckedAt": "2026-10-17T14:04:19.198Z",
-      "sourceAccess": "Dettaglio pubblico riletto il 17 ottobre 2026, pomeriggio. Data di pubblicazione non verificata; nessuna conferma di disponibilità o incarico.",
+      "collectedAt": "2026-10-18",
+      "lastReadAt": "2026-10-18",
+      "lastAttemptAt": "2026-10-18T05:57:19.233Z",
+      "accessCheckedAt": "2026-10-18T05:57:19.233Z",
+      "sourceAccess": "Contenuto pubblico riletto il 18 ottobre 2026. Data di pubblicazione non verificata; nessuna conferma di disponibilità o incarico.",
       "notes": "Prezzo non visibile. Terzo piano senza ascensore; arredato, veranda e cantina. Il testo cita camere affittate fino al 15/09/2026: data trascorsa che non prova liberazione o disponibilità attuale. Proprietà, situazione locativa e incarichi da verificare. Nuovo nel radar, non necessariamente appena pubblicato."
     },
     {
       "sourceType": "subito",
       "city": "Milano",
       "textComplete": false,
-      "collectedAt": "2026-10-17",
-      "lastReadAt": "2026-10-17",
-      "lastAttemptAt": "2026-10-17T14:04:19.198Z",
-      "accessCheckedAt": "2026-10-17T14:04:19.198Z",
-      "sourceAccess": "Dettaglio pubblico acquisito il 17 ottobre 2026, pomeriggio. Data di pubblicazione non verificata.",
+      "collectedAt": "2026-10-18",
+      "lastReadAt": "2026-10-18",
+      "lastAttemptAt": "2026-10-18T05:57:19.233Z",
+      "accessCheckedAt": "2026-10-18T05:57:19.233Z",
+      "sourceAccess": "Contenuto pubblico riletto il 18 ottobre 2026. Data di pubblicazione non verificata; nessuna conferma di disponibilità o incarico.",
       "id": "subito-658182256",
       "source": 4,
       "operation": "vendita",
