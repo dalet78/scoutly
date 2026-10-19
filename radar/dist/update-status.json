@@ -5,11 +5,11 @@
     8,
     16
   ],
-  "lastAttemptAt": "2026-10-19T06:01:57.301Z",
+  "lastAttemptAt": "2026-10-19T14:05:18.207Z",
   "lastSuccessAt": null,
   "firstRunAt": "2026-10-14T08:00:00+02:00",
   "status": "partial",
-  "note": "19 ottobre: due nuove vendite da privati dichiarati, via Induno (€495.000, 85 m²) e via Salomone (€309.000, 82 m²). Recuperate 21 schede esistenti; 10 non recuperabili, prove e date precedenti preservate. Facebook non accessibile; disponibilità e incarichi non confermati.",
+  "note": "19 ottobre, pomeriggio: nuovi affitti via Cucchiari (65 m², €1.400 + €180) e via Zuretti (50 m², €1.150 + €100–120); nuova vendita viale Abruzzi (48 m², €310.000). Schede De Angeli e via Induno ora HTTP 410 Gone: non prova di locazione o vendita. Recuperate 21 schede esistenti, 12 non recuperabili; Facebook non accessibile. Disponibilità e incarichi non confermati.",
   "runHistory": [
     {
       "lastAttemptAt": "2026-10-14T07:45:12Z",
@@ -95,6 +95,15 @@
       "newSales": 2,
       "retrievedExisting": 21,
       "failedExisting": 10
+    },
+    {
+      "lastAttemptAt": "2026-10-19T14:05:18.207Z",
+      "status": "partial",
+      "newRentals": 2,
+      "newSales": 1,
+      "retrievedExisting": 21,
+      "failedExisting": 12,
+      "removedSourceListings": 2
     }
   ]
 }
