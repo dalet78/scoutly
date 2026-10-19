@@ -5,11 +5,11 @@
     8,
     16
   ],
-  "lastAttemptAt": "2026-10-18T13:58:09.898Z",
+  "lastAttemptAt": "2026-10-19T06:01:57.301Z",
   "lastSuccessAt": null,
   "firstRunAt": "2026-10-14T08:00:00+02:00",
   "status": "partial",
-  "note": "18 ottobre, pomeriggio: nuovo affitto dichiarato da privato in via Salasco/Bocconi, 40 m², canone non visibile. Paolo Sarpi riletto a €1.000 con utenze incluse, contro precedente €1.150 + €50: versioni conservate, condizioni da verificare. Rilette 21 schede esistenti; 9 non recuperabili. Facebook non accessibile.",
+  "note": "19 ottobre: due nuove vendite da privati dichiarati, via Induno (€495.000, 85 m²) e via Salomone (€309.000, 82 m²). Recuperate 21 schede esistenti; 10 non recuperabili, prove e date precedenti preservate. Facebook non accessibile; disponibilità e incarichi non confermati.",
   "runHistory": [
     {
       "lastAttemptAt": "2026-10-14T07:45:12Z",
@@ -87,6 +87,14 @@
       "changedConditions": [
         "subito-641850682"
       ]
+    },
+    {
+      "lastAttemptAt": "2026-10-19T06:01:57.301Z",
+      "status": "partial",
+      "newRentals": 0,
+      "newSales": 2,
+      "retrievedExisting": 21,
+      "failedExisting": 10
     }
   ]
 }
