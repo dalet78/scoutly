@@ -5,11 +5,11 @@
     8,
     16
   ],
-  "lastAttemptAt": "2026-10-19T14:05:18.207Z",
+  "lastAttemptAt": "2026-10-20T06:00:15.033Z",
   "lastSuccessAt": null,
   "firstRunAt": "2026-10-14T08:00:00+02:00",
   "status": "partial",
-  "note": "19 ottobre, pomeriggio: nuovi affitti via Cucchiari (65 m², €1.400 + €180) e via Zuretti (50 m², €1.150 + €100–120); nuova vendita viale Abruzzi (48 m², €310.000). Schede De Angeli e via Induno ora HTTP 410 Gone: non prova di locazione o vendita. Recuperate 21 schede esistenti, 12 non recuperabili; Facebook non accessibile. Disponibilità e incarichi non confermati.",
+  "note": "20 ottobre: nuovi affitti dichiarati Bovisa (47 m², €750 + €140, categoria portale vendita) e Niguarda (90 m², €1.300 + €250, disponibilità discordante); nuova vendita Niguarda (90 m², €270.000). Recuperate 22 schede esistenti; 14 dettagli non recuperabili, prove e ultime letture utili preservate. Facebook non accessibile; nessuna conferma di disponibilità o incarico.",
   "runHistory": [
     {
       "lastAttemptAt": "2026-10-14T07:45:12Z",
@@ -104,6 +104,14 @@
       "retrievedExisting": 21,
       "failedExisting": 12,
       "removedSourceListings": 2
+    },
+    {
+      "lastAttemptAt": "2026-10-20T06:00:15.033Z",
+      "status": "partial",
+      "newRentals": 2,
+      "newSales": 1,
+      "retrievedExisting": 22,
+      "failedExisting": 14
     }
   ]
 }
