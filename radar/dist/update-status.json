@@ -5,11 +5,11 @@
     8,
     16
   ],
-  "lastAttemptAt": "2026-10-20T14:04:05.439Z",
+  "lastAttemptAt": "2026-10-21T06:02:51.000Z",
   "lastSuccessAt": null,
   "firstRunAt": "2026-10-14T08:00:00+02:00",
   "status": "partial",
-  "note": "20 ottobre, pomeriggio: nuovi affitti dichiarati da privati in viale Monte Ceneri (60 m², €1.120 + €180) e via Lancetti (45 m², €1.000, spese non specificate). Scheda vendita Niguarda 664054557 ora HTTP 410 Gone, senza prova di vendita. Recuperate 24 schede esistenti, 15 dettagli non recuperabili. Facebook non accessibile; prove e date preservate, disponibilità e incarichi non confermati.",
+  "note": "21 ottobre, mattina: nuovi affitti privati dichiarati in via Prandina/Crescenzago (30 m², €690 + €150) e MM Piola (35 m², €790 + €180), nuova vendita NoLo/Pasteur (83 m², €485.000). Un servizio professionale a pagamento scartato. Sei schede precedenti ora HTTP 410 Gone, senza prova di vendita o locazione conclusa. Recuperate 26 schede esistenti, 15 dettagli non recuperabili. Facebook non accessibile; prove e date preservate, disponibilità e incarichi non confermati.",
   "runHistory": [
     {
       "lastAttemptAt": "2026-10-14T07:45:12Z",
@@ -121,6 +121,16 @@
       "retrievedExisting": 24,
       "failedExisting": 15,
       "removedSourceListings": 1
+    },
+    {
+      "lastAttemptAt": "2026-10-21T06:02:51.000Z",
+      "status": "partial",
+      "newRentals": 3,
+      "newSales": 1,
+      "retrievedExisting": 26,
+      "failedExisting": 15,
+      "removedSourceListings": 6,
+      "excludedProfessionalListings": 1
     }
   ]
 }
