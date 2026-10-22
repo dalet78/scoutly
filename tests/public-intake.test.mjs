@@ -44,7 +44,7 @@ function ui(sender,options={}){
   AbortController,Date,URL,location:{assign:url=>redirects.push(url)},
   setTimeout:(fn,delay)=>{if(delay<5000)queueMicrotask(fn);return 1;},clearTimeout(){},
   fetch:async(url)=>url.endsWith('comuni.json')?({ok:true,json:async()=>JSON.parse(readFileSync(new URL('../intake-python/comuni.json',import.meta.url),'utf8'))}):({ok:true,json:async()=>({municipality_support:true,protocol:1,challenge:'signed-public-challenge',max_photos:8,max_bytes:8000000,floor_plan_upload:options.planSupported!==false,supported_forms:options.supported===false?[]:[{form_id:'ristrutturare-o-vendere',form_version:1}]})}),
-  formatPrice,parsePrice,municipalityLabel,searchMunicipalities,resolveMunicipality,validatePhotos:()=>'',submitPublic:sender,SubmissionError};
+  formatPrice,parsePrice,municipalityLabel,searchMunicipalities,resolveMunicipality,optimizeImage:async file=>file,validatePhotos:()=>'',submitPublic:sender,SubmissionError};
  const source=readFileSync(new URL('../assets/prima-di-pubblicare/public-form-v1.js',import.meta.url),'utf8').replace(/^import .+;\n/gm,'');
  runInNewContext(source,context);
  return {elements,store,redirects};
@@ -70,7 +70,7 @@ test('second form carries its own route, price and receipt without leaking conta
  let captured;
  const {elements,store,redirects}=ui(async options=>{captured=options.payload;return {status:'received',request_id:id};},{renovation:true});
  await new Promise(setImmediate);
- elements.photos.files=[new File(['synthetic'],'simulata.png',{type:'image/png'})];elements.photos.change();
+ elements.photos.files=[new File(['synthetic'],'simulata.png',{type:'image/png'})];await elements.photos.change();
  await elements.request.submit({preventDefault(){}});
  assert.equal(captured.form_id,'ristrutturare-o-vendere');assert.equal(captured.form_version,1);
  assert.equal(captured.target_price,300000);assert.equal(captured.area_sqm,75);
@@ -82,7 +82,7 @@ test('second form refuses to submit against an older backend or without a photo'
  for(const supported of [true,false]){
   let calls=0;const {elements}=ui(async()=>{calls++;},{renovation:true,supported});
   await new Promise(setImmediate);
-  if(!supported){elements.photos.files=[new File(['synthetic'],'simulata.png',{type:'image/png'})];elements.photos.change();}
+  if(!supported){elements.photos.files=[new File(['synthetic'],'simulata.png',{type:'image/png'})];await elements.photos.change();}
   await elements.request.submit({preventDefault(){}});
   assert.equal(calls,0);
  }
@@ -92,8 +92,8 @@ test('floor plan stays separate in the UI and is appended with signed routing me
  let captured;
  const {elements}=ui(async options=>{captured=options;return {status:'received',request_id:id,duplicate:false};},{renovation:true});
  await new Promise(setImmediate);
- elements.photos.files=[new File(['room'],'stanza.png',{type:'image/png'})];elements.photos.change();
- elements['floor-plan'].files=[new File(['plan'],'piantina.png',{type:'image/png'})];elements['floor-plan'].change();
+ elements.photos.files=[new File(['room'],'stanza.png',{type:'image/png'})];await elements.photos.change();
+ elements['floor-plan'].files=[new File(['plan'],'piantina.png',{type:'image/png'})];await elements['floor-plan'].change();
  await elements.request.submit({preventDefault(){}});
  assert.equal(captured.photos.length,2);assert.equal(captured.photos[1].name,'piantina.png');
  assert.equal(captured.payload.floor_plan_position,2);
@@ -103,7 +103,7 @@ test('floor plan capability is required before a new form can submit',async()=>{
  let calls=0;
  const {elements}=ui(async()=>{calls++;},{renovation:true,planSupported:false});
  await new Promise(setImmediate);
- elements.photos.files=[new File(['room'],'stanza.png',{type:'image/png'})];elements.photos.change();
+ elements.photos.files=[new File(['room'],'stanza.png',{type:'image/png'})];await elements.photos.change();
  await elements.request.submit({preventDefault(){}});
  assert.equal(calls,0);
 });
@@ -115,7 +115,7 @@ test('formatted price and selected municipality become validated numeric and geo
  elements['target-price'].value='392000';elements['target-price'].input();
  assert.equal(elements['target-price'].value,'392.000');
  elements.municipality.value='Roma (RM)';elements.municipality.change();
- elements.photos.files=[new File(['room'],'stanza.png',{type:'image/png'})];elements.photos.change();
+ elements.photos.files=[new File(['room'],'stanza.png',{type:'image/png'})];await elements.photos.change();
  await elements.request.submit({preventDefault(){}});
  assert.equal(captured.target_price,392000);assert.equal(captured.municipality_code,'058091');assert.equal(captured.city,'Altro Comune');
 });
@@ -153,3 +153,4 @@ test('XHR ambiguous errors do not retry',async()=>{
   xhrFactory:()=>xhr={upload:{},open(){},setRequestHeader(){},send(){calls++;},abort(){}}});
  xhr.onerror();await assert.rejects(promise,SubmissionError);assert.equal(calls,1);
 });
+

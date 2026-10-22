@@ -1,3 +1,4 @@
+import {optimizeImage} from './optimize-images.mjs';
 import {contextualDescription} from '../seller-guides/request-context.mjs';
 import {validatePhotos} from './upload-v3.js';
 import {submitPublic,SubmissionError} from './submit-public-v1.js?v=upload-progress-1';
@@ -11,9 +12,9 @@ const requestTopic=form.dataset?.requestTopic;
 const formId=renovation?'ristrutturare-o-vendere':'prima-di-pubblicare';
 const storageKey='scoutly-public-'+formId+'-v1';
 const submitLabel=requestTopic?'Ricevi la lista via email →':renovation?'Ricevi il confronto via email →':'Invia descrizione e foto →';
-const planPicker=renovation?document.getElementById('floor-plan'):null;
-const planPreview=renovation?document.getElementById('floor-plan-preview'):null;
-const planSummary=renovation?document.getElementById('floor-plan-summary'):null;
+const planPicker=document.getElementById('floor-plan');
+const planPreview=document.getElementById('floor-plan-preview');
+const planSummary=document.getElementById('floor-plan-summary');
 const priceInput=renovation?document.getElementById('target-price'):null;
 const townInput=renovation?document.getElementById('municipality'):null;
 const townOptions=renovation?document.getElementById('municipality-options'):null;
@@ -43,7 +44,12 @@ priceInput?.addEventListener('input',()=>{
 });
 let floorPlan=null,planUrl=null;
 function material(){return floorPlan?[...photos,floorPlan]:photos;}
-let photos=[],submitting=false,urls=[],gate=null,pending=null;
+let photos=[],submitting=false,optimizing=false,urls=[],gate=null,pending=null;
+async function prepareFiles(files,plan=false){
+ optimizing=true;picker.disabled=true;if(planPicker)planPicker.disabled=true;send.disabled=true;
+ try{const result=[];for(const file of files){summary.textContent='Ottimizzazione sul dispositivo: immagine '+(result.length+1)+' di '+files.length+'… Nessun file ancora inviato.';result.push(await optimizeImage(file,{plan}));}return result;}
+ finally{optimizing=false;picker.disabled=false;if(planPicker)planPicker.disabled=false;send.disabled=!gate; }
+}
 send.disabled=true;picker.removeAttribute('name');
 planPicker?.removeAttribute('name');
 function renderPlan(){
@@ -57,11 +63,16 @@ function renderPlan(){
  remove.addEventListener('click',()=>{if(submitting)return;floorPlan=null;error.textContent='';renderPlan();render();});
  planPreview.append(image,remove);
 }
-planPicker?.addEventListener('change',()=>{
+planPicker?.addEventListener('change',async()=>{
+ if(optimizing||submitting)return;
  const selected=[...planPicker.files];if(!selected.length)return;
- const message=selected.length!==1?'Seleziona una sola planimetria.':validatePhotos([...photos,...selected]);
- if(message){error.textContent=message+' Il limite è 8 immagini totali, planimetria inclusa.';renderPlan();return;}
- floorPlan=selected[0];error.textContent='';renderPlan();render();
+ try{
+ if(selected.length!==1||photos.length+1>8)throw new Error('Puoi allegare una planimetria entro il limite di 8 immagini totali.');
+ const [prepared]=await prepareFiles(selected,true);
+ const message=validatePhotos([...photos,prepared]);if(message)throw new Error(message);
+ floorPlan=prepared;error.textContent='';
+ }catch(reason){error.textContent=reason.message||'Impossibile preparare la planimetria.';}
+ renderPlan();render();
 });
 function fileList(files){const transfer=new DataTransfer();for(const file of files)transfer.items.add(file);return transfer.files;}
 function render(){
@@ -75,11 +86,19 @@ function render(){
  });
  summary.textContent=(photos.length?photos.length+' foto pronte sul dispositivo':'Nessuna foto selezionata')+(floorPlan?' + 1 planimetria':'')+' · '+(material().reduce((sum,file)=>sum+file.size,0)/1_000_000).toFixed(1)+' MB totali su 8 MB'+(material().length?'. Anteprime locali: premi il pulsante per inviarle.':'');
 }
-picker.addEventListener('change',()=>{
- const candidates=[...photos];for(const file of picker.files)if(!candidates.some(old=>old.name===file.name&&old.size===file.size&&old.lastModified===file.lastModified))candidates.push(file);
- const message=validatePhotos(floorPlan?[...candidates,floorPlan]:candidates);if(message){error.textContent=message+' La nuova selezione non è stata aggiunta. Il limite include la planimetria.';render();return;}
- photos=candidates;error.textContent='';render();
+picker.addEventListener('change',async()=>{
+ if(optimizing||submitting)return;
+ const selected=[...picker.files];
+ try{
+ if(photos.length+selected.length+(floorPlan?1:0)>8)throw new Error('Puoi caricare fino a 8 immagini totali. Rimuovi una foto per fare spazio alla planimetria.');
+ const prepared=await prepareFiles(selected);
+ const candidates=[...photos,...prepared];
+ const message=validatePhotos(floorPlan?[...candidates,floorPlan]:candidates);if(message)throw new Error(message);
+ photos=candidates;error.textContent='';
+ }catch(reason){error.textContent=(reason.message||'Impossibile preparare le foto.')+' Le foto precedenti sono state conservate.';}
+ render();
 });
+
 async function connect(){
  if(requestTopic&&form.dataset.requestTopicReady!=='true'){
   gate=null;send.disabled=true;reconnect.disabled=true;
@@ -106,7 +125,7 @@ async function connect(){
    unavailable='Il servizio sta per essere aggiornato. Le immagini sono solo anteprime locali e non sono state inviate. Riprova il collegamento più tardi.';throw new Error();}
   gate={token:data.challenge,receivedAt:Date.now(),readyAt:Date.now()+3100};
   connection.textContent='Puoi inviare la richiesta. Riceverai un codice di conferma dopo il salvataggio.';
-  send.disabled=false;
+  send.disabled=optimizing;
  } catch {connection.textContent=unavailable;}
  finally{clearTimeout(timer);reconnect.disabled=false;if(!submitting&&progressPanel)progressPanel.hidden=true;}
 }
@@ -120,7 +139,7 @@ async function fingerprint(payload){
 }
 function persist(value){sessionStorage.setItem(storageKey,JSON.stringify(value));pending=value;}
 form.addEventListener('submit',async event=>{
- event.preventDefault();if(submitting)return;
+ event.preventDefault();if(submitting||optimizing)return;
  if(!form.reportValidity())return;
  if(townInput&&(!towns||!resolveMunicipality(towns,townInput.value))){error.textContent='Seleziona un comune italiano dall’elenco.';return;}
  if(renovation&&!photos.length){error.textContent='Carica almeno una foto per ricevere il confronto.';return;}
@@ -141,7 +160,8 @@ form.addEventListener('submit',async event=>{
   if(renovation)Object.assign(payload,{
    target_price:parsePrice(priceInput?priceInput.value:data.get('target_price')),area_sqm:Number(data.get('area_sqm')),
    zone:String(data.get('zone')||'').trim(),timeframe:data.get('timeframe')});
-  if(floorPlan)payload.floor_plan_position=photos.length+1;
+  if(floorPlan&&renovation)payload.floor_plan_position=photos.length+1;
+  if(floorPlan&&!renovation)payload.description=payload.description.slice(0,3850)+'\nPlanimetria allegata come ultima immagine (posizione '+(photos.length+1)+').';
   if(townInput){const town=resolveMunicipality(towns,townInput.value);payload.municipality_code=town[0];payload.city=town[0]==='015146'?'Milano Comune':'Altro Comune';}
   if(requestTopic)payload.description=contextualDescription(requestTopic,payload.description,Object.fromEntries(['luce','ambienti','ordine','dati','documenti','prezzo'].map(key=>[key,String(data.get(key)||'')])));
   const signature=await fingerprint(payload);
@@ -177,3 +197,4 @@ try {
  render();renderPlan();connect();
 } catch {send.disabled=true;picker.disabled=true;connection.textContent='Per inviare usa un browser aggiornato con memoria di sessione disponibile.';}
 window.addEventListener('pageshow',()=>{submitting=false;send.textContent=submitLabel;});
+
