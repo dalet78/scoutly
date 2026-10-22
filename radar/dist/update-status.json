@@ -5,11 +5,11 @@
     8,
     16
   ],
-  "lastAttemptAt": "2026-10-22T05:58:29.000Z",
+  "lastAttemptAt": "2026-10-22T13:58:53.000Z",
   "lastSuccessAt": null,
   "firstRunAt": "2026-10-14T08:00:00+02:00",
   "status": "partial",
-  "note": "22 ottobre, mattina: acquisiti 5 affitti (via Antonini, NoLo, Città Studi, Scalo Farini e Viale Liguria) e 2 vendite (Navigli e Famagosta). La scheda Famagosta resta evidenza parziale; due repliche Città Studi sono state deduplicate. Recuperate 32 schede esistenti, 15 dettagli non recuperabili; nessuna nuova rimozione. Facebook non accessibile; prove e date preservate, disponibilità, proprietà e incarichi non confermati.",
+  "note": "22 ottobre, pomeriggio: acquisiti 5 affitti (Bisceglie, Porta Romana, Brenta/Corso Lodi, via Nava e Bicocca) e 1 vendita (Bicocca/Viale Monza). La replica Città Studi 665051466 risulta rimossa dalla fonte, senza prova di locazione conclusa. Recuperate 35 schede esistenti, 19 dettagli non recuperabili. Facebook non accessibile; prove e date preservate, disponibilità, proprietà e incarichi non confermati.",
   "runHistory": [
     {
       "lastAttemptAt": "2026-10-14T07:45:12Z",
@@ -150,6 +150,15 @@
       "failedExisting": 15,
       "removedSourceListings": 0,
       "duplicatesObserved": 2
+    },
+    {
+      "lastAttemptAt": "2026-10-22T13:58:53.000Z",
+      "status": "partial",
+      "newRentals": 5,
+      "newSales": 1,
+      "retrievedExisting": 35,
+      "failedExisting": 19,
+      "removedSourceListings": 1
     }
   ]
 }
