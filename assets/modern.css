@@ -141,3 +141,20 @@ body.modern-service{background:var(--modern-bg);color:var(--modern-text);font-fa
 .example-table{border-collapse:collapse;width:100%;font-size:13px;line-height:1.5;color:#19303a}.example-table caption{text-align:left;font-size:11px;color:#475d66;margin-bottom:10px}.example-table th,.example-table td{padding:10px 5px;text-align:left;border-bottom:1px solid #c5d0d0}.example-table th{background:#e7ece5;font-size:11px}.example-table td:last-child{white-space:normal}
 #scoutly-modern-home .ai-example-home{margin-top:20px;width:100%;padding:20px}#scoutly-modern-home .sm-tool{display:flex;flex-direction:column;align-items:stretch}#scoutly-modern-home .sm-tool>.sm-arrow{align-self:flex-end;margin-top:16px}#scoutly-modern-home .sm-tool>small{min-height:65px}
 @media(max-width:600px){.ai-example{padding:18px}.ai-example h3,#scoutly-modern-home .ai-example h3{font-size:23px}.example-table{font-size:12px}.example-photo-labels{font-size:11px}}
+
+/* Home opening: a real photographic focal point, with all text on solid surfaces. */
+#scoutly-modern-home .sm-hero{grid-template-columns:1fr 1.12fr;gap:48px;padding-top:60px;padding-bottom:60px;align-items:center}
+#scoutly-modern-home .sm-hero h1{font-size:clamp(48px,5.6vw,76px);line-height:1.03;letter-spacing:-3px;margin-bottom:26px}
+#scoutly-modern-home .sm-hero-copy>p{font-size:16px;line-height:1.75;max-width:430px}
+#scoutly-modern-home .sm-hero .sm-tag{letter-spacing:1.7px;font-size:11px;margin-bottom:24px}
+#scoutly-modern-home .sm-hero-actions{display:flex;align-items:flex-start;flex-direction:column;gap:18px}
+#scoutly-modern-home .sm-hero-actions .sm-primary{display:inline-flex;align-items:center;text-decoration:none;padding:16px 24px}
+#scoutly-modern-home .sm-hero-consult{color:#f4f5ed;font-size:13px;text-decoration:underline;text-underline-offset:5px}
+#scoutly-modern-home .sm-hero-points{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+#scoutly-modern-home .sm-hero-points span{font-size:11px;letter-spacing:.3px;color:#b3c4c8;border:1px solid #37505a;padding:7px 12px;border-radius:20px}
+#scoutly-modern-home .sm-hero-visual{margin:0;min-width:0;border-radius:24px;overflow:hidden;background:#1b303a;border:1px solid #37505a}
+#scoutly-modern-home .sm-hero-visual img{display:block;width:100%;height:470px;object-fit:cover;object-position:50% 50%}
+#scoutly-modern-home .sm-hero-visual figcaption{display:flex;flex-direction:column;gap:7px;padding:22px 24px;color:#f4f5ed;font-size:15px;line-height:1.5}
+#scoutly-modern-home .sm-hero-visual small{color:#b3c4c8;font-size:10px}
+@media(max-width:850px){#scoutly-modern-home .sm-hero{gap:28px}#scoutly-modern-home .sm-hero-visual img{height:410px}#scoutly-modern-home .sm-hero h1{font-size:53px}}
+@media(max-width:650px){#scoutly-modern-home .sm-hero{grid-template-columns:1fr;padding:36px 22px 40px;gap:30px}#scoutly-modern-home .sm-hero h1{font-size:clamp(44px,11vw,65px);letter-spacing:-2px}#scoutly-modern-home .sm-hero-visual img{height:auto;aspect-ratio:4/3}#scoutly-modern-home .sm-hero-visual figcaption{padding:18px 20px}#scoutly-modern-home .sm-hero-points{margin-top:24px}}

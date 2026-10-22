@@ -1,0 +1,2 @@
+# Home vendita e affitto
+22 ottobre 2026. Apertura home rifatta con fotografia AI del soggiorno, immagine etichettata, titolo compatto, CTA annuncio e consulenza gratuita, testi su fondo pieno. Eliminata la composizione astratta con finestra e cartellino sovrapposto. Home e percorsi annuncio/fotografie/checklist includono vendita e affitto; selettore Vendere/Affittare già disponibile, contratto backend invariato. Percorso interventi resta esplicitamente dedicato alla vendita per non promettere supporto non attivo nel relativo agente. Nuovi percorsi AI ancora in preparazione.
