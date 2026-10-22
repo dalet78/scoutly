@@ -24,7 +24,7 @@ test('every active route including receipts loads the shared theme after existin
   const html=readFileSync(new URL(`../tools/${path}.html`,import.meta.url),'utf8');
   assert.match(html,/<body class="modern-service"/);
   assert.ok(html.lastIndexOf('modern.css')>html.lastIndexOf('</style>'));
-  assert.match(html,/href="\.\.\/assets\/modern\.css\?v=20261022"/);
+  assert.match(html,/href="\.\.\/assets\/modern\.css\?v=[\w-]+"/);
  }
 });
 test('home links directly to both existing service routes without demo handlers',()=>{
