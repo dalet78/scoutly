@@ -1,37 +1,28 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {guidance} from '../assets/seller-guides/guidance.mjs';
+import {contextualDescription} from '../assets/seller-guides/request-context.mjs';
 import {readFileSync} from 'node:fs';
-test('photos: missing lighting and rooms produce targeted limited advice',()=>{
- const r=guidance('fotografie',{luce:'da-fare',ambienti:'parziale',ordine:'pronto'});
- assert.equal(r.tips.length,3);assert.match(r.tips[0],/luce naturale/);assert.match(r.tips[1],/bagno e cucina/);assert.match(r.note,/Non abbiamo esaminato/);
+test('ordinary requests retain their original description',()=>assert.equal(contextualDescription(undefined,'Testo originale'),'Testo originale'));
+test('photo answers travel in the signed request description, not an on-page result',()=>{
+ const d=contextualDescription('fotografie-casa','Descrizione del proprietario',{luce:'pronto',ambienti:'parziale',ordine:'da-fare'});
+ assert.match(d,/^SCOUTLY_REQUEST_TOPIC: fotografie-casa\n/);assert.match(d,/Luce e leggibilità: Preparato/);assert.match(d,/Ambienti mostrati: Parziale/);assert.match(d,/Descrizione del proprietario$/);
 });
-test('prepared photos do not become a quality score or guarantee',()=>{
- const r=guidance('fotografie',{luce:'pronto',ambienti:'pronto',ordine:'pronto'});
- assert.equal(r.tips.length,2);assert.match(r.tips[0],/Hai indicato/);assert.match(r.note,/non stiamo misurando/);
+test('checklist has its own unambiguous topic and declared answers',()=>{
+ const d=contextualDescription('checklist-vendere-casa','Contesto',{dati:'pronto',documenti:'da-fare',prezzo:'parziale'});
+ assert.match(d,/^SCOUTLY_REQUEST_TOPIC: checklist-vendere-casa\n/);assert.match(d,/Inventario documenti: Da preparare o verificare/);
 });
-test('checklist: missing documents generate an inventory step, not a certificate',()=>{
- const r=guidance('checklist',{dati:'pronto',documenti:'da-fare',prezzo:'pronto'});
- assert.match(r.tips[0],/inventario/);assert.match(r.note,/non una verifica/);
+test('unknown topics, invalid answers and oversized content are rejected',()=>{
+ assert.throws(()=>contextualDescription('unknown','Testo',{}));
+ assert.throws(()=>contextualDescription('fotografie-casa','Testo',{luce:'made-up',ambienti:'pronto',ordine:'pronto'}));
+ assert.throws(()=>contextualDescription('checklist-vendere-casa','x'.repeat(4000),{dati:'pronto',documenti:'pronto',prezzo:'pronto'}));
 });
-test('incomplete and unknown inputs never generate a reassuring result',()=>{
- assert.throws(()=>guidance('checklist',{dati:'pronto',documenti:'parziale'}));
- assert.throws(()=>guidance('fotografie',{luce:'made-up',ambienti:'pronto',ordine:'pronto'}));
- assert.throws(()=>guidance('other',{}));
-});
-test('all answer combinations return only 2-3 tips and a limitation',()=>{
- for(const kind of ['fotografie','checklist'])for(const a of ['pronto','parziale','da-fare'])for(const b of ['pronto','parziale','da-fare'])for(const c of ['pronto','parziale','da-fare']){
-  const keys=kind==='fotografie'?['luce','ambienti','ordine']:['dati','documenti','prezzo'];
-  const r=guidance(kind,Object.fromEntries(keys.map((k,i)=>[k,[a,b,c][i]])));
-  assert.ok(r.tips.length>=2&&r.tips.length<=3);assert.ok(r.note.length>20);
+test('new pages request an email response and remain paused until the AI agent is ready',()=>{
+ for(const path of ['fotografie-casa','checklist-vendere-casa']){
+  const html=readFileSync(new URL('../tools/'+path+'.html',import.meta.url),'utf8');
+  assert.match(html,new RegExp('data-request-topic="'+path+'"'));assert.match(html,/data-request-topic-ready="false"/);
+  assert.match(html,/type="email"/);assert.match(html,/public-form-v1.js\?v=email-lists-1/);
+  assert.doesNotMatch(html,/guide-result|guide-tips|Mostra i primi suggerimenti|seller-guides\/app.mjs/);
  }
-});
-test('new pages show local tips and use existing voluntary consultation route',()=>{
- const app=readFileSync(new URL('../assets/seller-guides/app.mjs',import.meta.url),'utf8');
- assert.doesNotMatch(app,/fetch\(|XMLHttpRequest|localStorage|sessionStorage/);
- for(const page of ['fotografie-casa','checklist-vendere-casa']){
-  const html=readFileSync(new URL('../tools/'+page+'.html',import.meta.url),'utf8');
-  assert.match(html,/href="prima-di-pubblicare.html#percorso"/);assert.match(html,/id="guide-result"[^>]*hidden/);
-  assert.doesNotMatch(html,/name="email"|name="phone"/);
- }
+ const script=readFileSync(new URL('../assets/prima-di-pubblicare/public-form-v1.js',import.meta.url),'utf8');
+ assert.match(script,/requestTopicReady!=='true'/);assert.match(script,/payload.description=contextualDescription/);
 });

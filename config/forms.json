@@ -16,6 +16,22 @@
         "suggerimenti_foto_se_accessibili",
         "osservazione_motivata_se_presente",
         "invito_consulenza_facoltativo"
+      ],
+      "entry_points": [
+        {
+          "path": "tools/fotografie-casa.html",
+          "topic": "fotografie-casa",
+          "delivery": "AI_email",
+          "status": "pending_agent_update",
+          "request_description_prefix": "SCOUTLY_REQUEST_TOPIC: fotografie-casa"
+        },
+        {
+          "path": "tools/checklist-vendere-casa.html",
+          "topic": "checklist-vendere-casa",
+          "delivery": "AI_email",
+          "status": "pending_agent_update",
+          "request_description_prefix": "SCOUTLY_REQUEST_TOPIC: checklist-vendere-casa"
+        }
       ]
     },
     {

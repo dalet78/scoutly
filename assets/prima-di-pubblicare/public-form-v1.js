@@ -1,3 +1,4 @@
+import {contextualDescription} from '../seller-guides/request-context.mjs';
 import {validatePhotos} from './upload-v3.js';
 import {submitPublic,SubmissionError} from './submit-public-v1.js?v=upload-progress-1';
 import {formatPrice,parsePrice,municipalityLabel,searchMunicipalities,resolveMunicipality} from './form-ui.js';
@@ -6,9 +7,10 @@ const form=document.getElementById('request'),picker=document.getElementById('ph
 const error=document.getElementById('upload-error'),send=document.getElementById('send'),summary=document.getElementById('photo-summary');
 const connection=document.getElementById('connection-status'),reconnect=document.getElementById('reconnect');
 const renovation=form.dataset?.formId==='ristrutturare-o-vendere';
+const requestTopic=form.dataset?.requestTopic;
 const formId=renovation?'ristrutturare-o-vendere':'prima-di-pubblicare';
 const storageKey='scoutly-public-'+formId+'-v1';
-const submitLabel=renovation?'Ricevi il confronto via email →':'Invia descrizione e foto →';
+const submitLabel=requestTopic?'Ricevi la lista via email →':renovation?'Ricevi il confronto via email →':'Invia descrizione e foto →';
 const planPicker=renovation?document.getElementById('floor-plan'):null;
 const planPreview=renovation?document.getElementById('floor-plan-preview'):null;
 const planSummary=renovation?document.getElementById('floor-plan-summary'):null;
@@ -79,6 +81,11 @@ picker.addEventListener('change',()=>{
  photos=candidates;error.textContent='';render();
 });
 async function connect(){
+ if(requestTopic&&form.dataset.requestTopicReady!=='true'){
+  gate=null;send.disabled=true;reconnect.disabled=true;
+  connection.textContent='Questo nuovo percorso email è in preparazione: l’invio sarà disponibile dopo l’aggiornamento dell’agente AI. Nessun dato è stato inviato.';
+  return;
+ }
  gate=null;send.disabled=true;reconnect.disabled=true;connection.textContent='Collegamento al servizio in corso… Può richiedere fino a un minuto.';
  let unavailable='Non riusciamo a collegarci al servizio. Le anteprime non sono state inviate: riprova il collegamento.';
  if(!submitting)stage('Collegamento al servizio…');
@@ -136,6 +143,7 @@ form.addEventListener('submit',async event=>{
    zone:String(data.get('zone')||'').trim(),timeframe:data.get('timeframe')});
   if(floorPlan)payload.floor_plan_position=photos.length+1;
   if(townInput){const town=resolveMunicipality(towns,townInput.value);payload.municipality_code=town[0];payload.city=town[0]==='015146'?'Milano Comune':'Altro Comune';}
+  if(requestTopic)payload.description=contextualDescription(requestTopic,payload.description,Object.fromEntries(['luce','ambienti','ordine','dati','documenti','prezzo'].map(key=>[key,String(data.get(key)||'')])));
   const signature=await fingerprint(payload);
   if(pending?.uncertain&&pending.signature!==signature)throw new SubmissionError('Il tentativo precedente ha un esito da verificare. Mantieni gli stessi dati e foto prima di riprovare con il suo codice.');
   await new Promise(resolve=>setTimeout(resolve,Math.max(0,gate.readyAt-Date.now())));
