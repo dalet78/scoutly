@@ -90,3 +90,23 @@ body.modern-service{background:var(--modern-bg);color:var(--modern-text);font-fa
 @media(max-width:600px){#scoutly-modern-home .sm-nav>a:not(.sm-brand){font-size:12px;padding:10px 0}#scoutly-modern-home .sm-nav{padding-right:22px;gap:15px}#scoutly-modern-home h1{font-size:clamp(40px,10vw,49px)}#scoutly-modern-home .sm-tool{min-height:205px}.modern-service .how{grid-template-columns:1fr;gap:20px}.modern-service .how>div{display:flex}.modern-service .how p{margin:0;font-size:14px}.modern-service .masthead{gap:16px;align-items:center}.modern-service .demo{max-width:155px;text-align:right;line-height:1.5}.modern-service .form-card .button{width:100%;justify-content:space-between}.modern-service .form-card input[type=file]{max-width:100%}.modern-service .options{grid-template-columns:1fr}.modern-service .photo-grid,.modern-service .photo-previews{grid-template-columns:1fr 1fr}.modern-service .section-intro h2{font-size:34px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}#scoutly-modern-home .sm-tool{transition:none}#scoutly-modern-home .sm-tool:hover{transform:none}}
 @media print{body.modern-service{background:white;color:#19303a}.modern-service .masthead,.modern-service .hero,.modern-service .footer{display:none}.modern-service .form-card{box-shadow:none}}
+
+/* Informational home and voluntary consultant handoff. */
+#scoutly-modern-home .sm-hero-footnote{font-size:12px;line-height:1.6;margin-top:16px;color:var(--sm-muted)}
+#scoutly-modern-home .sm-guide{padding:10px 0 45px;margin-bottom:38px;border-bottom:1px solid var(--sm-line)}
+#scoutly-modern-home .sm-advice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:30px}
+#scoutly-modern-home .sm-advice-number{font-size:11px;letter-spacing:1.3px;color:var(--sm-accent)}
+#scoutly-modern-home .sm-advice-grid h3{font-size:24px;line-height:1.2;letter-spacing:-.6px;font-weight:500;margin:15px 0}
+#scoutly-modern-home .sm-advice-grid p{font-size:14px;line-height:1.75;margin:0}
+#scoutly-modern-home .sm-consultation{display:grid;grid-template-columns:1.25fr 1fr;align-items:center;gap:35px;background:var(--sm-panel);border:1px solid var(--sm-line);border-radius:20px;padding:34px;margin-top:38px}
+#scoutly-modern-home .sm-consultation h2{font-size:clamp(26px,3.5vw,36px);line-height:1.15;margin:0 0 20px;letter-spacing:-1px}
+#scoutly-modern-home .sm-consultation p{font-size:14px;margin:0 0 15px}
+#scoutly-modern-home .sm-consultation-actions{display:flex;flex-direction:column;align-items:start;gap:18px}
+#scoutly-modern-home .sm-consultation-actions .sm-caption{font-size:12px;line-height:1.7}
+#scoutly-modern-home .sm-secondary-link{color:var(--sm-text);font-size:14px;text-decoration:underline;min-height:44px;display:inline-flex;align-items:center}
+.modern-service .consultation-invite{background:#e7eddf;color:#19303a;padding:22px;border-radius:12px;margin-top:32px;border-left:4px solid #365d26}
+.modern-service .consultation-invite h3{font-size:24px;line-height:1.2;letter-spacing:-.5px;margin:0 0 14px}
+.modern-service .consultation-invite p{font-size:14px;margin:0}
+.modern-service .consultation-invite .eyebrow{color:#365d26;font-size:11px;margin-bottom:12px}
+@media(max-width:760px){#scoutly-modern-home .sm-advice-grid,#scoutly-modern-home .sm-consultation{grid-template-columns:1fr}#scoutly-modern-home .sm-advice-grid{gap:28px}#scoutly-modern-home .sm-consultation{padding:24px;gap:22px}#scoutly-modern-home .sm-consultation .sm-primary{max-width:100%;white-space:normal}#scoutly-modern-home .sm-consultation h2 br{display:initial}}
+
