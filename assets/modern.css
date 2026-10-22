@@ -110,3 +110,20 @@ body.modern-service{background:var(--modern-bg);color:var(--modern-text);font-fa
 .modern-service .consultation-invite .eyebrow{color:#365d26;font-size:11px;margin-bottom:12px}
 @media(max-width:760px){#scoutly-modern-home .sm-advice-grid,#scoutly-modern-home .sm-consultation{grid-template-columns:1fr}#scoutly-modern-home .sm-advice-grid{gap:28px}#scoutly-modern-home .sm-consultation{padding:24px;gap:22px}#scoutly-modern-home .sm-consultation .sm-primary{max-width:100%;white-space:normal}#scoutly-modern-home .sm-consultation h2 br{display:initial}}
 
+
+/* Four thematic paths and concrete, unquantified consequences. */
+#scoutly-modern-home .sm-tools{grid-template-columns:repeat(2,minmax(0,1fr))}
+#scoutly-modern-home .sm-losses{margin-top:42px;padding-top:30px;border-top:1px solid var(--sm-line)}
+#scoutly-modern-home .sm-losses h2{font-size:clamp(25px,3.5vw,34px);line-height:1.2}
+.modern-service .seller-risk{border-left:4px solid #d3f58b;background:#1b303a;color:#f4f5ed;border-radius:14px;padding:24px}
+.modern-service .seller-risk p{margin:0;font-size:16px;line-height:1.7}
+.modern-service .seller-risk .eyebrow{font-size:11px;margin-bottom:12px;color:#d3f58b}
+.modern-service .guide-result{border-top:1px solid #bac8cb;margin-top:28px;padding-top:22px}
+.modern-service .guide-result ul{padding-left:22px;font-size:15px;line-height:1.7}
+.modern-service .guide-result li{margin-bottom:16px}
+.modern-service .guide-result .consultation-invite .button{margin-top:20px}
+.modern-service #guide-error{color:#a3212c}
+.modern-service #guide-form .button{margin-top:22px}
+.modern-service #guide-result-title:focus{outline:3px solid #2459a5;outline-offset:4px}
+.modern-service #guide-form legend{font-family:inherit;font-size:26px;line-height:1.2;font-weight:500}
+@media(max-width:600px){#scoutly-modern-home .sm-tools{grid-template-columns:1fr}}
