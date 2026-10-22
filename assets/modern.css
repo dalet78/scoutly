@@ -158,3 +158,28 @@ body.modern-service{background:var(--modern-bg);color:var(--modern-text);font-fa
 #scoutly-modern-home .sm-hero-visual small{color:#b3c4c8;font-size:10px}
 @media(max-width:850px){#scoutly-modern-home .sm-hero{gap:28px}#scoutly-modern-home .sm-hero-visual img{height:410px}#scoutly-modern-home .sm-hero h1{font-size:53px}}
 @media(max-width:650px){#scoutly-modern-home .sm-hero{grid-template-columns:1fr;padding:36px 22px 40px;gap:30px}#scoutly-modern-home .sm-hero h1{font-size:clamp(44px,11vw,65px);letter-spacing:-2px}#scoutly-modern-home .sm-hero-visual img{height:auto;aspect-ratio:4/3}#scoutly-modern-home .sm-hero-visual figcaption{padding:18px 20px}#scoutly-modern-home .sm-hero-points{margin-top:24px}}
+
+/* Compact stickers: several visual accents without oversized panels. */
+#scoutly-modern-home .sm-sticker{display:inline-flex;width:64px;height:64px;align-items:center;justify-content:center;flex-shrink:0;border:3px solid #f6f7f0;border-radius:19px;background:#d3f58b;color:#19303a;box-shadow:4px 5px 0 #07151b;transform:rotate(-6deg);margin-bottom:12px}
+#scoutly-modern-home .sm-sticker svg{width:38px;height:38px}
+#scoutly-modern-home .sm-tool:nth-child(even)>.sm-sticker{background:#c6e2ed;transform:rotate(6deg)}
+#scoutly-modern-home .sm-tool:first-child>.sm-sticker{background:#f6f7f0}
+#scoutly-modern-home .sm-advice-grid .sm-sticker{display:flex;width:50px;height:50px;border-radius:15px;margin-bottom:20px}
+#scoutly-modern-home .sm-advice-grid .sm-sticker svg{width:29px;height:29px}
+#scoutly-modern-home .sm-sticker-cluster{position:relative;min-width:0;width:100%;max-width:370px;height:360px;justify-self:center}
+#scoutly-modern-home .sm-hero-visual{position:absolute;top:8px;left:8px;width:245px;background:#f6f7f0;border:7px solid #f6f7f0;border-radius:18px;transform:rotate(-7deg);box-shadow:8px 10px 0 #07151b}
+#scoutly-modern-home .sm-hero-visual img{height:190px;border-radius:10px;object-fit:cover}
+#scoutly-modern-home .sm-hero-visual figcaption{padding:10px 3px;color:#19303a;font-size:12px}
+#scoutly-modern-home .sm-hero-visual small{color:#475d66;font-size:9px}
+#scoutly-modern-home .sm-photo-sticker{position:absolute;right:0;bottom:9px;width:205px;margin:0;border:6px solid #f6f7f0;background:#f6f7f0;border-radius:15px;transform:rotate(8deg);box-shadow:6px 8px 0 #07151b}
+#scoutly-modern-home .sm-photo-sticker img{display:block;width:100%;height:125px;object-fit:cover;border-radius:9px}
+#scoutly-modern-home .sm-photo-sticker figcaption{color:#19303a;font-size:12px;font-weight:700;padding:10px 3px}
+#scoutly-modern-home .sm-cluster-check{position:absolute;right:4px;top:20px;transform:rotate(12deg);width:70px;height:70px}
+#scoutly-modern-home .ai-example-home{width:100%;max-width:300px;margin-top:8px;padding:16px;border:3px solid #fff;box-shadow:3px 4px 0 #07151b;border-radius:13px;align-self:center}
+#scoutly-modern-home .ai-example-home h3{font-size:19px}
+#scoutly-modern-home .ai-example-home .example-photo{max-height:150px;object-fit:contain}
+#scoutly-modern-home .ai-example-home .example-label{margin-bottom:10px}
+#scoutly-modern-home .ai-example-home .example-table td{padding:7px 4px}
+.modern-service .hero-art .ai-example{max-width:350px;margin-inline:auto;padding:20px;border:4px solid #fff;box-shadow:6px 8px 0 #07151b;border-radius:16px}
+.modern-service .hero-art .example-photo{max-height:210px;object-fit:contain}
+@media(max-width:650px){#scoutly-modern-home .sm-sticker-cluster{max-width:310px;height:310px}#scoutly-modern-home .sm-hero-visual{width:205px;left:5px}#scoutly-modern-home .sm-hero-visual img{height:150px}#scoutly-modern-home .sm-photo-sticker{width:170px;right:5px;bottom:5px}#scoutly-modern-home .sm-photo-sticker img{height:100px}#scoutly-modern-home .sm-cluster-check{width:55px;height:55px;right:8px}.modern-service .hero-art .ai-example{max-width:300px}}
