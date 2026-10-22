@@ -5,11 +5,11 @@
     8,
     16
   ],
-  "lastAttemptAt": "2026-10-21T14:04:36.000Z",
+  "lastAttemptAt": "2026-10-22T05:58:29.000Z",
   "lastSuccessAt": null,
   "firstRunAt": "2026-10-14T08:00:00+02:00",
   "status": "partial",
-  "note": "21 ottobre, pomeriggio: nuovi affitti in zona Isola/Maciachini (45 m², €1.250 + €150; qualifica inserzionista non determinata) e SeiMilano/M1 Bisceglie (90 m², €1.350; privato dichiarato, spese senza importo). Recuperate 30 schede esistenti, 15 dettagli non recuperabili; nessuna nuova rimozione. Facebook non accessibile; prove e date preservate, disponibilità, proprietà e incarichi non confermati.",
+  "note": "22 ottobre, mattina: acquisiti 5 affitti (via Antonini, NoLo, Città Studi, Scalo Farini e Viale Liguria) e 2 vendite (Navigli e Famagosta). La scheda Famagosta resta evidenza parziale; due repliche Città Studi sono state deduplicate. Recuperate 32 schede esistenti, 15 dettagli non recuperabili; nessuna nuova rimozione. Facebook non accessibile; prove e date preservate, disponibilità, proprietà e incarichi non confermati.",
   "runHistory": [
     {
       "lastAttemptAt": "2026-10-14T07:45:12Z",
@@ -140,6 +140,16 @@
       "retrievedExisting": 30,
       "failedExisting": 15,
       "removedSourceListings": 0
+    },
+    {
+      "lastAttemptAt": "2026-10-22T05:58:29.000Z",
+      "status": "partial",
+      "newRentals": 5,
+      "newSales": 2,
+      "retrievedExisting": 32,
+      "failedExisting": 15,
+      "removedSourceListings": 0,
+      "duplicatesObserved": 2
     }
   ]
 }
