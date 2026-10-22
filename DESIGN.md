@@ -1,3 +1,15 @@
+# Direzione corrente — Tecnologia umana, 22 ottobre 2026
+
+La direzione moderna approvata dal fondatore sostituisce la precedente grafica editoriale per la home e i due percorsi attivi. La guida storica sotto resta applicabile agli asset archiviati, non governa questi cinque HTML.
+
+- Home: petrolio #101f28, pannelli #1b303a, lime #d3f58b, testo #f4f5ed e secondario #b3c4c8. Tipografia sans serif, titoli grandi, composizione astratta CSS, due ingressi ai servizi.
+- Form e ricevute: stessa identità, superfici #f6f7f0 con testo #19303a e note #475d66; campi bianchi e placeholder #596b74. Non ereditare testo chiaro nelle superfici chiare. Colori espliciti per hover, focus, errori e disabled; nessuna trasparenza del testo dei form.
+- CSS aggiuntivo condiviso: assets/modern.css, caricato dopo i fogli e gli stili esistenti. Identificativi, contratti e script invariati. Gli altri tool storici e Radar non vengono modificati.
+- Responsive: griglie a una colonna su mobile, navigazione a capo, controlli nativi e rispetto di prefers-reduced-motion.
+- Contrasto nominale verificato dai test: minimo 4,5:1 sulle coppie controllate. Serve anche verifica renderizzata; non dichiarare conformità WCAG completa sulla base di questi test.
+
+---
+
 # Scoutly — Casa, con leggerezza
 
 Direzione approvata: illustrazioni editoriali calde, moderne e amichevoli. Avorio, petrolio, salvia e corallo. I temi più delicati, come eredità e trasferimento, mantengono un tono rispettoso.
@@ -169,3 +181,4 @@ Soggetto del prompt: An ivory house sitting at a gentle fork in a coral path, on
 Didascalia: Le scelte di casa, con un po’ più di leggerezza.
 
 Soggetto del prompt: A delightful cohesive little Italian neighborhood of three ivory and sage homes, coral roofs, an arched doorway, a tall potted olive tree, a friendly coral armchair on a terrace and an ochre sun. Sophisticated editorial world of home possibilities, warm, modern and subtly playful.
+

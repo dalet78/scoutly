@@ -1,9 +1,9 @@
 name: Scoutly landing B checks
 on:
   push:
-    paths: ['tools/prima-di-pubblicare.html', 'tools/ristrutturare-o-vendere.html', 'tools/richiesta-ristrutturare-inviata.html', 'config/forms.json', 'assets/prima-di-pubblicare/**', 'tests/prima-di-pubblicare.test.mjs', 'tests/annuncio-email.test.mjs', 'tests/annuncio-upload.test.mjs', 'tests/submit-request.test.mjs', 'tests/public-intake.test.mjs', 'intake-python/**', '.github/workflows/scoutly-landing-b.yml']
+    paths: ['index.html', 'assets/modern.css', 'tools/richiesta-inviata.html', 'tests/modern-design.test.mjs', 'tools/prima-di-pubblicare.html', 'tools/ristrutturare-o-vendere.html', 'tools/richiesta-ristrutturare-inviata.html', 'config/forms.json', 'assets/prima-di-pubblicare/**', 'tests/prima-di-pubblicare.test.mjs', 'tests/annuncio-email.test.mjs', 'tests/annuncio-upload.test.mjs', 'tests/submit-request.test.mjs', 'tests/public-intake.test.mjs', 'intake-python/**', '.github/workflows/scoutly-landing-b.yml']
   pull_request:
-    paths: ['tools/prima-di-pubblicare.html', 'tools/ristrutturare-o-vendere.html', 'tools/richiesta-ristrutturare-inviata.html', 'config/forms.json', 'assets/prima-di-pubblicare/**', 'tests/prima-di-pubblicare.test.mjs', 'tests/annuncio-email.test.mjs', 'tests/annuncio-upload.test.mjs', 'tests/submit-request.test.mjs', 'tests/public-intake.test.mjs', 'intake-python/**', '.github/workflows/scoutly-landing-b.yml']
+    paths: ['index.html', 'assets/modern.css', 'tools/richiesta-inviata.html', 'tests/modern-design.test.mjs', 'tools/prima-di-pubblicare.html', 'tools/ristrutturare-o-vendere.html', 'tools/richiesta-ristrutturare-inviata.html', 'config/forms.json', 'assets/prima-di-pubblicare/**', 'tests/prima-di-pubblicare.test.mjs', 'tests/annuncio-email.test.mjs', 'tests/annuncio-upload.test.mjs', 'tests/submit-request.test.mjs', 'tests/public-intake.test.mjs', 'intake-python/**', '.github/workflows/scoutly-landing-b.yml']
 permissions:
   contents: read
 jobs:
@@ -14,7 +14,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '24'
-      - run: node --test tests/prima-di-pubblicare.test.mjs tests/annuncio-email.test.mjs tests/annuncio-upload.test.mjs tests/submit-request.test.mjs tests/public-intake.test.mjs
+      - run: node --test tests/modern-design.test.mjs tests/prima-di-pubblicare.test.mjs tests/annuncio-email.test.mjs tests/annuncio-upload.test.mjs tests/submit-request.test.mjs tests/public-intake.test.mjs
   python-intake:
     runs-on: ubuntu-latest
     steps:
@@ -29,3 +29,4 @@ jobs:
         with:
           node-version: '24'
       - run: node --test intake-python/tests/test-page.test.mjs
+
