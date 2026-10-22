@@ -127,3 +127,17 @@ body.modern-service{background:var(--modern-bg);color:var(--modern-text);font-fa
 .modern-service #guide-result-title:focus{outline:3px solid #2459a5;outline-offset:4px}
 .modern-service #guide-form legend{font-family:inherit;font-size:26px;line-height:1.2;font-weight:500}
 @media(max-width:600px){#scoutly-modern-home .sm-tools{grid-template-columns:1fr}}
+
+
+/* Illustrative AI output: real HTML keeps labels and partial tables readable. */
+.ai-example{box-sizing:border-box;background:#f6f7f0;color:#19303a;border:1px solid #c5d0d0;border-radius:18px;padding:24px;overflow:hidden;text-align:left;font-family:Arial,Helvetica,sans-serif}
+.ai-example .example-label{font-size:11px;line-height:1.5;color:#475d66;margin-bottom:18px}
+.ai-example .example-kicker{font-size:10px;letter-spacing:1px;font-weight:700;margin:0 0 16px;color:#334c56}
+.ai-example h3,#scoutly-modern-home .ai-example h3{font-size:25px;line-height:1.2;letter-spacing:-.5px;margin:16px 0;color:#19303a}
+.ai-example p,#scoutly-modern-home .ai-example p{font-size:13px;line-height:1.6;color:#475d66;margin:14px 0 0;max-width:none}
+.example-note{background:#e7ece5;padding:14px;border-radius:8px;font-size:15px;line-height:1.5}.example-rule{height:1px;background:#bcc9c7;margin-top:20px}.example-status{margin-top:18px;font-size:12px;line-height:1.6;border-left:3px solid #497158;padding-left:12px;color:#334c56}
+.example-photo{width:100%;height:auto;display:block;border-radius:10px}.example-photo-labels{display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px;font-weight:700;text-align:center;margin-top:10px;color:#19303a}
+.example-row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:13px 0;border-bottom:1px solid #c5d0d0;font-size:13px;line-height:1.5}.example-row span:last-child{font-size:11px;color:#475d66}
+.example-table{border-collapse:collapse;width:100%;font-size:13px;line-height:1.5;color:#19303a}.example-table caption{text-align:left;font-size:11px;color:#475d66;margin-bottom:10px}.example-table th,.example-table td{padding:10px 5px;text-align:left;border-bottom:1px solid #c5d0d0}.example-table th{background:#e7ece5;font-size:11px}.example-table td:last-child{white-space:normal}
+#scoutly-modern-home .ai-example-home{margin-top:20px;width:100%;padding:20px}#scoutly-modern-home .sm-tool{display:flex;flex-direction:column;align-items:stretch}#scoutly-modern-home .sm-tool>.sm-arrow{align-self:flex-end;margin-top:16px}#scoutly-modern-home .sm-tool>small{min-height:65px}
+@media(max-width:600px){.ai-example{padding:18px}.ai-example h3,#scoutly-modern-home .ai-example h3{font-size:23px}.example-table{font-size:12px}.example-photo-labels{font-size:11px}}

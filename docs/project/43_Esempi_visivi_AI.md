@@ -1,0 +1,2 @@
+# Esempi visivi AI — 22 ottobre 2026
+Quattro anteprime aggiunte alle schede home e alle rispettive pagine: bozza annuncio fittizio, confronto parziale delle alternative, camera con luce artificiale/naturale generata con AI, checklist HTML parziale. Le anteprime sono esplicitamente illustrative; nessun risultato personalizzato viene generato nel browser. Immagine JPEG ottimizzata; testi e tabella restano HTML accessibile. Consulenza facoltativa e stato di attivazione dei moduli invariati.
