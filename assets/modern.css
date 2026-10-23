@@ -215,3 +215,22 @@ body.modern-service{background:var(--modern-bg);color:var(--modern-text);font-fa
 .modern-service .hero-art .ai-example h3{font-size:20px}
 .modern-service .hero-art .example-photo{max-height:145px}
 @media(max-width:650px){#scoutly-modern-home .sm-hero{grid-template-columns:1fr;gap:20px}#scoutly-modern-home .sm-sticker-cluster{width:220px;height:215px;justify-self:start;margin-left:6px}.modern-service .hero-art .ai-example{max-width:240px}}
+
+/* Larger hero collage; service links remain concise. */
+#scoutly-modern-home .sm-hero{grid-template-columns:minmax(0,1fr) minmax(0,420px);gap:40px}
+#scoutly-modern-home .sm-sticker-cluster{width:400px;max-width:100%;height:370px;justify-self:center;margin-left:0}
+#scoutly-modern-home .sm-hero-visual{width:270px;left:10px;top:15px;border-width:7px;border-radius:18px}
+#scoutly-modern-home .sm-hero-visual img{height:205px;border-radius:10px}
+#scoutly-modern-home .sm-hero-visual figcaption{padding:10px 4px;font-size:13px}
+#scoutly-modern-home .sm-hero-visual figcaption>span{display:block}
+#scoutly-modern-home .sm-hero-visual small{font-size:10px}
+#scoutly-modern-home .sm-photo-sticker{width:210px;right:6px;bottom:10px;border-width:6px;border-radius:14px}
+#scoutly-modern-home .sm-photo-sticker img{height:130px;border-radius:8px}
+#scoutly-modern-home .sm-photo-sticker figcaption{padding:9px 3px;font-size:12px}
+#scoutly-modern-home .sm-cluster-check{width:58px;height:58px;right:10px;top:12px;border-radius:16px}
+#scoutly-modern-home .sm-cluster-check svg{width:35px;height:35px}
+#scoutly-modern-home .sm-tool>small{min-height:0;max-width:100%}
+#scoutly-modern-home .sm-tool{min-height:260px}
+#scoutly-modern-home .sm-tool>.sm-arrow{margin-top:auto}
+@media(max-width:850px) and (min-width:651px){#scoutly-modern-home .sm-hero{grid-template-columns:minmax(0,1fr) 310px;gap:22px}#scoutly-modern-home .sm-sticker-cluster{width:300px;height:310px}#scoutly-modern-home .sm-hero-visual{width:220px}#scoutly-modern-home .sm-hero-visual img{height:160px}#scoutly-modern-home .sm-photo-sticker{width:170px}#scoutly-modern-home .sm-photo-sticker img{height:105px}#scoutly-modern-home .sm-cluster-check{width:46px;height:46px;right:0}}
+@media(max-width:650px){#scoutly-modern-home .sm-hero{grid-template-columns:1fr;gap:28px}#scoutly-modern-home .sm-sticker-cluster{width:300px;max-width:100%;height:310px;justify-self:center}#scoutly-modern-home .sm-hero-visual{width:72%;left:8px;top:12px}#scoutly-modern-home .sm-hero-visual img{height:155px}#scoutly-modern-home .sm-photo-sticker{width:56%;right:4px;bottom:12px}#scoutly-modern-home .sm-photo-sticker img{height:100px}#scoutly-modern-home .sm-cluster-check{width:44px;height:44px;right:2px;top:4px}#scoutly-modern-home .sm-cluster-check svg{width:27px;height:27px}#scoutly-modern-home .sm-tool{min-height:240px}}
