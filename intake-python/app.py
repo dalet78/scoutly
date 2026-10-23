@@ -22,6 +22,7 @@ from notices import SignedNotice, notify_saved, verify
 from form_routes import ROUTES, check_route
 from municipalities import check_municipality
 
+MAX_PHOTOS = 10
 MAX_BYTES = 8_000_000
 Image.MAX_IMAGE_PIXELS = 25_000_000
 
@@ -85,7 +86,7 @@ class Payload(BaseModel):
     area_sqm: float | None = Field(default=None, gt=0, le=5000)
     zone: str | None = Field(default=None, min_length=2, max_length=120)
     timeframe: Literal['Entro 3 mesi', 'Tra 3 e 6 mesi', 'Oltre 6 mesi', 'Sto valutando'] | None = None
-    floor_plan_position: int | None = Field(default=None, strict=True, ge=1, le=8)
+    floor_plan_position: int | None = Field(default=None, strict=True, ge=1, le=MAX_PHOTOS)
     municipality_code: str | None = Field(default=None, pattern=r'^\d{6}$')
 
     @model_validator(mode='after')
@@ -104,6 +105,32 @@ class Payload(BaseModel):
                 raise ValueError('Comune strutturato non previsto per questo form')
             check_municipality(self.municipality_code, self.city)
         return self
+
+
+
+class ConsultationPayload(BaseModel):
+    model_config = ConfigDict(extra='forbid', str_strip_whitespace=True)
+    idempotency_key: UUID
+    form_id: Literal['consulenza']
+    form_version: Literal[1]
+    workflow_id: Literal['richiesta-consulenza-diretta']
+    email: EmailStr
+    name: str = Field(min_length=1, max_length=80)
+    phone: str | None = Field(default=None, max_length=30)
+    description: str = Field(default='', max_length=1000)
+    municipality_name: str = Field(min_length=2, max_length=120)
+    consultation_topic: Literal['Vendita', 'Affitto', 'Presentazione dell’annuncio', 'Altro']
+    service_requested: Literal[True]
+    consultation_requested: Literal[True]
+
+    @model_validator(mode='after')
+    def known_route(self):
+        check_route(self.form_id, self.form_version, self.workflow_id)
+        return self
+
+
+def consultation_enabled():
+    return os.environ.get('CONSULTATION_FORM_ENABLED', '').lower() == 'true'
 
 
 class SupabaseStore:
@@ -190,12 +217,12 @@ class SupabaseStore:
             'request_id': f'eq.{key}', 'select': 'position,object_path,content_type,size_bytes', 'order': 'position.asc'})
         response.raise_for_status()
         rows = response.json()
-        if len(rows) > 8 or len({r['position'] for r in rows}) != len(rows):
+        if len(rows) > MAX_PHOTOS or len({r['position'] for r in rows}) != len(rows):
             raise RuntimeError('Elenco foto da verificare')
         files, total = [], 0
         for row in rows:
             extension = {'image/png': 'png', 'image/jpeg': 'jpg'}.get(row['content_type'])
-            if extension is None or not 1 <= row['position'] <= 8 or row['object_path'] != f"{key}/{row['position']}.{extension}":
+            if extension is None or not 1 <= row['position'] <= MAX_PHOTOS or row['object_path'] != f"{key}/{row['position']}.{extension}":
                 raise RuntimeError('Percorso foto da verificare')
             data = bytearray()
             with self.client.stream('GET', '/storage/v1/object/authenticated/scoutly-photos/' + row['object_path']) as download:
@@ -283,10 +310,10 @@ def check_photo(data, declared_type):
 def accept(payload, photos, store, public=False):
     key = str(payload.idempotency_key)
     values = payload.model_dump(mode='json')
-    if values['floor_plan_position'] is None:
-        values.pop('floor_plan_position')
-    if values['municipality_code'] is None:
-        values.pop('municipality_code')
+    if values.get('floor_plan_position') is None:
+        values.pop('floor_plan_position', None)
+    if values.get('municipality_code') is None:
+        values.pop('municipality_code', None)
     if payload.form_id == 'prima-di-pubblicare':
         # Mantiene invariati gli hash delle richieste già ricevute con il primo form.
         for field in ('target_price', 'area_sqm', 'zone', 'timeframe'):
@@ -310,7 +337,7 @@ def accept(payload, photos, store, public=False):
     row = {k: values[k] for k in ('form_id', 'form_version', 'workflow_id', 'email',
            'name', 'phone', 'description', 'service_requested', 'consultation_requested')}
     row.update(id=key, idempotency_key=key, payload_hash=fingerprint,
-               answers={k: values[k] for k in ('city', 'intent', 'role', 'publication')})
+               answers={k: values[k] for k in (('municipality_name', 'consultation_topic') if payload.form_id == 'consulenza' else ('city', 'intent', 'role', 'publication'))})
     if payload.form_id == 'ristrutturare-o-vendere':
         row['answers'].update({k: values[k] for k in ('target_price', 'area_sqm', 'zone', 'timeframe')})
         if payload.floor_plan_position is not None:
@@ -390,6 +417,7 @@ def create_app(store_factory=SupabaseStore, email_sender=send_test_email, notice
         return {'status': 'ok', 'mode': 'limited-public-test' if enabled() else 'private-test', 'email_enabled': False,
                 'email_test_configured': bool(os.environ.get('RESEND_API_KEY') and os.environ.get('SCOUTLY_TEST_EMAIL')),
                 'public_intake_enabled': enabled(), 'public_protocol': 1, 'gmail_notice_protocol': 1,
+                'consultation_form_enabled': consultation_enabled(),
                 'renovation_form_enabled': os.environ.get('RENOVATION_FORM_ENABLED', '').lower() == 'true'}
 
     @app.post('/notifications/verify')
@@ -427,8 +455,9 @@ def create_app(store_factory=SupabaseStore, email_sender=send_test_email, notice
                              'municipality_support': True,
                              'supported_forms': [dict(form_id=key, form_version=value['form_version'])
                                  for key, value in ROUTES.items() if key == 'prima-di-pubblicare'
-                                 or os.environ.get('RENOVATION_FORM_ENABLED', '').lower() == 'true'],
-                             'max_photos': 8, 'max_bytes': MAX_BYTES}, headers={'Cache-Control': 'no-store'})
+                                 or (key == 'ristrutturare-o-vendere' and os.environ.get('RENOVATION_FORM_ENABLED', '').lower() == 'true')
+                                 or (key == 'consulenza' and consultation_enabled())],
+                             'max_photos': MAX_PHOTOS, 'max_bytes': MAX_BYTES}, headers={'Cache-Control': 'no-store'})
 
     @app.post('/test-email')
     def test_email(body: MailTestRequest):
@@ -472,17 +501,22 @@ def create_app(store_factory=SupabaseStore, email_sender=send_test_email, notice
 
     def save_submission(payload, photos, public):
         try:
-            parsed = Payload.model_validate_json(payload)
+            parsed = TypeAdapter(Payload | ConsultationPayload).validate_json(payload)
         except ValidationError:
             raise HTTPException(422, 'Dati incompleti o percorso form non riconosciuto.') from None
+        if parsed.form_id == 'consulenza':
+            if not consultation_enabled():
+                raise HTTPException(503, 'La richiesta diretta è in preparazione. Riprova più tardi.')
+            if photos:
+                raise HTTPException(422, 'Il percorso consulenza non accetta foto.')
         if parsed.form_id == 'ristrutturare-o-vendere':
             if os.environ.get('RENOVATION_FORM_ENABLED', '').lower() != 'true':
                 raise HTTPException(503, 'Questo percorso è in preparazione. Riprova più tardi.')
             if not photos:
                 raise HTTPException(422, 'Carica almeno una foto per questo percorso.')
-        if len(photos) > 8:
-            raise HTTPException(422, 'Massimo otto foto.')
-        if parsed.floor_plan_position is not None and (parsed.floor_plan_position != len(photos) or len(photos) < 2):
+        if len(photos) > MAX_PHOTOS:
+            raise HTTPException(422, 'Massimo 10 immagini.')
+        if getattr(parsed, 'floor_plan_position', None) is not None and (parsed.floor_plan_position != len(photos) or len(photos) < 2):
             raise HTTPException(422, 'La planimetria deve seguire almeno una foto della casa.')
         validated = []
         total = 0

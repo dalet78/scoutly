@@ -1,5 +1,10 @@
 """Workflow autorizzati dal fondatore: coppie di metadati vincolate."""
 ROUTES = {
+    'consulenza': {
+        'form_name': 'Consulenza gratuita', 'form_version': 1,
+        'workflow_id': 'richiesta-consulenza-diretta',
+        'email_subject': '[Scoutly][consulenza] Richiesta di confronto gratuito',
+    },
     'prima-di-pubblicare': {
         'form_name': 'Prima di pubblicare', 'form_version': 2,
         'workflow_id': 'annuncio-da-foto-e-descrizione',

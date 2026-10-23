@@ -58,7 +58,7 @@
             "image/png"
           ],
           "max_files": 1,
-          "max_images_including_photos": 8,
+          "max_images_including_photos": 10,
           "max_total_bytes": 8000000,
           "signed_position": "envelope.answers.floor_plan_position"
         }
@@ -70,6 +70,30 @@
         "municipality_name"
       ],
       "service_scope": "Milano Comune"
+    },
+    {
+      "form_id": "consulenza",
+      "form_name": "Consulenza gratuita",
+      "form_version": "1",
+      "path": "tools/consulenza.html",
+      "workflow_id": "richiesta-consulenza-diretta",
+      "email_subject": "[Scoutly][consulenza] Richiesta di confronto gratuito",
+      "status": "pending_backend_activation",
+      "output": [
+        "richiesta_ricontatto_umano"
+      ],
+      "ai_generation": false,
+      "required_fields": [
+        "name",
+        "email",
+        "municipality_name",
+        "consultation_topic"
+      ],
+      "optional_fields": [
+        "phone",
+        "description"
+      ],
+      "photos_allowed": false
     }
   ],
   "routing_policy": {

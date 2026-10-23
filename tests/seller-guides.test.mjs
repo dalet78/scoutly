@@ -20,7 +20,7 @@ test('new pages request an email response and remain paused until the AI agent i
  for(const path of ['fotografie-casa','checklist-vendere-casa']){
   const html=readFileSync(new URL('../tools/'+path+'.html',import.meta.url),'utf8');
   assert.match(html,new RegExp('data-request-topic="'+path+'"'));assert.match(html,/data-request-topic-ready="false"/);
-  assert.match(html,/type="email"/);assert.match(html,/public-form-v1.js\?v=optimized-photos-1/);
+  assert.match(html,/type="email"/);assert.match(html,/public-form-v1.js\?v=ten-files/);
   assert.doesNotMatch(html,/guide-result|guide-tips|Mostra i primi suggerimenti|seller-guides\/app.mjs/);
  }
  const script=readFileSync(new URL('../assets/prima-di-pubblicare/public-form-v1.js',import.meta.url),'utf8');

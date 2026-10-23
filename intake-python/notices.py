@@ -24,8 +24,8 @@ class Strict(BaseModel):
 
 
 class Photo(Strict):
-    position: int = Field(ge=1, le=8)
-    filename: str = Field(pattern=r'^(foto-[1-8]|planimetria-catastale)\.(png|jpg)$')
+    position: int = Field(ge=1, le=10)
+    filename: str = Field(pattern=r'^(foto-(?:[1-9]|10)|planimetria-catastale)\.(png|jpg)$')
     sha256: str = Field(pattern=r'^[0-9a-f]{64}$')
     size_bytes: int = Field(gt=0, le=8_000_000)
     content_type: Literal['image/jpeg', 'image/png']
@@ -46,7 +46,7 @@ class RenovationAnswers(Answers):
 
 
 class RenovationPlanAnswers(RenovationAnswers):
-    floor_plan_position: int = Field(strict=True, ge=2, le=8)
+    floor_plan_position: int = Field(strict=True, ge=2, le=10)
 
 
 class MunicipalAnswers(RenovationAnswers):
@@ -59,27 +59,40 @@ class MunicipalPlanAnswers(RenovationPlanAnswers):
     municipality_name: str = Field(min_length=2, max_length=180)
 
 
+class ConsultationAnswers(Strict):
+    municipality_name: str = Field(min_length=2, max_length=120)
+    consultation_topic: Literal['Vendita', 'Affitto', 'Presentazione dell’annuncio', 'Altro']
+
+
 class Envelope(Strict):
     notification_schema: Literal['scoutly-gmail-v1']
     request_id: UUID
-    form_id: Literal['prima-di-pubblicare', 'ristrutturare-o-vendere']
-    form_name: Literal['Prima di pubblicare', 'Ristrutturare o vendere così?']
+    form_id: Literal['prima-di-pubblicare', 'ristrutturare-o-vendere', 'consulenza']
+    form_name: Literal['Prima di pubblicare', 'Ristrutturare o vendere così?', 'Consulenza gratuita']
     form_version: Literal[1, 2]
-    workflow_id: Literal['annuncio-da-foto-e-descrizione', 'confronto-ristrutturare-o-vendere']
+    workflow_id: Literal['annuncio-da-foto-e-descrizione', 'confronto-ristrutturare-o-vendere', 'richiesta-consulenza-diretta']
     email: EmailStr
     name: str | None = Field(max_length=80)
     phone: str | None = Field(max_length=30)
-    description: str = Field(min_length=20, max_length=4000)
-    answers: Answers | RenovationAnswers | RenovationPlanAnswers | MunicipalAnswers | MunicipalPlanAnswers
+    description: str = Field(max_length=4000)
+    answers: Answers | RenovationAnswers | RenovationPlanAnswers | MunicipalAnswers | MunicipalPlanAnswers | ConsultationAnswers
     service_requested: Literal[True]
     consultation_requested: bool
-    photos: list[Photo] = Field(max_length=8)
+    photos: list[Photo] = Field(max_length=10)
 
     @model_validator(mode='after')
     def known_route(self):
         route = check_route(self.form_id, self.form_version, self.workflow_id)
         if self.form_name != route['form_name']:
             raise ValueError('Nome form discordante')
+        if self.form_id == 'consulenza':
+            if (not isinstance(self.answers, ConsultationAnswers) or self.photos
+                    or not self.consultation_requested or not self.name or not self.name.strip()
+                    or len(self.description) > 1000):
+                raise ValueError('Richiesta consulenza non valida')
+            return self
+        if isinstance(self.answers, ConsultationAnswers) or len(self.description) < 20:
+            raise ValueError('Dati non coerenti con il percorso')
         renovation = self.form_id == 'ristrutturare-o-vendere'
         if renovation != isinstance(self.answers, RenovationAnswers):
             raise ValueError('Dati non coerenti con il percorso')
@@ -129,7 +142,7 @@ def make_envelope(row, files):
             sha256=hashlib.sha256(data).hexdigest(), size_bytes=len(data), content_type=content_type))
         attachments.append({'filename': filename, 'content': base64.b64encode(data).decode()})
     route = check_route(row['form_id'], row['form_version'], row['workflow_id'])
-    answer_keys = ('city', 'intent', 'role', 'publication')
+    answer_keys = (('municipality_name', 'consultation_topic') if row['form_id'] == 'consulenza' else ('city', 'intent', 'role', 'publication'))
     if row['form_id'] == 'ristrutturare-o-vendere':
         answer_keys += ('target_price', 'area_sqm', 'zone', 'timeframe')
         if row['answers'].get('floor_plan_position') is not None:
@@ -157,6 +170,19 @@ def render_html(envelope):
                 '<td valign="top" style="padding:10px 0;overflow-wrap:anywhere">'
                 + safe(value) + '</td></tr>')
 
+    if envelope.form_id == 'consulenza':
+        details = ''.join(row(label, value) for label, value in [
+            ('Nome', envelope.name), ('Email', envelope.email),
+            ('Comune dichiarato', envelope.answers.municipality_name),
+            ('Argomento', envelope.answers.consultation_topic),
+            ('Telefono', envelope.phone or 'Non indicato'),
+        ])
+        return ('<!doctype html><html lang="it"><body style="background:#f6f7f0;color:#19303a;font-family:Arial,sans-serif;padding:24px">'
+                '<h1>Richiesta di consulenza gratuita</h1><table>' + details + '</table>'
+                '<h2>Messaggio facoltativo</h2><p>' + safe(envelope.description or 'Nessun messaggio') + '</p>'
+                '<p>Ricontatto richiesto esplicitamente. Gestire come consulenza: non generare una bozza di annuncio AI. '
+                'Confermare disponibilità e modalità via email; nessun appuntamento già fissato.</p>'
+                '<p>Riferimento: ' + safe(envelope.request_id) + '</p></body></html>')
     contact = ''.join(row(label, value) for label, value in [
         ('Nome', envelope.name or 'Non indicato'), ('Email', envelope.email),
         ('Telefono', envelope.phone or 'Non indicato'),

@@ -27,7 +27,7 @@ def test_floor_plan_is_separate_signed_attachment_and_deduplicated(setup, monkey
     assert submit(client,data,[photo(),photo()]).json()['duplicate'] is True and len(sent)==1
 
 
-@pytest.mark.parametrize('position,count',[(1,1),(3,2),(1,2),(9,9)])
+@pytest.mark.parametrize('position,count',[(1,1),(3,2),(1,2),(11,11)])
 def test_invalid_plan_position_never_writes(setup, monkeypatch, position, count):
     client, store, sent, _ = setup
     monkeypatch.setenv('RENOVATION_FORM_ENABLED','true')
@@ -38,9 +38,9 @@ def test_invalid_plan_position_never_writes(setup, monkeypatch, position, count)
 def test_plan_keeps_eight_image_limit_and_old_renovation_hash(setup, monkeypatch):
     client, store, sent, _ = setup
     monkeypatch.setenv('RENOVATION_FORM_ENABLED','true')
-    data = {**renovation(),'floor_plan_position':8}
-    assert submit(client,data,[photo() for _ in range(8)]).status_code == 201
-    assert len(sent[0][1]) == 8
+    data = {**renovation(),'floor_plan_position':10}
+    assert submit(client,data,[photo() for _ in range(10)]).status_code == 201
+    assert len(sent[0][1]) == 10
     old = renovation()
     values = {**old,'name':None,'phone':None,'consultation_requested':False,'area_sqm':float(old['area_sqm'])}
     raw = photo()[1][1]
