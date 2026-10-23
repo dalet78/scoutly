@@ -20,5 +20,8 @@ Richiesta del fondatore: form diretto con nome, email, comune e argomento; telef
 La migrazione 004 è stata eseguita dal SQL Editor Supabase il 23 ottobre 2026, esito “Success. No rows returned”. Non sono stati modificati dati personali, foto, RLS o bucket. Nello stesso pannello è stato verificato l’esito riuscito della migrazione 003 eseguita dall’utente per le 10 immagini: questa revisione include il relativo codice rimasto in sospeso.
 
 ## Verifiche
-88 test Python e 62 test Node passati localmente; trasporti e archivio simulati. Copertura specifica: campi minimi, opzioni e campi facoltativi, rifiuto di foto o consenso assente, firma notifica, email distinta senza bozza, HTML escapato, riutilizzo UUID, blocco dati modificati dopo esito incerto, feature flag.
-Verifica desktop nel browser locale. Nessun invio reale eseguito durante i test. Stato di pubblicazione e attivazione da completare.
+91 test Python e 62 test Node passati localmente; trasporti e archivio simulati. Copertura specifica: campi minimi, opzioni e campi facoltativi, rifiuto di foto o consenso assente, firma notifica, email distinta senza bozza, HTML escapato, riutilizzo UUID, blocco dati modificati dopo esito incerto, feature flag.
+Verifica desktop nel browser locale. Nessun invio reale eseguito durante i test. Pubblicazione Cloudflare e deploy Render riusciti, flag attivo. Configurazione live verificata: consulenza v1 e 10 immagini/8 MB. CORS riparato per il dominio attuale, conservando l'origine storica; firma challenge vincolata alla specifica origine. Nessuna prova reale di invio: il browser pubblico è bloccato dal filtro aziendale Netskope, non superato. Automazione AI Gmail precedente non aggiornata per errore dello strumento di gestione: account e limite allegati restano da riallineare per i servizi AI; le richieste dirette arrivano alla casella operativa e vanno gestite come ricontatto umano.
+
+
+![Anteprima locale del modulo](consulenza-preview.jpg)

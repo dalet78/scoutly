@@ -78,7 +78,7 @@
       "path": "tools/consulenza.html",
       "workflow_id": "richiesta-consulenza-diretta",
       "email_subject": "[Scoutly][consulenza] Richiesta di confronto gratuito",
-      "status": "pending_backend_activation",
+      "status": "test",
       "output": [
         "richiesta_ricontatto_umano"
       ],
