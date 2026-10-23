@@ -22,6 +22,7 @@ from notices import SignedNotice, notify_saved, verify
 from form_routes import ROUTES, check_route
 from municipalities import check_municipality
 
+MAX_PHOTOS = 10
 MAX_BYTES = 8_000_000
 Image.MAX_IMAGE_PIXELS = 25_000_000
 
@@ -85,7 +86,7 @@ class Payload(BaseModel):
     area_sqm: float | None = Field(default=None, gt=0, le=5000)
     zone: str | None = Field(default=None, min_length=2, max_length=120)
     timeframe: Literal['Entro 3 mesi', 'Tra 3 e 6 mesi', 'Oltre 6 mesi', 'Sto valutando'] | None = None
-    floor_plan_position: int | None = Field(default=None, strict=True, ge=1, le=8)
+    floor_plan_position: int | None = Field(default=None, strict=True, ge=1, le=MAX_PHOTOS)
     municipality_code: str | None = Field(default=None, pattern=r'^\d{6}$')
 
     @model_validator(mode='after')
@@ -190,12 +191,12 @@ class SupabaseStore:
             'request_id': f'eq.{key}', 'select': 'position,object_path,content_type,size_bytes', 'order': 'position.asc'})
         response.raise_for_status()
         rows = response.json()
-        if len(rows) > 8 or len({r['position'] for r in rows}) != len(rows):
+        if len(rows) > MAX_PHOTOS or len({r['position'] for r in rows}) != len(rows):
             raise RuntimeError('Elenco foto da verificare')
         files, total = [], 0
         for row in rows:
             extension = {'image/png': 'png', 'image/jpeg': 'jpg'}.get(row['content_type'])
-            if extension is None or not 1 <= row['position'] <= 8 or row['object_path'] != f"{key}/{row['position']}.{extension}":
+            if extension is None or not 1 <= row['position'] <= MAX_PHOTOS or row['object_path'] != f"{key}/{row['position']}.{extension}":
                 raise RuntimeError('Percorso foto da verificare')
             data = bytearray()
             with self.client.stream('GET', '/storage/v1/object/authenticated/scoutly-photos/' + row['object_path']) as download:
@@ -428,7 +429,7 @@ def create_app(store_factory=SupabaseStore, email_sender=send_test_email, notice
                              'supported_forms': [dict(form_id=key, form_version=value['form_version'])
                                  for key, value in ROUTES.items() if key == 'prima-di-pubblicare'
                                  or os.environ.get('RENOVATION_FORM_ENABLED', '').lower() == 'true'],
-                             'max_photos': 8, 'max_bytes': MAX_BYTES}, headers={'Cache-Control': 'no-store'})
+                             'max_photos': MAX_PHOTOS, 'max_bytes': MAX_BYTES}, headers={'Cache-Control': 'no-store'})
 
     @app.post('/test-email')
     def test_email(body: MailTestRequest):
@@ -480,8 +481,8 @@ def create_app(store_factory=SupabaseStore, email_sender=send_test_email, notice
                 raise HTTPException(503, 'Questo percorso è in preparazione. Riprova più tardi.')
             if not photos:
                 raise HTTPException(422, 'Carica almeno una foto per questo percorso.')
-        if len(photos) > 8:
-            raise HTTPException(422, 'Massimo otto foto.')
+        if len(photos) > MAX_PHOTOS:
+            raise HTTPException(422, 'Massimo 10 immagini.')
         if parsed.floor_plan_position is not None and (parsed.floor_plan_position != len(photos) or len(photos) < 2):
             raise HTTPException(422, 'La planimetria deve seguire almeno una foto della casa.')
         validated = []

@@ -1,8 +1,9 @@
 import {optimizeImage} from './optimize-images.mjs';
 import {contextualDescription} from '../seller-guides/request-context.mjs';
-import {validatePhotos} from './upload-v3.js';
+import {validatePhotos} from './upload-v3.js?v=ten-files';
 import {submitPublic,SubmissionError} from './submit-public-v1.js?v=upload-progress-1';
 import {formatPrice,parsePrice,municipalityLabel,searchMunicipalities,resolveMunicipality} from './form-ui.js';
+let maxFiles=8;
 const API='https://scoutly-k76y.onrender.com';
 const form=document.getElementById('request'),picker=document.getElementById('photos'),previews=document.getElementById('photo-previews');
 const error=document.getElementById('upload-error'),send=document.getElementById('send'),summary=document.getElementById('photo-summary');
@@ -67,7 +68,7 @@ planPicker?.addEventListener('change',async()=>{
  if(optimizing||submitting)return;
  const selected=[...planPicker.files];if(!selected.length)return;
  try{
- if(selected.length!==1||photos.length+1>8)throw new Error('Puoi allegare una planimetria entro il limite di 8 immagini totali.');
+ if(selected.length!==1||photos.length+1>maxFiles)throw new Error('Puoi allegare una planimetria entro il limite di '+maxFiles+' immagini totali.');
  const [prepared]=await prepareFiles(selected,true);
  const message=validatePhotos([...photos,prepared]);if(message)throw new Error(message);
  floorPlan=prepared;error.textContent='';
@@ -90,7 +91,7 @@ picker.addEventListener('change',async()=>{
  if(optimizing||submitting)return;
  const selected=[...picker.files];
  try{
- if(photos.length+selected.length+(floorPlan?1:0)>8)throw new Error('Puoi caricare fino a 8 immagini totali. Rimuovi una foto per fare spazio alla planimetria.');
+ if(photos.length+selected.length+(floorPlan?1:0)>maxFiles)throw new Error('Puoi caricare fino a '+maxFiles+' immagini totali. Rimuovi una foto per fare spazio alla planimetria.');
  const prepared=await prepareFiles(selected);
  const candidates=[...photos,...prepared];
  const message=validatePhotos(floorPlan?[...candidates,floorPlan]:candidates);if(message)throw new Error(message);
@@ -118,11 +119,12 @@ async function connect(){
   }
   const response=await fetch(API+'/public/config',{credentials:'omit',redirect:'error',signal:controller.signal});
   if(!response.ok)throw new Error();const data=await response.json();
-  if(data.protocol!==1||typeof data.challenge!=='string'||data.max_photos!==8||data.max_bytes!==8000000)throw new Error();
+  if(data.protocol!==1||typeof data.challenge!=='string'||![8,10].includes(data.max_photos)||data.max_bytes!==8000000)throw new Error();
   if(renovation&&!data.supported_forms?.some(item=>item.form_id===formId&&item.form_version===1)){
    unavailable='Questo percorso non è ancora attivo. Puoi preparare le immagini, ma l’invio è disabilitato: nessun file è stato caricato.';throw new Error();}
   if((planPicker&&data.floor_plan_upload!==true)||(townInput&&data.municipality_support!==true)){
    unavailable='Il servizio sta per essere aggiornato. Le immagini sono solo anteprime locali e non sono state inviate. Riprova il collegamento più tardi.';throw new Error();}
+  maxFiles=data.max_photos;
   gate={token:data.challenge,receivedAt:Date.now(),readyAt:Date.now()+3100};
   connection.textContent='Puoi inviare la richiesta. Riceverai un codice di conferma dopo il salvataggio.';
   send.disabled=optimizing;

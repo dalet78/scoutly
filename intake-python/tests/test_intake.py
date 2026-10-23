@@ -80,16 +80,16 @@ def test_missing_configuration_fails_closed(setup, monkeypatch):
     assert submit(client, payload()).status_code == 503
 
 
-def test_eight_photos_and_duplicate(setup):
+def test_ten_photos_and_duplicate(setup):
     client, store = setup
     data = payload()
-    response = submit(client, data, [photo() for _ in range(8)])
+    response = submit(client, data, [photo() for _ in range(10)])
     assert response.status_code == 201
     assert response.json()['status'] == 'received'
-    assert len(store.uploads) == 8
-    assert len(store.rows[data['idempotency_key']]['photos']) == 8
-    assert submit(client, data, [photo() for _ in range(8)]).json()['duplicate'] is True
-    assert len(store.uploads) == 8
+    assert len(store.uploads) == 10
+    assert len(store.rows[data['idempotency_key']]['photos']) == 10
+    assert submit(client, data, [photo() for _ in range(10)]).json()['duplicate'] is True
+    assert len(store.uploads) == 10
     data['description'] += ' materiale diverso'
     assert submit(client, data).status_code == 409
 
@@ -110,10 +110,10 @@ def test_bad_fields_do_not_write(setup, field, value):
     assert not store.rows
 
 
-def test_fake_photo_and_nine_files_do_not_write(setup):
+def test_fake_photo_and_eleven_files_do_not_write(setup):
     client, store = setup
     assert submit(client, payload(), [('photos', ('falsa.png', b'not image', 'image/png'))]).status_code == 422
-    assert submit(client, payload(), [photo() for _ in range(9)]).status_code == 422
+    assert submit(client, payload(), [photo() for _ in range(11)]).status_code == 422
     assert not store.rows
 
 

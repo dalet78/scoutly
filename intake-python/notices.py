@@ -24,8 +24,8 @@ class Strict(BaseModel):
 
 
 class Photo(Strict):
-    position: int = Field(ge=1, le=8)
-    filename: str = Field(pattern=r'^(foto-[1-8]|planimetria-catastale)\.(png|jpg)$')
+    position: int = Field(ge=1, le=10)
+    filename: str = Field(pattern=r'^(foto-(?:[1-9]|10)|planimetria-catastale)\.(png|jpg)$')
     sha256: str = Field(pattern=r'^[0-9a-f]{64}$')
     size_bytes: int = Field(gt=0, le=8_000_000)
     content_type: Literal['image/jpeg', 'image/png']
@@ -46,7 +46,7 @@ class RenovationAnswers(Answers):
 
 
 class RenovationPlanAnswers(RenovationAnswers):
-    floor_plan_position: int = Field(strict=True, ge=2, le=8)
+    floor_plan_position: int = Field(strict=True, ge=2, le=10)
 
 
 class MunicipalAnswers(RenovationAnswers):
@@ -73,7 +73,7 @@ class Envelope(Strict):
     answers: Answers | RenovationAnswers | RenovationPlanAnswers | MunicipalAnswers | MunicipalPlanAnswers
     service_requested: Literal[True]
     consultation_requested: bool
-    photos: list[Photo] = Field(max_length=8)
+    photos: list[Photo] = Field(max_length=10)
 
     @model_validator(mode='after')
     def known_route(self):

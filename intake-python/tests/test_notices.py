@@ -64,16 +64,16 @@ def submit(client, data, files=None):
 def test_new_request_forwards_once_with_photos_after_storage(setup):
     client, store, sent, _ = setup
     data = payload()
-    files = [photo() for _ in range(8)]
+    files = [photo() for _ in range(10)]
     response = submit(client, data, files)
     assert response.status_code == 201 and response.json()['email_notice'] == 'accepted'
-    assert len(sent) == 1 and len(sent[0][1]) == 8
+    assert len(sent) == 1 and len(sent[0][1]) == 10
     assert sent[0][2] == 'founder@example.com'
     assert str(sent[0][0].email) == data['email']
     assert store.rows[data['idempotency_key']]['status'] == 'received'
     assert store.rows[data['idempotency_key']]['answers']['city'] == 'Milano Comune'
     assert submit(client, data, files).json()['duplicate'] is True
-    assert len(sent) == 1 and len(store.uploads) == 8
+    assert len(sent) == 1 and len(store.uploads) == 10
 
 
 def test_incomplete_upload_never_notifies(setup):
