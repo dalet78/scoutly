@@ -5,11 +5,11 @@
     8,
     16
   ],
-  "lastAttemptAt": "2026-10-23T06:01:53.000Z",
+  "lastAttemptAt": "2026-10-23T13:59:50.000Z",
   "lastSuccessAt": null,
   "firstRunAt": "2026-10-14T08:00:00+02:00",
   "status": "partial",
-  "note": "23 ottobre, mattina: acquisiti 7 collegamenti di affitto nel Comune di Milano, inclusa una possibile ripubblicazione Maciachini/Dergano conservata per confronto. Rilette 40 schede esistenti; 20 dettagli non recuperabili, inclusi 15 HTTP 410 già noti. Nessuna nuova vendita o nuova rimozione. Facebook non accessibile; prove precedenti preservate, disponibilità, proprietà e incarichi non confermati.",
+  "note": "23 ottobre, pomeriggio: acquisiti 3 collegamenti di affitto (2 privati probabili e 1 scarto professionale) e 1 vendita privata probabile nel Comune di Milano. Rilette 67 schede esistenti: 46 contenuti recuperati, 15 rimozioni già note e 6 dettagli non recuperabili; nessuna nuova rimozione. Facebook non accessibile; prove precedenti preservate, disponibilità, proprietà e incarichi non confermati.",
   "runHistory": [
     {
       "lastAttemptAt": "2026-10-14T07:45:12Z",
@@ -169,6 +169,17 @@
       "failedExisting": 20,
       "removedSourceListings": 0,
       "duplicatesObserved": 1
+    },
+    {
+      "lastAttemptAt": "2026-10-23T13:59:50.000Z",
+      "status": "partial",
+      "newRentals": 3,
+      "newSales": 1,
+      "retrievedExisting": 46,
+      "failedExisting": 21,
+      "removedSourceListings": 0,
+      "duplicatesObserved": 1,
+      "excludedProfessionalListings": 1
     }
   ]
 }
