@@ -5,11 +5,11 @@
     8,
     16
   ],
-  "lastAttemptAt": "2026-10-22T13:58:53.000Z",
+  "lastAttemptAt": "2026-10-23T06:01:53.000Z",
   "lastSuccessAt": null,
   "firstRunAt": "2026-10-14T08:00:00+02:00",
   "status": "partial",
-  "note": "22 ottobre, pomeriggio: acquisiti 5 affitti (Bisceglie, Porta Romana, Brenta/Corso Lodi, via Nava e Bicocca) e 1 vendita (Bicocca/Viale Monza). La replica Città Studi 665051466 risulta rimossa dalla fonte, senza prova di locazione conclusa. Recuperate 35 schede esistenti, 19 dettagli non recuperabili. Facebook non accessibile; prove e date preservate, disponibilità, proprietà e incarichi non confermati.",
+  "note": "23 ottobre, mattina: acquisiti 7 collegamenti di affitto nel Comune di Milano, inclusa una possibile ripubblicazione Maciachini/Dergano conservata per confronto. Rilette 40 schede esistenti; 20 dettagli non recuperabili, inclusi 15 HTTP 410 già noti. Nessuna nuova vendita o nuova rimozione. Facebook non accessibile; prove precedenti preservate, disponibilità, proprietà e incarichi non confermati.",
   "runHistory": [
     {
       "lastAttemptAt": "2026-10-14T07:45:12Z",
@@ -159,6 +159,16 @@
       "retrievedExisting": 35,
       "failedExisting": 19,
       "removedSourceListings": 1
+    },
+    {
+      "lastAttemptAt": "2026-10-23T06:01:53.000Z",
+      "status": "partial",
+      "newRentals": 7,
+      "newSales": 0,
+      "retrievedExisting": 40,
+      "failedExisting": 20,
+      "removedSourceListings": 0,
+      "duplicatesObserved": 1
     }
   ]
 }
