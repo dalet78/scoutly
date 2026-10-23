@@ -10,7 +10,8 @@ from collections import deque
 
 from starlette.responses import JSONResponse
 
-ORIGIN = 'https://dalet78.github.io'
+ORIGIN = 'https://scoutly-ai.com'
+ORIGINS = (ORIGIN, 'https://dalet78.github.io')
 MAX_BODY = 8_100_000
 MAX_RECORDS = 20
 MIN_AGE = 3
@@ -24,17 +25,19 @@ def enabled():
             and bool(os.environ.get('SUPABASE_SECRET_KEY')))
 
 
-def challenge(now=None):
+def challenge(now=None, origin=ORIGIN):
+    if origin not in ORIGINS:
+        raise ValueError('Origine non autorizzata')
     stamp = int(time.time() if now is None else now)
     message = f'{stamp}.{secrets.token_hex(16)}'
     secret = os.environ['SCOUTLY_TEST_TOKEN'].encode()
-    signature = hmac.new(secret, ('public-v1/' + ORIGIN + '/' + message).encode(), hashlib.sha256).hexdigest()
+    signature = hmac.new(secret, ('public-v1/' + origin + '/' + message).encode(), hashlib.sha256).hexdigest()
     return message + '.' + signature
 
 
-def valid_challenge(value, now=None):
+def valid_challenge(value, now=None, origin=ORIGIN):
     try:
-        if len(value) > 160:
+        if origin not in ORIGINS or len(value) > 160:
             return False
         stamp, nonce, supplied = value.split('.')
         age = (time.time() if now is None else now) - int(stamp)
@@ -42,7 +45,7 @@ def valid_challenge(value, now=None):
             return False
         message = f'{stamp}.{nonce}'
         signature = hmac.new(os.environ['SCOUTLY_TEST_TOKEN'].encode(),
-            ('public-v1/' + ORIGIN + '/' + message).encode(), hashlib.sha256).hexdigest()
+            ('public-v1/' + origin + '/' + message).encode(), hashlib.sha256).hexdigest()
         return hmac.compare_digest(signature, supplied)
     except (ValueError, KeyError):
         return False
@@ -64,9 +67,10 @@ class PublicGate:
         if not enabled():
             return await fail(503, 'Invio temporaneamente non disponibile. Riprova più tardi.')
         headers = dict(scope['headers'])
-        if headers.get(b'origin', b'').decode('latin-1') != ORIGIN:
+        origin = headers.get(b'origin', b'').decode('latin-1')
+        if origin not in ORIGINS:
             return await fail(403, 'Apri il modulo dal sito Scoutly.')
-        if not valid_challenge(headers.get(b'x-scoutly-challenge', b'').decode('latin-1')):
+        if not valid_challenge(headers.get(b'x-scoutly-challenge', b'').decode('latin-1'), origin=origin):
             return await fail(403, 'Controllo invio scaduto o non valido. Aggiorna il collegamento e riprova con lo stesso codice.')
         if not self.slot.acquire(blocking=False):
             return await fail(429, 'È in corso un altro invio. Attendi un momento e riprova.')
@@ -86,7 +90,7 @@ class PublicGate:
                         return
                     body.extend(message.get('body', b''))
                     if len(body) > MAX_BODY:
-                        return await fail(413, 'Massimo otto foto e 8 MB complessivi.')
+                        return await fail(413, 'Massimo 10 immagini e 8 MB complessivi.')
                     if not message.get('more_body', False):
                         break
             except TimeoutError:

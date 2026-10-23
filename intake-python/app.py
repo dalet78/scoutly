@@ -17,7 +17,7 @@ from fastapi.exceptions import RequestValidationError
 from PIL import Image, UnidentifiedImageError
 from pydantic import BaseModel, ConfigDict, EmailStr, Field, TypeAdapter, ValidationError, model_validator
 from starlette.responses import JSONResponse, Response
-from public_gate import ORIGIN, MAX_RECORDS, PublicGate, challenge, enabled
+from public_gate import ORIGIN, ORIGINS, MAX_RECORDS, PublicGate, challenge, enabled
 from notices import SignedNotice, notify_saved, verify
 from form_routes import ROUTES, check_route
 from municipalities import check_municipality
@@ -405,7 +405,7 @@ def create_app(store_factory=SupabaseStore, email_sender=send_test_email, notice
     app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
     app.add_middleware(TestGate)
     app.add_middleware(PublicGate)
-    app.add_middleware(CORSMiddleware, allow_origins=[ORIGIN], allow_credentials=False,
+    app.add_middleware(CORSMiddleware, allow_origins=list(ORIGINS), allow_credentials=False,
                        allow_methods=['GET', 'POST'], allow_headers=['Content-Type', 'X-Scoutly-Challenge'])
 
     @app.exception_handler(RequestValidationError)
@@ -446,11 +446,11 @@ def create_app(store_factory=SupabaseStore, email_sender=send_test_email, notice
 
     @app.get('/public/config')
     def public_config(request: Request):
-        if request.headers.get('origin') != ORIGIN:
+        if request.headers.get('origin') not in ORIGINS:
             raise HTTPException(403, 'Apri il modulo dal sito Scoutly.')
         if not enabled():
             raise HTTPException(503, 'Invio temporaneamente non disponibile. Riprova più tardi.')
-        return JSONResponse({'protocol': 1, 'challenge': challenge(), 'min_age_seconds': 3,
+        return JSONResponse({'protocol': 1, 'challenge': challenge(origin=request.headers['origin']), 'min_age_seconds': 3,
                              'floor_plan_upload': True,
                              'municipality_support': True,
                              'supported_forms': [dict(form_id=key, form_version=value['form_version'])

@@ -1,4 +1,5 @@
 import json
+import time
 from uuid import uuid4
 
 import httpx
@@ -126,3 +127,26 @@ def test_rate_limit_returns_429_without_new_rows(setup):
         assert submit(client, data).status_code == 201
     assert submit(client, data).status_code == 429
     assert len(store.rows) == 1
+
+
+@pytest.mark.parametrize('origin', public_gate.ORIGINS)
+def test_production_and_legacy_origin_receive_matching_challenges(setup, origin):
+    client, store = setup
+    response=client.get('/public/config',headers={'Origin':origin})
+    assert response.status_code==200
+    assert response.headers['access-control-allow-origin']==origin
+    token=response.json()['challenge']
+    assert public_gate.valid_challenge(token,now=time.time()+4,origin=origin)
+    other=next(value for value in public_gate.ORIGINS if value!=origin)
+    assert not public_gate.valid_challenge(token,now=time.time()+4,origin=other)
+
+
+def test_custom_domain_can_save_but_cross_origin_token_is_rejected(setup):
+    client, store = setup
+    data=payload()
+    origin='https://scoutly-ai.com'
+    good={'Origin':origin,'X-Scoutly-Challenge':public_gate.challenge(now=time.time()-4,origin=origin)}
+    assert client.post('/public/requests',headers=good,data={'payload':json.dumps(data)}).status_code==201
+    bad={**good,'X-Scoutly-Challenge':public_gate.challenge(now=time.time()-4,origin='https://dalet78.github.io')}
+    assert client.post('/public/requests',headers=bad,data={'payload':json.dumps(payload())}).status_code==403
+    assert len(store.rows)==1
