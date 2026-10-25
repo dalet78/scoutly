@@ -141,7 +141,7 @@ async function connect(){
    unavailable='Il servizio sta per essere aggiornato. Le immagini sono solo anteprime locali e non sono state inviate. Riprova il collegamento più tardi.';throw new Error();}
   maxFiles=data.max_photos;
   gate={marketingConsent:data.third_party_marketing_consent===true,token:data.challenge,receivedAt:Date.now(),readyAt:Date.now()+3100};
-  connection.textContent='Puoi inviare la richiesta. Riceverai un codice di conferma dopo il salvataggio.';
+  connection.textContent='';
   send.disabled=optimizing;
  } catch {connection.textContent=unavailable;}
  finally{clearTimeout(timer);reconnect.disabled=false;if(!submitting&&progressPanel)progressPanel.hidden=true;}
