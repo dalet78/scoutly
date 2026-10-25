@@ -5,11 +5,11 @@
     8,
     16
   ],
-  "lastAttemptAt": "2026-10-24T14:01:15.000Z",
+  "lastAttemptAt": "2026-10-25T07:02:11.000Z",
   "lastSuccessAt": null,
   "firstRunAt": "2026-10-14T08:00:00+02:00",
   "status": "partial",
-  "note": "24 ottobre, pomeriggio: acquisiti 4 affitti utili e 1 scarto professionale nel Comune di Milano; nessuna nuova vendita. Rilette 78 schede esistenti: 60 contenuti recuperati e 18 HTTP 410 (1 nuovo). Facebook non accessibile; prove precedenti preservate, disponibilità, proprietà e incarichi non confermati.",
+  "note": "25 ottobre, mattina: acquisiti 8 affitti utili, 1 scarto professionale e 2 vendite dirette dichiarate nel Comune di Milano. Rilette 83 schede esistenti: 62 contenuti recuperati e 21 HTTP 410 (3 nuovi). Una coppia affitto/vendita in via Mincio è marcata come possibile stesso immobile. Facebook non accessibile; prove precedenti preservate, disponibilità, proprietà e incarichi non confermati.",
   "runHistory": [
     {
       "lastAttemptAt": "2026-10-14T07:45:12Z",
@@ -199,6 +199,17 @@
       "retrievedExisting": 60,
       "failedExisting": 18,
       "removedSourceListings": 1,
+      "excludedProfessionalListings": 1
+    },
+    {
+      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
+      "status": "partial",
+      "newRentals": 9,
+      "newSales": 2,
+      "retrievedExisting": 62,
+      "failedExisting": 21,
+      "removedSourceListings": 3,
+      "duplicatesObserved": 1,
       "excludedProfessionalListings": 1
     }
   ]
