@@ -8,6 +8,21 @@ const API='https://scoutly-k76y.onrender.com';
 const form=document.getElementById('request'),picker=document.getElementById('photos'),previews=document.getElementById('photo-previews');
 const error=document.getElementById('upload-error'),send=document.getElementById('send'),summary=document.getElementById('photo-summary');
 const connection=document.getElementById('connection-status'),reconnect=document.getElementById('reconnect');
+const selectAll=document.getElementById('select-all-declarations');
+const declarationBoxes=['third-party-marketing','service-request'].map(id=>document.getElementById(id)).filter(Boolean);
+function syncDeclarations(){
+ if(!selectAll)return;
+ const count=declarationBoxes.filter(box=>box.checked).length;
+ selectAll.checked=count===declarationBoxes.length&&count>0;
+ selectAll.indeterminate=count>0&&count<declarationBoxes.length;
+}
+selectAll?.addEventListener('change',()=>{
+ for(const checkbox of declarationBoxes)checkbox.checked=selectAll.checked;
+ syncDeclarations();
+});
+for(const checkbox of declarationBoxes)checkbox.addEventListener('change',syncDeclarations);
+window.addEventListener('pageshow',syncDeclarations);
+syncDeclarations();
 const renovation=form.dataset?.formId==='ristrutturare-o-vendere';
 const requestTopic=form.dataset?.requestTopic;
 const formId=renovation?'ristrutturare-o-vendere':'prima-di-pubblicare';
@@ -125,7 +140,7 @@ async function connect(){
   if((planPicker&&data.floor_plan_upload!==true)||(townInput&&data.municipality_support!==true)){
    unavailable='Il servizio sta per essere aggiornato. Le immagini sono solo anteprime locali e non sono state inviate. Riprova il collegamento più tardi.';throw new Error();}
   maxFiles=data.max_photos;
-  gate={token:data.challenge,receivedAt:Date.now(),readyAt:Date.now()+3100};
+  gate={marketingConsent:data.third_party_marketing_consent===true,token:data.challenge,receivedAt:Date.now(),readyAt:Date.now()+3100};
   connection.textContent='Puoi inviare la richiesta. Riceverai un codice di conferma dopo il salvataggio.';
   send.disabled=optimizing;
  } catch {connection.textContent=unavailable;}
@@ -155,10 +170,13 @@ form.addEventListener('submit',async event=>{
   if(!gate)throw new SubmissionError('Collegamento non disponibile. Riprova più tardi.',false);
   send.disabled=true;reconnect.disabled=true;
   const data=new FormData(form);
+  const marketing=document.getElementById('third-party-marketing')?.checked===true;
+  if(marketing&&gate.marketingConsent!==true)throw new SubmissionError('Il servizio deve essere aggiornato per registrare il consenso marketing. Riprova più tardi oppure deseleziona la casella facoltativa.',false);
   const payload={idempotency_key:pending?.id||crypto.randomUUID(),form_id:formId,form_version:renovation?1:2,workflow_id:renovation?'confronto-ristrutturare-o-vendere':'annuncio-da-foto-e-descrizione',
    email:String(data.get('email')||'').trim(),name:String(data.get('name')||'').trim()||null,phone:String(data.get('phone')||'').trim()||null,
    description:String(data.get('description')||'').trim(),city:data.get('city'),intent:data.get('intent'),role:data.get('role'),publication:data.get('publication'),
-   service_requested:document.getElementById('service-request').checked,consultation_requested:document.getElementById('consultation').checked};
+   service_requested:document.getElementById('service-request').checked,consultation_requested:document.getElementById('consultation').value==='yes'};
+  if(gate.marketingConsent)payload.third_party_marketing_consent=marketing;
   if(renovation)Object.assign(payload,{
    target_price:parsePrice(priceInput?priceInput.value:data.get('target_price')),area_sqm:Number(data.get('area_sqm')),
    zone:String(data.get('zone')||'').trim(),timeframe:data.get('timeframe')});

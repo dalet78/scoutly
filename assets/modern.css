@@ -252,3 +252,11 @@ body.modern-service{background:var(--modern-bg);color:var(--modern-text);font-fa
 @media(max-width:760px){.consultation-layout{grid-template-columns:1fr;gap:30px;padding-block:30px 50px}.consultation-page h1{font-size:44px}}
 
 .consultation-optional{margin:18px 0}.consultation-optional summary{cursor:pointer;color:#19303a;font-size:14px;line-height:1.6;min-height:44px;padding-block:10px}.consultation-optional[open] summary{margin-bottom:12px}
+
+
+.modern-service .form-card .privacy-declaration{font-size:10px;line-height:1.5;padding:10px 12px;margin-top:10px;gap:9px;border-radius:8px}
+.modern-service .form-card .privacy-declaration span{font-size:inherit;line-height:inherit}
+.modern-service .form-card .privacy-declaration input[type="checkbox"]{flex-shrink:0;width:18px;height:18px;margin-top:1px}
+.modern-service .form-card .privacy-declaration + .hint{font-size:11px;line-height:1.5;margin-top:6px}
+
+.modern-service .form-card .privacy-declaration.privacy-select-all{font-size:12px}

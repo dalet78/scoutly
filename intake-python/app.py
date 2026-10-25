@@ -82,6 +82,7 @@ class Payload(BaseModel):
     publication: Literal['Annuncio non ancora preparato', 'Bozza in preparazione', 'Annuncio già online']
     service_requested: Literal[True]
     consultation_requested: bool = False
+    third_party_marketing_consent: bool = Field(default=False, strict=True)
     target_price: int | None = Field(default=None, strict=True, gt=0, le=100_000_000)
     area_sqm: float | None = Field(default=None, gt=0, le=5000)
     zone: str | None = Field(default=None, min_length=2, max_length=120)
@@ -310,6 +311,8 @@ def check_photo(data, declared_type):
 def accept(payload, photos, store, public=False):
     key = str(payload.idempotency_key)
     values = payload.model_dump(mode='json')
+    if 'third_party_marketing_consent' not in payload.model_fields_set:
+        values.pop('third_party_marketing_consent', None)
     if values.get('floor_plan_position') is None:
         values.pop('floor_plan_position', None)
     if values.get('municipality_code') is None:
@@ -338,6 +341,12 @@ def accept(payload, photos, store, public=False):
            'name', 'phone', 'description', 'service_requested', 'consultation_requested')}
     row.update(id=key, idempotency_key=key, payload_hash=fingerprint,
                answers={k: values[k] for k in (('municipality_name', 'consultation_topic') if payload.form_id == 'consulenza' else ('city', 'intent', 'role', 'publication'))})
+    row['answers']['third_party_marketing'] = {
+        'accepted': getattr(payload, 'third_party_marketing_consent', False),
+        'version': 'real-estate-marketing-v1',
+        'text': 'Acconsento alla comunicazione, anche a titolo oneroso, dei miei dati di contatto e delle informazioni sulla mia esigenza di vendita o affitto ad agenzie e agenti immobiliari terzi, affinché mi contattino via email o telefono per propormi i propri servizi immobiliari.',
+        'recorded_at': datetime.now(timezone.utc).isoformat(),
+    }
     if payload.form_id == 'ristrutturare-o-vendere':
         row['answers'].update({k: values[k] for k in ('target_price', 'area_sqm', 'zone', 'timeframe')})
         if payload.floor_plan_position is not None:
@@ -451,6 +460,7 @@ def create_app(store_factory=SupabaseStore, email_sender=send_test_email, notice
         if not enabled():
             raise HTTPException(503, 'Invio temporaneamente non disponibile. Riprova più tardi.')
         return JSONResponse({'protocol': 1, 'challenge': challenge(origin=request.headers['origin']), 'min_age_seconds': 3,
+                             'third_party_marketing_consent': True,
                              'floor_plan_upload': True,
                              'municipality_support': True,
                              'supported_forms': [dict(form_id=key, form_version=value['form_version'])

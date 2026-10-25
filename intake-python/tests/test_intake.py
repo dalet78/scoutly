@@ -191,3 +191,16 @@ def test_test_page_has_no_secrets_or_external_scripts(setup):
     assert TOKEN not in script.text
     assert "credentials:'omit'" in script.text
     assert not store.rows
+
+
+@pytest.mark.parametrize('consent', [True, False])
+def test_marketing_consent_is_stored_separately(setup, consent):
+    client, store = setup
+    data = {**payload(), 'third_party_marketing_consent': consent}
+    assert submit(client, data).status_code == 201
+    saved = store.rows[data['idempotency_key']]['answers']['third_party_marketing']
+    assert saved['accepted'] is consent
+    assert saved['version'] == 'real-estate-marketing-v1'
+    assert saved['recorded_at']
+    assert 'titolo oneroso' in saved['text']
+    assert store.rows[data['idempotency_key']]['consultation_requested'] is False
