@@ -1,5 +1,5 @@
 {
-  "collectedAt": "2026-10-25T07:02:11.000Z",
+  "collectedAt": "2026-10-25T15:01:25.000Z",
   "sources": [
     {
       "name": "Subito.it · vendite nel comune di Milano",
@@ -36,13 +36,13 @@
       "text": "VENDITA DIRETTA DA PRIVATO - Nessuna spesa di agenzia.",
       "textComplete": false,
       "collectedAt": "2026-10-14",
-      "sourceAccess": "25 ottobre 2026, mattina: apertura diretta HTTP 410 Gone. Non prova di vendita o locazione conclusa; stato dell’immobile sconosciuto.",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: scheda Subito rimossa (HTTP 410). Stato dell’immobile non determinabile.",
       "notes": "Proprietà e incarico non verificati; annuncio leggibile ma disponibilità attuale non dichiarata esplicitamente.",
       "lastReadAt": "2026-10-14",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
       "sourceRemoved": true,
-      "sourceRemovalEvidence": "15 ottobre 2026, pomeriggio: HTTP 410 Gone. Stato dell’immobile sconosciuto, non prova di vendita."
+      "sourceRemovalEvidence": "25 ottobre 2026, pomeriggio: la scheda diretta Subito restituisce HTTP 410 Gone. La rimozione della fonte non prova che l’immobile sia stato affittato o venduto."
     },
     {
       "id": "subito-660486423",
@@ -58,12 +58,12 @@
       "location": "Milano · via Ingegnoli",
       "text": "Direttamente da Privato\nDisponibilità immediata",
       "textComplete": false,
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Data di pubblicazione non verificata; nessuna conferma di disponibilità, proprietà o incarico.",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: verifica tecnica non conclusa; nessuna nuova informazione sullo stato dell’immobile.",
       "notes": "Frammenti di descrizione e caratteristiche. Disponibilità dichiarata ma data non verificata; nessuna conferma diretta del proprietario.",
       "collectedAt": "2026-10-13",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z"
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z"
     },
     {
       "id": "subito-660754373",
@@ -81,11 +81,11 @@
       "text": "Privato Vende: Trilocale Ristrutturato di 115 mq\nLibero al rogito.",
       "textComplete": false,
       "collectedAt": "2026-10-22",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Data di pubblicazione non verificata; nessuna conferma di disponibilità, proprietà o incarico.",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Data di pubblicazione, disponibilità, proprietà e incarico non confermati.",
       "notes": "Liberazione al rogito dichiarata, senza una data di rogito. Disponibilità attuale, proprietà e incarico da verificare.",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z"
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z"
     },
     {
       "id": "subito-652862012",
@@ -103,12 +103,12 @@
       "textComplete": false,
       "advertiserType": "professional",
       "advertiserEvidence": "Agenzia · badge fonte; inserzionista Radovix Immobiliare",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Data di pubblicazione non verificata; nessuna conferma di disponibilità, proprietà o incarico.",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Data di pubblicazione, disponibilità, proprietà e incarico non confermati.",
       "notes": "Venditore professionale escluso. Superficie riportata diversamente tra dati principali e descrizione: da verificare. L’incarico del proprietario non è documentato.",
       "collectedAt": "2026-10-22",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z"
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z"
     },
     {
       "id": "subito-654258588",
@@ -127,13 +127,13 @@
       "collectedAt": "2026-10-14",
       "advertiserType": "professional",
       "advertiserEvidence": "Ademas srl · società specializzata in riqualificazione immobiliare, dichiarata nel testo",
-      "sourceAccess": "25 ottobre 2026, mattina: apertura diretta HTTP 410 Gone. Non prova di vendita o locazione conclusa; stato dell’immobile sconosciuto.",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: scheda Subito rimossa (HTTP 410). Stato dell’immobile non determinabile.",
       "notes": "Società venditrice esclusa dai proprietari privati. Il dettaglio più recente indica €420.000; un risultato precedente riportava €449.000. Vendita diretta non equivale a proprietario privato.",
       "lastReadAt": "2026-10-14",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
       "sourceRemoved": true,
-      "sourceRemovalEvidence": "21 ottobre 2026, mattina: apertura diretta HTTP 410 Gone. Non prova di vendita o locazione conclusa; stato dell’immobile sconosciuto."
+      "sourceRemovalEvidence": "25 ottobre 2026, pomeriggio: la scheda diretta Subito restituisce HTTP 410 Gone. La rimozione della fonte non prova che l’immobile sia stato affittato o venduto."
     },
     {
       "id": "subito-660185020",
@@ -150,13 +150,13 @@
       "text": "Vendita diretta da privato – nessuna spesa di agenzia.",
       "textComplete": false,
       "sourceRemoved": true,
-      "sourceRemovalEvidence": "Apertura diretta della scheda: HTTP 410 Gone",
-      "sourceAccess": "25 ottobre 2026, mattina: apertura diretta HTTP 410 Gone. Non prova di vendita o locazione conclusa; stato dell’immobile sconosciuto.",
+      "sourceRemovalEvidence": "25 ottobre 2026, pomeriggio: la scheda diretta Subito restituisce HTTP 410 Gone. La rimozione della fonte non prova che l’immobile sia stato affittato o venduto.",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: scheda Subito rimossa (HTTP 410). Stato dell’immobile non determinabile.",
       "notes": "Escluso perché la scheda è rimossa. Non dichiarare venduto o non disponibile: lo stato dell’immobile resta sconosciuto.",
       "collectedAt": "2026-10-13",
       "lastReadAt": "2026-10-13",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z"
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z"
     },
     {
       "id": "subito-485841300",
@@ -173,11 +173,11 @@
       "text": "Vendesi delizioso e moderno loft a soli 50 mt dalla Metro Rossa. No provvigioni, trattativa fra privati. Appartamento già a reddito con contratti d’affitto e prenotazioni.",
       "textComplete": false,
       "collectedAt": "2026-10-22",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Data di pubblicazione non verificata; nessuna conferma di disponibilità, proprietà o incarico.",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Data di pubblicazione, disponibilità, proprietà e incarico non confermati.",
       "notes": "Scheda riletta: €315.000; precedente valore indicizzato €319.000 conservato nella cronologia. Contratti e prenotazioni dichiarati: disponibilità effettiva da verificare, così come proprietà e incarico.",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
       "history": [
         {
           "text": "Vendesi delizioso e moderno loft a soli 50 mt dalla Metro Rossa. No provvigioni, trattativa fra privati. Appartamento già a reddito con contratti d’affitto e prenotazioni.",
@@ -204,11 +204,11 @@
       "text": "Vendesi monolocale circa 30 m, ristrutturato, arredato, catastale A/10, via Cadibona Milano.",
       "textComplete": false,
       "collectedAt": "2026-10-22",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Data di pubblicazione non verificata; nessuna conferma di disponibilità, proprietà o incarico.",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Data di pubblicazione, disponibilità, proprietà e incarico non confermati.",
       "notes": "La lista odierna indica €145.000, mentre il dettaglio indicizzato mostra €155.000: prezzo da verificare. La categoria catastale A/10 è dichiarata; proprietà, disponibilità e incarico non verificati.",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z"
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z"
     },
     {
       "id": "subito-662344216",
@@ -227,10 +227,10 @@
       "textComplete": false,
       "collectedAt": "2026-10-22",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Data di pubblicazione non verificata; nessuna conferma di disponibilità, proprietà o incarico.",
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Data di pubblicazione, disponibilità, proprietà e incarico non confermati.",
       "notes": "Superficie discordante: 55 m² nei dati principali e 50 m² nella descrizione. Nuovo nel radar, non necessariamente nuovo sul portale. Privato dichiarato; proprietà, disponibilità attuale e incarico non verificati.",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z"
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z"
     },
     {
       "sourceType": "subito",
@@ -238,9 +238,9 @@
       "textComplete": false,
       "collectedAt": "2026-10-22",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Data di pubblicazione non verificata; nessuna conferma di disponibilità, proprietà o incarico.",
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Data di pubblicazione, disponibilità, proprietà e incarico non confermati.",
       "id": "subito-630637660",
       "source": 4,
       "operation": "vendita",
@@ -269,9 +269,9 @@
       "textComplete": false,
       "collectedAt": "2026-10-22",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Data di pubblicazione non verificata; nessuna conferma di disponibilità, proprietà o incarico.",
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Data di pubblicazione, disponibilità, proprietà e incarico non confermati.",
       "notes": "Prezzo non visibile. Terzo piano senza ascensore; arredato, veranda e cantina. Il testo cita camere affittate fino al 15/09/2026: data trascorsa che non prova liberazione o disponibilità attuale. Proprietà, situazione locativa e incarichi da verificare. Nuovo nel radar, non necessariamente appena pubblicato."
     },
     {
@@ -280,9 +280,9 @@
       "textComplete": false,
       "collectedAt": "2026-10-22",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Data di pubblicazione non verificata; nessuna conferma di disponibilità, proprietà o incarico.",
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Data di pubblicazione, disponibilità, proprietà e incarico non confermati.",
       "id": "subito-658182256",
       "source": 4,
       "operation": "vendita",
@@ -312,11 +312,11 @@
       "textComplete": false,
       "collectedAt": "2026-10-19",
       "lastReadAt": "2026-10-19",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
-      "sourceAccess": "25 ottobre 2026, mattina: apertura diretta HTTP 410 Gone. Non prova di vendita o locazione conclusa; stato dell’immobile sconosciuto.",
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: scheda Subito rimossa (HTTP 410). Stato dell’immobile non determinabile.",
       "sourceRemoved": true,
-      "sourceRemovalEvidence": "19 ottobre 2026, pomeriggio: apertura diretta HTTP 410 Gone; non prova di vendita o locazione conclusa."
+      "sourceRemovalEvidence": "25 ottobre 2026, pomeriggio: la scheda diretta Subito restituisce HTTP 410 Gone. La rimozione della fonte non prova che l’immobile sia stato affittato o venduto."
     },
     {
       "id": "subito-661432252",
@@ -335,9 +335,9 @@
       "textComplete": false,
       "collectedAt": "2026-10-22",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Data di pubblicazione non verificata; nessuna conferma di disponibilità, proprietà o incarico."
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Data di pubblicazione, disponibilità, proprietà e incarico non confermati."
     },
     {
       "id": "subito-661755114",
@@ -356,9 +356,9 @@
       "textComplete": false,
       "collectedAt": "2026-10-22",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Data di pubblicazione non verificata; nessuna conferma di disponibilità, proprietà o incarico."
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Data di pubblicazione, disponibilità, proprietà e incarico non confermati."
     },
     {
       "id": "subito-664054557",
@@ -377,11 +377,11 @@
       "textComplete": false,
       "collectedAt": "2026-10-20",
       "lastReadAt": "2026-10-20",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
-      "sourceAccess": "25 ottobre 2026, mattina: apertura diretta HTTP 410 Gone. Non prova di vendita o locazione conclusa; stato dell’immobile sconosciuto.",
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: scheda Subito rimossa (HTTP 410). Stato dell’immobile non determinabile.",
       "sourceRemoved": true,
-      "sourceRemovalEvidence": "20 ottobre 2026, pomeriggio: apertura diretta HTTP 410 Gone. Non prova di vendita; stato dell’immobile sconosciuto."
+      "sourceRemovalEvidence": "25 ottobre 2026, pomeriggio: la scheda diretta Subito restituisce HTTP 410 Gone. La rimozione della fonte non prova che l’immobile sia stato affittato o venduto."
     },
     {
       "id": "subito-665256634",
@@ -400,9 +400,9 @@
       "textComplete": false,
       "collectedAt": "2026-10-22",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Data di pubblicazione non verificata; nessuna conferma di disponibilità, proprietà o incarico."
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Data di pubblicazione, disponibilità, proprietà e incarico non confermati."
     },
     {
       "id": "subito-651449130",
@@ -422,9 +422,9 @@
       "notes": "Vendita da privato a privato dichiarata. Disponibilità immediata dichiarata, non confermata; proprietà e assenza di incarico non verificate.",
       "collectedAt": "2026-10-22",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Data di pubblicazione non verificata; nessuna conferma di disponibilità, proprietà o incarico."
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: verifica tecnica non conclusa; nessuna nuova informazione sullo stato dell’immobile."
     },
     {
       "id": "subito-663698015",
@@ -444,9 +444,9 @@
       "notes": "Scheda Subito non recuperabile direttamente in questa esecuzione. Testo dal risultato pubblico indicizzato; prezzo di €350.000 corroborato da una copia pubblica dello stesso annuncio su Bakeca. Nessuna conferma di disponibilità, proprietà o incarico.",
       "collectedAt": "2026-10-22",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Data di pubblicazione non verificata; nessuna conferma di disponibilità, proprietà o incarico."
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: verifica tecnica non conclusa; nessuna nuova informazione sullo stato dell’immobile."
     },
     {
       "id": "subito-665331773",
@@ -466,9 +466,9 @@
       "notes": "“Immediatamente disponibile” è una dichiarazione non datata, non una conferma. La qualifica dell’inserzionista, la proprietà e l’eventuale incarico non sono verificati.",
       "collectedAt": "2026-10-22",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Data di pubblicazione non verificata; nessuna conferma di disponibilità, proprietà o incarico."
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Data di pubblicazione, disponibilità, proprietà e incarico non confermati."
     },
     {
       "source": 4,
@@ -477,9 +477,9 @@
       "operation": "vendita",
       "collectedAt": "2026-10-23",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Data di pubblicazione non verificata; nessuna conferma di disponibilità, proprietà o incarico.",
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Data di pubblicazione, disponibilità, proprietà e incarico non confermati.",
       "id": "subito-664596427",
       "title": "Trilocale ristrutturato · Villa San Giovanni / Precotto",
       "url": "https://www.subito.it/appartamenti/trilocale-ristrutt-milano-con-doppi-servizi-milano-664596427.htm",
@@ -499,9 +499,9 @@
       "operation": "vendita",
       "collectedAt": "2026-10-24",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Data di pubblicazione non verificata; nessuna conferma di disponibilità, proprietà o incarico.",
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Data di pubblicazione, disponibilità, proprietà e incarico non confermati.",
       "id": "subito-664585432",
       "title": "Bilocale · via Bruzzesi / fine via Savona",
       "url": "https://www.subito.it/appartamenti/fineviasavona-ing-sog-k-b-cammatr270mila-milano-664585432.htm",
@@ -521,9 +521,9 @@
       "operation": "vendita",
       "collectedAt": "2026-10-24",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Data di pubblicazione non verificata; nessuna conferma di disponibilità, proprietà o incarico.",
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: verifica tecnica non conclusa; nessuna nuova informazione sullo stato dell’immobile.",
       "id": "subito-665605111",
       "title": "Bilocale ristrutturato · Isola",
       "url": "https://www.subito.it/appartamenti/bilocale-ristrutturato-milano-isola-milano-665605111.htm",
@@ -543,9 +543,9 @@
       "operation": "vendita",
       "collectedAt": "2026-10-25",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Nuovo nel radar, non necessariamente nuovo sul portale; data di pubblicazione non verificata.",
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Data di pubblicazione, disponibilità, proprietà e incarico non confermati.",
       "id": "subito-658133918",
       "title": "Monolocale · via Mincio / Brenta",
       "url": "https://www.subito.it/appartamenti/grazioso-monolocale-milano-658133918.htm",
@@ -567,9 +567,9 @@
       "operation": "vendita",
       "collectedAt": "2026-10-25",
       "lastReadAt": "2026-10-25",
-      "lastAttemptAt": "2026-10-25T07:02:11.000Z",
-      "accessCheckedAt": "2026-10-25T07:02:11.000Z",
-      "sourceAccess": "25 ottobre 2026, mattina: contenuto pubblico recuperato. Nuovo nel radar, non necessariamente nuovo sul portale; data di pubblicazione non verificata.",
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Data di pubblicazione, disponibilità, proprietà e incarico non confermati.",
       "id": "subito-657541597",
       "title": "Bilocale · Scalo Farini",
       "url": "https://www.subito.it/appartamenti/privato-vendita-appartamento-zona-farini-milano-657541597.htm",
@@ -581,6 +581,50 @@
       "text": "PRIVATO vende bilocale ristrutturato e mai abitato di 50 mq, quinto piano senza ascensore. Prezzo €245.000. No agenzie. Disponibilità immediata.",
       "textComplete": true,
       "notes": "Qualifica privata e disponibilità immediata dichiarate, non confermate. Proprietà e incarico non verificati."
+    },
+    {
+      "source": 4,
+      "sourceType": "subito",
+      "city": "Milano",
+      "operation": "vendita",
+      "collectedAt": "2026-10-25",
+      "lastReadAt": "2026-10-25",
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Nuovo nel radar, non necessariamente nuovo sul portale; data di pubblicazione non verificata.",
+      "textComplete": true,
+      "id": "subito-665220267",
+      "title": "Bilocale arredato · via Mosè Bianchi",
+      "url": "https://www.subito.it/appartamenti/bilocale-arredato-in-via-mose-bianchi-milano-665220267.htm",
+      "price": 370000,
+      "expenses": "Non indicate",
+      "area": 45,
+      "location": "Milano · via Mosè Bianchi",
+      "cityEvidence": "Milano nel breadcrumb; via Mosè Bianchi nella descrizione.",
+      "text": "Propongo in vendita bilocale arredato di 45 mq al secondo piano in via Mosè Bianchi. Prezzo €370.000. Disponibilità immediata dichiarata nella scheda. No agenzie.",
+      "notes": "Inserzionista non determinabile: “propongo” e “no agenzie” non provano proprietà o assenza di incarico. Disponibilità dichiarata, non confermata."
+    },
+    {
+      "source": 4,
+      "sourceType": "subito",
+      "city": "Milano",
+      "operation": "vendita",
+      "collectedAt": "2026-10-25",
+      "lastReadAt": "2026-10-25",
+      "lastAttemptAt": "2026-10-25T15:01:25.000Z",
+      "accessCheckedAt": "2026-10-25T15:01:25.000Z",
+      "sourceAccess": "25 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Nuovo nel radar, non necessariamente nuovo sul portale; data di pubblicazione non verificata.",
+      "textComplete": true,
+      "id": "subito-665142982",
+      "title": "Open space con camera · Affori / via Brusuglio",
+      "url": "https://www.subito.it/appartamenti/ampio-open-space-camera-e-bagno-milano-665142982.htm",
+      "price": 115000,
+      "expenses": "Non indicate",
+      "area": 72,
+      "location": "Milano · Affori / via Brusuglio",
+      "cityEvidence": "Milano nel breadcrumb; via Brusuglio 70 e Affori nella descrizione.",
+      "text": "Unità immobiliare ristrutturata di 72 mq con ingresso indipendente in via Brusuglio 70, zona Affori. Accatastata come ufficio. Prezzo €115.000; disponibilità immediata dichiarata nella scheda.",
+      "notes": "L’unità è dichiarata catastalmente ufficio. Inserzionista, proprietà e incarico non determinati; disponibilità dichiarata, non confermata."
     }
   ]
 }
