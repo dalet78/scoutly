@@ -1,11 +1,11 @@
 {
-  "collectedAt": "2026-10-28",
+  "collectedAt": "2026-10-29",
   "sources": [
     {
       "name": "Subito.it · comune di Milano",
       "url": "https://www.subito.it/annunci-lombardia/affitto/appartamenti/milano/milano/",
-      "status": "110 annunci Subito nel radar · campione parziale",
-      "note": "28 ottobre 2026, pomeriggio: rilette 137 schede esistenti tra affitti e vendite; 105 contenuti recuperati e 32 HTTP 410, incluse 3 nuove rimozioni. Acquisiti 5 affitti utili, 3 vendite utili e 3 scarti professionali."
+      "status": "113 annunci Subito nel radar · campione parziale",
+      "note": "29 ottobre 2026, mattina: acquisiti 3 affitti utili dal campione pubblico nel Comune di Milano. Il controllo integrale delle schede esistenti non è stato ripetuto in questa esecuzione; disponibilità, proprietà e incarichi non confermati."
     }
   ],
   "posts": [
@@ -2579,6 +2579,72 @@
       "advertiserType": "professional",
       "advertiserEvidence": "La descrizione riporta esplicitamente “Agenzia Immobiliare” con recapito.",
       "notes": "Scarto professionale."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "operation": "affitto",
+      "collectedAt": "2026-10-29",
+      "lastReadAt": "2026-10-29",
+      "lastAttemptAt": "2026-10-29T07:06:51.000Z",
+      "accessCheckedAt": "2026-10-29T07:06:51.000Z",
+      "sourceAccess": "29 ottobre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; data di pubblicazione non usata come conferma.",
+      "textComplete": true,
+      "id": "subito-666116884",
+      "title": "Monolocale con cucinotto · Precotto",
+      "url": "https://www.subito.it/appartamenti/monolocale-con-cucinotto-da-privato-milano-666116884.htm",
+      "price": 900,
+      "expenses": "Tutto compreso secondo la descrizione",
+      "area": 45,
+      "location": "Milano · Precotto / via Esiodo",
+      "cityEvidence": "Milano nel breadcrumb; via Esiodo e fermata M1 Precotto nella descrizione.",
+      "text": "Privato affitta il proprio monolocale di 45 mq con cucinotto separato, balcone e arredi in via Esiodo, vicino alla M1 Precotto. Canone €900 tutto compreso. La descrizione dice “libero da fine ottobre” senza indicare l’anno.",
+      "notes": "Privato dichiarato. La data senza anno non conferma disponibilità attuale; proprietà e incarico non verificati."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "operation": "affitto",
+      "collectedAt": "2026-10-29",
+      "lastReadAt": "2026-10-29",
+      "lastAttemptAt": "2026-10-29T07:06:51.000Z",
+      "accessCheckedAt": "2026-10-29T07:06:51.000Z",
+      "sourceAccess": "29 ottobre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; data di pubblicazione non usata come conferma.",
+      "textComplete": true,
+      "id": "subito-665735367",
+      "title": "Monolocale · Porta Garibaldi",
+      "url": "https://www.subito.it/appartamenti/monolocale-zona-garibaldi-milano-665735367.htm",
+      "price": 700,
+      "expenses": "Condominio e utenze a parte",
+      "area": 30,
+      "location": "Milano · Porta Garibaldi",
+      "cityEvidence": "Milano nel breadcrumb; Porta Garibaldi nella descrizione.",
+      "text": "Privato affitta monolocale di circa 30 mq in zona Porta Garibaldi. Canone €700 al mese, spese condominiali e utenze a parte. Disponibilità dichiarata dal 15 novembre, senza anno.",
+      "notes": "Privato dichiarato. La data priva di anno non conferma disponibilità attuale; proprietà e incarico non verificati."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "operation": "affitto",
+      "collectedAt": "2026-10-29",
+      "lastReadAt": "2026-10-29",
+      "lastAttemptAt": "2026-10-29T07:06:51.000Z",
+      "accessCheckedAt": "2026-10-29T07:06:51.000Z",
+      "sourceAccess": "29 ottobre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; data di pubblicazione non usata come conferma.",
+      "textComplete": true,
+      "id": "subito-665119185",
+      "title": "Bilocale fronte M3 · Affori Centro",
+      "url": "https://www.subito.it/appartamenti/appartamento-fronte-metro-gialla-m3-milano-665119185.htm",
+      "price": 890,
+      "expenses": "Non indicate",
+      "area": 54,
+      "location": "Milano · Affori Centro",
+      "cityEvidence": "Milano nel breadcrumb; M3 Affori Centro nella descrizione.",
+      "text": "Privato affitta bilocale arredato di 54 mq fronte M3 Affori Centro, massimo due persone. Canone €890. La descrizione indica libero da novembre 2026.",
+      "notes": "Privato dichiarato. Disponibilità futura dichiarata, non confermata; proprietà e incarico non verificati."
     }
   ]
 }

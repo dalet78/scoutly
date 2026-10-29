@@ -1,23 +1,11 @@
 {
-  "collectedAt": "2026-10-28",
+  "collectedAt": "2026-10-29",
   "sources": [
     {
       "name": "Subito.it · vendite nel comune di Milano",
       "url": "https://www.subito.it/annunci-lombardia/vendita/appartamenti/milano/milano/",
-      "status": "35 annunci Subito vendita nel radar · campione parziale",
-      "note": "28 ottobre 2026, pomeriggio: 37 vendite Subito nel radar; aggiunte 2 opportunità pubbliche nel Comune di Milano e registrata una riduzione di prezzo da €485.000 a €470.000. Disponibilità, proprietà e incarichi non confermati salvo sole dichiarazioni conservate."
-    },
-    {
-      "name": "Facebook · milanocasavendo",
-      "url": "https://www.facebook.com/groups/milanocasavendo",
-      "status": "Non riletta · autenticazione richiesta",
-      "note": "28 ottobre 2026, mattina: Facebook ha richiesto il login; nessun nuovo post acquisito. Login e membership non aggirati."
-    },
-    {
-      "name": "Facebook · 37587766628",
-      "url": "https://www.facebook.com/groups/37587766628",
-      "status": "Non riletta · autenticazione richiesta",
-      "note": "28 ottobre 2026, mattina: Facebook ha richiesto il login; nessun nuovo post acquisito. Login e membership non aggirati."
+      "status": "38 annunci Subito vendita nel radar · campione parziale",
+      "note": "29 ottobre 2026, mattina: aggiunta 1 vendita pubblica nel Comune di Milano. Disponibilità, proprietà e incarichi non confermati."
     }
   ],
   "posts": [
@@ -859,6 +847,28 @@
       "cityEvidence": "Milano nel breadcrumb e nella descrizione.",
       "text": "Vendita quadrilocale ristrutturato di 101 mq al primo piano, con balcone loggiato, due bagni, cantina e box. Prezzo €245.000.",
       "notes": "Inserzionista non determinabile. Disponibilità immediata indicata dalla scheda ma non confermata; proprietà e incarico non verificati. Indirizzo puntuale non recuperato."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "operation": "vendita",
+      "collectedAt": "2026-10-29",
+      "lastReadAt": "2026-10-29",
+      "lastAttemptAt": "2026-10-29T07:06:51.000Z",
+      "accessCheckedAt": "2026-10-29T07:06:51.000Z",
+      "sourceAccess": "29 ottobre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; data di pubblicazione non usata come conferma.",
+      "textComplete": true,
+      "id": "subito-665674285",
+      "title": "Trilocale con cantina · Baggio",
+      "url": "https://www.subito.it/appartamenti/appartamento-93mq-cantina-milano-665674285.htm",
+      "price": 240000,
+      "expenses": "Non indicate",
+      "area": 93,
+      "location": "Milano · Baggio",
+      "cityEvidence": "Milano nel breadcrumb; zona Baggio nella descrizione.",
+      "text": "Vendita appartamento di 93 mq con cantina, piano alto e balcone, in zona Baggio. Prezzo €240.000. La descrizione riporta “No Agenzie” e “libero da gennaio” senza indicare l’anno.",
+      "notes": "Inserzionista non determinabile: il rifiuto delle agenzie non prova proprietà o assenza di incarico. Data priva di anno; disponibilità non confermata."
     }
   ]
 }
