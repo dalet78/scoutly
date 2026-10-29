@@ -4,8 +4,8 @@
     {
       "name": "Subito.it · vendite nel comune di Milano",
       "url": "https://www.subito.it/annunci-lombardia/vendita/appartamenti/milano/milano/",
-      "status": "38 annunci Subito vendita nel radar · campione parziale",
-      "note": "29 ottobre 2026, mattina: aggiunta 1 vendita pubblica nel Comune di Milano. Disponibilità, proprietà e incarichi non confermati."
+      "status": "39 annunci Subito vendita nel radar · campione parziale",
+      "note": "29 ottobre 2026, pomeriggio: aggiunta 1 vendita pubblica nel Comune di Milano. Disponibilità, proprietà e incarichi non confermati."
     }
   ],
   "posts": [
@@ -869,6 +869,28 @@
       "cityEvidence": "Milano nel breadcrumb; zona Baggio nella descrizione.",
       "text": "Vendita appartamento di 93 mq con cantina, piano alto e balcone, in zona Baggio. Prezzo €240.000. La descrizione riporta “No Agenzie” e “libero da gennaio” senza indicare l’anno.",
       "notes": "Inserzionista non determinabile: il rifiuto delle agenzie non prova proprietà o assenza di incarico. Data priva di anno; disponibilità non confermata."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "operation": "vendita",
+      "collectedAt": "2026-10-29",
+      "lastReadAt": "2026-10-29",
+      "lastAttemptAt": "2026-10-29T15:01:03.000Z",
+      "accessCheckedAt": "2026-10-29T15:01:03.000Z",
+      "sourceAccess": "29 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; data di pubblicazione non usata come conferma.",
+      "textComplete": true,
+      "id": "subito-666194417",
+      "title": "Trilocale con due balconi · Soderini",
+      "url": "https://www.subito.it/appartamenti/luminoso-trilocale-86mq-4-piano-2-balconi-milano-666194417.htm",
+      "price": 398000,
+      "expenses": "Circa €250 mensili, riscaldamento incluso",
+      "area": 86,
+      "location": "Milano · via Luigi Soderini / Lorenteggio",
+      "cityEvidence": "Milano nel breadcrumb; via Luigi Soderini, Lorenteggio e Bande Nere nella descrizione.",
+      "text": "Vendita trilocale di 86 mq al quarto piano in via Luigi Soderini, con tripla esposizione, due balconi e cantina. Prezzo €398.000; spese condominiali circa €250 al mese con riscaldamento incluso. La scheda chiede di non essere contattata da agenzie.",
+      "notes": "Inserzionista non determinabile: il rifiuto delle agenzie non prova proprietà o assenza di incarico. Disponibilità immediata indicata nella scheda, non confermata."
     }
   ]
 }

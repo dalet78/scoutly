@@ -4,8 +4,8 @@
     {
       "name": "Subito.it · comune di Milano",
       "url": "https://www.subito.it/annunci-lombardia/affitto/appartamenti/milano/milano/",
-      "status": "113 annunci Subito nel radar · campione parziale",
-      "note": "29 ottobre 2026, mattina: acquisiti 3 affitti utili dal campione pubblico nel Comune di Milano. Il controllo integrale delle schede esistenti non è stato ripetuto in questa esecuzione; disponibilità, proprietà e incarichi non confermati."
+      "status": "115 annunci Subito nel radar · campione parziale",
+      "note": "29 ottobre 2026, pomeriggio: aggiunto 1 affitto utile e 1 scarto professionale; registrata una riduzione di prezzo da €700 a €650 su Porta Garibaldi. Il controllo integrale delle schede esistenti non è stato ripetuto."
     }
   ],
   "posts": [
@@ -2609,20 +2609,20 @@
       "operation": "affitto",
       "collectedAt": "2026-10-29",
       "lastReadAt": "2026-10-29",
-      "lastAttemptAt": "2026-10-29T07:06:51.000Z",
-      "accessCheckedAt": "2026-10-29T07:06:51.000Z",
-      "sourceAccess": "29 ottobre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; data di pubblicazione non usata come conferma.",
+      "lastAttemptAt": "2026-10-29T15:01:03.000Z",
+      "accessCheckedAt": "2026-10-29T15:01:03.000Z",
+      "sourceAccess": "29 ottobre 2026, pomeriggio: contenuto pubblico recuperato; prezzo corrente €650.",
       "textComplete": true,
       "id": "subito-665735367",
       "title": "Monolocale · Porta Garibaldi",
       "url": "https://www.subito.it/appartamenti/monolocale-zona-garibaldi-milano-665735367.htm",
-      "price": 700,
+      "price": 650,
       "expenses": "Condominio e utenze a parte",
       "area": 30,
       "location": "Milano · Porta Garibaldi",
       "cityEvidence": "Milano nel breadcrumb; Porta Garibaldi nella descrizione.",
-      "text": "Privato affitta monolocale di circa 30 mq in zona Porta Garibaldi. Canone €700 al mese, spese condominiali e utenze a parte. Disponibilità dichiarata dal 15 novembre, senza anno.",
-      "notes": "Privato dichiarato. La data priva di anno non conferma disponibilità attuale; proprietà e incarico non verificati."
+      "text": "Privato affitta monolocale di circa 30 mq in zona Porta Garibaldi. Canone corrente €650 al mese, spese condominiali e utenze a parte. Disponibilità dichiarata dal 15 novembre, senza anno.",
+      "notes": "Prezzo ridotto da €700 a €650 tra il controllo mattutino e quello pomeridiano del 29 ottobre 2026. Privato dichiarato. La data priva di anno non conferma disponibilità attuale; proprietà e incarico non verificati."
     },
     {
       "source": 0,
@@ -2645,6 +2645,52 @@
       "cityEvidence": "Milano nel breadcrumb; M3 Affori Centro nella descrizione.",
       "text": "Privato affitta bilocale arredato di 54 mq fronte M3 Affori Centro, massimo due persone. Canone €890. La descrizione indica libero da novembre 2026.",
       "notes": "Privato dichiarato. Disponibilità futura dichiarata, non confermata; proprietà e incarico non verificati."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "operation": "affitto",
+      "collectedAt": "2026-10-29",
+      "lastReadAt": "2026-10-29",
+      "lastAttemptAt": "2026-10-29T15:01:03.000Z",
+      "accessCheckedAt": "2026-10-29T15:01:03.000Z",
+      "sourceAccess": "29 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; data di pubblicazione non usata come conferma.",
+      "textComplete": true,
+      "id": "subito-666289174",
+      "title": "Bilocale per giovani coppie · Mac Mahon / Cenisio",
+      "url": "https://www.subito.it/appartamenti/privato-affitta-appartamento-per-giovani-coppie-milano-666289174.htm",
+      "price": 1000,
+      "expenses": "€140 mensili",
+      "area": 51,
+      "location": "Milano · via Mac Mahon / Cenisio",
+      "cityEvidence": "Milano nel breadcrumb; via Mac Mahon, M5 Cenisio e Corso Sempione nella descrizione.",
+      "text": "Privato affitta bilocale ristrutturato di 51 mq al secondo piano in via Mac Mahon, vicino alla M5 Cenisio, a giovani coppie referenziate. Canone €1.000 più €140 di spese condominiali. La descrizione dichiara “libero da subito”.",
+      "notes": "Privato dichiarato. La disponibilità è una dichiarazione della scheda, non una conferma indipendente; proprietà e incarico non verificati."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "operation": "affitto",
+      "collectedAt": "2026-10-29",
+      "lastReadAt": "2026-10-29",
+      "lastAttemptAt": "2026-10-29T15:01:03.000Z",
+      "accessCheckedAt": "2026-10-29T15:01:03.000Z",
+      "sourceAccess": "29 ottobre 2026, pomeriggio: contenuto pubblico recuperato.",
+      "textComplete": true,
+      "id": "subito-666297283",
+      "title": "Scarto professionale · trilocale Maciachini",
+      "url": "https://www.subito.it/appartamenti/3-locali-a-milano-milano-666297283.htm",
+      "price": null,
+      "expenses": "Non recuperate",
+      "area": null,
+      "location": "Milano · Maciachini",
+      "cityEvidence": "Milano nel breadcrumb; Maciachini e sito Tecnocasa nella scheda.",
+      "text": "TECNOCASA - STUDIO MACIACHINI SAS propone trilocale a Milano, dichiarato disponibile dai primi di gennaio.",
+      "advertiserType": "professional",
+      "advertiserEvidence": "Inserzionista verificato TECNOCASA - STUDIO MACIACHINI SAS e sito professionale nella scheda.",
+      "notes": "Scarto professionale; prezzo e metratura non necessari alla classificazione."
     }
   ]
 }
