@@ -4,8 +4,8 @@
     {
       "name": "Subito.it · vendite nel comune di Milano",
       "url": "https://www.subito.it/annunci-lombardia/vendita/appartamenti/milano/milano/",
-      "status": "40 annunci Subito vendita nel radar · campione parziale",
-      "note": "30 ottobre 2026, mattina: aggiunta 1 vendita pubblica nel Comune di Milano. Disponibilità, proprietà e incarichi non confermati."
+      "status": "41 annunci Subito vendita nel radar · campione parziale",
+      "note": "30 ottobre 2026, pomeriggio: aggiunta 1 vendita pubblica nel Comune di Milano con prezzo testuale da verificare. Disponibilità, proprietà e incarichi non confermati."
     }
   ],
   "posts": [
@@ -913,6 +913,28 @@
       "cityEvidence": "Milano nel breadcrumb e nella descrizione; via dei Cinquecento 22 e metropolitana Corvetto nel testo.",
       "text": "Vendita appartamento di 38 mq con soggiorno, camera, bagno e cucina in via dei Cinquecento 22, vicino alla metropolitana Corvetto. Prezzo €133.000.",
       "notes": "Inserzionista non determinabile. Proprietà, disponibilità e incarico non verificati."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-10-30",
+      "lastReadAt": "2026-10-30",
+      "lastAttemptAt": "2026-10-30T15:00:13.000Z",
+      "accessCheckedAt": "2026-10-30T15:00:13.000Z",
+      "textComplete": true,
+      "sourceAccess": "30 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "id": "subito-666430154",
+      "title": "Appartamento di ampia metratura · zona Duomo",
+      "url": "https://www.subito.it/appartamenti/appartamento-milano-666430154.htm",
+      "operation": "vendita",
+      "price": 41000000,
+      "expenses": "Non indicate",
+      "area": 399,
+      "location": "Milano · zona piazza Duomo",
+      "cityEvidence": "Milano nel breadcrumb; riferimento a piazza Duomo nella descrizione.",
+      "text": "Vendita appartamento di 399 mq al quarto piano, su più livelli, con box e cantina. La descrizione riporta “euro 41000000” senza separatori.",
+      "notes": "Inserzionista non determinabile. Prezzo interpretato letteralmente come €41.000.000 dal testo non formattato: da verificare. Proprietà, disponibilità e incarico non confermati."
     }
   ]
 }

@@ -1,33 +1,39 @@
 {
-  "observedAt": "2026-10-30T06:59:49.000Z",
-  "scope": "Campione mattutino degli annunci pubblici Subito nel Comune di Milano.",
+  "observedAt": "2026-10-30T15:00:13.000Z",
+  "scope": "Campione pomeridiano degli annunci pubblici Subito nel Comune di Milano.",
   "searches": [
     "https://www.subito.it/annunci-lombardia/affitto/appartamenti/milano/milano/da-privati/",
     "https://www.subito.it/annunci-lombardia/vendita/appartamenti/milano/milano/da-privati/"
   ],
   "outcomes": [
     {
-      "id": "subito-665995006",
-      "url": "https://www.subito.it/appartamenti/bilocale-arredato-via-brembo-3a-piazzale-lodi-milano-665995006.htm",
-      "observedAt": "2026-10-30T06:59:49.000Z",
+      "id": "subito-664607619",
+      "url": "https://www.subito.it/appartamenti/appartamento-bilocale-via-verro-7-milano-milano-664607619.htm",
+      "observedAt": "2026-10-30T15:00:13.000Z",
       "outcome": "public_content_retrieved"
     },
     {
-      "id": "subito-665980981",
-      "url": "https://www.subito.it/appartamenti/trilocale-arredato-milano-forlanini-2-cam-matrim-milano-665980981.htm",
-      "observedAt": "2026-10-30T06:59:49.000Z",
+      "id": "subito-666415942",
+      "url": "https://www.subito.it/appartamenti/trilocale-per-studenti-milano-666415942.htm",
+      "observedAt": "2026-10-30T15:00:13.000Z",
       "outcome": "public_content_retrieved"
     },
     {
-      "id": "subito-665977111",
-      "url": "https://www.subito.it/appartamenti/luminoso-bilocale-quartiere-isola-milano-665977111.htm",
-      "observedAt": "2026-10-30T06:59:49.000Z",
+      "id": "subito-666399884",
+      "url": "https://www.subito.it/appartamenti/bilocale-arredato-citta-studi-milano-666399884.htm",
+      "observedAt": "2026-10-30T15:00:13.000Z",
       "outcome": "public_content_retrieved"
     },
     {
-      "id": "subito-666344961",
-      "url": "https://www.subito.it/appartamenti/appartamento-invendita-via-dei-cinquecento-22-milano-666344961.htm",
-      "observedAt": "2026-10-30T06:59:49.000Z",
+      "id": "subito-666298438",
+      "url": "https://www.subito.it/appartamenti/bilocale-via-san-calocero-27-corso-genova-milano-milano-666298438.htm",
+      "observedAt": "2026-10-30T15:00:13.000Z",
+      "outcome": "public_content_retrieved_excluded_professional"
+    },
+    {
+      "id": "subito-666430154",
+      "url": "https://www.subito.it/appartamenti/appartamento-milano-666430154.htm",
+      "observedAt": "2026-10-30T15:00:13.000Z",
       "outcome": "public_content_retrieved"
     }
   ]
