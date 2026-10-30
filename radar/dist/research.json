@@ -1,11 +1,11 @@
 {
-  "collectedAt": "2026-10-29",
+  "collectedAt": "2026-10-30",
   "sources": [
     {
       "name": "Subito.it · comune di Milano",
       "url": "https://www.subito.it/annunci-lombardia/affitto/appartamenti/milano/milano/",
-      "status": "115 annunci Subito nel radar · campione parziale",
-      "note": "29 ottobre 2026, pomeriggio: aggiunto 1 affitto utile e 1 scarto professionale; registrata una riduzione di prezzo da €700 a €650 su Porta Garibaldi. Il controllo integrale delle schede esistenti non è stato ripetuto."
+      "status": "118 annunci Subito nel radar · campione parziale",
+      "note": "30 ottobre 2026, mattina: aggiunti 3 affitti utili; uno è una possibile ripubblicazione. Il controllo integrale delle schede esistenti non è stato ripetuto."
     }
   ],
   "posts": [
@@ -2691,6 +2691,74 @@
       "advertiserType": "professional",
       "advertiserEvidence": "Inserzionista verificato TECNOCASA - STUDIO MACIACHINI SAS e sito professionale nella scheda.",
       "notes": "Scarto professionale; prezzo e metratura non necessari alla classificazione."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-10-30",
+      "lastReadAt": "2026-10-30",
+      "lastAttemptAt": "2026-10-30T06:59:49.000Z",
+      "accessCheckedAt": "2026-10-30T06:59:49.000Z",
+      "textComplete": true,
+      "sourceAccess": "30 ottobre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "id": "subito-665995006",
+      "title": "Bilocale arredato · via Brembo / piazzale Lodi · privato",
+      "url": "https://www.subito.it/appartamenti/bilocale-arredato-via-brembo-3a-piazzale-lodi-milano-665995006.htm",
+      "operation": "affitto",
+      "price": 999,
+      "expenses": "Spese condominiali e portineria incluse; acqua, riscaldamento a consumo, elettricità e TARI escluse",
+      "area": 45,
+      "location": "Milano · via Brembo 3A / piazzale Lodi",
+      "cityEvidence": "Milano nel breadcrumb e nella lista comunale; via Brembo 3A e piazzale Lodi nel titolo e nella descrizione.",
+      "text": "Bilocale arredato di 45 mq al quinto piano. La descrizione dichiara affitto da privato, no agenzie e libero da subito; indica €1.000 al mese, mentre la scheda mostra €999.",
+      "notes": "Privato probabile per dichiarazione dell’inserzionista. Prezzo discordante tra scheda (€999) e descrizione (€1.000). “Libero da subito” è una dichiarazione non confermata; proprietà e incarico non verificati.",
+      "possibleDuplicateGroup": "brembo-lodi-45mq-privato",
+      "possibleDuplicateEvidence": "Una precedente scheda Subito 645625848 descriveva lo stesso indirizzo, metratura e allestimento. Conservata come possibile ripubblicazione, senza deduplicazione automatica."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-10-30",
+      "lastReadAt": "2026-10-30",
+      "lastAttemptAt": "2026-10-30T06:59:49.000Z",
+      "accessCheckedAt": "2026-10-30T06:59:49.000Z",
+      "textComplete": true,
+      "sourceAccess": "30 ottobre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "id": "subito-665980981",
+      "title": "Trilocale arredato · Forlanini / via Dalmazia",
+      "url": "https://www.subito.it/appartamenti/trilocale-arredato-milano-forlanini-2-cam-matrim-milano-665980981.htm",
+      "operation": "affitto",
+      "price": 1500,
+      "expenses": "Spese condominiali e acqua incluse; luce, gas, internet e TARI escluse",
+      "area": 80,
+      "location": "Milano · via Dalmazia 10 / Forlanini",
+      "cityEvidence": "Milano nel breadcrumb; via Dalmazia 10 e zona Forlanini nella descrizione.",
+      "text": "Trilocale arredato di circa 80 mq, ristrutturato nel 2024, con due camere matrimoniali. La descrizione indica disponibilità da subito e durata iniziale di un anno rinnovabile.",
+      "notes": "Inserzionista non determinabile. “Disponibile da subito” è una dichiarazione della scheda, non una conferma indipendente; proprietà e incarico non verificati."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-10-30",
+      "lastReadAt": "2026-10-30",
+      "lastAttemptAt": "2026-10-30T06:59:49.000Z",
+      "accessCheckedAt": "2026-10-30T06:59:49.000Z",
+      "textComplete": true,
+      "sourceAccess": "30 ottobre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "id": "subito-665977111",
+      "title": "Bilocale luminoso · quartiere Isola · gestione privata dichiarata",
+      "url": "https://www.subito.it/appartamenti/luminoso-bilocale-quartiere-isola-milano-665977111.htm",
+      "operation": "affitto",
+      "price": 1400,
+      "expenses": "Non indicate",
+      "area": 55,
+      "location": "Milano · Isola / Garibaldi",
+      "cityEvidence": "Milano nel breadcrumb; quartiere Isola, M5 Isola e stazione Garibaldi nella descrizione.",
+      "text": "Bilocale arredato di 55 mq al quinto piano. La descrizione dichiara trattativa diretta e gestione da privati, senza costi di agenzia.",
+      "notes": "Privato probabile per dichiarazione dell’inserzionista. Proprietà, disponibilità e assenza di incarico non confermate."
     }
   ]
 }

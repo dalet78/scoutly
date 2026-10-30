@@ -1,11 +1,11 @@
 {
-  "collectedAt": "2026-10-29",
+  "collectedAt": "2026-10-30",
   "sources": [
     {
       "name": "Subito.it · vendite nel comune di Milano",
       "url": "https://www.subito.it/annunci-lombardia/vendita/appartamenti/milano/milano/",
-      "status": "39 annunci Subito vendita nel radar · campione parziale",
-      "note": "29 ottobre 2026, pomeriggio: aggiunta 1 vendita pubblica nel Comune di Milano. Disponibilità, proprietà e incarichi non confermati."
+      "status": "40 annunci Subito vendita nel radar · campione parziale",
+      "note": "30 ottobre 2026, mattina: aggiunta 1 vendita pubblica nel Comune di Milano. Disponibilità, proprietà e incarichi non confermati."
     }
   ],
   "posts": [
@@ -891,6 +891,28 @@
       "cityEvidence": "Milano nel breadcrumb; via Luigi Soderini, Lorenteggio e Bande Nere nella descrizione.",
       "text": "Vendita trilocale di 86 mq al quarto piano in via Luigi Soderini, con tripla esposizione, due balconi e cantina. Prezzo €398.000; spese condominiali circa €250 al mese con riscaldamento incluso. La scheda chiede di non essere contattata da agenzie.",
       "notes": "Inserzionista non determinabile: il rifiuto delle agenzie non prova proprietà o assenza di incarico. Disponibilità immediata indicata nella scheda, non confermata."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-10-30",
+      "lastReadAt": "2026-10-30",
+      "lastAttemptAt": "2026-10-30T06:59:49.000Z",
+      "accessCheckedAt": "2026-10-30T06:59:49.000Z",
+      "textComplete": true,
+      "sourceAccess": "30 ottobre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "id": "subito-666344961",
+      "title": "Bilocale · via dei Cinquecento / Corvetto",
+      "url": "https://www.subito.it/appartamenti/appartamento-invendita-via-dei-cinquecento-22-milano-666344961.htm",
+      "operation": "vendita",
+      "price": 133000,
+      "expenses": "Non indicate",
+      "area": 38,
+      "location": "Milano · via dei Cinquecento 22 / Corvetto",
+      "cityEvidence": "Milano nel breadcrumb e nella descrizione; via dei Cinquecento 22 e metropolitana Corvetto nel testo.",
+      "text": "Vendita appartamento di 38 mq con soggiorno, camera, bagno e cucina in via dei Cinquecento 22, vicino alla metropolitana Corvetto. Prezzo €133.000.",
+      "notes": "Inserzionista non determinabile. Proprietà, disponibilità e incarico non verificati."
     }
   ]
 }
