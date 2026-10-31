@@ -1,58 +1,58 @@
 {
-  "observedAt": "2026-10-31T06:55:54.000Z",
-  "scope": "Campione mattutino degli annunci pubblici Subito nel Comune di Milano.",
+  "observedAt": "2026-10-31T14:56:15.000Z",
+  "scope": "Campione pomeridiano degli annunci pubblici Subito nel Comune di Milano e verifica di accesso ai gruppi Facebook configurati.",
   "searches": [
     "https://www.subito.it/annunci-lombardia/affitto/appartamenti/milano/milano/da-privati/",
     "https://www.subito.it/annunci-lombardia/vendita/appartamenti/milano/milano/da-privati/"
   ],
   "outcomes": [
     {
-      "id": "subito-666449513",
-      "url": "https://www.subito.it/appartamenti/a-milano-ad-piaz-firenze-bilocale-arredato-milano-666449513.htm",
-      "observedAt": "2026-10-31T06:55:54.000Z",
+      "id": "subito-666468660",
+      "url": "https://www.subito.it/appartamenti/moderno-bilocale-milano-666468660.htm",
+      "observedAt": "2026-10-31T14:56:15.000Z",
       "outcome": "public_content_retrieved"
     },
     {
-      "id": "subito-666381191",
-      "url": "https://www.subito.it/appartamenti/due-locali-con-cucina-abitabile-ristrutturato-milano-666381191.htm",
-      "observedAt": "2026-10-31T06:55:54.000Z",
+      "id": "subito-666140949",
+      "url": "https://www.subito.it/appartamenti/fineviasavona-ingr-sogg-b-k-cammatr1000-200-milano-666140949.htm",
+      "observedAt": "2026-10-31T14:56:15.000Z",
       "outcome": "public_content_retrieved"
     },
     {
-      "id": "subito-666250413",
-      "url": "https://www.subito.it/appartamenti/bilocale-con-terrazzi-milano-666250413.htm",
-      "observedAt": "2026-10-31T06:55:54.000Z",
+      "id": "subito-665165434",
+      "url": "https://www.subito.it/appartamenti/appartamento-40-mq-con-terrazzo-di-150mq-milano-665165434.htm",
+      "observedAt": "2026-10-31T14:56:15.000Z",
       "outcome": "public_content_retrieved"
     },
     {
-      "id": "subito-666461625",
-      "url": "https://www.subito.it/appartamenti/trilocale-piola-milano-666461625.htm",
-      "observedAt": "2026-10-31T06:55:54.000Z",
+      "id": "subito-666522962",
+      "url": "https://www.subito.it/appartamenti/bilocale-arredato-ultimo-piano-con-ascensore-milano-666522962.htm",
+      "observedAt": "2026-10-31T14:56:15.000Z",
       "outcome": "public_content_retrieved_excluded_professional"
     },
     {
-      "id": "subito-666270720",
-      "url": "https://www.subito.it/appartamenti/luminoso-trilocale-triesposto-di-100-mq-con-box-milano-666270720.htm",
-      "observedAt": "2026-10-31T06:55:54.000Z",
-      "outcome": "public_content_retrieved"
-    },
-    {
-      "id": "subito-666244217",
-      "url": "https://www.subito.it/appartamenti/trivani-con-box-auto-e-cantina-milano-666244217.htm",
-      "observedAt": "2026-10-31T06:55:54.000Z",
-      "outcome": "public_content_retrieved"
-    },
-    {
-      "id": "subito-660303976",
-      "url": "https://www.subito.it/appartamenti/appartamento-mq-95-piano-seminterrato-milano-660303976.htm",
-      "observedAt": "2026-10-31T06:55:54.000Z",
-      "outcome": "public_content_retrieved"
-    },
-    {
-      "id": "subito-666139815",
-      "url": "https://www.subito.it/appartamenti/trilocale-milano-ospedale-sacco-certosa-milano-666139815.htm",
-      "observedAt": "2026-10-31T06:55:54.000Z",
+      "id": "subito-666518039",
+      "url": "https://www.subito.it/appartamenti/moderno-monolocale-32mq-in-zona-cinque-giornate-milano-666518039.htm",
+      "observedAt": "2026-10-31T14:56:15.000Z",
       "outcome": "public_content_retrieved_excluded_professional"
+    },
+    {
+      "id": "subito-666529048",
+      "url": "https://www.subito.it/appartamenti/trilocale-da-ristrutturare-milano-mm-inganni-milano-666529048.htm",
+      "observedAt": "2026-10-31T14:56:15.000Z",
+      "outcome": "public_content_retrieved"
+    },
+    {
+      "id": "subito-651920424",
+      "url": "https://www.subito.it/appartamenti/bilocale-ristrutturato-viale-ungheria-19-milano-milano-651920424.htm",
+      "observedAt": "2026-10-31T14:56:15.000Z",
+      "outcome": "public_content_retrieved"
+    },
+    {
+      "id": "subito-661182156",
+      "url": "https://www.subito.it/appartamenti/monolocale-milano-vendita-privato-milano-661182156.htm",
+      "observedAt": "2026-10-31T14:56:15.000Z",
+      "outcome": "public_content_retrieved"
     }
   ]
 }

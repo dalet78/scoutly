@@ -1,11 +1,11 @@
 {
-  "collectedAt": "2026-10-30",
+  "collectedAt": "2026-10-31",
   "sources": [
     {
       "name": "Subito.it · vendite nel comune di Milano",
       "url": "https://www.subito.it/annunci-lombardia/vendita/appartamenti/milano/milano/",
-      "status": "45 annunci Subito vendita nel radar · campione parziale",
-      "note": "31 ottobre 2026, mattina: aggiunte 3 vendite utili e 1 scarto professionale. Disponibilità, proprietà e incarichi restano non confermati."
+      "status": "48 annunci Subito vendita nel radar · campione parziale",
+      "note": "31 ottobre 2026, pomeriggio: aggiunte 3 vendite utili. Disponibilità, proprietà e incarichi restano non confermati."
     }
   ],
   "posts": [
@@ -506,7 +506,9 @@
       "cityEvidence": "Milano nel breadcrumb e nella descrizione; via Bruzzesi 25 indicata.",
       "text": "Vendo il mio appartamento di 55 mq, bilocale arredato e libero da persone. La proprietaria dichiara disponibilità immediata e chiede €270.000 non trattabili, senza agenzie o mediazioni.",
       "textComplete": true,
-      "notes": "Proprietà e disponibilità sono dichiarazioni dell’inserzionista, non verifiche documentali. Assenza di incarico non confermata."
+      "notes": "Proprietà e disponibilità sono dichiarazioni dell’inserzionista, non verifiche documentali. Assenza di incarico non confermata. Possibile doppia operazione o ripubblicazione rispetto all’affitto subito-666140949; entrambe restano in revisione.",
+      "possibleDuplicateGroup": "bruzzesi-25-bilocale-55mq",
+      "possibleDuplicateEvidence": "Stesso indirizzo, metratura e tipologia dell’annuncio di affitto subito-666140949; le operazioni differiscono, quindi non è un duplicato confermato."
     },
     {
       "source": 4,
@@ -1025,6 +1027,72 @@
       "advertiserType": "professional",
       "advertiserEvidence": "Studio Immobiliare IMC dichiarato nella descrizione.",
       "notes": "Scarto professionale. La disponibilità immediata indicata nella scheda non è una conferma indipendente."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-10-31",
+      "lastReadAt": "2026-10-31",
+      "lastAttemptAt": "2026-10-31T14:56:15.000Z",
+      "accessCheckedAt": "2026-10-31T14:56:15.000Z",
+      "textComplete": true,
+      "sourceAccess": "31 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "operation": "vendita",
+      "id": "subito-666529048",
+      "title": "Trilocale da ristrutturare · Inganni / Bisceglie",
+      "url": "https://www.subito.it/appartamenti/trilocale-da-ristrutturare-milano-mm-inganni-milano-666529048.htm",
+      "price": 285000,
+      "expenses": "Non indicate",
+      "area": 95,
+      "location": "Milano · Inganni / Bisceglie",
+      "cityEvidence": "Milano nel breadcrumb; Inganni e Bisceglie nella descrizione.",
+      "text": "Vendita trilocale da ristrutturare di 95 mq in zona Inganni / Bisceglie. Prezzo €285.000; la descrizione dichiara vendita diretta da privato.",
+      "notes": "Privato probabile per dichiarazione esplicita. Proprietà, disponibilità e assenza d’incarico non confermate."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-10-31",
+      "lastReadAt": "2026-10-31",
+      "lastAttemptAt": "2026-10-31T14:56:15.000Z",
+      "accessCheckedAt": "2026-10-31T14:56:15.000Z",
+      "textComplete": true,
+      "sourceAccess": "31 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "operation": "vendita",
+      "id": "subito-651920424",
+      "title": "Bilocale ristrutturato · viale Ungheria 19",
+      "url": "https://www.subito.it/appartamenti/bilocale-ristrutturato-viale-ungheria-19-milano-milano-651920424.htm",
+      "price": 240000,
+      "expenses": "Non indicate",
+      "area": 66,
+      "location": "Milano · viale Ungheria 19",
+      "cityEvidence": "Milano nel breadcrumb e nell’indirizzo della scheda.",
+      "text": "Vendita bilocale ristrutturato di 66 mq in viale Ungheria 19. Prezzo €240.000; la descrizione dichiara vendita da privato a privato.",
+      "notes": "Privato probabile per dichiarazione esplicita. Proprietà, disponibilità e assenza d’incarico non confermate."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-10-31",
+      "lastReadAt": "2026-10-31",
+      "lastAttemptAt": "2026-10-31T14:56:15.000Z",
+      "accessCheckedAt": "2026-10-31T14:56:15.000Z",
+      "textComplete": true,
+      "sourceAccess": "31 ottobre 2026, pomeriggio: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "operation": "vendita",
+      "id": "subito-661182156",
+      "title": "Monolocale · Portello / Accursio",
+      "url": "https://www.subito.it/appartamenti/monolocale-milano-vendita-privato-milano-661182156.htm",
+      "price": 215000,
+      "expenses": "Non indicate",
+      "area": 50,
+      "location": "Milano · Portello / Accursio",
+      "cityEvidence": "Milano nel breadcrumb; Portello e Accursio nella descrizione.",
+      "text": "Vendita monolocale di 50 mq in zona Portello / Accursio. Prezzo €215.000; la descrizione dichiara vendita da privato.",
+      "notes": "Privato probabile per dichiarazione esplicita. Proprietà, disponibilità e assenza d’incarico non confermate."
     }
   ]
 }
