@@ -1,9 +1,16 @@
+import {PHOTOGRAPHY_TOPIC,PHOTOGRAPHY_CONFIRMATION,DEFAULT_CONFIRMATION,requestedTopic} from './photography.mjs';
 import {consultationPayload} from './request.mjs';
 import {submitPublic,SubmissionError} from '../prima-di-pubblicare/submit-public-v1.js';
 const API='https://scoutly-k76y.onrender.com',KEY='scoutly-consultation-v1';
 const form=document.getElementById('consultation-request'),send=document.getElementById('consult-send'),reconnect=document.getElementById('consult-reconnect'),status=document.getElementById('consult-connection'),error=document.getElementById('consult-error');
+const topicSelect=document.getElementById('consult-topic'),photoInfo=document.getElementById('consult-photo-info');
+if(topicSelect){
+ const topic=requestedTopic(globalThis.location?.search||'');if(topic)topicSelect.value=topic;
+ const update=()=>{if(photoInfo)photoInfo.hidden=topicSelect.value!==PHOTOGRAPHY_TOPIC;};
+ topicSelect.addEventListener('change',update);update();
+}
 let gate=null,busy=false,pending=null,storageReady=false,completed=false;
-function showReceipt(value){completed=true;form.hidden=true;document.getElementById('consult-code').textContent=value.id;document.getElementById('consult-notice').textContent=value.notice==='accepted'?'La notifica è stata accettata dal servizio email.':'La richiesta è salvata; la notifica email richiede una verifica operativa.';document.getElementById('consult-success').hidden=false;document.getElementById('consult-success').focus();}
+function showReceipt(value){const message=document.getElementById('consult-success-message');if(message)message.textContent=value.photography===true?PHOTOGRAPHY_CONFIRMATION:DEFAULT_CONFIRMATION;completed=true;form.hidden=true;document.getElementById('consult-code').textContent=value.id;document.getElementById('consult-notice').textContent=value.notice==='accepted'?'La notifica è stata accettata dal servizio email.':'La richiesta è salvata; la notifica email richiede una verifica operativa.';document.getElementById('consult-success').hidden=false;document.getElementById('consult-success').focus();}
 async function connect(){
  if(busy||completed||!storageReady)return;
  gate=null;send.disabled=true;reconnect.disabled=true;status.textContent='Collegamento al servizio… Può richiedere fino a un minuto.';
@@ -36,7 +43,7 @@ form.addEventListener('submit',async event=>{
  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),90000);
  try{
   const receipt=await submitPublic({endpoint:API+'/public/requests',payload,photos:[],website:String(data.get('website')||''),challenge:gate.token,signal:controller.signal});
-  const saved={...pending,received:true,notice:receipt.email_notice};showReceipt(saved);
+  const saved={...pending,received:true,photography:payload.consultation_topic===PHOTOGRAPHY_TOPIC,notice:receipt.email_notice};showReceipt(saved);
   try{sessionStorage.setItem(KEY,JSON.stringify(saved));}catch{}
  }catch(e){
   error.textContent=(e instanceof SubmissionError?e.message:'Esito da verificare.')+' Codice richiesta: '+id+'.';

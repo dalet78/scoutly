@@ -1,4 +1,4 @@
-export const TOPICS=['Vendita','Affitto','Presentazione dell’annuncio','Altro'];
+export const TOPICS=['Vendita','Affitto','Presentazione dell’annuncio','Fotografie professionali','Altro'];
 export function consultationPayload(data,id){
  const get=key=>String(data.get(key)||'').trim();
  const name=get('name'),email=get('email'),municipality=get('municipality_name'),topic=get('consultation_topic'),phone=get('phone'),description=get('description');

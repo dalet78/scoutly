@@ -120,7 +120,7 @@ class ConsultationPayload(BaseModel):
     phone: str | None = Field(default=None, max_length=30)
     description: str = Field(default='', max_length=1000)
     municipality_name: str = Field(min_length=2, max_length=120)
-    consultation_topic: Literal['Vendita', 'Affitto', 'Presentazione dell’annuncio', 'Altro']
+    consultation_topic: Literal['Vendita', 'Affitto', 'Presentazione dell’annuncio', 'Fotografie professionali', 'Altro']
     service_requested: Literal[True]
     consultation_requested: Literal[True]
 

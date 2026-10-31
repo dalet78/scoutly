@@ -61,7 +61,7 @@ class MunicipalPlanAnswers(RenovationPlanAnswers):
 
 class ConsultationAnswers(Strict):
     municipality_name: str = Field(min_length=2, max_length=120)
-    consultation_topic: Literal['Vendita', 'Affitto', 'Presentazione dell’annuncio', 'Altro']
+    consultation_topic: Literal['Vendita', 'Affitto', 'Presentazione dell’annuncio', 'Fotografie professionali', 'Altro']
 
 
 class Envelope(Strict):
@@ -171,6 +171,11 @@ def render_html(envelope):
                 + safe(value) + '</td></tr>')
 
     if envelope.form_id == 'consulenza':
+        photo_note = ('<p>Fotografie professionali: primo contatto esclusivamente con il consulente gratuito. '
+                      'Servizio fotografico esterno a pagamento, prezzo e condizioni da chiarire prima di qualsiasi impegno. '
+                      'Non inoltrare al fotografo. Prima di condividere dati, informare sul destinatario e registrare '
+                      'un’autorizzazione specifica e distinta dal marketing nel registro privato.</p>'
+                      if envelope.answers.consultation_topic == 'Fotografie professionali' else '')
         details = ''.join(row(label, value) for label, value in [
             ('Nome', envelope.name), ('Email', envelope.email),
             ('Comune dichiarato', envelope.answers.municipality_name),
@@ -178,7 +183,7 @@ def render_html(envelope):
             ('Telefono', envelope.phone or 'Non indicato'),
         ])
         return ('<!doctype html><html lang="it"><body style="background:#f6f7f0;color:#19303a;font-family:Arial,sans-serif;padding:24px">'
-                '<h1>Richiesta di consulenza gratuita</h1><table>' + details + '</table>'
+                '<h1>Richiesta di consulenza gratuita</h1><table>' + details + '</table>' + photo_note
                 '<h2>Messaggio facoltativo</h2><p>' + safe(envelope.description or 'Nessun messaggio') + '</p>'
                 '<p>Ricontatto richiesto esplicitamente. Gestire come consulenza: non generare una bozza di annuncio AI. '
                 'Confermare disponibilità e modalità via email; nessun appuntamento già fissato.</p>'
@@ -237,6 +242,12 @@ Riferimento richiesta: <span style="overflow-wrap:anywhere">{safe(envelope.reque
 </div></td></tr></table></td></tr></table></body></html>'''
 
 
+def notice_subject(envelope):
+    base = ROUTES[envelope.form_id]['email_subject']
+    return base + ' — Fotografie professionali' if (envelope.form_id == 'consulenza' and
+        envelope.answers.consultation_topic == 'Fotografie professionali') else base
+
+
 def send(envelope, attachments, api_key, recipient):
     signed = SignedNotice(envelope=envelope, signature=signature(envelope))
     body = MARKER + '\n' + signed.model_dump_json() + '\n'
@@ -245,7 +256,7 @@ def send(envelope, attachments, api_key, recipient):
             'Authorization': 'Bearer ' + api_key,
             'Idempotency-Key': 'scoutly-gmail-notice/v1/' + str(envelope.request_id),
         }, json={'from': 'Scoutly richieste <onboarding@resend.dev>', 'to': [recipient],
-                 'reply_to': str(envelope.email), 'subject': ROUTES[envelope.form_id]['email_subject'], 'text': body,
+                 'reply_to': str(envelope.email), 'subject': notice_subject(envelope), 'text': body,
                  'html': render_html(envelope),
                  'attachments': attachments})
         response.raise_for_status()
