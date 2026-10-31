@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {consultationPayload,TOPICS} from '../assets/consulenza/request.mjs';
+import {PHOTOGRAPHY_TOPIC,PHOTOGRAPHY_CONFIRMATION,DEFAULT_CONFIRMATION,requestedTopic} from '../assets/consulenza/photography.mjs';
 const data=()=>{const f=new FormData();for(const [k,v] of Object.entries({name:'Prova',email:'prova@example.com',municipality_name:'Roma',consultation_topic:'Vendita',service_request:'on'}))f.set(k,v);return f;};
 test('richiesta minima dedicata: nessun annuncio o foto inventati',()=>{
  const p=consultationPayload(data(),'synthetic-id');
@@ -26,14 +27,16 @@ import {runInNewContext} from 'node:vm';
 import {webcrypto} from 'node:crypto';
 import {SubmissionError} from '../assets/prima-di-pubblicare/submit-public-v1.js';
 const id='9bb581e9-238a-4b8b-9544-a19f924ead24';
-function ui(sender,{supported=true,configError=false}={}){
- let now=100000;const store=new Map();
- const ids=['consultation-request','consult-send','consult-reconnect','consult-connection','consult-error','consult-code','consult-notice','consult-success'];
+function ui(sender,{supported=true,configError=false,topic='Vendita',search='',initialStore=[]}={}){
+ let now=100000;const store=new Map(initialStore);
+ const ids=['consultation-request','consult-send','consult-reconnect','consult-connection','consult-error','consult-code','consult-notice','consult-success','consult-topic','consult-photo-info','consult-success-message'];
  const el=Object.fromEntries(ids.map(id=>[id,{textContent:'',hidden:false,disabled:false,addEventListener(k,fn){this[k]=fn;},reportValidity(){return true;},setAttribute(){},removeAttribute(){},focus(){}}]));
  el['consultation-request'].fields=data();
+ el['consultation-request'].fields.set('consultation_topic',topic);
+ el['consult-topic'].value=topic;
  class FakeFormData{constructor(form){this.fields=form.fields;}get(k){return this.fields.get(k);}}
  class Clock extends Date{static now(){return now;}}
- const context={document:{getElementById:k=>el[k]},FormData:FakeFormData,crypto:{randomUUID:()=>id,subtle:webcrypto.subtle},TextEncoder,Uint8Array,Array,AbortController,Date:Clock,SubmissionError,consultationPayload,submitPublic:sender,
+ const context={document:{getElementById:k=>el[k]},location:{search},PHOTOGRAPHY_TOPIC,PHOTOGRAPHY_CONFIRMATION,DEFAULT_CONFIRMATION,requestedTopic,FormData:FakeFormData,crypto:{randomUUID:()=>id,subtle:webcrypto.subtle},TextEncoder,Uint8Array,Array,AbortController,Date:Clock,SubmissionError,consultationPayload,submitPublic:sender,
  sessionStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v),removeItem:k=>store.delete(k)},
  fetch:async()=>({ok:!configError,json:async()=>({protocol:1,challenge:'synthetic',supported_forms:supported?[{form_id:'consulenza',form_version:1}]:[]})}),setTimeout:()=>1,clearTimeout(){}};
  const source=readFileSync(new URL('../assets/consulenza/form.mjs',import.meta.url),'utf8').replace(/^import .+;\n/gm,'');
@@ -60,4 +63,25 @@ test('errore ambiguo conserva il codice e blocca dati modificati',async()=>{
  el['consultation-request'].fields.set('municipality_name','Torino');
  await el['consultation-request'].submit({preventDefault(){}});
  assert.equal(calls,1);assert.match(el['consult-error'].textContent,/stessi dati|prima di cambiare/);
+});
+
+test('fotografie: preselezzione solo per argomento noto, nota aggiornata al cambio',()=>{
+ const {el}=ui(async()=>{}, {search:'?argomento=fotografie-professionali'});
+ assert.equal(el['consult-topic'].value,PHOTOGRAPHY_TOPIC);
+ assert.equal(el['consult-photo-info'].hidden,false);
+ el['consult-topic'].value='Vendita';el['consult-topic'].change();assert.equal(el['consult-photo-info'].hidden,true);
+ assert.equal(requestedTopic('?argomento=non-autorizzato'),'');
+});
+test('fotografie: ricevuta specifica dopo successo e anche al ricaricamento',async()=>{
+ let calls=0;const {el,store,advance}=ui(async o=>{calls++;assert.equal(o.payload.consultation_topic,PHOTOGRAPHY_TOPIC);assert.equal(o.photos.length,0);return {email_notice:'accepted'};},{topic:PHOTOGRAPHY_TOPIC});
+ await new Promise(setImmediate);advance();await el['consultation-request'].submit({preventDefault(){}});
+ assert.equal(calls,1);assert.equal(el['consult-success-message'].textContent,PHOTOGRAPHY_CONFIRMATION);
+ const restored=ui(async()=>{throw Error('no duplicate');},{initialStore:[...store]});
+ assert.equal(restored.el['consult-success-message'].textContent,PHOTOGRAPHY_CONFIRMATION);
+ assert.equal(restored.el['consultation-request'].hidden,true);
+});
+test('fotografie: nessuna conferma di ricezione se il salvataggio fallisce',async()=>{
+ const {el,advance}=ui(async()=>{throw new SubmissionError('Esito incerto');},{topic:PHOTOGRAPHY_TOPIC});
+ el['consult-success'].hidden=true;await new Promise(setImmediate);advance();await el['consultation-request'].submit({preventDefault(){}});
+ assert.equal(el['consult-success'].hidden,true);assert.match(el['consult-error'].textContent,/Esito incerto/);
 });

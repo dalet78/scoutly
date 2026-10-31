@@ -260,3 +260,31 @@ body.modern-service{background:var(--modern-bg);color:var(--modern-text);font-fa
 .modern-service .form-card .privacy-declaration + .hint{font-size:11px;line-height:1.5;margin-top:6px}
 
 .modern-service .form-card .privacy-declaration.privacy-select-all{font-size:12px}
+
+/* Optional professional photography: secondary to announcement preparation. */
+.professional-photo-card{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:28px;padding:30px;border:1px solid #37505a;border-radius:18px;margin:36px 0;background:#1b303a;color:#f4f5ed}
+.professional-photo-card h2{font-size:clamp(24px,3vw,32px);line-height:1.25;margin:0 0 16px;letter-spacing:-.6px}
+.professional-photo-card p{color:#b3c4c8;line-height:1.7;max-width:680px;margin:0 0 14px;font-size:15px}
+.professional-photo-card .photo-eyebrow{color:#d3f58b;letter-spacing:1px;font-size:11px;text-transform:uppercase}
+a.professional-photo-cta{display:inline-block;background:#d3f58b;color:#19303a!important;border-radius:28px;padding:14px 22px;font:700 14px/1.5 Arial,sans-serif;text-align:center;text-decoration:none;max-width:100%;box-sizing:border-box}
+.professional-photo-card a.professional-photo-detail,.professional-photo-page a{color:#d3f58b;text-underline-offset:4px}
+.professional-photo-note{font-size:13px!important;line-height:1.7;max-width:680px}
+.professional-photo-upload{font-size:14px;line-height:1.7;background:#eef2e9;color:#19303a;padding:16px;border-radius:10px}
+.professional-photo-upload a{display:inline-block;color:#19303a;font-weight:bold;min-height:44px;padding-top:8px}
+.professional-photo-disclaimer{font-size:13px;line-height:1.7;color:#b3c4c8;padding-block:20px}
+.professional-photo-hero{max-width:840px;padding:55px 0 28px}
+.professional-photo-hero h1{font-size:clamp(40px,6vw,72px);line-height:1.05;letter-spacing:-2px;margin:20px 0 28px}
+.professional-photo-hero h1 em{color:#d3f58b;font-style:normal}
+.professional-photo-hero .intro{max-width:740px;color:#b3c4c8;line-height:1.8}
+.professional-photo-hero .professional-photo-note{color:#b3c4c8;margin-top:22px}
+.professional-photo-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;border-block:1px solid #37505a;padding-block:30px}
+.professional-photo-steps span{font-size:11px;letter-spacing:1px;color:#d3f58b}
+.professional-photo-steps h2{font-size:22px;line-height:1.3;margin:14px 0}
+.professional-photo-steps p{font-size:15px;color:#b3c4c8;line-height:1.7}
+#scoutly-modern-home .professional-photo-card p{max-width:680px;margin-bottom:14px}
+#scoutly-modern-home .professional-photo-card h2{font-size:28px}
+#scoutly-modern-home .professional-photo-card .photo-eyebrow{color:#d3f58b}
+#scoutly-modern-home .professional-photo-card a.professional-photo-detail{color:#d3f58b}
+#scoutly-modern-home .professional-photo-card .professional-photo-note{font-size:13px}
+.professional-photo-page .masthead{gap:20px;flex-wrap:wrap}
+@media(max-width:760px){.professional-photo-card{grid-template-columns:1fr;padding:24px;gap:12px}.professional-photo-card .professional-photo-cta{justify-self:start}.professional-photo-steps{grid-template-columns:1fr;gap:24px}.professional-photo-hero{padding-top:34px}.professional-photo-page .masthead>a:last-child{font-size:13px}}

@@ -93,7 +93,15 @@
         "phone",
         "description"
       ],
-      "photos_allowed": false
+      "photos_allowed": false,
+      "topics": [
+        "Vendita",
+        "Affitto",
+        "Presentazione dell’annuncio",
+        "Fotografie professionali",
+        "Altro"
+      ],
+      "photographer_forwarding": "manual_only_after_specific_recorded_authorization"
     }
   ],
   "routing_policy": {
