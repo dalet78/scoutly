@@ -186,7 +186,7 @@ def render_html(envelope):
                 '<h1>Richiesta di consulenza gratuita</h1><table>' + details + '</table>' + photo_note +
                 '<h2>Messaggio facoltativo</h2><p>' + safe(envelope.description or 'Nessun messaggio') + '</p>'
                 '<p>Ricontatto richiesto esplicitamente. Gestire come consulenza: non generare una bozza di annuncio AI. '
-                'Confermare disponibilità e modalità via email; nessun appuntamento già fissato.</p>'
+                'Confermare disponibilità e modalità via email o al telefono fornito; nessun appuntamento già fissato.</p>'
                 '<p>Riferimento: ' + safe(envelope.request_id) + '</p></body></html>')
     contact = ''.join(row(label, value) for label, value in [
         ('Nome', envelope.name or 'Non indicato'), ('Email', envelope.email),

@@ -1,3 +1,5 @@
+> Aggiornamento: telefono facoltativo sempre visibile nel form, sotto l’email. Richiesta di ricontatto e conferma includono email o telefono fornito; anche la notifica operativa indica entrambe le modalità. La richiesta al fotografo resta esclusa.
+
 > Verifica 31 ottobre 2026 — Revisione PR #6: 96 test Python in CI e 70 test Node (65 frontend + 5 pagina tecnica) passati; build Cloudflare preview riuscita. Verificati nel browser pagina dedicata desktop e mobile 375, form desktop/mobile con argomento preselezionato e telefono facoltativo, scheda home a 375 e pagina fotografie a 320, senza overflow orizzontale ai viewport controllati. Preview: https://feat-professional-photography-20261031-scoutly.dalet-p.workers.dev/ . La preview usa il backend di produzione con CORS invariato: nessun invio reale eseguito. Salvataggio/notifica verificati in simulazione; consegna reale da verificare dopo il rilascio backend-prima-frontend. Nessun merge su main o deploy di produzione.
 
 # Fotografie professionali — revisione, 31 ottobre 2026
