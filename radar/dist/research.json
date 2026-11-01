@@ -1,11 +1,11 @@
 {
-  "collectedAt": "2026-10-31",
+  "collectedAt": "2026-11-01T07:01:01.000Z",
   "sources": [
     {
       "name": "Subito.it · comune di Milano",
       "url": "https://www.subito.it/annunci-lombardia/affitto/appartamenti/milano/milano/",
-      "status": "130 annunci Subito nel radar · campione parziale",
-      "note": "31 ottobre 2026, pomeriggio: aggiunti 3 affitti utili e 2 scarti professionali. Il controllo integrale delle schede esistenti non è stato ripetuto."
+      "status": "135 annunci Subito nel radar · campione parziale",
+      "note": "1 novembre 2026, mattina: aggiunti 3 affitti utili e 2 scarti professionali. Il controllo integrale delle schede esistenti non è stato ripetuto."
     }
   ],
   "posts": [
@@ -13,7 +13,7 @@
       "id": "subito-663825385",
       "title": "Bilocale con posto auto · Paolo Sarpi (Moscova)",
       "url": "https://www.subito.it/appartamenti/bilocale-con-posto-auto-via-paolo-sarpi-moscova-milano-663825385.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano (MI) nella lista comunale; via Paolo Sarpi e Porta Volta-Moscova nella descrizione.",
@@ -35,7 +35,7 @@
       "id": "subito-650858666",
       "title": "Appartamento nuovo climatizzato Milano",
       "url": "https://www.subito.it/appartamenti/appartamento-nuovo-climatizzato-milano-milano-650858666.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano (MI) nel dettaglio; Viale Palmanova nella descrizione.",
@@ -62,7 +62,7 @@
       "id": "subito-661490401",
       "title": "MM Comasina monolocale da privato",
       "url": "https://www.subito.it/appartamenti/mm-comasina-monolocale-da-privato-milano-661490401.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nel dettaglio e lista comunale; via Siro Capsoni, Bruzzano.",
@@ -89,7 +89,7 @@
       "id": "subito-654489651",
       "title": "Da privato biloc. arredato · C.so Buenos Aires",
       "url": "https://www.subito.it/appartamenti/da-privato-biloc-arredato-zona-c-so-buenos-aires-milano-654489651.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nella ricerca comunale; via Plinio 40 e MM Lima nel dettaglio.",
@@ -114,7 +114,7 @@
       "id": "subito-642354383",
       "title": "MM2 Udine | Bilocale da privato [no agenzie]",
       "url": "https://www.subito.it/appartamenti/mm2-udine-bilocale-da-privato-no-agenzie-milano-642354383.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano (MI) nel risultato della ricerca comunale.",
@@ -136,7 +136,7 @@
       "id": "subito-659298735",
       "title": "Bilocale arredato e attrezzato",
       "url": "https://www.subito.it/appartamenti/bilocale-arredato-e-attrezzato-milano-659298735.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano (MI) nella lista comunale.",
@@ -168,7 +168,7 @@
       "id": "subito-662027739",
       "title": "Baggio trilocale con box · €800 tutto incluso",
       "url": "https://www.subito.it/appartamenti/baggio-trilocale-con-box-800euro-tutto-incluso-milano-662027739.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano (MI) nella lista comunale.",
@@ -192,7 +192,7 @@
       "id": "subito-662198033",
       "title": "NoLo · monolocale appena ristrutturato",
       "url": "https://www.subito.it/appartamenti/nolo-monolocale-appena-ristrutturato-milano-662198033.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nella scheda; zona NoLo e M1 Rovereto nella descrizione.",
@@ -224,7 +224,7 @@
       "id": "subito-664092479",
       "title": "Monolocale rinnovato · Portello / Accursio",
       "url": "https://www.subito.it/appartamenti/monolocale-rinnovato-a-nuovo-portello-accursio-mi-milano-664092479.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nella scheda; via Privata Giorgini e Piazzale Accursio nella descrizione.",
@@ -249,7 +249,7 @@
       "id": "subito-651037411",
       "title": "Bilocale arredato · via Vodice / Fiera Milano City",
       "url": "https://www.subito.it/appartamenti/bilocale-arredato-via-vodice-zona-fieramilanocity-milano-651037411.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nella scheda; via Vodice e Fiera Milano City nel titolo e nella descrizione.",
@@ -281,7 +281,7 @@
       "id": "subito-647591075",
       "title": "Appartamento per 2 persone M2verde Milano",
       "url": "https://www.subito.it/appartamenti/appartamento-per-2-persone-m2verde-milano-milano-647591075.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nel percorso fonte; Viale Palmanova nella descrizione.",
@@ -306,7 +306,7 @@
     },
     {
       "id": "subito-659881169",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "operation": "affitto",
       "title": "Privato affitta · appartamento seminterrato zona Dateo",
@@ -331,7 +331,7 @@
     },
     {
       "id": "subito-664546432",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "operation": "affitto",
       "title": "Monolocale · De Angeli / Gambara",
@@ -364,7 +364,7 @@
       "accessCheckedAt": "2026-10-28T15:10:39.000Z",
       "sourceAccess": "28 ottobre 2026, pomeriggio: contenuto pubblico recuperato.",
       "id": "subito-636153733",
-      "source": 2,
+      "source": 0,
       "operation": "affitto",
       "title": "Privato · bilocale Rogoredo / Santa Giulia",
       "url": "https://www.subito.it/appartamenti/privato-bilocale-arredato-no-agenzia-milano-636153733.htm",
@@ -380,7 +380,7 @@
       "id": "subito-660144264",
       "title": "Bilocale · Primaticcio (operazione discordante)",
       "url": "https://www.subito.it/appartamenti/primaticcio-bilocale-happy-di-40-mq-350-m-m1-milano-660144264.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nel breadcrumb; M1 Primaticcio nella descrizione.",
@@ -411,7 +411,7 @@
       "accessCheckedAt": "2026-10-28T15:10:39.000Z",
       "sourceAccess": "28 ottobre 2026, pomeriggio: contenuto pubblico recuperato.",
       "id": "subito-641850682",
-      "source": 2,
+      "source": 0,
       "operation": "affitto",
       "title": "Appartamento con soppalco · Paolo Sarpi",
       "url": "https://www.subito.it/appartamenti/nel-cuore-di-paolo-sarpi-privato-milano-641850682.htm",
@@ -436,7 +436,7 @@
       ]
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -458,7 +458,7 @@
       "notes": "Quarto piano, cantina e terrazzino; contratto annuale o 3+2 dichiarato, cauzione di tre mensilità. Data del 19 giugno senza anno: non dimostra disponibilità attuale. Proprietà e incarichi non verificati. Nuovo nel radar, non necessariamente appena pubblicato."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -484,7 +484,7 @@
     },
     {
       "id": "subito-660258755",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "operation": "affitto",
       "city": "Milano",
@@ -508,7 +508,7 @@
     },
     {
       "id": "subito-655599083",
-      "source": 2,
+      "source": 0,
       "operation": "affitto",
       "title": "Privato · bilocale Cenisio / via Cucchiari",
       "url": "https://www.subito.it/appartamenti/bilocale-da-privato-milano-655599083.htm",
@@ -530,7 +530,7 @@
     },
     {
       "id": "subito-659535606",
-      "source": 2,
+      "source": 0,
       "operation": "affitto",
       "title": "Privato · bilocale via Zuretti",
       "url": "https://www.subito.it/appartamenti/bilocale-ristrutturato-da-privato-no-agenzia-milano-659535606.htm",
@@ -555,7 +555,7 @@
     },
     {
       "id": "subito-661444529",
-      "source": 2,
+      "source": 0,
       "operation": "affitto",
       "title": "Privato · bilocale Bovisa / via Branda Castiglioni (operazione discordante)",
       "url": "https://www.subito.it/appartamenti/politecnico-bovisa-bilocale-arredato-milano-milano-661444529.htm",
@@ -577,7 +577,7 @@
     },
     {
       "id": "subito-663566495",
-      "source": 2,
+      "source": 0,
       "operation": "affitto",
       "title": "Quadrilocale da privato · Niguarda",
       "url": "https://www.subito.it/appartamenti/quadrilocale-da-privato-a-niguarda-milano-663566495.htm",
@@ -608,7 +608,7 @@
       "cityEvidence": "Milano nel percorso della scheda; viale Monte Ceneri nella descrizione.",
       "text": "Privato affitta luminoso bilocale\nDisponibile da dicembre",
       "notes": "Dicembre senza anno: nessuna data inventata. Settimo piano con ascensore e possibile box separato dichiarati. Disponibilità, proprietà e incarico non verificati.",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "operation": "affitto",
       "city": "Milano",
@@ -629,7 +629,7 @@
       "cityEvidence": "Milano nel percorso della scheda e via Lancetti 24 nella descrizione.",
       "text": "Privato AFFITTA.\nContratto transitorio massimo 12 mesi, rinnovabile.\nDisponibilità immediata",
       "notes": "Spese non specificate nel dettaglio acquisito. Disponibilità dichiarata senza data, da riconfermare. Proprietà e incarico non verificati.",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "operation": "affitto",
       "city": "Milano",
@@ -651,7 +651,7 @@
       "cityEvidence": "Milano nel breadcrumb e via Privata Giovanni Battista Prandina 33 nella descrizione.",
       "text": "PRIVATO AFFITTA – MONOLOCALE ARREDATO CON BALCONE (NO AGENZIE)\nDisponibilità: dal 15 novembre 2026",
       "notes": "Quarto piano con ascensore, balcone e contratto 4+4 dichiarati. La data futura è una dichiarazione dell’annuncio, non disponibilità confermata. Proprietà e incarico non verificati.",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "operation": "affitto",
       "city": "Milano",
@@ -673,7 +673,7 @@
       "cityEvidence": "Milano nel breadcrumb; MM Piola nella descrizione.",
       "text": "MM PIOLA Privato affitta prestigioso monolocale di mq. 35 mq. LIBERO SUBITO.\nAFFITTO MINIMO UN ANNO.",
       "notes": "Piano rialzato in villetta, giardino condiviso e contratto 4+4 dichiarati. “Libero subito” non è datato: disponibilità da riconfermare. Proprietà e incarico non verificati.",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "operation": "affitto",
       "city": "Milano",
@@ -699,7 +699,7 @@
       "notes": "Inserzionista professionale e servizio informativo a pagamento dichiarati: scarto secondo le regole. Disponibilità dell’immobile e rapporto con il titolare non verificati.",
       "advertiserType": "professional",
       "advertiserEvidence": "Servizio informativo di accesso a banca dati con quota dichiarata",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "operation": "affitto",
       "city": "Milano",
@@ -724,7 +724,7 @@
       "cityEvidence": "Milano nel breadcrumb; quartiere Isola e M3 Maciachini nella descrizione.",
       "text": "Libero dal 1 dicembre 2026. Affitto bilocale al primo e ultimo piano.\nDisponibilità: dal 1 dicembre 2026. NO AGENZIE",
       "notes": "Bilocale arredato e ristrutturato su due livelli dichiarato. “No agenzie” non prova proprietà né assenza di incarico; qualifica dell’inserzionista non determinata. La data futura è dichiarata, non confermata.",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "operation": "affitto",
       "city": "Milano",
@@ -748,7 +748,7 @@
       "cityEvidence": "Milano nel breadcrumb; quartiere SeiMilano e M1 Bisceglie nella descrizione.",
       "text": "Privato propone in locazione transitoria trilocale di 90 mq di nuova costruzione, completamente arredato.\nTRILOCALE CON DUE BAGNI",
       "notes": "Piano indicato come quarto nei dati e quinto nella descrizione: discordanza conservata. Box, loggia, balcone e servizi comuni dichiarati. Disponibilità, proprietà e incarico non verificati.",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "operation": "affitto",
       "city": "Milano",
@@ -763,7 +763,7 @@
       "id": "subito-665166301",
       "title": "Bilocale con box · via Antonini / Torre Seta",
       "url": "https://www.subito.it/appartamenti/bilocale-in-via-giacomo-antonini-32-con-box-milano-665166301.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nel breadcrumb; via Giacomo Antonini 32 nella descrizione.",
@@ -785,7 +785,7 @@
       "id": "subito-663356268",
       "title": "Bilocale NoLo · M1 Rovereto",
       "url": "https://www.subito.it/appartamenti/bilocale-nolo-no-agenzia-milano-663356268.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nel breadcrumb; NoLo, M1 Rovereto e viale Monza nella descrizione.",
@@ -807,7 +807,7 @@
       "id": "subito-665051466",
       "title": "Trilocale · Città Studi / Loreto",
       "url": "https://www.subito.it/appartamenti/splendido-trilocale-premiun-in-citta-studi-milano-665051466.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nel breadcrumb; Città Studi, Loreto e Politecnico nella descrizione.",
@@ -832,7 +832,7 @@
       "id": "subito-648505993",
       "title": "Bilocale · Scalo Farini / via Delfico",
       "url": "https://www.subito.it/appartamenti/no-agenzie-no-costi-di-intermediazione-milano-648505993.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nel breadcrumb; via Melchiorre Delfico 18 e Scalo Farini nella descrizione.",
@@ -857,7 +857,7 @@
       "id": "subito-636546643",
       "title": "Bilocale · Viale Liguria",
       "url": "https://www.subito.it/appartamenti/appartamento-a-milano-milano-636546643.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nel breadcrumb; Viale Liguria nella descrizione.",
@@ -879,7 +879,7 @@
       "id": "subito-665466047",
       "title": "Monolocale arredato · Bisceglie / via Palmi",
       "url": "https://www.subito.it/appartamenti/monolocale-arredato-zona-bisceglie-milano-665466047.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nel breadcrumb; via Palmi 20 e zona Bisceglie nel titolo/descrizione.",
@@ -901,7 +901,7 @@
       "id": "subito-664899952",
       "title": "Monolocale · Porta Romana / Viale Monte Nero",
       "url": "https://www.subito.it/appartamenti/monolocale-in-viale-monte-nero-porta-romana-milano-664899952.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nel breadcrumb; Viale Monte Nero e Porta Romana nella descrizione.",
@@ -923,7 +923,7 @@
       "id": "subito-665165434",
       "title": "Appartamento con terrazzo · Brenta / Corso Lodi",
       "url": "https://www.subito.it/appartamenti/appartamento-40-mq-con-terrazzo-di-150mq-milano-665165434.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nel breadcrumb; zona Brenta/Corso Lodi e metropolitane nella descrizione.",
@@ -945,7 +945,7 @@
       "id": "subito-665151962",
       "title": "Bilocale con posto auto · via Nava 27",
       "url": "https://www.subito.it/appartamenti/bilocale-70mq-via-nava-27-milano-665151962.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nel breadcrumb e nella descrizione; via Nava 27 indicata esplicitamente.",
@@ -967,7 +967,7 @@
       "id": "subito-650215305",
       "title": "Trilocale · Bicocca / M5 Ca’ Granda",
       "url": "https://www.subito.it/appartamenti/appartamento-bicocca-milano-650215305.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nel breadcrumb; Università Bicocca e M5 Ca’ Granda nella descrizione.",
@@ -986,7 +986,7 @@
       "sourceAccess": "28 ottobre 2026, pomeriggio: contenuto pubblico recuperato."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1013,7 +1013,7 @@
       "sourceRemovedAt": "2026-10-26"
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1040,7 +1040,7 @@
       "sourceRemovedAt": "2026-10-26"
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1062,7 +1062,7 @@
       "notes": "Qualifica privata e disponibilità immediata dichiarate, non confermate. Proprietà e assenza di incarico non verificate."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1084,7 +1084,7 @@
       "notes": "Qualifica privata e disponibilità immediata dichiarate, non confermate. “No agenzia” non prova la proprietà o l’assenza di incarico."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1106,7 +1106,7 @@
       "notes": "Qualifica privata dichiarata, non confermata. La scheda mostra disponibilità immediata senza data; proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1128,7 +1128,7 @@
       "notes": "Qualifica privata e disponibilità immediata dichiarate, non confermate. Proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1150,7 +1150,7 @@
       "notes": "Qualifica privata e mese di disponibilità dichiarati, non confermati. Il giorno non è indicato e non viene inventato. Proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1177,7 +1177,7 @@
       "sourceRemovedAt": "2026-10-26"
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1202,7 +1202,7 @@
       "sourceRemovalEvidence": "28 ottobre 2026, pomeriggio: la scheda diretta Subito restituisce HTTP 410 Gone. La rimozione della fonte non prova che l’immobile sia stato affittato o venduto."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1226,7 +1226,7 @@
       "notes": "Scarto professionale. La disponibilità è una dichiarazione dell’annuncio, non una conferma; nessuna conversione della richiesta annua è usata come prova autonoma."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1248,7 +1248,7 @@
       "notes": "Qualifica privata e disponibilità immediata dichiarate, non confermate. Proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1270,7 +1270,7 @@
       "notes": "Qualifica privata e disponibilità da febbraio 2027 dichiarate, non confermate. Il giorno non è indicato e non viene inventato; proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1292,7 +1292,7 @@
       "notes": "Qualifica privata e disponibilità immediata dichiarate, non confermate. Proprietà e assenza di incarico non verificate."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1316,7 +1316,7 @@
       "notes": "Scarto professionale. Disponibilità dichiarata nell’annuncio, non confermata."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1343,7 +1343,7 @@
       "sourceRemovedAt": "2026-10-26"
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1365,7 +1365,7 @@
       "notes": "Il rifiuto di agenzie e intermediari non prova proprietà o qualifica privata. La disponibilità da settembre 2026 è una dichiarazione della fonte, non una conferma attuale; incarico non verificato."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1387,7 +1387,7 @@
       "notes": "Ruolo dell’inserzionista non dichiarato esplicitamente. Disponibilità immediata dichiarata, non confermata; proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1409,7 +1409,7 @@
       "notes": "Qualifica privata dichiarata. L’anno del 15 novembre non è indicato e non viene inventato; disponibilità, proprietà e incarico non confermati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1433,7 +1433,7 @@
       "sourceRemovedAt": "2026-10-27T06:55:21.000Z"
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1457,7 +1457,7 @@
       "notes": "Scarto professionale. Disponibilità dichiarata nell’annuncio, non confermata."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1479,7 +1479,7 @@
       "notes": "Il rifiuto delle agenzie non prova la qualifica privata o l’assenza di incarico. Disponibilità immediata dichiarata, non confermata."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1501,7 +1501,7 @@
       "notes": "Il rifiuto delle agenzie non prova la qualifica privata o l’assenza di incarico. Disponibilità immediata dichiarata, non confermata."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1523,7 +1523,7 @@
       "notes": "Il rifiuto delle agenzie non prova la qualifica privata o l’assenza di incarico. Disponibilità immediata dichiarata, non confermata."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1545,7 +1545,7 @@
       "notes": "L’anno del primo gennaio non è indicato e non viene inventato. Il rifiuto delle agenzie non prova qualifica privata o assenza di incarico; disponibilità non confermata."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1569,7 +1569,7 @@
       "possibleDuplicateEvidence": "Stessa via Mincio, 25 mq, primo piano e arredo della vendita subito-658133918; operazione e dati completi da confrontare."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1593,7 +1593,7 @@
       "sourceRemovedAt": "2026-10-26"
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1615,7 +1615,7 @@
       "notes": "Qualifica privata e disponibilità immediata dichiarate, non confermate. Proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1637,7 +1637,7 @@
       "notes": "La data dichiarata è trascorsa e non conferma disponibilità attuale. Il rifiuto delle agenzie non prova qualifica privata o assenza di incarico."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1661,7 +1661,7 @@
       "notes": "Scarto professionale. Disponibilità dichiarata nell’annuncio, non confermata."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1683,7 +1683,7 @@
       "notes": "Inserzionista non determinabile. Disponibilità, proprietà e incarico non confermati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1705,7 +1705,7 @@
       "notes": "La scheda mostra €1.070 come totale; il testo separa €950 di canone e €120 di spese. Inserzionista, disponibilità, proprietà e incarico non determinati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1729,7 +1729,7 @@
       "possibleDuplicateEvidence": "Stesso indirizzo e testo sostanzialmente identico rilevati negli alias Subito 663052776 e 659226948; non acquisiti perché non correnti."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1751,7 +1751,7 @@
       "notes": "Il rifiuto delle agenzie non prova qualifica privata o assenza di incarico. Disponibilità, proprietà e incarico non confermati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1773,7 +1773,7 @@
       "notes": "Qualifica privata e disponibilità immediata dichiarate, non confermate. Proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1795,7 +1795,7 @@
       "notes": "Inserzionista non determinabile. Il deposito non è una spesa mensile. Disponibilità dichiarata, non confermata; proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1817,7 +1817,7 @@
       "notes": "Trattativa diretta con il proprietario e disponibilità dichiarate, non confermate. La data dichiarata è trascorsa; proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1839,7 +1839,7 @@
       "notes": "Prezzo discordante tra campo strutturato e descrizione, da verificare. Inserzionista, disponibilità, proprietà e incarico non determinati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1860,7 +1860,7 @@
       "notes": "Il campo superficie della scheda indica 451 m², dato manifestamente anomalo e non ripreso: superficie non determinata. Inserzionista, proprietà e incarico non verificati. Disponibilità futura dichiarata, non confermata."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1882,7 +1882,7 @@
       "notes": "Inserzionista non determinabile. Disponibilità dichiarata, non confermata; proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1904,7 +1904,7 @@
       "notes": "La formula “proponiamo in locazione” non chiarisce il ruolo dell’inserzionista; nessun badge professionale verificato nella scheda letta. Disponibilità dichiarata, non confermata; proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1926,7 +1926,7 @@
       "notes": "Privato probabile per dichiarazione dell’inserzionista. Disponibilità immediata dichiarata, non confermata; proprietà e assenza di incarico non verificate."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1948,7 +1948,7 @@
       "notes": "La formula “no agenzia” non prova che l’inserzionista sia proprietario né l’assenza di incarico. Disponibilità dichiarata, non confermata."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1970,7 +1970,7 @@
       "notes": "Inserzionista non determinabile: “no agenzie” non equivale a proprietario. Disponibilità futura dichiarata con mese ma senza giorno; non confermata."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -1992,7 +1992,7 @@
       "notes": "Prezzo in conflitto da verificare. Inserzionista non determinabile. Disponibilità dichiarata, non confermata; proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2014,7 +2014,7 @@
       "notes": "Nessuna commissione non identifica il ruolo dell’inserzionista né prova l’assenza di incarico. Disponibilità dichiarata, non confermata."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2036,7 +2036,7 @@
       "notes": "Privato probabile per la formula “affitto da proprietà”, senza verifica documentale. Prezzo in conflitto. Disponibilità dichiarata, non confermata; incarico non verificato."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2058,7 +2058,7 @@
       "notes": "Inserzionista non determinabile. Disponibilità, proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2080,7 +2080,7 @@
       "notes": "La formula “no agenzia” non prova proprietà o assenza di incarico. Data futura priva di anno: nessun anno normalizzato o inventato; disponibilità attuale non confermata."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2103,7 +2103,7 @@
       "notes": "Scarto professionale: profilo verificato come agenzia. Disponibilità e incarico specifico non inferiti."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2125,7 +2125,7 @@
       "notes": "Inserzionista non determinabile: il rifiuto di agenzie o intermediari non prova proprietà o assenza di incarico. Disponibilità futura dichiarata con due mesi alternativi, senza giorno; non confermata."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2149,7 +2149,7 @@
       "notes": "Scarto professionale per identificazione esplicita dell’intermediario nel testo. Disponibilità dichiarata, non confermata; incarico specifico non inferito."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2173,7 +2173,7 @@
       "notes": "Scarto professionale per dichiarazione esplicita “Ag. immobiliare”. Disponibilità futura dichiarata, non confermata; incarico specifico non inferito."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2195,7 +2195,7 @@
       "notes": "Inserzionista non determinabile: la forma “proponiamo in locazione” non identifica da sola un intermediario. Disponibilità dichiarata, non confermata; proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2217,7 +2217,7 @@
       "notes": "Privato probabile per il rifiuto esplicito di agenzie, senza verifica documentale. Disponibilità dichiarata, non confermata; proprietà e assenza di incarico non provate."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2239,7 +2239,7 @@
       "notes": "Privato probabile per il rifiuto esplicito di agenzie, senza verifica documentale. Disponibilità dichiarata, non confermata; proprietà e assenza di incarico non provate."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2261,7 +2261,7 @@
       "notes": "Inserzionista non determinabile. Il mancato rapporto con agenzie non prova proprietà o assenza di incarico. Disponibilità attuale non confermata."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2284,7 +2284,7 @@
       "possibleDuplicateGroup": "primaticcio-40mq-900"
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2306,7 +2306,7 @@
       "notes": "Privato probabile per dichiarazione esplicita. Disponibilità dichiarata, non confermata; proprietà e assenza di incarico non verificate."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2329,7 +2329,7 @@
       "possibleDuplicateGroup": "ripamonti-proprietaria-800"
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2355,7 +2355,7 @@
       "sourceRemovalEvidence": "28 ottobre 2026, pomeriggio: la scheda diretta Subito restituisce HTTP 410 Gone. La rimozione della fonte non prova che l’immobile sia stato affittato o venduto."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2377,7 +2377,7 @@
       "notes": "Inserzionista non determinabile. Disponibilità dichiarata, non confermata; proprietà e incarico non verificati."
     },
     {
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2399,7 +2399,7 @@
       "notes": "Il portale lo mostra nella lista vendita, ma testo e canone indicano affitto: operazione conservata come affitto e discrepanza annotata. Inserzionista non determinabile; anno, disponibilità, proprietà e incarico non confermati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2421,7 +2421,7 @@
       "notes": "Inserzionista non determinabile. Preferenza riportata come condizione dell’annuncio; disponibilità, proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2443,7 +2443,7 @@
       "notes": "Inserzionista non determinabile. Disponibilità, proprietà e incarico non verificati; fotografie dichiarate disponibili solo privatamente e non richieste."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2465,7 +2465,7 @@
       "notes": "Periodo futuro esplicitamente dichiarato; il badge “disponibilità immediata” è discordante e non viene trattato come conferma. Inserzionista, proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2487,7 +2487,7 @@
       "notes": "Inserzionista non determinabile. Il prezzo totale è ricostruito dalla descrizione; disponibilità dichiarata, non confermata. Proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2509,7 +2509,7 @@
       "notes": "Inserzionista non determinabile. Disponibilità, proprietà e incarico non verificati."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2533,7 +2533,7 @@
       "notes": "Scarto professionale; incarico dichiarato nella fonte."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -2557,7 +2557,7 @@
       "notes": "Scarto professionale; prezzo e metratura non acquisiti perché non necessari alla classificazione."
     },
     {
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "affitto",
@@ -3033,6 +3033,120 @@
       "advertiserType": "professional",
       "advertiserEvidence": "Rental House è presentata come agenzia verificata; è indicato un costo di servizio.",
       "notes": "Scarto professionale. Disponibilità non confermata indipendentemente."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-11-01",
+      "lastReadAt": "2026-11-01",
+      "lastAttemptAt": "2026-11-01T07:01:01.000Z",
+      "accessCheckedAt": "2026-11-01T07:01:01.000Z",
+      "textComplete": true,
+      "sourceAccess": "1 novembre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "id": "subito-666198359",
+      "title": "Appartamento per 2/3 studenti/studentesse",
+      "url": "https://www.subito.it/appartamenti/appartamento-per-2-3-studenti-studentesse-milano-666198359.htm",
+      "operation": "affitto",
+      "price": 1100,
+      "expenses": "Non indicate",
+      "area": 70,
+      "location": "Milano · Via San Vigilio 33 · Famagosta / San Paolo",
+      "cityEvidence": "Milano nel breadcrumb; Via San Vigilio 33, Famagosta e San Paolo nella descrizione.",
+      "text": "Appartamento ristrutturato e arredato di 70 mq, secondo piano, due locali. La descrizione propone due posti in camera doppia e uno in singola, vicino alle fermate M2 Famagosta e San Paolo, e dichiara disponibilità immediata.",
+      "notes": "Inserzionista non determinabile. La disponibilità immediata è una dichiarazione dell’annuncio, non una conferma indipendente."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-11-01",
+      "lastReadAt": "2026-11-01",
+      "lastAttemptAt": "2026-11-01T07:01:01.000Z",
+      "accessCheckedAt": "2026-11-01T07:01:01.000Z",
+      "textComplete": true,
+      "sourceAccess": "1 novembre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "id": "subito-665772075",
+      "title": "Bilocale 75 mq · Via Boifava",
+      "url": "https://www.subito.it/appartamenti/bilocale-mq-75-in-via-boifava-milano-milano-665772075.htm",
+      "operation": "affitto",
+      "price": 1200,
+      "expenses": "Condominio, acqua e riscaldamento inclusi nel canone dichiarato",
+      "area": 75,
+      "location": "Milano · Via Boifava / Abbiategrasso",
+      "cityEvidence": "Milano nel breadcrumb; Via Boifava e Abbiategrasso nella descrizione.",
+      "text": "Bilocale di 75 mq al quinto piano in zona Via Boifava / Abbiategrasso. Il canone di €1.200 comprende condominio, acqua e riscaldamento.",
+      "notes": "Inserzionista non determinabile; il solo invito a non contattare tramite agenzie non prova identità, proprietà o assenza d’incarico."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-11-01",
+      "lastReadAt": "2026-11-01",
+      "lastAttemptAt": "2026-11-01T07:01:01.000Z",
+      "accessCheckedAt": "2026-11-01T07:01:01.000Z",
+      "textComplete": true,
+      "sourceAccess": "1 novembre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "id": "subito-661963952",
+      "title": "Bilocale arredato · Affori FN",
+      "url": "https://www.subito.it/appartamenti/bilocale-arredato-a-50-mt-da-mm-affori-fn-milano-661963952.htm",
+      "operation": "affitto",
+      "price": 950,
+      "expenses": "Non indicate",
+      "area": 55,
+      "location": "Milano · Affori FN",
+      "cityEvidence": "Milano nel breadcrumb; Affori FN nel titolo e nella descrizione.",
+      "text": "Bilocale arredato e ristrutturato di 55 mq al primo piano, a circa 50 metri dalla fermata Affori FN. La descrizione menziona la possibilità di un posto auto.",
+      "notes": "Inserzionista non determinabile; il solo invito a non contattare tramite agenzie non prova identità, proprietà o assenza d’incarico."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-11-01",
+      "lastReadAt": "2026-11-01",
+      "lastAttemptAt": "2026-11-01T07:01:01.000Z",
+      "accessCheckedAt": "2026-11-01T07:01:01.000Z",
+      "textComplete": true,
+      "sourceAccess": "1 novembre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "id": "subito-666654933",
+      "title": "Bilocale · Piazza Bettini / Bande Nere · agenzia verificata",
+      "url": "https://www.subito.it/appartamenti/2-locali-a-milano-milano-666654933.htm",
+      "operation": "affitto",
+      "price": 1350,
+      "expenses": "Non indicate",
+      "area": 61,
+      "location": "Milano · Piazza Bettini / Bande Nere",
+      "cityEvidence": "Milano nel breadcrumb; Piazza Bettini e Bande Nere nella scheda.",
+      "text": "Bilocale al sesto piano in zona Piazza Bettini / Bande Nere. La scheda identifica TECNORETE - ADR CASE SRL come agenzia verificata.",
+      "notes": "Scarto professionale. Disponibilità non confermata indipendentemente.",
+      "advertiserType": "professional",
+      "advertiserEvidence": "TECNORETE - ADR CASE SRL è presentata come agenzia verificata."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-11-01",
+      "lastReadAt": "2026-11-01",
+      "lastAttemptAt": "2026-11-01T07:01:01.000Z",
+      "accessCheckedAt": "2026-11-01T07:01:01.000Z",
+      "textComplete": true,
+      "sourceAccess": "1 novembre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "id": "subito-666655691",
+      "title": "Appartamento · Corso XXII Marzo · agenzia",
+      "url": "https://www.subito.it/appartamenti/appartamento-a-milano-corso-xxii-marzo-milano-666655691.htm",
+      "operation": "affitto",
+      "price": 1000,
+      "expenses": "€100 dichiarati",
+      "area": 54,
+      "location": "Milano · Corso XXII Marzo",
+      "cityEvidence": "Milano nel breadcrumb; Corso XXII Marzo nel titolo e nella scheda.",
+      "text": "Appartamento di 54 mq in Corso XXII Marzo, canone €1.000 oltre €100 dichiarati. La scheda identifica Tempocasa 5 Giornate Srl come intermediario.",
+      "notes": "Scarto professionale. Disponibilità non confermata indipendentemente.",
+      "advertiserType": "professional",
+      "advertiserEvidence": "Tempocasa 5 Giornate Srl è identificata nella scheda come intermediario."
     }
   ]
 }

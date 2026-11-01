@@ -1,17 +1,17 @@
 {
-  "collectedAt": "2026-10-31",
+  "collectedAt": "2026-11-01T07:01:01.000Z",
   "sources": [
     {
       "name": "Subito.it · vendite nel comune di Milano",
       "url": "https://www.subito.it/annunci-lombardia/vendita/appartamenti/milano/milano/",
-      "status": "48 annunci Subito vendita nel radar · campione parziale",
-      "note": "31 ottobre 2026, pomeriggio: aggiunte 3 vendite utili. Disponibilità, proprietà e incarichi restano non confermati."
+      "status": "51 annunci Subito vendita nel radar · campione parziale",
+      "note": "1 novembre 2026, mattina: aggiunte 3 vendite utili. Disponibilità, proprietà e incarichi restano non confermati."
     }
   ],
   "posts": [
     {
       "id": "subito-660542629",
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "operation": "vendita",
       "title": "Appartamento da privato · 115 m² MM Turro",
@@ -35,7 +35,7 @@
     },
     {
       "id": "subito-660486423",
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "operation": "vendita",
       "title": "Appartamento · via Ingegnoli",
@@ -56,7 +56,7 @@
     },
     {
       "id": "subito-660754373",
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "operation": "vendita",
       "title": "Privato · trilocale via Mauro Macchi",
@@ -78,7 +78,7 @@
     },
     {
       "id": "subito-652862012",
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "operation": "vendita",
       "title": "Trilocale · MM5 Gerusalemme",
@@ -101,7 +101,7 @@
     },
     {
       "id": "subito-654258588",
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "operation": "vendita",
       "title": "Quadrilocale ristrutturato · Vigentino",
@@ -127,7 +127,7 @@
     },
     {
       "id": "subito-660185020",
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "operation": "vendita",
       "title": "Trilocale · Romolo / Navigli",
@@ -151,7 +151,7 @@
     },
     {
       "id": "subito-485841300",
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "operation": "vendita",
       "title": "Loft a 50 m dalla Metro Rossa",
@@ -182,7 +182,7 @@
     },
     {
       "id": "subito-650927383",
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "operation": "vendita",
       "title": "Monolocale · via Cadibona",
@@ -203,7 +203,7 @@
     },
     {
       "id": "subito-662344216",
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "operation": "vendita",
       "title": "Privato · bilocale M5 Segesta",
@@ -233,7 +233,7 @@
       "accessCheckedAt": "2026-10-28T15:10:39.000Z",
       "sourceAccess": "28 ottobre 2026, pomeriggio: contenuto pubblico recuperato.",
       "id": "subito-630637660",
-      "source": 4,
+      "source": 0,
       "operation": "vendita",
       "title": "Privato · appartamento zona Tortona / MUDEC",
       "url": "https://www.subito.it/appartamenti/privato-vende-milano-630637660.htm",
@@ -246,7 +246,7 @@
     },
     {
       "id": "subito-645898873",
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "operation": "vendita",
       "title": "Privato · trilocale Corvetto / Porto di Mare",
@@ -275,7 +275,7 @@
       "accessCheckedAt": "2026-10-28T15:10:39.000Z",
       "sourceAccess": "28 ottobre 2026, pomeriggio: contenuto pubblico recuperato.",
       "id": "subito-658182256",
-      "source": 4,
+      "source": 0,
       "operation": "vendita",
       "title": "Privato · trilocale su due livelli a Bruzzano",
       "url": "https://www.subito.it/appartamenti/trilocale-ristrutturato-mai-abitato-milano-658182256.htm",
@@ -296,7 +296,7 @@
       "cityEvidence": "Milano nel percorso della scheda; via Induno nella descrizione.",
       "text": "PRIVATO VENDE SENZA INTERMEDIARI",
       "notes": "Nuovo nel radar, non necessariamente appena pubblicato. Trasferimento dichiarato; proprietà, disponibilità e incarico non verificati.",
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "operation": "vendita",
       "city": "Milano",
@@ -320,7 +320,7 @@
       "cityEvidence": "Milano nel percorso della scheda e via Salomone 85 nella descrizione.",
       "text": "Privato vende in Milano via Salomone 85\nDisponibilità immediata",
       "notes": "Disponibilità dichiarata senza data: da riconfermare. Ristrutturazione e classe B dichiarate, non documentate. Proprietà e incarico non verificati; nuovo nel radar, non necessariamente nuovo sul portale.",
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "operation": "vendita",
       "city": "Milano",
@@ -333,7 +333,7 @@
     },
     {
       "id": "subito-661755114",
-      "source": 4,
+      "source": 0,
       "operation": "vendita",
       "title": "Privato · appartamento open space seminterrato viale Abruzzi",
       "url": "https://www.subito.it/appartamenti/appartamento-open-space-48m2-milano-661755114.htm",
@@ -354,7 +354,7 @@
     },
     {
       "id": "subito-664054557",
-      "source": 4,
+      "source": 0,
       "operation": "vendita",
       "title": "Trilocale su due livelli · Niguarda / Parco Nord",
       "url": "https://www.subito.it/appartamenti/trilocale-su-due-livelli-con-posto-auto-privato-milano-664054557.htm",
@@ -386,7 +386,7 @@
       "cityEvidence": "Milano nel breadcrumb; NoLo e M1 Pasteur nella descrizione.",
       "text": "L’inserzionista dichiara “vendo il mio appartamento”: trilocale ristrutturato di 83 mq al primo piano, con due camere matrimoniali, balcone e bagno. Prezzo nel dettaglio €470.000. No agenzia.",
       "notes": "“Vendo il mio appartamento” è una dichiarazione dell’inserzionista, non una prova documentale di proprietà. Il prezzo precedente era €485.000; il dettaglio corrente indica €470.000. Disponibilità e incarico non confermati.",
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "operation": "vendita",
       "city": "Milano",
@@ -402,7 +402,7 @@
       "id": "subito-651449130",
       "title": "Bilocale ristrutturato · Navigli / Romolo",
       "url": "https://www.subito.it/appartamenti/appartamento-bilocale-navigli-ristrutturato-milano-651449130.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nel breadcrumb; via Malaga 4, Navigli e M2 Romolo nella descrizione.",
@@ -424,7 +424,7 @@
       "id": "subito-663698015",
       "title": "Trilocale ristrutturato · Famagosta M2",
       "url": "https://www.subito.it/appartamenti/milano-famagosta-70mq-box-cantina-ristrutturato-milano-663698015.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nel titolo/URL; via Beldiletto e Famagosta M2 nel risultato pubblico indicizzato.",
@@ -446,7 +446,7 @@
       "id": "subito-665331773",
       "title": "Casa indipendente per rendita · Bicocca / Viale Monza",
       "url": "https://www.subito.it/appartamenti/casa-indipendente-per-rendita-milano-665331773.htm",
-      "source": 2,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "cityEvidence": "Milano nel breadcrumb; zona tra Bicocca e Viale Monza nella descrizione.",
@@ -465,7 +465,7 @@
       "sourceAccess": "28 ottobre 2026, pomeriggio: contenuto pubblico recuperato."
     },
     {
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "vendita",
@@ -487,7 +487,7 @@
       "notes": "Qualifica privata dichiarata, non confermata. “No agenzie” non prova l’assenza di incarico; proprietà e disponibilità non verificate."
     },
     {
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "vendita",
@@ -511,7 +511,7 @@
       "possibleDuplicateEvidence": "Stesso indirizzo, metratura e tipologia dell’annuncio di affitto subito-666140949; le operazioni differiscono, quindi non è un duplicato confermato."
     },
     {
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "vendita",
@@ -533,7 +533,7 @@
       "notes": "Vendita diretta dichiarata, non prova documentale di proprietà o assenza di incarico. Disponibilità non confermata."
     },
     {
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "vendita",
@@ -559,7 +559,7 @@
       "sourceRemovedAt": "2026-10-26"
     },
     {
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "vendita",
@@ -583,7 +583,7 @@
       "sourceRemovedAt": "2026-10-26"
     },
     {
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "vendita",
@@ -605,7 +605,7 @@
       "notes": "Inserzionista non determinabile: “propongo” e “no agenzie” non provano proprietà o assenza di incarico. Disponibilità dichiarata, non confermata."
     },
     {
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "vendita",
@@ -629,7 +629,7 @@
       "sourceRemovedAt": "2026-10-26T14:57:39.000Z"
     },
     {
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "vendita",
@@ -651,7 +651,7 @@
       "notes": "Privato probabile per dichiarazione dell’inserzionista; proprietà e assenza di incarico non confermate. “Libero al rogito” indica una disponibilità futura, non attuale."
     },
     {
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "vendita",
@@ -673,7 +673,7 @@
       "notes": "Privato probabile per dichiarazione dell’inserzionista; proprietà e assenza di incarico non confermate. Disponibilità non determinata."
     },
     {
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "vendita",
@@ -695,7 +695,7 @@
       "notes": "Privato probabile. Le dichiarazioni su proprietà e assenza di mandato non sono conferme documentali. “Libero al rogito” indica una disponibilità futura, non attuale."
     },
     {
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "vendita",
@@ -717,7 +717,7 @@
       "notes": "Privato probabile per dichiarazione dell’inserzionista; proprietà e assenza di incarico non confermate. Disponibilità libera non determinata e verosimilmente non attuale per la locazione dichiarata."
     },
     {
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "vendita",
@@ -741,7 +741,7 @@
       "notes": "Scarto professionale: profilo verificato come agenzia. Disponibilità e incarico specifico non inferiti."
     },
     {
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "vendita",
@@ -763,7 +763,7 @@
       "notes": "Privato probabile per dichiarazione dell’inserzionista. La proprietà familiare è una dichiarazione non verificata documentalmente. Disponibilità e incarico non verificati."
     },
     {
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "vendita",
@@ -785,7 +785,7 @@
       "notes": "Privato probabile per dichiarazione dell’inserzionista. Proprietà, disponibilità e assenza di incarico non confermate."
     },
     {
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "vendita",
@@ -807,7 +807,7 @@
       "notes": "Inserzionista non determinabile. Disponibilità dichiarata dalla scheda, non confermata; proprietà e incarico non verificati."
     },
     {
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "vendita",
@@ -829,7 +829,7 @@
       "notes": "Inserzionista non determinabile. Disponibilità immediata indicata dalla scheda ma non confermata; proprietà e incarico non verificati."
     },
     {
-      "source": 4,
+      "source": 0,
       "sourceType": "subito",
       "city": "Milano",
       "operation": "vendita",
@@ -1093,6 +1093,72 @@
       "cityEvidence": "Milano nel breadcrumb; Portello e Accursio nella descrizione.",
       "text": "Vendita monolocale di 50 mq in zona Portello / Accursio. Prezzo €215.000; la descrizione dichiara vendita da privato.",
       "notes": "Privato probabile per dichiarazione esplicita. Proprietà, disponibilità e assenza d’incarico non confermate."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-11-01",
+      "lastReadAt": "2026-11-01",
+      "lastAttemptAt": "2026-11-01T07:01:01.000Z",
+      "accessCheckedAt": "2026-11-01T07:01:01.000Z",
+      "textComplete": true,
+      "sourceAccess": "1 novembre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "id": "subito-666618412",
+      "title": "Trilocale con piscina, cantina e box",
+      "url": "https://www.subito.it/appartamenti/trilocale-con-piscina-cantina-box-milano-666618412.htm",
+      "operation": "vendita",
+      "price": 450000,
+      "expenses": "Non indicate",
+      "area": 94,
+      "location": "Milano · Via delle Forze Armate 260 · La Viridiana",
+      "cityEvidence": "Milano nel breadcrumb; Via delle Forze Armate 260 e La Viridiana nella descrizione.",
+      "text": "Trilocale di 94 mq al primo piano nel complesso La Viridiana, con piscina, cantina e box. La descrizione dichiara che l’immobile è locato fino a febbraio 2029.",
+      "notes": "Inserzionista non determinabile. La locazione fino a febbraio 2029 è una dichiarazione dell’annuncio; disponibilità alla vendita, proprietà e incarico non sono confermati."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-11-01",
+      "lastReadAt": "2026-11-01",
+      "lastAttemptAt": "2026-11-01T07:01:01.000Z",
+      "accessCheckedAt": "2026-11-01T07:01:01.000Z",
+      "textComplete": true,
+      "sourceAccess": "1 novembre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "id": "subito-666583513",
+      "title": "Trilocale 74 mq · quota del 50% · Crescenzago",
+      "url": "https://www.subito.it/appartamenti/trilocale-da-74m2-m2-crescenzago-quota-50-milano-666583513.htm",
+      "operation": "vendita",
+      "price": 135000,
+      "expenses": "Non indicate",
+      "area": 74,
+      "location": "Milano · Crescenzago",
+      "cityEvidence": "Milano nel breadcrumb; Crescenzago nel titolo e nella descrizione.",
+      "text": "Vendita della quota del 50% di un trilocale di 74 mq al terzo piano in zona Crescenzago. L’inserzionista dichiara: “Sono la proprietaria”.",
+      "notes": "Privato probabile per dichiarazione esplicita. La dichiarazione non costituisce prova documentale di proprietà; disponibilità e assenza d’incarico non confermate."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-11-01",
+      "lastReadAt": "2026-11-01",
+      "lastAttemptAt": "2026-11-01T07:01:01.000Z",
+      "accessCheckedAt": "2026-11-01T07:01:01.000Z",
+      "textComplete": true,
+      "sourceAccess": "1 novembre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "id": "subito-643770334",
+      "title": "Attico · Le Terrazze / Parco Ticinello",
+      "url": "https://www.subito.it/appartamenti/attico-quartiere-le-terrazze-parco-ticinello-milano-643770334.htm",
+      "operation": "vendita",
+      "price": 460000,
+      "expenses": "Non indicate",
+      "area": 110,
+      "location": "Milano · Le Terrazze / Parco Ticinello / Via dei Missaglia",
+      "cityEvidence": "Milano nel breadcrumb; Le Terrazze, Parco Ticinello e Via dei Missaglia nella descrizione.",
+      "text": "Attico al settimo piano nel quartiere Le Terrazze, vicino al Parco Ticinello e a Via dei Missaglia. La scheda indica 110 mq e box incluso; la descrizione dettaglia 104 mq oltre a 18 mq di box.",
+      "notes": "Inserzionista non determinabile; il solo invito a non contattare tramite agenzie non prova identità, proprietà o assenza d’incarico."
     }
   ]
 }
