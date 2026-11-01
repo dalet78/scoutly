@@ -29,7 +29,7 @@ import {SubmissionError} from '../assets/prima-di-pubblicare/submit-public-v1.js
 const id='9bb581e9-238a-4b8b-9544-a19f924ead24';
 function ui(sender,{supported=true,configError=false,topic='Vendita',search='',initialStore=[]}={}){
  let now=100000;const store=new Map(initialStore);
- const ids=['consultation-request','consult-send','consult-reconnect','consult-connection','consult-error','consult-code','consult-notice','consult-success','consult-topic','consult-photo-info','consult-success-message'];
+ const ids=['consultation-request','consult-send','consult-reconnect','consult-connection','consult-error','consult-code','consult-notice','consult-success','consult-topic','consult-photo-info','consult-success-message','consult-general-intro','consult-photography-intro','form-title'];
  const el=Object.fromEntries(ids.map(id=>[id,{textContent:'',hidden:false,disabled:false,addEventListener(k,fn){this[k]=fn;},reportValidity(){return true;},setAttribute(){},removeAttribute(){},focus(){}}]));
  el['consultation-request'].fields=data();
  el['consultation-request'].fields.set('consultation_topic',topic);
@@ -69,7 +69,12 @@ test('fotografie: preselezzione solo per argomento noto, nota aggiornata al camb
  const {el}=ui(async()=>{}, {search:'?argomento=fotografie-professionali'});
  assert.equal(el['consult-topic'].value,PHOTOGRAPHY_TOPIC);
  assert.equal(el['consult-photo-info'].hidden,false);
+ assert.equal(el['consult-general-intro'].hidden,true);
+ assert.equal(el['consult-photography-intro'].hidden,false);
+ assert.match(el['form-title'].textContent,/foto per la tua casa/);
  el['consult-topic'].value='Vendita';el['consult-topic'].change();assert.equal(el['consult-photo-info'].hidden,true);
+ assert.equal(el['consult-general-intro'].hidden,false);assert.equal(el['consult-photography-intro'].hidden,true);
+ assert.equal(el['form-title'].textContent,'Richiedi il confronto gratuito');
  assert.equal(requestedTopic('?argomento=non-autorizzato'),'');
 });
 test('fotografie: ricevuta specifica dopo successo e anche al ricaricamento',async()=>{
