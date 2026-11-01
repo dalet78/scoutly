@@ -6,6 +6,6 @@ Il link con argomento=fotografie-professionali preselezionava il campo ma lascia
 
 La presentazione segue anche i cambi di argomento e ripristina i testi generali negli altri casi. Invariati payload, salvataggio, consensi e invii operativi.
 
-Verifica: node --test tests/consultation.test.mjs — 10/10 passati, trasporto simulato. Nessun invio reale. Browser di produzione letto prima della modifica: confermata la discrepanza fra argomento preselezionato e introduzione generica. Verifica visiva successiva e rilascio da completare.
+Verifica: node --test tests/consultation.test.mjs — 10/10 passati, trasporto simulato. Nessun invio reale. Browser di produzione letto prima della modifica: confermata la discrepanza fra argomento preselezionato e introduzione generica. Rilascio su main bloccato dalla verifica automatica in attesa di autorizzazione esplicita alla pubblicazione. Pagina online invariata.
 
-Prossimo passo: verificare la pubblicazione del nuovo testo sul dominio pubblico.
+Prossimo passo: autorizzazione alla pubblicazione, poi verifica del nuovo testo sul dominio pubblico.
