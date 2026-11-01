@@ -1,58 +1,52 @@
 {
-  "observedAt": "2026-11-01T07:01:01.000Z",
-  "scope": "Campione mattutino degli annunci pubblici Subito nel Comune di Milano.",
+  "observedAt": "2026-11-01T15:01:38.000Z",
+  "scope": "Campione pomeridiano degli annunci pubblici Subito nel Comune di Milano.",
   "searches": [
     "https://www.subito.it/annunci-lombardia/affitto/appartamenti/milano/milano/da-privati/",
     "https://www.subito.it/annunci-lombardia/vendita/appartamenti/milano/milano/da-privati/"
   ],
   "outcomes": [
     {
-      "id": "subito-666198359",
-      "url": "https://www.subito.it/appartamenti/appartamento-per-2-3-studenti-studentesse-milano-666198359.htm",
-      "observedAt": "2026-11-01T07:01:01.000Z",
+      "id": "subito-666666924",
+      "url": "https://www.subito.it/appartamenti/bilocale-naba-iulm-bocconi-milano-666666924.htm",
+      "observedAt": "2026-11-01T15:01:38.000Z",
       "outcome": "public_content_retrieved"
     },
     {
-      "id": "subito-665772075",
-      "url": "https://www.subito.it/appartamenti/bilocale-mq-75-in-via-boifava-milano-milano-665772075.htm",
-      "observedAt": "2026-11-01T07:01:01.000Z",
+      "id": "subito-664230479",
+      "url": "https://www.subito.it/appartamenti/immobile-via-reinach-milano-664230479.htm",
+      "observedAt": "2026-11-01T15:01:38.000Z",
       "outcome": "public_content_retrieved"
     },
     {
-      "id": "subito-661963952",
-      "url": "https://www.subito.it/appartamenti/bilocale-arredato-a-50-mt-da-mm-affori-fn-milano-661963952.htm",
-      "observedAt": "2026-11-01T07:01:01.000Z",
+      "id": "subito-536754593",
+      "url": "https://www.subito.it/appartamenti/delizioso-appartamento-rifinito-ed-arredato-milano-536754593.htm",
+      "observedAt": "2026-11-01T15:01:38.000Z",
       "outcome": "public_content_retrieved"
     },
     {
-      "id": "subito-666654933",
-      "url": "https://www.subito.it/appartamenti/2-locali-a-milano-milano-666654933.htm",
-      "observedAt": "2026-11-01T07:01:01.000Z",
+      "id": "subito-666047079",
+      "url": "https://www.subito.it/appartamenti/3-locali-a-milano-milano-666047079.htm",
+      "observedAt": "2026-11-01T15:01:38.000Z",
       "outcome": "public_content_retrieved_excluded_professional"
     },
     {
-      "id": "subito-666655691",
-      "url": "https://www.subito.it/appartamenti/appartamento-a-milano-corso-xxii-marzo-milano-666655691.htm",
-      "observedAt": "2026-11-01T07:01:01.000Z",
-      "outcome": "public_content_retrieved_excluded_professional"
-    },
-    {
-      "id": "subito-666618412",
-      "url": "https://www.subito.it/appartamenti/trilocale-con-piscina-cantina-box-milano-666618412.htm",
-      "observedAt": "2026-11-01T07:01:01.000Z",
+      "id": "subito-644682491",
+      "url": "https://www.subito.it/appartamenti/ampio-bilocale-milano-644682491.htm",
+      "observedAt": "2026-11-01T15:01:38.000Z",
       "outcome": "public_content_retrieved"
     },
     {
-      "id": "subito-666583513",
-      "url": "https://www.subito.it/appartamenti/trilocale-da-74m2-m2-crescenzago-quota-50-milano-666583513.htm",
-      "observedAt": "2026-11-01T07:01:01.000Z",
+      "id": "subito-666556150",
+      "url": "https://www.subito.it/appartamenti/bilocale-ristrutturato-libero-subito-milano-666556150.htm",
+      "observedAt": "2026-11-01T15:01:38.000Z",
       "outcome": "public_content_retrieved"
     },
     {
-      "id": "subito-643770334",
-      "url": "https://www.subito.it/appartamenti/attico-quartiere-le-terrazze-parco-ticinello-milano-643770334.htm",
-      "observedAt": "2026-11-01T07:01:01.000Z",
-      "outcome": "public_content_retrieved"
+      "id": "subito-666343641",
+      "url": "https://www.subito.it/appartamenti/bilocale-trilocale-no-agenzie-milano-666343641.htm",
+      "observedAt": "2026-11-01T15:01:38.000Z",
+      "outcome": "public_content_retrieved_excluded_not_an_offer"
     }
   ]
 }

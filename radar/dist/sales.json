@@ -1,11 +1,11 @@
 {
-  "collectedAt": "2026-11-01T07:01:01.000Z",
+  "collectedAt": "2026-11-01T15:01:38.000Z",
   "sources": [
     {
       "name": "Subito.it · vendite nel comune di Milano",
       "url": "https://www.subito.it/annunci-lombardia/vendita/appartamenti/milano/milano/",
-      "status": "51 annunci Subito vendita nel radar · campione parziale",
-      "note": "1 novembre 2026, mattina: aggiunte 3 vendite utili. Disponibilità, proprietà e incarichi restano non confermati."
+      "status": "54 annunci Subito vendita nel radar · campione parziale",
+      "note": "1 novembre 2026, pomeriggio: aggiunte 2 vendite utili e 1 richiesta di acquisto classificata come scarto. Disponibilità, proprietà e incarichi restano non confermati."
     }
   ],
   "posts": [
@@ -1159,6 +1159,72 @@
       "cityEvidence": "Milano nel breadcrumb; Le Terrazze, Parco Ticinello e Via dei Missaglia nella descrizione.",
       "text": "Attico al settimo piano nel quartiere Le Terrazze, vicino al Parco Ticinello e a Via dei Missaglia. La scheda indica 110 mq e box incluso; la descrizione dettaglia 104 mq oltre a 18 mq di box.",
       "notes": "Inserzionista non determinabile; il solo invito a non contattare tramite agenzie non prova identità, proprietà o assenza d’incarico."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-11-01",
+      "lastReadAt": "2026-11-01",
+      "lastAttemptAt": "2026-11-01T15:01:38.000Z",
+      "accessCheckedAt": "2026-11-01T15:01:38.000Z",
+      "textComplete": true,
+      "sourceAccess": "1 novembre 2026, pomeriggio: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "id": "subito-644682491",
+      "title": "Ampio bilocale · Via Berna",
+      "url": "https://www.subito.it/appartamenti/ampio-bilocale-milano-644682491.htm",
+      "operation": "vendita",
+      "price": 320000,
+      "expenses": "Non indicate",
+      "area": 63,
+      "location": "Milano · Via Berna / Bande Nere",
+      "cityEvidence": "Milano nel breadcrumb; Via Berna e la metropolitana rossa nella descrizione.",
+      "text": "Bilocale arredato di 63 mq al terzo piano, con tre balconi e cantina, in zona Via Berna. La descrizione dichiara “da privato a privato”.",
+      "notes": "Privato probabile per dichiarazione esplicita. La dichiarazione non costituisce prova documentale di proprietà; disponibilità e assenza d’incarico non confermate."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-11-01",
+      "lastReadAt": "2026-11-01",
+      "lastAttemptAt": "2026-11-01T15:01:38.000Z",
+      "accessCheckedAt": "2026-11-01T15:01:38.000Z",
+      "textComplete": true,
+      "sourceAccess": "1 novembre 2026, pomeriggio: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "id": "subito-666556150",
+      "title": "Bilocale ristrutturato e arredato",
+      "url": "https://www.subito.it/appartamenti/bilocale-ristrutturato-libero-subito-milano-666556150.htm",
+      "operation": "vendita",
+      "price": 280000,
+      "expenses": "Non indicate",
+      "area": 55,
+      "location": "Milano · zona non specificata",
+      "cityEvidence": "Milano nel breadcrumb; la zona non è precisata nell’estratto pubblico recuperato.",
+      "text": "Bilocale ristrutturato e arredato di 55 mq al piano rialzato, con cabina armadio e affaccio sul giardino interno. Prezzo €280.000.",
+      "notes": "Inserzionista non determinabile. La disponibilità immediata indicata dalla scheda non è una conferma indipendente; proprietà e incarico non confermati."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "collectedAt": "2026-11-01",
+      "lastReadAt": "2026-11-01",
+      "lastAttemptAt": "2026-11-01T15:01:38.000Z",
+      "accessCheckedAt": "2026-11-01T15:01:38.000Z",
+      "textComplete": true,
+      "sourceAccess": "1 novembre 2026, pomeriggio: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di pubblicazione non è usata come conferma.",
+      "id": "subito-666343641",
+      "title": "Bilocale/Trilocale - No Agenzie · richiesta di acquisto",
+      "url": "https://www.subito.it/appartamenti/bilocale-trilocale-no-agenzie-milano-666343641.htm",
+      "operation": "vendita",
+      "price": 200000,
+      "expenses": "Non indicate",
+      "area": 65,
+      "location": "Milano · Barona / Stadera / Tibaldi",
+      "cityEvidence": "Milano nel breadcrumb; Barona, Stadera e Tibaldi nella descrizione.",
+      "text": "Richiesta: cerco un appartamento da acquistare a Milano Sud, nelle zone Barona, Stadera, Tibaldi e limitrofe.",
+      "notes": "Scarto: richiesta di casa, non offerta immobiliare. Nessuna proprietà, disponibilità o assenza d’incarico inferita."
     }
   ]
 }
