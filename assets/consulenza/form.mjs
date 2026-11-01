@@ -6,7 +6,15 @@ const form=document.getElementById('consultation-request'),send=document.getElem
 const topicSelect=document.getElementById('consult-topic'),photoInfo=document.getElementById('consult-photo-info');
 if(topicSelect){
  const topic=requestedTopic(globalThis.location?.search||'');if(topic)topicSelect.value=topic;
- const update=()=>{if(photoInfo)photoInfo.hidden=topicSelect.value!==PHOTOGRAPHY_TOPIC;};
+ const update=()=>{
+  const photography=topicSelect.value===PHOTOGRAPHY_TOPIC;
+  if(photoInfo)photoInfo.hidden=!photography;
+  const generalIntro=document.getElementById('consult-general-intro'),photographyIntro=document.getElementById('consult-photography-intro'),formTitle=document.getElementById('form-title');
+  if(generalIntro)generalIntro.hidden=photography;
+  if(photographyIntro)photographyIntro.hidden=!photography;
+  if(formTitle)formTitle.textContent=photography?'Parliamo delle foto per la tua casa':'Richiedi il confronto gratuito';
+  document.title=photography?'Fotografie professionali per la tua casa — Scoutly':'Parla con un consulente — Scoutly';
+ };
  topicSelect.addEventListener('change',update);update();
 }
 let gate=null,busy=false,pending=null,storageReady=false,completed=false;
