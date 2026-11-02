@@ -1,52 +1,58 @@
 {
-  "observedAt": "2026-11-01T15:01:38.000Z",
-  "scope": "Campione pomeridiano degli annunci pubblici Subito nel Comune di Milano.",
+  "observedAt": "2026-11-02T07:02:32.000Z",
+  "scope": "Campione mattutino degli annunci pubblici Subito nel Comune di Milano.",
   "searches": [
     "https://www.subito.it/annunci-lombardia/affitto/appartamenti/milano/milano/da-privati/",
     "https://www.subito.it/annunci-lombardia/vendita/appartamenti/milano/milano/da-privati/"
   ],
   "outcomes": [
     {
-      "id": "subito-666666924",
-      "url": "https://www.subito.it/appartamenti/bilocale-naba-iulm-bocconi-milano-666666924.htm",
-      "observedAt": "2026-11-01T15:01:38.000Z",
+      "id": "subito-666484441",
+      "url": "https://www.subito.it/appartamenti/monolocale-libero-a-meta-novembre-milano-666484441.htm",
+      "observedAt": "2026-11-02T07:02:32.000Z",
       "outcome": "public_content_retrieved"
     },
     {
-      "id": "subito-664230479",
-      "url": "https://www.subito.it/appartamenti/immobile-via-reinach-milano-664230479.htm",
-      "observedAt": "2026-11-01T15:01:38.000Z",
+      "id": "subito-666674601",
+      "url": "https://www.subito.it/appartamenti/bilocale-viale-ungheria-16-milano-milano-666674601.htm",
+      "observedAt": "2026-11-02T07:02:32.000Z",
       "outcome": "public_content_retrieved"
     },
     {
-      "id": "subito-536754593",
-      "url": "https://www.subito.it/appartamenti/delizioso-appartamento-rifinito-ed-arredato-milano-536754593.htm",
-      "observedAt": "2026-11-01T15:01:38.000Z",
+      "id": "subito-666719527",
+      "url": "https://www.subito.it/appartamenti/milano-bonola-trilocale-ristrutturato-e-arredato-milano-666719527.htm",
+      "observedAt": "2026-11-02T07:02:32.000Z",
       "outcome": "public_content_retrieved"
     },
     {
-      "id": "subito-666047079",
-      "url": "https://www.subito.it/appartamenti/3-locali-a-milano-milano-666047079.htm",
-      "observedAt": "2026-11-01T15:01:38.000Z",
+      "id": "subito-666697969",
+      "url": "https://www.subito.it/appartamenti/trilocale-via-enrico-noe-milano-milano-666697969.htm",
+      "observedAt": "2026-11-02T07:02:32.000Z",
+      "outcome": "public_content_retrieved"
+    },
+    {
+      "id": "subito-664139164",
+      "url": "https://www.subito.it/appartamenti/nuda-proprieta-milano-navigli-milano-664139164.htm",
+      "observedAt": "2026-11-02T07:02:32.000Z",
+      "outcome": "public_content_retrieved"
+    },
+    {
+      "id": "subito-663703467",
+      "url": "https://www.subito.it/appartamenti/trilocale-in-via-trasimeno-40-10-milano-663703467.htm",
+      "observedAt": "2026-11-02T07:02:32.000Z",
+      "outcome": "public_content_retrieved"
+    },
+    {
+      "id": "subito-664686008",
+      "url": "https://www.subito.it/appartamenti/trilocale-milano-m1-m5-m4-circonvallazione-milano-664686008.htm",
+      "observedAt": "2026-11-02T07:02:32.000Z",
+      "outcome": "public_content_retrieved"
+    },
+    {
+      "id": "subito-663377115",
+      "url": "https://www.subito.it/appartamenti/trilocale-110mq-piazza-argentina-milano-663377115.htm",
+      "observedAt": "2026-11-02T07:02:32.000Z",
       "outcome": "public_content_retrieved_excluded_professional"
-    },
-    {
-      "id": "subito-644682491",
-      "url": "https://www.subito.it/appartamenti/ampio-bilocale-milano-644682491.htm",
-      "observedAt": "2026-11-01T15:01:38.000Z",
-      "outcome": "public_content_retrieved"
-    },
-    {
-      "id": "subito-666556150",
-      "url": "https://www.subito.it/appartamenti/bilocale-ristrutturato-libero-subito-milano-666556150.htm",
-      "observedAt": "2026-11-01T15:01:38.000Z",
-      "outcome": "public_content_retrieved"
-    },
-    {
-      "id": "subito-666343641",
-      "url": "https://www.subito.it/appartamenti/bilocale-trilocale-no-agenzie-milano-666343641.htm",
-      "observedAt": "2026-11-01T15:01:38.000Z",
-      "outcome": "public_content_retrieved_excluded_not_an_offer"
     }
   ]
 }

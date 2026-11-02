@@ -1,11 +1,11 @@
 {
-  "collectedAt": "2026-11-01T15:01:38.000Z",
+  "collectedAt": "2026-11-02T07:02:32.000Z",
   "sources": [
     {
       "name": "Subito.it · comune di Milano",
       "url": "https://www.subito.it/annunci-lombardia/affitto/appartamenti/milano/milano/",
-      "status": "139 annunci Subito nel radar · campione parziale",
-      "note": "1 novembre 2026, pomeriggio: aggiunti 3 affitti utili e 1 scarto professionale. Il controllo integrale delle schede esistenti non è stato ripetuto."
+      "status": "141 annunci Subito nel radar · campione parziale",
+      "note": "2 novembre 2026, mattina: aggiunti 2 affitti utili. Il controllo integrale delle schede esistenti non è stato ripetuto."
     }
   ],
   "posts": [
@@ -3235,6 +3235,49 @@
       "notes": "Scarto professionale. Disponibilità non confermata indipendentemente.",
       "advertiserType": "professional",
       "advertiserEvidence": "TECNOCASA - PROGETTO MILANO SRL è identificata come agenzia verificata."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "operation": "affitto",
+      "collectedAt": "2026-11-02",
+      "lastReadAt": "2026-11-02",
+      "lastAttemptAt": "2026-11-02T07:02:32.000Z",
+      "accessCheckedAt": "2026-11-02T07:02:32.000Z",
+      "textComplete": true,
+      "sourceAccess": "2 novembre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di indicizzazione non conferma disponibilità.",
+      "id": "subito-666484441",
+      "title": "Monolocale · metà novembre",
+      "url": "https://www.subito.it/appartamenti/monolocale-libero-a-meta-novembre-milano-666484441.htm",
+      "price": null,
+      "area": 30,
+      "location": "Milano · zona non specificata",
+      "cityEvidence": "Milano nel breadcrumb della scheda pubblica; zona non indicata nell’estratto.",
+      "text": "Monolocale arredato e recentemente ristrutturato, 30 mq al primo piano. La descrizione dichiara: libero a metà novembre.",
+      "notes": "Inserzionista non determinabile. Prezzo e anno della disponibilità non presenti nell’estratto: disponibilità, proprietà e incarico non confermati."
+    },
+    {
+      "source": 0,
+      "sourceType": "subito",
+      "city": "Milano",
+      "operation": "affitto",
+      "collectedAt": "2026-11-02",
+      "lastReadAt": "2026-11-02",
+      "lastAttemptAt": "2026-11-02T07:02:32.000Z",
+      "accessCheckedAt": "2026-11-02T07:02:32.000Z",
+      "textComplete": true,
+      "sourceAccess": "2 novembre 2026, mattina: contenuto pubblico recuperato. Nuovo nel Radar, non necessariamente nuovo sul portale; la data di indicizzazione non conferma disponibilità.",
+      "id": "subito-666674601",
+      "title": "Bilocale · viale Ungheria 16",
+      "url": "https://www.subito.it/appartamenti/bilocale-viale-ungheria-16-milano-milano-666674601.htm",
+      "price": 800,
+      "area": 45,
+      "location": "Milano · viale Ungheria",
+      "cityEvidence": "Milano nel breadcrumb; viale Ungheria 16 nel titolo e nella descrizione.",
+      "text": "Bilocale arredato di 45 mq al quarto piano con balcone. Canone €800 più €100 di spese condominiali; utenze e TARI escluse. La descrizione dichiara: da privato.",
+      "notes": "Qualifica privata dichiarata, non confermata. Disponibilità, proprietà e incarico non verificati.",
+      "expenses": "€100 mensili dichiarati; utenze e TARI escluse"
     }
   ]
 }
